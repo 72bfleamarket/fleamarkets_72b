@@ -1,0 +1,19 @@
+.header
+  .header__main-header
+    = link_to root_path, class: 'header__main-header__icon' do
+      = image_tag 'material/logo/logo.png', class: 'header__main-header__icon--logo'
+    %input.header__main-header__search-field{placeholder: 'キーワードから探す', type: "text"}
+    %label{class: "header__main-header__search-btn"}
+      = image_tag 'material/icon/icon-search 1.png', height: '20px', width: '20px'
+      %input.header__main-header__search-btn--submit{type: "submit"}
+  .header__nav
+    .header__nav__left-nav
+      .header__nav__left-nav__category-btn
+        カテゴリー
+      = link_to '#', class: 'header__nav__left-nav__brand-btn' do
+        ブランド
+    .header__nav__right-nav
+      = link_to '#', class: 'header__nav__right-nav__login' do
+        ログイン
+      = link_to '#', class: 'header__nav__right-nav__register' do
+        新規会員登録
