@@ -1,0 +1,54 @@
+.app-banner
+  .app-banner__title だれでもかんたん、人生を変えるフリマアプリ
+  .app-banner__text 今すぐ無料ダウンロード！
+  .app-banner__btn
+    = link_to '#', class: 'app-banner__btn--link' do
+      = image_tag 'app-store.png', height: '53px', width: '180px', class: 'app-banner__btn--app-store'
+    = link_to '#' do
+      = image_tag 'google-play.png', height: '53px', width: '180px'
+
+.footer
+  %ul.footer__lists
+    %li.footer__lists__list
+      .footer__lists__list__head FURIMAについて
+      %ul
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            会社概要（運営会社）
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            プライバシーポリシー
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            FURIMA利用規約
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            ポイントに関する特約
+    %li.footer__lists__list
+      .footer__lists__list__head FURIMAを見る
+      %ul
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            カテゴリー一覧
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            ブランド一覧
+    %li.footer__lists__list
+      .footer__lists__list__head ヘルプ&ガイド
+      %ul
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            FURIMAガイド
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            FURIMAロゴ利用ガイドライン
+        %li.footer__lists__list__sub-list
+          = link_to '#', class: 'footer__lists__list__sub-list--link' do
+            お知らせ
+  = image_tag 'material/logo/logo-white.png', class: 'footer__logo'
+  .footer__company © FURIMA
+
+= link_to '#' do
+  .produce-btn
+    .produce-btn__text 出品する
+    = image_tag 'material/icon/icon_camera.png', class: 'produce-btn__icon'

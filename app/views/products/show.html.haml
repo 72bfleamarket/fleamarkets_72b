@@ -1,0 +1,84 @@
+- breadcrumb :product
+= render "layouts/breadcrumbs"
+
+
+= render 'products/shared/header'
+
+
+.content
+  %nav.main-category
+    %ul
+      %li.fas.fa-home.fa-home
+        = link_to "/" do
+          FURIMA
+      %li.fas.fa-angle-right.angle-right
+      %li
+        = link_to "#" do
+          = @parents.name
+      %li.fas.fa-angle-right.angle-right
+      %li
+        = link_to "#" do
+          = @children.name
+      %li.fas.fa-angle-right.angle-right
+      %li
+        = link_to "#" do
+          = @category.name
+      %li.fas.fa-angle-right.angle-right
+      %li
+        = @product.name
+
+
+        -# %ul.category__child.category__list
+        -#   - parent.children.each do |child|
+        -#     %li
+        -#       = link_to "#", class: "category__child--name" do
+        -#         = child.name
+        -#       %ul.category__grandchild.category__list
+        -#         - child.children.each do |grandchild|
+        -#           %li
+        -#             = link_to "#", class: " category__child--name" do
+        -#               = grandchild.name
+
+
+
+
+
+  .content__user-products
+  %h1.product-name
+    = @product.name
+  %p.product-wording
+    = "『#{@product.name}』はtestuserさんから出品されました。#{@category.name}の商品で、#{@product.region}から#{@product.shipping_day}で発送されます。"
+  .content__all-products__product-box__product-lists__product-user
+    .content__all-products__product-box__product-lists__product-list--link
+      - @product.images.each do |image|
+        = image_tag image.item.url
+    .content__all-products__product-box__product-lists__product-list__body__lists__list
+      %span.product-postage
+        = "#{@product.price.to_s(:delimited, delimiter: ',')}円"
+      %span.item-tax (税込)
+      %span.product-postage
+        ="送料込み"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= render 'products/shared/footer'
