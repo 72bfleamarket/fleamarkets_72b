@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
   def index
-    @category = Category.all
+    @products = Product.includes(:images).order("created_at DESC")
   end
 end
