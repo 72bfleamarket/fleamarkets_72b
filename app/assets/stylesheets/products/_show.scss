@@ -84,12 +84,15 @@
 
             &__list {
               width: 25%;
-              margin-right: 10px;
+              display: flex;
+              justify-content: center;
 
               &--img {
+                display: block;
                 object-fit: cover;
                 height: 87px;
                 width: 100%;
+                margin-right: 10px;
               }
             }
         }

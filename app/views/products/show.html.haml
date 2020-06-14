@@ -32,12 +32,12 @@
         %h2.showMain__content__topContent__itemBox__name
           = @product.name
         %ul.showMain__content__topContent__itemBox__body
-        - @product.images.each do |image|
           %li.showMain__content__topContent__itemBox__body__main
-            = image_tag image.item.url, class: 'showMain__content__topContent__itemBox__body__main--img'
+            = image_tag 'product_03.png', class: 'showMain__content__topContent__itemBox__body__main--img'
             %ul.showMain__content__topContent__itemBox__body__sub
               %li.showMain__content__topContent__itemBox__body__sub__list
-                = image_tag image.item.url, class: 'showMain__content__topContent__itemBox__body__sub__list--img'
+                - @product.images.each do |image|
+                  = image_tag image.item.url, class: 'showMain__content__topContent__itemBox__body__sub__list--img'
         .showMain__content__topContent__itemBox__price
           %span
             = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
@@ -63,12 +63,15 @@
             %tr
               %th.showMain__content__topContent__itemBox__table__title ブランド
               %td.showMain__content__topContent__itemBox__table__data
+                = @product.brand
             %tr
               %th.showMain__content__topContent__itemBox__table__title 商品サイズ
               %td.showMain__content__topContent__itemBox__table__data
+                = @product.size
             %tr
               %th.showMain__content__topContent__itemBox__table__title 商品の状態
-              %td.showMain__content__topContent__itemBox__table__data 新品/未使用
+              %td.showMain__content__topContent__itemBox__table__data
+                = @product.condition
             %tr
               %th.showMain__content__topContent__itemBox__table__title 配送料の負担
               %td.showMain__content__topContent__itemBox__table__data
