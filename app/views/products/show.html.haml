@@ -40,7 +40,7 @@
                 = image_tag image.item.url, class: 'showMain__content__topContent__itemBox__body__sub__list--img'
         .showMain__content__topContent__itemBox__price
           %span
-            = "¥#{@product.price.to_s(:delimited, delimiter: ',')}円"
+            = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
           .showMain__content__topContent__itemBox__price__detail
             %span (税込)
             %span 送料込み
@@ -55,6 +55,10 @@
               %th.showMain__content__topContent__itemBox__table__title カテゴリー
               %td.showMain__content__topContent__itemBox__table__data
                 = link_to '#', class: 'showMain__content__topContent__itemBox__table--link' do
+                  = @parents.name
+                  %br
+                  = @children.name
+                  %br
                   = @category.name
             %tr
               %th.showMain__content__topContent__itemBox__table__title ブランド
@@ -67,7 +71,8 @@
               %td.showMain__content__topContent__itemBox__table__data 新品/未使用
             %tr
               %th.showMain__content__topContent__itemBox__table__title 配送料の負担
-              %td.showMain__content__topContent__itemBox__table__data 送料込み（出品者負担）
+              %td.showMain__content__topContent__itemBox__table__data
+                = "¥#{@product.postage.to_s}"
             %tr
               %th.showMain__content__topContent__itemBox__table__title 発送元の地域
               %td.showMain__content__topContent__itemBox__table__data
