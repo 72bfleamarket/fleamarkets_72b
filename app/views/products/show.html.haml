@@ -115,7 +115,7 @@
  
       .showMain__content__relatedItems
         = link_to '#', class: 'showMain__content__relatedItems--link' do
-          ベビー・キッズをもっと見る
+          = "#{@parents.name}をもっと見る"
         .showMain__content__relatedItems__productLists
           .showMain__content__relatedItems__productLists__productList
             = link_to '#', class: 'showMain__content__relatedItems--link' do
