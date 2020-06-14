@@ -7,14 +7,15 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.images.new
   end
 
   def create
     @product = Product.new(product_params)
+    binding.pry
     if @product.save
       return
     else
-      @product.images.new
       render :new
     end
   end

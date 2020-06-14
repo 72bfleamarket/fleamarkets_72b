@@ -21,10 +21,9 @@
       .js-file_group{"data-index": "#{image.index}"}
         = image.label:画像を変更する
         = image.file_field :item, class: 'js-file'
-        %span.js-remove 削除
       - if @product.persisted?
         = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-    .js-file_group{"data-index": "#{@product.images.count}"}
-      %h3 画像を追加
-      = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
+      - if @product.persisted?
+        .js-file_group{"data-index": "#{@product.images.count}"}
+          = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
   = form.submit "登録"

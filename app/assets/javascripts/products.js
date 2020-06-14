@@ -23,7 +23,7 @@ $(document).on('turbolinks:load', () => {
     const targetIndex = $(this).parent().data('index');
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-
+    debugger;
     // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
