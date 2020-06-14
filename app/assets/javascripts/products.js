@@ -3,7 +3,6 @@ $(document).on('turbolinks:load', () => {
   const buildFileField = (num) => {
     const html = `<div class="js-file_group" data-index="${num}">
                     <input class="js-file" type="file" name="product[images_attributes][${num}][item]" id="product_images_attributes_${num}_item">
-                      <span class="js-remove">削除</span>
                   </div>`;
     return html;
   }
@@ -15,6 +14,7 @@ $(document).on('turbolinks:load', () => {
   let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
+
 
   $('.hidden-destroy').hide();
 
@@ -34,6 +34,7 @@ $(document).on('turbolinks:load', () => {
       fileIndex.shift();
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+      $(this).after('<span class="js-remove">削除</span>');
     }
   });
 
