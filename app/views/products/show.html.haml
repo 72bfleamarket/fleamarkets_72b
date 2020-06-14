@@ -25,8 +25,109 @@
     %li.breadCrumbs__lists__list
       = @product.name
 
+.showMain
+  .showMain__content
+    .showMain__content__topContent
+      .showMain__content__topContent__itemBox
+        %h2.showMain__content__topContent__itemBox__name
+          = @product.name
+        %ul.showMain__content__topContent__itemBox__body
+        - @product.images.each do |image|
+          %li.showMain__content__topContent__itemBox__body__main
+            = image_tag image.item.url, class: 'showMain__content__topContent__itemBox__body__main--img'
+            %ul.showMain__content__topContent__itemBox__body__sub
+              %li.showMain__content__topContent__itemBox__body__sub__list
+                = image_tag image.item.url, class: 'showMain__content__topContent__itemBox__body__sub__list--img'
+        .showMain__content__topContent__itemBox__price
+          %span
+            = "¥#{@product.price.to_s(:delimited, delimiter: ',')}円"
+          .showMain__content__topContent__itemBox__price__detail
+            %span (税込)
+            %span 送料込み
+        .showMain__content__topContent__itemBox__itemDetail 
+          = @product.detal
+        %table.showMain__content__topContent__itemBox__table
+          %tbody
+            %tr
+              %th.showMain__content__topContent__itemBox__table__title 出品者
+              %td.showMain__content__topContent__itemBox__table__data testuserさん
+            %tr
+              %th.showMain__content__topContent__itemBox__table__title カテゴリー
+              %td.showMain__content__topContent__itemBox__table__data
+                = link_to '#', class: 'showMain__content__topContent__itemBox__table--link' do
+                  = @category.name
+            %tr
+              %th.showMain__content__topContent__itemBox__table__title ブランド
+              %td.showMain__content__topContent__itemBox__table__data
+            %tr
+              %th.showMain__content__topContent__itemBox__table__title 商品サイズ
+              %td.showMain__content__topContent__itemBox__table__data
+            %tr
+              %th.showMain__content__topContent__itemBox__table__title 商品の状態
+              %td.showMain__content__topContent__itemBox__table__data 新品/未使用
+            %tr
+              %th.showMain__content__topContent__itemBox__table__title 配送料の負担
+              %td.showMain__content__topContent__itemBox__table__data 送料込み（出品者負担）
+            %tr
+              %th.showMain__content__topContent__itemBox__table__title 発送元の地域
+              %td.showMain__content__topContent__itemBox__table__data
+                = link_to '#', class: 'showMain__content__topContent__itemBox__table--link' do
+                  = @product.region
+            %tr
+              %th.showMain__content__topContent__itemBox__table__title 発送日の目安
+              %td.showMain__content__topContent__itemBox__table__data
+                = @product.shipping_day
+        %ul.showMain__content__topContent__itemBox__optionArea
+          %li.showMain__content__topContent__itemBox__optionArea__optionalBtn.showMain__content__topContent__itemBox__optionArea__optionalBtn--likeBtn
+            %i.fa.fa-star
+            お気に入り 0
+          %li.showMain__content__topContent__itemBox__optionArea__optionalBtn
+            = link_to '#', class: 'showMain__content__topContent__itemBox__optionArea__optionalBtn--link' do
+              %i.fa.fa-flag
+              不適切な商品の通報
 
-.content
+      .showMain__content__topContent__commentBox
+        %form
+          %input.showMain__content__topContent__commentBox__textField{placeholder: '', type: "text"}
+          .showMain__content__topContent__commentBox__noticeMsg
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %br
+          .showMain__content__topContent__commentBox__submitBtn
+            %i.fa.fa-comment
+            コメントする
+
+      %ul.showMain__content__links
+        %li
+          = link_to '#', class: 'showMain__content__links--link' do
+            %i.fa.fa-angle-left
+            %span 前の商品
+        %li
+          = link_to '#', class: 'showMain__content__links--link' do
+            %span 後ろの商品
+            %i.fa.fa-angle-right
+ 
+      .showMain__content__relatedItems
+        = link_to '#', class: 'showMain__content__relatedItems--link' do
+          ベビー・キッズをもっと見る
+        .showMain__content__relatedItems__productLists
+          .showMain__content__relatedItems__productLists__productList
+            = link_to '#', class: 'showMain__content__relatedItems--link' do
+              = image_tag 'product_03.png', class: 'showMain__content__relatedItems__productLists__productList--img'
+              .showMain__content__relatedItems__productLists__productList__body
+                %h3.showMain__content__relatedItems__productLists__productList__body__name
+                  product3
+                %ul.showMain__content__relatedItems__productLists__productList__body__details
+                  %li.showMain__content__relatedItems__productLists__productList__body__details__detail
+                    30,000円
+                  %li.showMain__content__relatedItems__productLists__productList__body__details__detail
+                    %i.fa.fa-star.showMain__content__relatedItems__productLists__productList__body__details__detail--icon
+                    0
+                .showMain__content__relatedItems__productLists__productList__body__tax
+                  (税込)
+
+-# .content
   -# %ul.category__child.category__list
   -#   - parent.children.each do |child|
   -#     %li
@@ -38,20 +139,20 @@
   -#             = link_to "#", class: " category__child--name" do
   -#               = grandchild.name
 
-  .content__user-products
-  %h1.product-name
-    = @product.name
-  %p.product-wording
-    = "『#{@product.name}』はtestuserさんから出品されました。#{@category.name}の商品で、#{@product.region}から#{@product.shipping_day}で発送されます。"
-  .content__all-products__product-box__product-lists__product-user
-    .content__all-products__product-box__product-lists__product-list--link
-      - @product.images.each do |image|
-        = image_tag image.item.url
-    .content__all-products__product-box__product-lists__product-list__body__lists__list
-      %span.product-postage
-        = "#{@product.price.to_s(:delimited, delimiter: ',')}円"
-      %span.item-tax (税込)
-      %span.product-postage
-        ="送料込み"
+-#   .content__user-products
+-#   %h1.product-name
+-#     = @product.name
+-#   %p.product-wording
+-#     = "『#{@product.name}』はtestuserさんから出品されました。#{@category.name}の商品で、#{@product.region}から#{@product.shipping_day}で発送されます。"
+-#   .content__all-products__product-box__product-lists__product-user
+-#     .content__all-products__product-box__product-lists__product-list--link
+-#       - @product.images.each do |image|
+-#         = image_tag image.item.url
+-#     .content__all-products__product-box__product-lists__product-list__body__lists__list
+-#       %span.product-postage
+-#         = "#{@product.price.to_s(:delimited, delimiter: ',')}円"
+-#       %span.item-tax (税込)
+-#       %span.product-postage
+-#         ="送料込み"
 
 = render 'products/shared/footer'
