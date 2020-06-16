@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    binding.pry
     if @product.save
       return
     else
@@ -21,9 +20,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # @product.images.build
   end
 
   def update
+    # binding.pry
     if @product.update(product_params)
       redirect_to product_path
     else
