@@ -13,7 +13,7 @@
         - @products.each do |product|
           .content__all-products__product-box__product-lists__product-list--link
             = link_to product_path(product) do
-              = image_tag "#{product.images[0].item.url}", class: 'content__all-products__product-box__product-lists__product-list--icon'
+              = image_tag product.images[0].item.url, class: 'content__all-products__product-box__product-lists__product-list--icon'
             .content__all-products__product-box__product-lists__product-list__body
               .content__all-products__product-box__product-lists__product-list__body__name
                 = product.name
