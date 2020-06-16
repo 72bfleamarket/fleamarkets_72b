@@ -1,3 +1,98 @@
-// Place all the styles related to the categories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.content {
+  width: 100%;
+  &__all-products {
+    height: 100%;
+    background-color: #f8f8f8;
+    color: #000000;
+    padding-top: 80px;
+
+    &:last-child {
+      padding-bottom: 80px;
+    }
+
+    &__head {
+      height: 39px;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    &__product-box {
+
+      &__title {
+        height: 36px;
+        font-size: 24px;
+        color: #3ccace;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+        text-decoration: none;
+      }
+
+      &__test {
+        height: 36px;
+        font-size: 24px;
+        color: red;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+        text-decoration: none;
+      }
+
+      &__product-lists {
+        width: 780px;
+        margin: 26px auto;
+
+        &__product-list {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+
+          &--link {
+            width: 220px;
+            text-decoration: none;
+            color: #333333;
+          }
+
+          &--icon {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+          }
+
+          &__body {
+            height: 95px;
+            width: 220px;
+            padding: 16px;
+            background-color: #ffffff;
+
+            &__name {
+              height: 24px;
+              line-height: 24px;
+            }
+
+            &__lists {
+              height: 24px;
+              display: flex;
+              justify-content: space-between;
+
+              &__list {
+                line-height: 24px;
+                font-size: 16px;
+                font-weight: normal;
+
+                &--icon {
+                  font-size: 14px;
+                }
+              }
+            }
+
+            &__tax {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
