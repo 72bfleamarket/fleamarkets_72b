@@ -14,9 +14,7 @@ $(document).on('turbolinks:load', () => {
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
 
-
   $('.hidden-destroy').hide();
-  // $('.js-file').after('<span class="js-remove">削除</span>');
 
   $('#products-image').on('change', '.js-file', function (e) {
     const targetIndex = $(this).parent().data('index');
@@ -36,7 +34,6 @@ $(document).on('turbolinks:load', () => {
 
   $('#products-image').on('click', '.js-remove', function () {
     const targetIndex = $(this).parent().data('index');
-    console.log(targetIndex)
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     if (hiddenCheck) hiddenCheck.prop('checked', true);
 

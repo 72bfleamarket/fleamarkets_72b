@@ -20,11 +20,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    # @product.images.build
   end
 
   def update
-    # binding.pry
     if @product.update(product_params)
       redirect_to product_path
     else
