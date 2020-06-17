@@ -345,9 +345,11 @@ body {
           width: 100%;
           display: flex;
           justify-content: space-around;
+          flex-wrap: wrap;
 
           &--link {
             text-decoration: none;
+            width: 220px;
             color: #333333;
           }
 
