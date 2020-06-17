@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   def index
     @products = Product.includes(:images).order("created_at DESC")
-    @images = Image.order(id: "DESC")
+    # @products = Product.includes(:images).where.(category_id: 1)
   end
 
   # def index_category_set
@@ -16,4 +16,9 @@ class CategoriesController < ApplicationController
   #       instance_variable_set("@cat_no#{num}",products)
   #     end
   # end
+
+  def show
+    @categories = Category.find(params[:id])
+    @products = Product.where(category_id: @categories)
+  end
 end
