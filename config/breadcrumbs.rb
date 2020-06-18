@@ -1,24 +1,24 @@
 crumb :root do
-  link "ホーム", root_path
+  link "FURIMA", root_path
 end
 
 crumb :categories do
-  link "すべてのカテゴリー"
+  link "すべてのカテゴリー", "#"
   parent :root
 end
 
 crumb :parents do
-  link Product.find(params[:id]).category.root.name
+  link Product.find(params[:id]).category.root.name, "#"
   parent :categories
 end
 
 crumb :children do
-  link Product.find(params[:id]).category.parent.name
+  link Product.find(params[:id]).category.parent.name, "#"
   parent :parents
 end
 
 crumb :grandchildren do
-  link Product.find(params[:id]).category.name
+  link Product.find(params[:id]).category.name, "#"
   parent :children
 end
 

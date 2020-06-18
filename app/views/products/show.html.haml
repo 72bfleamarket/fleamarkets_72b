@@ -1,29 +1,27 @@
--# - breadcrumb :product
--# = render "layouts/breadcrumbs"
-
-
 = render 'products/shared/header'
 
 %nav.breadCrumbs
-  %ul.breadCrumbs__lists
-    %li.breadCrumbs__lists__list
-      = link_to "/", class: 'breadCrumbs__lists__list--link' do
-        FURIMA
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
-    %li.breadCrumbs__lists__list
-      = link_to "#", class: 'breadCrumbs__lists__list--link' do
-        = @parents.name
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-    %li.breadCrumbs__lists__list
-      = link_to "#", class: 'breadCrumbs__lists__list--link' do
-        = @children.name
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-    %li.breadCrumbs__lists__list
-      = link_to "#", class: 'breadCrumbs__lists__list--link' do
-        = @category.name
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-    %li.breadCrumbs__lists__list
-      = @product.name
+  - breadcrumb :product
+  = render "layouts/breadcrumbs"
+  -# %ul.breadCrumbs__lists
+  -#   %li.breadCrumbs__lists__list
+  -#     = link_to "/", class: 'breadCrumbs__lists__list--link' do
+  -#       FURIMA
+  -#   %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
+  -#   %li.breadCrumbs__lists__list
+  -#     = link_to "#", class: 'breadCrumbs__lists__list--link' do
+  -#       = @parents.name
+  -#   %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
+  -#   %li.breadCrumbs__lists__list
+  -#     = link_to "#", class: 'breadCrumbs__lists__list--link' do
+  -#       = @children.name
+  -#   %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
+  -#   %li.breadCrumbs__lists__list
+  -#     = link_to "#", class: 'breadCrumbs__lists__list--link' do
+  -#       = @category.name
+  -#   %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
+  -#   %li.breadCrumbs__lists__list
+  -#     = @product.name
 
 .showMain
   .showMain__content
