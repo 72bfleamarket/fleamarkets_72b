@@ -18,7 +18,15 @@ class CategoriesController < ApplicationController
   # end
 
   def show
-    @categories = Category.find(params[:id])
-    @products = Product.where(category_id: @categories)
+    @category = Category.find(params[:id])
+    @products = Product.includes(:images).order("created_at DESC").where(category_id: @category)
   end
+
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :price, :brand, :size, :region, :condition, :postage, :shipping_day, :detal, :category_id, images_attributes: [:item, :_destroy, :id])
+  end
+
 end

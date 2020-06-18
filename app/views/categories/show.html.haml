@@ -9,7 +9,7 @@
     .content__all-products__product-lists__product-list
       - @products.each do |product|
         .content__all-products__product-lists__product-list--link
-          = link_to category_path(@products.id) do
+          = link_to category_path(@products.ids) do
             = image_tag product.images[0].item.url, class: 'content__all-products__product-lists__product-list--icon'
           .content__all-products__product-lists__product-list__body
             .content__all-products__product-lists__product-list__body__name

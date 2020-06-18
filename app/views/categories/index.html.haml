@@ -1,25 +1,26 @@
-.content__all-products
-  .content__all-products__product-box
-    %h2.content__all-products__product-box__title
-      〇〇の商品一覧
-    %ul.content__all-products__product-box__sub-lists
-      %li.content__all-products__product-box__sub-lists__sub-list
-        list
-  .content__all-products__product-lists
-    .content__all-products__product-lists__product-list
-      - @products.each do |product|
-        .content__all-products__product-lists__product-list--link
-          = link_to product_path(product) do
-            = image_tag product.images[0].item.url, class: 'content__all-products__product-lists__product-list--icon'
-          .content__all-products__product-lists__product-list__body
-            .content__all-products__product-lists__product-list__body__name
-              = product.name
-            %ul.content__all-products__product-lists__product-list__body__lists
-              %li.content__all-products__product-lists__product-list__body__lists__list
-                = "#{product.price.to_s(:delimited, delimiter: ',')}円"
-              %li.content__all-products__product-lists__product-list__body__lists__list
-                %i.fas.fa-star.content__all-products__product-lists__product-list__body__lists__list--icon
-                0
-            .content__all-products__product-lists__product-list__body__tax
-              (税込)
+.content 
+  .content__all-products
+    .content__all-products__product-box
+      %h2.content__all-products__product-box__title
+        〇〇の商品一覧
+      %ul.content__all-products__product-box__sub-lists
+        %li.content__all-products__product-box__sub-lists__sub-list
+          list
+    .content__all-products__product-lists
+      .content__all-products__product-lists__product-list
+        - @products.each do |product|
+          .content__all-products__product-lists__product-list--link
+            = link_to product_path(product) do
+              = image_tag product.images[0].item.url, class: 'content__all-products__product-lists__product-list--icon'
+            .content__all-products__product-lists__product-list__body
+              .content__all-products__product-lists__product-list__body__name
+                = product.name
+              %ul.content__all-products__product-lists__product-list__body__lists
+                %li.content__all-products__product-lists__product-list__body__lists__list
+                  = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+                %li.content__all-products__product-lists__product-list__body__lists__list
+                  %i.fas.fa-star.content__all-products__product-lists__product-list__body__lists__list--icon
+                  0
+              .content__all-products__product-lists__product-list__body__tax
+                (税込)
 

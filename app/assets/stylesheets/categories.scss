@@ -1,8 +1,9 @@
 .content {
   width: 100%;
+  background-color: #f8f8f8;
   &__all-products {
     height: 100%;
-    width: 700px;
+    width: 780px;
     background-color: #f8f8f8;
     color: #000000;
     margin: 0 auto;
@@ -36,14 +37,12 @@
         // text-align: center;
         // display: block;
         // text-decoration: none;
-
+        
         display: block;
         list-style-type: disc;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
         padding-inline-start: 40px;
+        flex-wrap: wrap;
+        background-color: #ffffff;
 
         &__sub-list {
           // height: 36px;
@@ -58,6 +57,7 @@
           line-height: 26px;
           margin: 10px;
           list-style: none;
+          
         }
       }
     }
@@ -76,6 +76,8 @@
           width: 220px;
           text-decoration: none;
           color: #333333;
+          margin-bottom: 30px;
+
         }
 
         &--icon {
