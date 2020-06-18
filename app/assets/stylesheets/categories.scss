@@ -14,7 +14,7 @@
     }
 
     &__product-box {
-      height: 440px;
+      
       // font-size: 28px;
       // font-weight: bold;
       // text-align: center;
@@ -121,4 +121,10 @@
       }
     }
   }
+}
+
+ul:before, ul:after{
+  content: "";
+  clear: both;
+  display: block;
 }
