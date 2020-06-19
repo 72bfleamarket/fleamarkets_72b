@@ -19,13 +19,17 @@
         color: #333;
       }
 
-      &--icon {
-        font-size: 14px;
-        
-        &::before {
-          content: "\f105";
-        }
+      & .current {
+        font-weight: bold;
       }
+
+      // &--icon {
+      //   font-size: 14px;
+        
+      //   &::before {
+      //     content: "\f105";
+      //   }
+      // }
     }
   }
 }
