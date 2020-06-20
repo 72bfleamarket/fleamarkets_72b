@@ -1,0 +1,32 @@
+= form_with(model: @product, local: true) do |form|
+  = form.label:カテゴリー
+  = form.collection_select :category_id, Category.where('ancestry IS NULL'), :id, :name, {prompt: "---"}
+  = form.collection_select :category_id, Category.where.not('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
+  = form.collection_select :category_id, Category.where('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
+  = form.text_field :name, placeholder: "商品名"
+  = form.text_field :price, placeholder: "税込み価格"
+  = form.text_field :brand, placeholder: "ブランド名"
+  = form.text_field :size, placeholder: "商品サイズ"
+  = form.text_field :condition, placeholder: "新品or中古etc..."
+  = form.text_field :region, placeholder: "発送元地域"
+  = form.text_field :postage, placeholder: "送料"
+  = form.text_field :shipping_day, placeholder: "発送までの日時"
+  = form.text_area :detal, placeholder: "商品説明"
+  #products-image
+    #previews
+      - if @product.persisted?
+        - @product.images.each_with_index do |image, i|
+          = image_tag image.item.url, data: { index: i }, width: "100", height: '100', class: "aaa"
+    = form.fields_for :images do |image|
+      .js-file_group{"data-index": "#{image.index}"}
+        = image.label:投稿画像を選択
+        = image.file_field :item, class: 'js-file', accept:"image/*"
+        - if @product.persisted?
+          %span.js-remove 削除
+      .save-box
+        - if @product.persisted?
+          = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+    - if @product.persisted?
+      .js-file_group{"data-index": "#{@product.images.count}"}
+        = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
+  = form.submit "登録"
