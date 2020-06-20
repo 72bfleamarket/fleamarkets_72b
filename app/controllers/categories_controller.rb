@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
   def index
-    @products = Product.includes(:images).order("created_at DESC")
-    # @products = Product.includes(:images).where.(category_id: 1)
+    @parents = Category.all.order("ancestry ASC").limit(2)
+    # @parents = Category.where(ancentry: nil)
+    
   end
 
   # def index_category_set

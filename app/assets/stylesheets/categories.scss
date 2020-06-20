@@ -1,3 +1,13 @@
+.parent{
+  color: red;
+  &__child{
+    color: blue;
+    &__grandchild{
+      color: black;
+    }
+  }
+}
+
 .content {
   width: 100%;
   background-color: #f8f8f8;
