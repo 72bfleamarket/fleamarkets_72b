@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
   # end
 
   def show
+    @parents = Category.all.order("ancestry ASC").limit(2)
     @category = Category.find(params[:id])
     @products = Product.includes(:images).order("created_at DESC").where(category_id: @category)
   end

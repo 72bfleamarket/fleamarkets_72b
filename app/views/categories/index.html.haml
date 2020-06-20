@@ -10,31 +10,15 @@
 -#       - child.children.each do |grandchild|
 -#         .parent__child__grandchild
 -#           =grandchild.name
-
-      
-%h1　カテゴリーリスト
-%ul.categories
-  - @parents.each do |parent|
-    %li.parents
-      = link_to "#{parent.name}", category_path(parent)
-
-    %ul.categories__children
-      - parent.children.each do |child|
-        %li.children
-          = link_to "#{child.name}", category_path(child)
-
-        %ul.categories__grandchildren
-          -child.children.each do |grandchild|
-            %li= link_to "#{grandchild.name}", category_path(grandchild)
-
-.content 
+.content       
   .content__all-products
     .content__all-products__product-box
-      %h2.content__all-products__product-box__title
-        〇〇の商品一覧
+      .content__all-products__product-box__title
+        商品一覧
       %ul.content__all-products__product-box__sub-lists
-        %li.content__all-products__product-box__sub-lists__sub-list
-          list
+        %li.content__all-products__product-box__sub-lists__sub-list          
+          = render partial: 'category'
+
     .content__all-products__product-lists
       .content__all-products__product-lists__product-list
         - @products.each do |product|

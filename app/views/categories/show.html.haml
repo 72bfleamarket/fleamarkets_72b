@@ -4,7 +4,7 @@
       〇〇の商品一覧
     %ul.content__all-products__product-box__sub-lists
       %li.content__all-products__product-box__sub-lists__sub-list
-        list
+        = render partial: 'category'
   .content__all-products__product-lists
     .content__all-products__product-lists__product-list
       - @products.each do |product|

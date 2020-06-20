@@ -1,0 +1,12 @@
+- @parents.each do |parent|
+  %li.content__all-products__product-box__sub-lists__sub-list__parents
+    = link_to "#{parent.name}", category_path(parent)
+
+  %ul.content__all-products__product-box__sub-lists__sub-list__parents__children
+    - parent.children.each do |child|
+      %li.children
+        = link_to "#{child.name}", category_path(child)
+
+      %ul.content__all-products__product-box__sub-lists__sub-list__parents__children__grandchildren
+        -child.children.each do |grandchild|
+          %li= link_to "#{grandchild.name}", category_path(grandchild)

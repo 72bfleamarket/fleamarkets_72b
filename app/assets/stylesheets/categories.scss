@@ -1,12 +1,3 @@
-.parent{
-  color: red;
-  &__child{
-    color: blue;
-    &__grandchild{
-      color: black;
-    }
-  }
-}
 
 .content {
   width: 100%;
@@ -67,19 +58,31 @@
           line-height: 26px;
           margin: 10px;
           list-style: none;
+          &__parants{
+            float: left;
+            list-style: none;
+            &__children{
+              float: left;
+              &__grandchildren{
+                color: red;
+                float: left;
+              }
+            }
+
+          }
           
         }
       }
     }
     &__product-lists {
-        width: 780px;
-        margin: 26px auto;
-
+      width: 780px;
+      margin: 26px auto;
       &__product-list {
         width: 100%;
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+
 
 
         &--link {
