@@ -415,6 +415,7 @@ body {
         width: 780px;
         margin: 26px auto;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
 
         &__productList {
