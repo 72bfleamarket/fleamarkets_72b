@@ -44,21 +44,17 @@ body {
         }
 
         &--input {
+          width: calc(100% - 26px);
           height: 36px;
-          width: 834px;
           padding-left: 5px;
-          display: block;
-          margin-top: 5px;
         }
 
         &__submit {
-          height: 36px;
-          width: 35px;
+          width: 36px;
+          border: 0;
+          cursor: pointer;
           background-color: #3ccace;
           padding: 8px;
-          display: block;
-          margin-top: 5px;
-          cursor: pointer;
 
           & img {
           width: 100%;
@@ -68,8 +64,8 @@ body {
 
           &--btn {
             position: absolute;
-            top: 11px;
-            right: 1px;
+            top: 10px;
+            right: 0.5px;
             display: none;
           }
         }
