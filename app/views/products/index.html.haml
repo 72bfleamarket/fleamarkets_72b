@@ -1,22 +1,4 @@
-.header
-  .header__main-header
-    = link_to root_path, class: 'header__main-header__icon' do
-      = image_tag 'material/logo/logo.png', class: 'header__main-header__icon--logo'
-    %input.header__main-header__search-field{placeholder: 'キーワードから探す', type: "text"}
-    %label{class: "header__main-header__search-btn"}
-      = image_tag 'material/icon/icon-search 1.png', height: '20px', width: '20px'
-      %input.header__main-header__search-btn--submit{type: "submit"}
-  .header__nav
-    .header__nav__left-nav
-      .header__nav__left-nav__category-btn
-        カテゴリー
-      = link_to '#', class: 'header__nav__left-nav__brand-btn' do
-        ブランド
-    .header__nav__right-nav
-      = link_to '#', class: 'header__nav__right-nav__login' do
-        ログイン
-      = link_to '#', class: 'header__nav__right-nav__register' do
-        新規会員登録
+= render 'products/shared/header'
 
 .content
   .content__main-visual
@@ -126,46 +108,7 @@
     = link_to '#' do
       = image_tag 'google-play.png', height: '53px', width: '180px'
 
-.footer
-  %ul.footer__lists
-    %li.footer__lists__list
-      .footer__lists__list__head FURIMAについて
-      %ul
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            会社概要（運営会社）
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            プライバシーポリシー
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            FURIMA利用規約
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            ポイントに関する特約
-    %li.footer__lists__list
-      .footer__lists__list__head FURIMAを見る
-      %ul
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            カテゴリー一覧
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            ブランド一覧
-    %li.footer__lists__list
-      .footer__lists__list__head ヘルプ&ガイド
-      %ul
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            FURIMAガイド
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            FURIMAロゴ利用ガイドライン
-        %li.footer__lists__list__sub-list
-          = link_to '#', class: 'footer__lists__list__sub-list--link' do
-            お知らせ
-  = image_tag 'material/logo/logo-white.png', class: 'footer__logo'
-  .footer__company © FURIMA
+= render 'products/shared/footer'
 
 = link_to new_product_path(@product) do
   .produce-btn
