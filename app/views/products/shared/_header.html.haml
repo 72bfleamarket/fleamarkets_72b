@@ -2,6 +2,9 @@
   .header__main-header
     = link_to root_path, class: 'header__main-header__icon' do
       = image_tag 'material/logo/logo.png', class: 'header__main-header__icon--logo'
+    = form_with(url: products_searches_path, local: true, method: :get) do |form|
+      = form.text_field :keyword, placeholder: 'キーワードから探す', class: 'header__main-header__search-field'
+      = form.submit '検索', class: 'header__main-header__search-btn'
     %input.header__main-header__search-field{placeholder: 'キーワードから探す', type: "text"}
     %label{class: "header__main-header__search-btn"}
       = image_tag 'material/icon/icon-search 1.png', height: '20px', width: '20px'

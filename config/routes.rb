@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'categories/index'
   root "products#index"
+  namespace :products do
+    resources :searches, only: :index
+  end
   resources :products, only: [:index, :new, :create, :show]
   resources :categories, only: [:index]
 end

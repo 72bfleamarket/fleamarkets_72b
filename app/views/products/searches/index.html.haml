@@ -1,0 +1,29 @@
+= render 'products/shared/header'
+
+.contentsRow
+  - @products.each do |product|
+    .content__all-products__product-box__product-lists
+    .content__all-products__product-box__product-lists__product-list
+      - @products.each do |product|
+        .content__all-products__product-box__product-lists__product-list--link
+          = link_to product_path(product) do
+            - product.images.each do |image|
+              = image_tag image.item.url, class: 'content__all-products__product-box__product-lists__product-list--icon'
+          .content__all-products__product-box__product-lists__product-list__body
+            .content__all-products__product-box__product-lists__product-list__body__name
+              = product.name
+            %ul.content__all-products__product-box__product-lists__product-list__body__lists
+              %li.content__all-products__product-box__product-lists__product-list__body__lists__list
+                = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+              %li.content__all-products__product-box__product-lists__product-list__body__lists__list
+                %i.fas.fa-star.content__all-products__product-box__product-lists__product-list__body__lists__list--icon
+                0
+            .content__all-products__product-box__product-lists__product-list__body__tax
+              (税込)
+
+= render 'products/shared/footer'
+
+= link_to new_product_path(@product) do
+  .produce-btn
+    .produce-btn__text 出品する
+    = image_tag 'material/icon/icon_camera.png', class: 'produce-btn__icon'
