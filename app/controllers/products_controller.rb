@@ -38,8 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @productDel = @product.destroy
-    if @productDel.save
+    if @product.destroy
       redirect_to root_path
     else
       redirect_to product_path
