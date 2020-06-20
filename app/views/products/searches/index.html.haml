@@ -25,6 +25,6 @@
 = render 'products/shared/footer'
 
 = link_to new_product_path(@product) do
-  .produce-btn
-    .produce-btn__text 出品する
-    = image_tag 'material/icon/icon_camera.png', class: 'produce-btn__icon'
+  .purchaseBtn
+    %span.purchaseBtn__text 出品する
+    = image_tag 'material/icon/icon_camera.png', class: 'purchaseBtn__icon'
