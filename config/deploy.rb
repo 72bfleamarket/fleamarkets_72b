@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "3.14.0"
 # config valid only for current version of Capistrano
-
+set :linked_files, %w{ config/credentials.yml.enc }
 # Capistranoのログの表示に利用する
 set :application, "fleamarket_sample_72b"
 
