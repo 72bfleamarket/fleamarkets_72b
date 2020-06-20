@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   def index
     @parents = Category.all.order("ancestry ASC").limit(2)
+    @products = Product.all
     # @parents = Category.where(ancentry: nil)
     
   end
