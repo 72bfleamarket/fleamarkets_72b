@@ -1,23 +1,26 @@
 = render 'products/shared/header'
 
 .contentsRow
-  .content__all-products__product-box__product-lists__product-list
+  .main__allProducts__productBox__productLists
     - @products.each do |product|
-      .content__all-products__product-box__product-lists__product-list--link
+      .main__allProducts__productBox__productLists__productList
         = link_to product_path(product) do
-          - product.images.each do |image|
-            = image_tag image.item.url, class: 'content__all-products__product-box__product-lists__product-list--icon'
-        .content__all-products__product-box__product-lists__product-list__body
-          .content__all-products__product-box__product-lists__product-list__body__name
-            = product.name
-          %ul.content__all-products__product-box__product-lists__product-list__body__lists
-            %li.content__all-products__product-box__product-lists__product-list__body__lists__list
-              = "#{product.price.to_s(:delimited, delimiter: ',')}円"
-            %li.content__all-products__product-box__product-lists__product-list__body__lists__list
-              %i.fas.fa-star.content__all-products__product-box__product-lists__product-list__body__lists__list--icon
-              0
-          .content__all-products__product-box__product-lists__product-list__body__tax
-            (税込)
+          %figure.main__allProducts__productBox__productLists__productList--img
+            - product.images.each do |image|
+              = image_tag image.item.url
+          .main__allProducts__productBox__productLists__productList--body
+            .main__allProducts__productBox__productLists__productList__name
+              = product.name
+            .main__allProducts__productBox__productLists__productList__details
+              %ul
+                %li
+                  = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+                %li
+                  %i.fas.fa-star
+                  1
+              %p (税込)
+
+= render 'products/shared/app_banner'
 
 = render 'products/shared/footer'
 
