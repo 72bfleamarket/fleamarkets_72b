@@ -89,14 +89,13 @@
       .main__allProducts__productBox__productHead
         = link_to '#' do
           %h3.main__allProducts__productBox__productHead__title 投稿商品
-
       .main__allProducts__productBox__productLists
-        .main__allProducts__productBox__productLists
-          - @products.each do |product|
-            .main__allProducts__productBox__productLists__productList
-              = link_to product_path(product) do
+        - @products.each do |product|
+          .main__allProducts__productBox__productLists__productList
+            = link_to product_path(product) do
+              %figure.main__allProducts__productBox__productLists__productList--img
                 - product.images.each do |image|
-                  = image_tag image.item.url, class:"main__allProducts__productBox__productLists__productList--img"
+                  = image_tag image.item.url
               .main__allProducts__productBox__productLists__productList--body
                 .main__allProducts__productBox__productLists__productList__name
                   = product.name
@@ -106,7 +105,7 @@
                       = "#{product.price.to_s(:delimited, delimiter: ',')}円"
                     %li
                       %i.fas.fa-star
-                      0
+                      1
                   %p (税込)
 
 %aside.appBanner

@@ -13,38 +13,27 @@
   %nav.main-category
     %ul
       %li.fas.fa-home.fa-home
-        = link_to "/" do
+        = link_to root_path do
           FURIMA
       %li.fas.fa-angle-right.angle-right
       %li
-        = link_to "#" do
+        = link_to categories_path do
+          すべてのカテゴリー
+      %li.fas.fa-angle-right.angle-right
+      %li
+        = link_to category_path(Product.find(params[:id]).category.root.id) do
           = @parents.name
       %li.fas.fa-angle-right.angle-right
       %li
-        = link_to "#" do
+        = link_to category_path(Product.find(params[:id]).category.parent.id) do
           = @children.name
       %li.fas.fa-angle-right.angle-right
       %li
-        = link_to "#" do
+        = link_to category_path(Product.find(params[:id]).category.id) do
           = @category.name
       %li.fas.fa-angle-right.angle-right
       %li
         = @product.name
-
-
-        -# %ul.category__child.category__list
-        -#   - parent.children.each do |child|
-        -#     %li
-        -#       = link_to "#", class: "category__child--name" do
-        -#         = child.name
-        -#       %ul.category__grandchild.category__list
-        -#         - child.children.each do |grandchild|
-        -#           %li
-        -#             = link_to "#", class: " category__child--name" do
-        -#               = grandchild.name
-
-
-
 
 
   .content__user-products
