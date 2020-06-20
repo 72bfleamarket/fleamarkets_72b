@@ -91,8 +91,8 @@
           %h3.main__allProducts__productBox__productHead__title 投稿商品
 
       .main__allProducts__productBox__productLists
-        .main__allProducts__productBox__productLists__productList
-          - @products.each do |product|
+        - @products.each do |product|
+          .main__allProducts__productBox__productLists__productList
             = link_to product_path(product) do
               %figure.main__allProducts__productBox__productLists__productList--img
                 - product.images.each do |image|
