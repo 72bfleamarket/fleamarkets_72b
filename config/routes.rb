@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: 'products#index'
-
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -21,4 +18,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create, :show] do
     resources :categories, only:[:create]
   end
+  root "products#index"
+  resources :products
+  resources :categories, only: [:index, :show]
 end
