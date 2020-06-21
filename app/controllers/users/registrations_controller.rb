@@ -12,18 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create_user
     params[:user][:birthday] = birthday_join
-    @user = User.new(configure_sign_up_params)
+    @user = User.new(sign_up_params)
     @address = Address.new
-          
-    # binding.pry
-      
     if @user.valid?
-      binding.pry
       session["devise.regist_data"] = {user: @user.attributes}
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
       render :new_address
     else
-      binding.pry
       render :new_user
     end
   end

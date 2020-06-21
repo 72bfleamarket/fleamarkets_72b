@@ -1,10 +1,38 @@
-%h2 Forgot your password?
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "users/shared/links"
+  .new_user__head
+    %h1
+      = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
+
+  .new_user__body
+    %h2.body_head
+    .new_user__body__box      
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+          %label
+            email
+          %span.mandatory
+            必須
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "new_user__body__box__group__form", placeholder: "PC・携帯どちらでも可"
+      
+    = render "users/shared/error_messages", resource: resource
+    .field
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .actions
+      = f.submit "Send me reset password instructions"
+  = render "users/shared/links"
+
+
+  .new_user__footer
+    %ul.clearfix.regulation
+      %li
+        = link_to 'プライバシーポリシー', root_path
+      %li
+        = link_to 'フリマ利用規約', root_path
+      %li
+        = link_to '特定商取引に関する表記', root_path
+    %h1
+      = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
+    %p
+      %small © FURIMA, Inc.
