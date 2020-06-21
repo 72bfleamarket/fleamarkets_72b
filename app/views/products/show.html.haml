@@ -4,10 +4,11 @@
 
 = render 'products/shared/header'
 
+-# - if user_signed_in? && current_user.id == @product.user_id
 .products-edit
-  = link_to '編集', edit_product_path(@product)
+  = link_to '編集', edit_product_path(@product.id)
 .products-delete
-  = link_to '削除', product_path(@product), method: :delete
+  = link_to '削除', product_path(@product.id), method: :delete
 
 .content
   %nav.main-category
