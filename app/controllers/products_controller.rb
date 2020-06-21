@@ -13,8 +13,18 @@ class ProductsController < ApplicationController
     if @product.save
       return
     else
-      @product.images.new
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path
+    else
+      render :edit
     end
   end
 
@@ -28,7 +38,21 @@ class ProductsController < ApplicationController
 
   private
 
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    else
+      redirect_to product_path
+    end
+  end
+
+  private
+
   def product_params
-    params.require(:product).permit(:name, :price, :brand, :size, :region, :condition, :postage, :shipping_day, :detal, :category_id, images_attributes: [:item])
+    params.require(:product).permit(:name, :price, :brand, :size, :region, :condition, :postage, :shipping_day, :detal, :category_id, images_attributes: [:item, :_destroy, :id])
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
