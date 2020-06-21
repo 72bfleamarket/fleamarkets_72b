@@ -89,7 +89,6 @@
       .main__allProducts__productBox__productHead
         = link_to '#' do
           %h3.main__allProducts__productBox__productHead__title 投稿商品
-
       .main__allProducts__productBox__productLists
         - @products.each do |product|
           .main__allProducts__productBox__productLists__productList
@@ -109,7 +108,15 @@
                       1
                   %p (税込)
 
-= render 'products/shared/app_banner'
+%aside.appBanner
+  .appBanner__inner
+    %h2.appBanner__inner__title だれでもかんたん、人生を変えるフリマアプリ
+    %p.appBanner__inner__text 今すぐ無料ダウンロード！
+    .appBanner__inner__icon
+      = link_to '#' do
+        = image_tag 'app-store.png'
+      = link_to '#' do
+        = image_tag 'google-play.png'
 
 = render 'products/shared/footer'
 

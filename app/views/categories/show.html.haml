@@ -1,6 +1,6 @@
 .content__all-products__product-box__product-lists
   .content__all-products__product-box__product-lists__product-list
-    - @categories.each do |product|
+    - @products.each do |product|
       .content__all-products__product-box__product-lists__product-list--link
         = link_to product_path(product) do
           - product.images.each do |image|
