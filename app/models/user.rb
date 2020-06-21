@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   validates :name, presence: { message: "ニックネームは必須です" }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: "アドレスが無効です" }
+  validates :password, presence: {message: "パスワードを正しく入力してください"}
   validates :first_name, presence: true, format: { with: VALID_NAME_REGEX, message: "全角文字で入力して下さい" }
   validates :last_name, presence: true, format: { with: VALID_NAME_REGEX, message: "全角文字で入力して下さい" }
   validates :first_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "全角平仮名で入力して下さい" }
