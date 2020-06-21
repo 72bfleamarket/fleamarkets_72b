@@ -120,7 +120,4 @@
 
 = render 'products/shared/footer'
 
-= link_to new_product_path(@product) do
-  .purchaseBtn
-    %span.purchaseBtn__text 出品する
-    = image_tag 'material/icon/icon_camera.png', class: 'purchaseBtn__icon'
+= render 'products/shared/purchase_btn'
