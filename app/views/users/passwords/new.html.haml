@@ -1,4 +1,5 @@
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  = render "users/shared/error_messages", resource: resource
   .new_user__head
     %h1
       = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
@@ -12,16 +13,11 @@
             email
           %span.mandatory
             必須
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "new_user__body__box__group__form", placeholder: "PC・携帯どちらでも可"
-      
-    = render "users/shared/error_messages", resource: resource
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email"
-    .actions
-      = f.submit "Send me reset password instructions"
-  = render "users/shared/links"
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "new_user__body__box__group__form", placeholder: "登録アドレスにリセット用のリンクを送信します"
+
+        .new_user__body__box__group__head
+        = f.submit "送信", class: 'btn-default btn'
+      = render "users/shared/links"
 
 
   .new_user__footer
