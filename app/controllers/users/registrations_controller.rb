@@ -44,6 +44,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
   def birthday_join
     @date = params[:birthday]
+    if @date.values[0].empty? && @date.values[1].empty? && @date.values[2].empty?
+      return
+    end
     Date.new(@date.values[0].to_i, @date.values[1].to_i, @date.values[2].to_i)
   end
 
