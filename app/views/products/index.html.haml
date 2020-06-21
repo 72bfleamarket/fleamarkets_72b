@@ -94,8 +94,7 @@
           .main__allProducts__productBox__productLists__productList
             = link_to product_path(product) do
               %figure.main__allProducts__productBox__productLists__productList--img
-                - product.images.each do |image|
-                  = image_tag image.item.url
+                = image_tag product.images[0].item.url
               .main__allProducts__productBox__productLists__productList--body
                 .main__allProducts__productBox__productLists__productList__name
                   = product.name
