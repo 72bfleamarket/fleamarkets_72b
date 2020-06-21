@@ -1,7 +1,7 @@
 .content__all-products
   .content__all-products__product-box
     %h2.content__all-products__product-box__title
-      〇〇の商品一覧
+      = "#{@category.name}商品一覧"
     %ul.content__all-products__product-box__sub-lists
       %li.content__all-products__product-box__sub-lists__sub-list
         = render partial: 'category'

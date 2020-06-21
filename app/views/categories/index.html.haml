@@ -1,23 +1,22 @@
-
--# - @parents.each do |parent|
--#   .parent
--#     = parent.name
-
--#   - parent.children.each do |child|
--#     .parent__child
--#       =child.name
-
--#       - child.children.each do |grandchild|
--#         .parent__child__grandchild
--#           =grandchild.name
 .content       
   .content__all-products
     .content__all-products__product-box
       .content__all-products__product-box__title
-        商品一覧
+        = "商品一覧"
       %ul.content__all-products__product-box__sub-lists
         %li.content__all-products__product-box__sub-lists__sub-list          
-          = render partial: 'category'
+          - @parents.each do |parent|
+            %li.content__all-products__product-box__sub-lists__sub-list__parents
+              = link_to "#{parent.name}", category_path(parent)
+
+            %ul.content__all-products__product-box__sub-lists__sub-list__parents__children
+              - parent.children.each do |child|
+                %li.children
+                  = link_to "#{child.name}", category_path(child)
+
+                %ul.content__all-products__product-box__sub-lists__sub-list__parents__children__grandchildren
+                  -child.children.each do |grandchild|
+                    %li= link_to "#{grandchild.name}", category_path(grandchild)
 
     .content__all-products__product-lists
       .content__all-products__product-lists__product-list

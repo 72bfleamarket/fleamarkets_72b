@@ -1,8 +1,11 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: :show
+
   def index
     @parents = Category.all.order("ancestry ASC").limit(2)
     @products = Product.all
     # @parents = Category.where(ancentry: nil)
+    # @products = @products.order("created_at DESC").page(params[:page])
     
   end
 
@@ -30,6 +33,15 @@ class CategoriesController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :price, :brand, :size, :region, :condition, :postage, :shipping_day, :detal, :category_id, images_attributes: [:item, :_destroy, :id])
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
+    if @category.has_children?
+      @category_links = @category.children
+    else
+      @category_links = @category.siblings
+    end
   end
 
 end
