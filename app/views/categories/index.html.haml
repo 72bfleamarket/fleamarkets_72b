@@ -6,17 +6,18 @@
       %ul.content__all-products__product-box__sub-lists
         %li.content__all-products__product-box__sub-lists__sub-list          
           - @parents.each do |parent|
-            %li.content__all-products__product-box__sub-lists__sub-list__parents
+            %li.parent
               = link_to "#{parent.name}", category_path(parent)
 
             %ul.content__all-products__product-box__sub-lists__sub-list__parents__children
               - parent.children.each do |child|
-                %li.children
+                %li.child
                   = link_to "#{child.name}", category_path(child)
 
-                %ul.content__all-products__product-box__sub-lists__sub-list__parents__children__grandchildren
-                  -child.children.each do |grandchild|
-                    %li= link_to "#{grandchild.name}", category_path(grandchild)
+                  %ul.content__all-products__product-box__sub-lists__sub-list__parents__children__grandchildren
+                    -child.children.each do |grandchild|
+                      %li.grandchild
+                        = link_to "#{grandchild.name}", category_path(grandchild)
 
     .content__all-products__product-lists
       .content__all-products__product-lists__product-list

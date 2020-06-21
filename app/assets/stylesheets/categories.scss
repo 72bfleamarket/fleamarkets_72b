@@ -38,8 +38,10 @@
         // text-align: center;
         // display: block;
         // text-decoration: none;
-        
-        display: block;
+
+
+        // display: inline-flex;
+        // display: inline-block;
         list-style-type: disc;
         padding-inline-start: 40px;
         flex-wrap: wrap;
@@ -53,19 +55,11 @@
           // text-align: center;
           // display: block;
           // text-decoration: none;
-
-          float: left;
           line-height: 26px;
           margin: 10px;
-          list-style: none;
           &__parants{
-            float: left;
-            list-style: none;
             &__children{
-              float: left;
               &__grandchildren{
-                color: red;
-                float: left;
               }
             }
 
@@ -140,4 +134,33 @@ ul:before, ul:after{
   content: "";
   clear: both;
   display: block;
+  
+}
+a:hover {
+  color: skyblue;
+  font-weight: bold;
+}
+ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+li{
+  list-style: none;
+
+}
+
+a{
+  text-decoration: none;
+}
+
+.parent{
+  margin: 10px;
+}
+
+.child{
+  margin: 5px 10px;
+}
+
+.grandchild{
+  margin:5px 10px;
 }

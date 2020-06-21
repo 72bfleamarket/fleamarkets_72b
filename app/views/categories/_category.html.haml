@@ -1,5 +1,6 @@
 - @category_links.each do |category|
-  = link_to category.name, category_path(category)
+  %li.content__all-products__product-box__sub-lists__sub-list
+    = link_to category.name, category_path(category)
 
 // 全カテゴリーリストの一覧表示
 -# - @parents.each do |parent|
