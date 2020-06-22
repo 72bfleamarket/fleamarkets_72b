@@ -1,0 +1,43 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .new_user__head
+    %h1
+      = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
+
+  .new_user__body
+    %h2.body_head ログイン画面
+    .new_user__body__box      
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+          %label
+            email
+          %span.mandatory
+            必須
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "new_user__body__box__group__form", placeholder: "PC・携帯どちらでも可"
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+          %label
+            password
+          %span.mandatory
+            必須
+        = f.password_field :password, autofocus: true, autocomplete: "current-password", class: "new_user__body__box__group__form", placeholder: "７文字以上の半角英数字"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+      = f.submit "Log in", class: 'btn-default btn'
+    = render "users/shared/links"
+
+  .new_user__footer
+    %ul.clearfix.regulation
+      %li
+        = link_to 'プライバシーポリシー', root_path
+      %li
+        = link_to 'フリマ利用規約', root_path
+      %li
+        = link_to '特定商取引に関する表記', root_path
+    %h1
+      = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
+    %p
+      %small © FURIMA, Inc.
