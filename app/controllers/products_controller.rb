@@ -17,7 +17,6 @@ class ProductsController < ApplicationController
     if @product.save
       return
     else
-      @product.images.new
       render :new
     end
   end
@@ -41,8 +40,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    redirect_to root_path
+    if @product.destroy
+      redirect_to root_path
+    else
+      redirect_to product_path
+    end
   end
 
   private

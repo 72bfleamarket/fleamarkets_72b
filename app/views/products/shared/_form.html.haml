@@ -1,4 +1,3 @@
-
 = form_with(model: @product, local: true) do |form|
   = form.label:カテゴリー
   = form.collection_select :category_id, Category.where('ancestry IS NULL'), :id, :name, {prompt: "---"}
@@ -17,16 +16,17 @@
     #previews
       - if @product.persisted?
         - @product.images.each_with_index do |image, i|
-          = image_tag image.item.url, data: { index: i }, width: "100", height: '100'
+          = image_tag image.item.url, data: { index: i }, width: "100", height: '100', class: "aaa"
     = form.fields_for :images do |image|
       .js-file_group{"data-index": "#{image.index}"}
-        = image.label:画像を選ぶ
-        = image.file_field :item, class: 'js-file'
-        %span.js-remove 削除
-      - if @product.persisted?
-        = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+        = image.label:投稿画像を選択
+        = image.file_field :item, class: 'js-file', accept:"image/*"
+        - if @product.persisted?
+          %span.js-remove 削除
+      .save-box
+        - if @product.persisted?
+          = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
     - if @product.persisted?
       .js-file_group{"data-index": "#{@product.images.count}"}
         = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
-        .js-remove 削除
   = form.submit "登録"
