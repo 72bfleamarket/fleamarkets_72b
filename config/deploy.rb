@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "3.14.0"
+lock "3.14.1"
 # config valid only for current version of Capistrano
 set :linked_files, %w{ config/master.key }
 # Capistranoのログの表示に利用する
