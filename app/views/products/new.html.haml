@@ -1,21 +1,21 @@
+.form
+  .product_header
+    %h1
+      = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
 
-.product_header
-  %h1
-    = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
+  .form_body
+    %h2 商品登録
+    = render 'products/shared/form'
 
-.form_body
-  %h2 商品登録
-  = render 'products/shared/form'
-
-.product_footer
-  %ul.clearfix.regulation
-    %li
-      %a{href: "#"} プライバシーポリシー
-    %li
-      %a{href: "#"} フリマ利用規約
-    %li
-      %a{href: "#"} 特定商取引に関する表記
-  %h1
-    = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
-  %p
-    %small © FURIMA, Inc.
+  .product_footer
+    %ul.clearfix.regulation
+      %li
+        %a{href: "#"} プライバシーポリシー
+      %li
+        %a{href: "#"} フリマ利用規約
+      %li
+        %a{href: "#"} 特定商取引に関する表記
+    %h1
+      = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
+    %p
+      %small © FURIMA, Inc.
