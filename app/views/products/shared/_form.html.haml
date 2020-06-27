@@ -4,6 +4,8 @@
       出品画像
     %span.magenta
       必須
+    %p
+      最大10枚までアップロードできます
     #previews
       - if @product.persisted?
         - @product.images.each_with_index do |image, i|
@@ -32,7 +34,7 @@
         商品の説明
       %span.magenta
         必須
-    = form.text_area :detal, placeholder: "商品説明"
+    = form.text_area :detal, placeholder: "商品の特徴、注意点など(1,000文字以内)\n\n例）3年前に2万円で購入した本革のトートバックです。よく手入れはしてたので目立つ傷や汚れはありません。濃いブラウンなのでオンオフ使えます。", maxlength: "1000"
 
   #product-about
     %p 商品の詳細
@@ -69,7 +71,7 @@
         配送料の負担
       %span.magenta
         必須
-    = form.select :postage,  [["送料込み(出品者負担)", "出品者負担"], ["着払い(購入者負担)", "購入者負担"]], include_blank: "選択して下さい"
+    = form.select :postage, [["送料込み(出品者負担)", "出品者負担"], ["着払い(購入者負担)", "購入者負担"]], include_blank: "選択して下さい"
     #product-about__region
       %label
         発送元の地域
@@ -130,7 +132,7 @@
         発送までの日数
       %span.magenta
         必須
-    = form.text_field :shipping_day, placeholder: "発送までの日時"
+    = form.select :shipping_day, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], include_blank: "選択して下さい"
   #product-about
     %p 価格 (¥10 〜 9,999,999)
     #product-about__price
@@ -149,6 +151,17 @@
     .backpage
       %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
     %p
-      %small 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+      %small
+        禁止されている
+        %a{href: '#'} 行為
+        および
+        %a{href: '#'} 出品物
+        を必ずご確認ください。
+        %a{href: '#'} 偽ブランド品
+        や
+        %a{href: '#'} 盗品物
+        などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+        %a{href: '#'} フリマ利用規約
+        に同意したことになります。
 
 

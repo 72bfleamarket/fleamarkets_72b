@@ -27,8 +27,8 @@ body {
   h2 {
     background-color: #ffffff;
     margin: 0 auto;
-    height: 40px;
-    line-height: 40px;
+    height: 60px;
+    line-height: 60px;
     max-width: 750px;
     font-size: 20px;
     font-weight: bold;
@@ -81,6 +81,7 @@ body {
       border-radius: 2px;
       margin: 15px auto 25px;
       overflow: scroll;
+      font-size: 1.2em;
     }
 
     select {
@@ -90,6 +91,7 @@ body {
       border: solid 1px #c0c0c0;
       border-radius: 2px;
       margin: 15px auto 25px;
+      font-size: 1.2em;
     }
 
     input[type="number"] {
@@ -100,6 +102,7 @@ body {
       border-radius: 2px;
       text-align: right;
       margin: 15px auto 25px;
+      font-size: 1.2em;
     }
 
     input[type="submit"] {
@@ -137,6 +140,11 @@ body {
       min-height: auto;
       width: 100%;
       padding: 40px;
+
+      p {
+        font-weight: unset;
+        margin: 10px 0 15px;
+      }
     }
 
     #product-about {
@@ -185,6 +193,7 @@ body {
         input {
           background-color: #ffffff;
           border: solid #ffffff;
+          color: #888888;
           cursor: pointer;
         }
 
@@ -202,6 +211,21 @@ body {
       p {
         padding: 0 40px;
         font-weight: unset;
+
+        a {
+          text-decoration: none;
+          color: #3ccace;
+        }
+
+        a:hover {
+          color: #c0c0c0;
+          text-decoration: underline;
+        }
+
+        a:active {
+          color: #2C9599;
+          text-decoration: underline;
+        }
       }
     }
   }
