@@ -3,25 +3,6 @@
 %nav.breadCrumbs
   - breadcrumb :product
   = render "layouts/breadcrumbs"
-  -# %ul.breadCrumbs__lists
-  -#   %li.breadCrumbs__lists__list
-  -#     = link_to "/", class: 'breadCrumbs__lists__list--link' do
-  -#       FURIMA
-  -#   %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
-  -#   %li.breadCrumbs__lists__list
-  -#     = link_to "#", class: 'breadCrumbs__lists__list--link' do
-  -#       = @parents.name
-  -#   %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-  -#   %li.breadCrumbs__lists__list
-  -#     = link_to "#", class: 'breadCrumbs__lists__list--link' do
-  -#       = @children.name
-  -#   %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-  -#   %li.breadCrumbs__lists__list
-  -#     = link_to "#", class: 'breadCrumbs__lists__list--link' do
-  -#       = @category.name
-  -#   %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-  -#   %li.breadCrumbs__lists__list
-  -#     = @product.name
 
 .showMain
   .showMain__content
@@ -32,7 +13,7 @@
         .showMain__content__topContent__itemBox__body
           %ul
             %li
-              = image_tag 'product_03.png'
+              = image_tag @product.images[0].item.url
               %ul
                 - @product.images.each do |image|
                   %li
@@ -43,7 +24,7 @@
           .showMain__content__topContent__itemBox__price__detail
             %span (税込)
             %span 送料込み
-        .showMain__content__topContent__itemBox__itemDetail 
+        .showMain__content__topContent__itemBox__itemDetail
           = @product.detal
         .showMain__content__topContent__itemBox__table
           %table
@@ -77,12 +58,12 @@
               %tr
                 %th 配送料の負担
                 %td
-                  = "¥#{@product.postage.to_s}"
+                  = "#{@product.postage.to_s}"
               %tr
                 %th 発送元の地域
                 %td
                   = link_to '#' do
-                    = @product.region
+                    = @product.prefecture.name
               %tr
                 %th.showMain__content__topContent__itemBox__table__title 発送日の目安
                 %td.showMain__content__topContent__itemBox__table__data
@@ -119,7 +100,7 @@
           = link_to '#' do
             %span 後ろの商品
             %i.fa.fa-angle-right
- 
+
       .showMain__content__relatedItems
         = link_to '#' do
           = "#{@parents.name}をもっと見る"
@@ -139,32 +120,8 @@
                       0
                   %p (税込)
 
--# .content
-  -# %ul.category__child.category__list
-  -#   - parent.children.each do |child|
-  -#     %li
-  -#       = link_to "#", class: "category__child--name" do
-  -#         = child.name
-  -#       %ul.category__grandchild.category__list
-  -#         - child.children.each do |grandchild|
-  -#           %li
-  -#             = link_to "#", class: " category__child--name" do
-  -#               = grandchild.name
-
--#   .content__user-products
--#   %h1.product-name
--#     = @product.name
--#   %p.product-wording
--#     = "『#{@product.name}』はtestuserさんから出品されました。#{@category.name}の商品で、#{@product.region}から#{@product.shipping_day}で発送されます。"
--#   .content__all-products__product-box__product-lists__product-user
--#     .content__all-products__product-box__product-lists__product-list--link
--#       - @product.images.each do |image|
--#         = image_tag image.item.url
--#     .content__all-products__product-box__product-lists__product-list__body__lists__list
--#       %span.product-postage
--#         = "#{@product.price.to_s(:delimited, delimiter: ',')}円"
--#       %span.item-tax (税込)
--#       %span.product-postage
--#         ="送料込み"
+= render 'products/shared/app_banner'
 
 = render 'products/shared/footer'
+
+= render 'products/shared/purchase_btn'

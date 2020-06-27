@@ -8,17 +8,17 @@ crumb :categories do
 end
 
 crumb :parents do
-  link Product.find(params[:id]).category.root.name, categories_path(Product.find(params[:id]).category.root.id)
+  link Product.find(params[:id]).category.root.name, category_path(Product.find(params[:id]).category.root.id)
   parent :categories
 end
 
 crumb :children do
-  link Product.find(params[:id]).category.parent.name, categories_path(Product.find(params[:id]).category.parent.id)
+  link Product.find(params[:id]).category.parent.name, category_path(Product.find(params[:id]).category.parent.id)
   parent :parents
 end
 
 crumb :grandchildren do
-  link Product.find(params[:id]).category.name, categories_path(Product.find(params[:id]).category.id)
+  link Product.find(params[:id]).category.name, category_path(Product.find(params[:id]).category.id)
   parent :children
 end
 
