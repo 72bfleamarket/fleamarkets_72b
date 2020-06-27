@@ -1,25 +1,15 @@
-= form_with(model: @product, local: true) do |form|
-  = form.label:カテゴリー
-  = form.collection_select :category_id, Category.where('ancestry IS NULL'), :id, :name, {prompt: "---"}
-  = form.collection_select :category_id, Category.where.not('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
-  = form.collection_select :category_id, Category.where('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
-  = form.text_field :name, placeholder: "商品名"
-  = form.text_field :price, placeholder: "税込み価格"
-  = form.text_field :brand, placeholder: "ブランド名"
-  = form.text_field :size, placeholder: "商品サイズ"
-  = form.text_field :condition, placeholder: "新品or中古etc..."
-  = form.text_field :region, placeholder: "発送元地域"
-  = form.text_field :postage, placeholder: "送料"
-  = form.text_field :shipping_day, placeholder: "発送までの日時"
-  = form.text_area :detal, placeholder: "商品説明"
+= form_with model: @product, id: 'product_form' do |form|
   #products-image
+    %label
+      出品画像
+    %span.magenta
+      必須
     #previews
       - if @product.persisted?
         - @product.images.each_with_index do |image, i|
           = image_tag image.item.url, data: { index: i }, width: "100", height: '100', class: "aaa"
     = form.fields_for :images do |image|
       .js-file_group{"data-index": "#{image.index}"}
-        = image.label:投稿画像を選択
         = image.file_field :item, class: 'js-file', accept:"image/*"
         - if @product.persisted?
           %span.js-remove 削除
@@ -29,4 +19,136 @@
     - if @product.persisted?
       .js-file_group{"data-index": "#{@product.images.count}"}
         = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
-  = form.submit "登録"
+
+  #product-about
+    #product-about__name
+      %label
+        商品名
+      %span.magenta
+        必須
+    = form.text_field :name, placeholder: "40文字まで"
+    #product-about__description
+      %label
+        商品の説明
+      %span.magenta
+        必須
+    = form.text_area :detal, placeholder: "商品説明"
+
+  #product-about
+    %p 商品の詳細
+    #product-about__category
+      %label
+        カテゴリー
+      %span.magenta
+        必須
+    = form.collection_select :category_id, Category.where('ancestry IS NULL'), :id, :name, {prompt: "---"}
+    = form.collection_select :category_id, Category.where.not('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
+    = form.collection_select :category_id, Category.where('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
+    #product-about__brand
+      %label
+        ブランド
+      %span.gray
+        任意
+    = form.text_field :brand, placeholder: "ブランド名やノーブランドなど"
+    #product-about__size
+      %label
+        商品のサイズ
+      %span.gray
+        任意
+    = form.text_field :size, placeholder: "商品サイズ"
+    .product-about__condition
+      %label
+        商品の状態
+      %span.magenta
+        必須
+    = form.select :condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"], ["目立った傷や汚れなし", "目立った傷や汚れなし"], ["やや傷や汚れあり", "やや傷や汚れあり"], ["傷や汚れあり", "傷や汚れあり"], ["全体的に状態が悪い", "全体的に状態が悪い"], ["ジャンク品", "ジャンク品"]], include_blank: "選択して下さい"
+  #product-about
+    %p 配送について
+    #product-about__postage
+      %label
+        配送料の負担
+      %span.magenta
+        必須
+    = form.select :postage,  [["送料込み(出品者負担)", "出品者負担"], ["着払い(購入者負担)", "購入者負担"]], include_blank: "選択して下さい"
+    #product-about__region
+      %label
+        発送元の地域
+      %span.magenta
+        必須
+    = form.text_field :region, placeholder: "選択または直接入力してください", list: "region"
+    %datalist#region
+      %option{value: "北海道"}
+      %option{value: "青森県"}
+      %option{value: "岩手県"}
+      %option{value: "宮城県"}
+      %option{value: "秋田県"}
+      %option{value: "山形県"}
+      %option{value: "福島県"}
+      %option{value: "茨城県"}
+      %option{value: "栃木県"}
+      %option{value: "群馬県"}
+      %option{value: "埼玉県"}
+      %option{value: "千葉県"}
+      %option{value: "東京都"}
+      %option{value: "神奈川県"}
+      %option{value: "新潟県"}
+      %option{value: "富山県"}
+      %option{value: "石川県"}
+      %option{value: "福井県"}
+      %option{value: "山梨県"}
+      %option{value: "長野県"}
+      %option{value: "岐阜県"}
+      %option{value: "静岡県"}
+      %option{value: "愛知県"}
+      %option{value: "三重県"}
+      %option{value: "滋賀県"}
+      %option{value: "京都府"}
+      %option{value: "大阪府"}
+      %option{value: "兵庫県"}
+      %option{value: "奈良県"}
+      %option{value: "和歌山県"}
+      %option{value: "鳥取県"}
+      %option{value: "島根県"}
+      %option{value: "岡山県"}
+      %option{value: "広島県"}
+      %option{value: "山口県"}
+      %option{value: "徳島県"}
+      %option{value: "香川県"}
+      %option{value: "愛媛県"}
+      %option{value: "高知県"}
+      %option{value: "福岡県"}
+      %option{value: "佐賀県"}
+      %option{value: "長崎県"}
+      %option{value: "熊本県"}
+      %option{value: "大分県"}
+      %option{value: "宮崎県"}
+      %option{value: "鹿児島県"}
+      %option{value: "沖縄県"}
+      %option{value: "その他、海外"}
+    #product-about__delivery
+      %label
+        発送までの日数
+      %span.magenta
+        必須
+    = form.text_field :shipping_day, placeholder: "発送までの日時"
+  #product-about
+    %p 価格 (¥10 〜 9,999,999)
+    #product-about__price
+      #product-about__price__label
+        %label
+          販売価格
+        %span.magenta
+          必須
+      %span
+        ￥
+      #product-about__price__box
+        = form.number_field :price, placeholder: "税込み価格", min: "10", max: "9999999"
+  .form_button
+    .send-btn
+      = form.submit "出品する", title: "商品を出品する"
+    .backpage
+      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
+    %p
+      %small 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+
