@@ -11,6 +11,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :shipping_day, null: false
       t.integer :price, null: false
       t.integer :category_id
+      t.integer :user_id
       t.timestamps
     end
     add_index :products, :name

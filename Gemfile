@@ -77,5 +77,7 @@ gem 'gretel'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem 'devise'
+
 gem 'fog-aws'
 gem 'active_hash'

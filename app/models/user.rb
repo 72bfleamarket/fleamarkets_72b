@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many   :addresses , dependent: :destroy
   # accepts_nested_attributes_for :address //後から使用予定
   # has_many :cards, dependent: :destroy //後から使用予定
-  # has_many :products, dependent: :destroy //後から使用予定
+  has_many :products, dependent: :destroy
   # has_many :comments //後から使用予定
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
