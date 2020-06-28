@@ -1,2 +1,24 @@
-.user_mypage__side-bar
-  side
+.user-mypage__side-bar
+  %h1.user-mypage__side-bar__title
+    設定
+  %ul.user-mypage__side-bar__content-box
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        プロフィール
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        住所
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        カード情報
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        メール/パスワード
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list 
+      = link_to destroy_user_session_path, method: :delete, class: 'user-mypage__side-bar__content-box__list__item' do
+        ログアウト
+        %i.fas.fa-chevron-right
