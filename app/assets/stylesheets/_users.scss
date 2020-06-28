@@ -224,16 +224,13 @@ body {
 
   &__footer {
     height: 200px;
-
     .regulation {
       margin-top: 35px;
       display: flex;
       text-align: center;
       justify-content: center;
-
       li {
         margin: 10px;
-
         a {
           font-size: 12px;
         }
