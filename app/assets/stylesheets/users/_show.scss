@@ -1,0 +1,14 @@
+.user_mypage{
+
+  &__side-bar{
+    float: left;
+  }
+  &__main-content{
+    float: right;
+  }
+}
+.clearfix:after{
+  content: "";
+  clear: both;
+  display: block;
+}
