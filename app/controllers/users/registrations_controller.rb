@@ -50,7 +50,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     elsif
       @date.values[1].empty?
       return
-    else
+    elsif
       @date.values[2].empty?
       return
     end

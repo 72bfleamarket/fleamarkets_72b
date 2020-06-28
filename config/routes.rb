@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   root "products#index"
   resources :products
   resources :categories, only: [:index, :show]
+  resources :users, only: :show
 end
