@@ -16,10 +16,6 @@
 
     &__product-box {
       
-      // font-size: 28px;
-      // font-weight: bold;
-      // text-align: center;
-      
       &__title{
         height: 60px;
         border-radius: 5px 5px 0 0;
@@ -31,30 +27,12 @@
         font-size: 22px;
       }
       &__sub-lists {
-        // height: 36px;
-        // font-size: 24px;
-        // color: #3ccace;
-        // font-weight: bold;
-        // text-align: center;
-        // display: block;
-        // text-decoration: none;
-
-
-        // display: inline-flex;
-        // display: inline-block;
         list-style-type: disc;
         padding-inline-start: 40px;
         flex-wrap: wrap;
         background-color: #ffffff;
 
         &__sub-list {
-          // height: 36px;
-          // font-size: 24px;
-          // color: red;
-          // font-weight: bold;
-          // text-align: center;
-          // display: block;
-          // text-decoration: none;
           line-height: 26px;
           margin: 10px;
           &__parants{
