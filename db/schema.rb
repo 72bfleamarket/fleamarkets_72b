@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_091009) do
     t.string "brand"
     t.string "condition", null: false
     t.string "postage", null: false
-    t.string "region", null: false
+    t.string "prefecture_id", null: false
     t.string "shipping_day", null: false
     t.integer "price", null: false
     t.integer "category_id"
