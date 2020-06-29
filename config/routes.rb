@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   devise_scope :user do
     get  'password', to: 'users/passwords#new'
-    # post 'user', to: 'users//passwords#create'
+    # post 'user', to: 'users/passwords#create'
   end
   resources :products, only: [:index, :new, :create, :show] do
     resources :categories, only:[:create]
