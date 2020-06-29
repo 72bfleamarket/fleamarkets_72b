@@ -45,4 +45,17 @@ $(document).on('turbolinks:load', () => {
     $(`img[data-index="${targetIndex}"]`).remove();
     if ($('.js-file').length == 0) $('#products-image').append(buildFileField(fileIndex[0]));
   });
+
+  $('#count_name').keyup(function () {
+    var count = $(this).val().length;
+    $('.up_count').text(count);
+  });
+
+  $('#count_area').keyup(function () {
+    var count = $(this).val().length;
+    $('.up_counter').text(count);
+  });
+
+
+
 });

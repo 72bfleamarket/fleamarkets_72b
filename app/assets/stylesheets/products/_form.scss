@@ -80,7 +80,6 @@
         border: solid 1px #c0c0c0;
         border-radius: 2px;
         margin: 15px auto 25px;
-        overflow: scroll;
         font-size: 1.2em;
       }
 
@@ -154,6 +153,20 @@
         padding: 40px;
         border-top: solid 1px #f5f5f5;
 
+        #count_name {
+          height: 45px;
+          width: 100%;
+          padding: 0 15px;
+          border: solid 1px #c0c0c0;
+          border-radius: 2px;
+          margin: 15px auto 3px;
+          font-size: 1.2em;
+        }
+
+        .count_box {
+          text-align: right;
+        }
+
         &__price {
           display: flex;
           align-items: center;
@@ -184,6 +197,31 @@
           height: 50px;
           margin: 0 auto;
         }
+
+        #product_delete {
+          height: 50px;
+          width: 260px;
+          text-align: center;
+          line-height: 50px;
+          background-color: #cc3300;
+          border: 1px solid #cc3300;
+          border-radius: 5px;
+          margin-top: 20px;
+          cursor: pointer;
+          color: #ffffff;
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        #product_delete:hover {
+          background-color: #b32d00;
+        }
+
+        #product_delete:active {
+          background-color: #802000;
+        }
+
+
 
         .backpage {
           background-color: #ffffff;

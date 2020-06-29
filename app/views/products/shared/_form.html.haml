@@ -28,13 +28,19 @@
         商品名
       %span.magenta
         必須
-    = form.text_field :name, placeholder: "40文字まで"
+    = form.text_field :name, id: :count_name, placeholder: "40文字まで", maxlength: "40"
+    .count_box
+      %span.up_count 0
+      \/ 40文字
     #product-about__description
       %label
         商品の説明
       %span.magenta
         必須
-    = form.text_area :detal, placeholder: "商品の特徴、注意点など(1,000文字以内)\n\n例）3年前に2万円で購入した本革のトートバックです。よく手入れはしてたので目立つ傷や汚れはありません。濃いブラウンなのでオンオフ使えます。", maxlength: "1000"
+    = form.text_area :detal, id: :count_area, placeholder: "商品の特徴、注意点など(1,000文字以内)\n\n例）3年前に2万円で購入した本革のトートバックです。よく手入れはしてたので目立つ傷や汚れはありません。濃いブラウンなのでオンオフ使えます。", maxlength: "1000"
+    .count_box
+      %span.up_counter 0
+      \/ 1000文字
 
   #product-about
     %p 商品の詳細
@@ -86,7 +92,7 @@
         必須
     = form.select :shipping_day, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], include_blank: "選択して下さい"
   #product-about
-    %p 価格 (¥10 〜 9,999,999)
+    %p 価格 (¥100 〜 9,999,999)
     #product-about__price
       #product-about__price__label
         %label
@@ -96,10 +102,16 @@
       %span
         ￥
       #product-about__price__box
-        = form.number_field :price, placeholder: "税込み価格", min: "10", max: "9999999"
+        = form.number_field :price, placeholder: "税込み価格(半角数字のみ)", min: "100", max: "9999999"
   .form_button
-    .send-btn
-      = form.submit "出品する", title: "商品を出品する"
+    - if user_signed_in? && current_user.id == @product.user_id
+      .send-btn
+        = form.submit "更新する", title: "商品を更新する"
+      = link_to product_path(@product), method: :delete, data: { confirm: '削除しますか？' } do
+        %input#product_delete{type: "button", value: "この商品を削除", title: "商品を削除"}
+    - else
+      .send-btn
+        = form.submit "出品する", title: "商品を出品する"
     .backpage
       %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
     %p
