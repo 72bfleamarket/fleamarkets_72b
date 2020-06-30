@@ -17,14 +17,14 @@
 
   .form_body {
     padding-top: 130px;
-    min-height: 100vh;
+    height: 100%;
     width: 100%;
     color: #888888;
     font-size: 14px;
     position: relative;
     overflow: scroll;
     position: relative;
-    padding-bottom: 200px;
+    padding-bottom: 60px;
     box-sizing: border-box;
 
     h2 {
@@ -37,7 +37,10 @@
       font-weight: bold;
       text-align: center;
       border-bottom: solid 1px #f5f5f5;
+    }
 
+    h2.product_confirm {
+      color: #cc3300;
     }
 
     h2.topback {
@@ -120,19 +123,21 @@
         padding: 3px;
       }
 
-
-      ul {
-        list-style: disc;
-        padding-left: 5px;
-
-      }
-
       .error_messages {
         color: #cc3300;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+        text-align: center;
       }
+
+      ul.err_box {
+        padding-left: 5px;
+        display: inline-block;
+
+        li {
+          list-style: disc;
+          text-align: left;
+        }
+      }
+
 
       .err_message {
         float: right;
@@ -253,6 +258,7 @@
 
           }
         }
+
         &__title {
           display: flex;
           align-items: center;
@@ -261,14 +267,18 @@
           color: black;
           font-weight: bold;
         }
+
         &__contents {
           display: flex;
+
           .pic {
             margin-right: 10px;
           }
+
           .discription {
             color: black;
           }
+
           .purchase-amount {
             font-size: 20px;
             color: black;
@@ -404,7 +414,51 @@
       color: #dcdcdc;
     }
   }
+
+  .products_footer {
+    background-color: #3e3e3e;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 13px;
+
+    ul {
+      margin-bottom: 30px;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+
+      li {
+        margin: 0 20px 0;
+
+        a {
+          text-decoration: none;
+          color: #ffffff;
+        }
+
+        a:hover {
+          color: #c0c0c0;
+          text-decoration: underline;
+        }
+
+        a:active {
+          color: #ffffff;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    p {
+      color: #dcdcdc;
+    }
+  }
 }
+
 .purchase-box {
   padding: 0 150px;
 }

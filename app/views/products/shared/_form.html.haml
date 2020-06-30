@@ -1,7 +1,7 @@
 = form_with model: @product, id: 'product_form' do |form|
   - if @product.errors.any?
     .error_messages
-      %ul
+      %ul.err_box
         - @product.errors.full_messages.each do |message|
           %li= message
   #products-image
