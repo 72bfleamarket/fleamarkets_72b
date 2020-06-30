@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     if user_signed_in?
       @user = User.find(current_user.id)
     end
+    @images = Image.limit(3).order(id: "DESC")
   end
 
   def new

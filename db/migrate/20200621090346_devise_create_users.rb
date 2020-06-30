@@ -54,3 +54,4 @@ end
 #add_index :users, :email, unique: true
 #validatesの例
 #validates :name, presence: true, uniqueness: true
+

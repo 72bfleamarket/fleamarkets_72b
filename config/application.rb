@@ -4,6 +4,7 @@ require "rails/all"
 
 Bundler.require(*Rails.groups)
 
+
 module FleamarketSample72b
   class Application < Rails::Application
     config.generators do |g|
