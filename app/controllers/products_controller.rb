@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     if @product.save
       return
     else
+      @product.images.new
       render :new
     end
   end

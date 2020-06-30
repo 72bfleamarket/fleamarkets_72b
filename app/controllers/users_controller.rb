@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @products = @user.products.order("created_at DESC")
+    if user_signed_in? && current_user.id == @user.id
+      @products = @user.products.order("created_at DESC")
+    else
+      redirect_to root_path
+    end
   end
 
   def edit

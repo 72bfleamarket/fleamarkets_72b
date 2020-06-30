@@ -1,9 +1,17 @@
 = form_with model: @product, id: 'product_form' do |form|
+  - if @product.errors.any?
+    .error_messages
+      %ul
+        - @product.errors.full_messages.each do |message|
+          %li= message
   #products-image
     %label
       出品画像
     %span.magenta
       必須
+    - if @product.errors.any?
+      %span.err_message
+        =  @product.errors.full_messages_for(:images).shift
     %p
       最大10枚までアップロードできます
     #previews
@@ -22,21 +30,29 @@
       .js-file_group{"data-index": "#{@product.images.count}"}
         = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
 
+
   #product-about
     #product-about__name
       %label
         商品名
       %span.magenta
         必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:name).shift
     = form.text_field :name, id: :count_name, placeholder: "40文字まで", maxlength: "40"
     .count_box
       %span.up_count 0
       \/ 40文字
+
     #product-about__description
       %label
         商品の説明
       %span.magenta
         必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:detal).shift
     = form.text_area :detal, id: :count_area, placeholder: "商品の特徴、注意点など(1,000文字以内)\n\n例）3年前に2万円で購入した本革のトートバックです。よく手入れはしてたので目立つ傷や汚れはありません。濃いブラウンなのでオンオフ使えます。", maxlength: "1000"
     .count_box
       %span.up_counter 0
@@ -49,6 +65,9 @@
         カテゴリー
       %span.magenta
         必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:category_id).shift
     = form.collection_select :category_id, Category.where('ancestry IS NULL'), :id, :name, {prompt: "---"}
     = form.collection_select :category_id, Category.where.not('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
     = form.collection_select :category_id, Category.where('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
@@ -69,6 +88,9 @@
         商品の状態
       %span.magenta
         必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:condition).shift
     = form.select :condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"], ["目立った傷や汚れなし", "目立った傷や汚れなし"], ["やや傷や汚れあり", "やや傷や汚れあり"], ["傷や汚れあり", "傷や汚れあり"], ["全体的に状態が悪い", "全体的に状態が悪い"], ["ジャンク品", "ジャンク品"]], include_blank: "選択して下さい"
   #product-about
     %p 配送について
@@ -77,12 +99,18 @@
         配送料の負担
       %span.magenta
         必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:postage).shift
     = form.select :postage, [["送料込み(出品者負担)", "出品者負担"], ["着払い(購入者負担)", "購入者負担"]], include_blank: "選択して下さい"
     #product-about__region
       %label
         発送元の地域
       %span.magenta
         必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:prefecture_id).shift
     = form.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "選択して下さい"} )
 
     #product-about__delivery
@@ -90,6 +118,9 @@
         発送までの日数
       %span.magenta
         必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:shipping_day).shift
     = form.select :shipping_day, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], include_blank: "選択して下さい"
   #product-about
     %p 価格 (¥100 〜 9,999,999)
@@ -100,18 +131,21 @@
         %span.magenta
           必須
       %span
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:price).shift
         ￥
       #product-about__price__box
         = form.number_field :price, placeholder: "税込み価格(半角数字のみ)", min: "100", max: "9999999"
   .form_button
-    - if user_signed_in? && current_user.id == @product.user_id
+    - if @product.id.nil?
+      .send-btn
+        = form.submit "出品する", title: "商品を出品する"
+    - elsif user_signed_in? && current_user.id == @product.user_id
       .send-btn
         = form.submit "更新する", title: "商品を更新する"
       = link_to product_path(@product), method: :delete, data: { confirm: '削除しますか？' } do
         %input#product_delete{type: "button", value: "この商品を削除", title: "商品を削除"}
-    - else
-      .send-btn
-        = form.submit "出品する", title: "商品を出品する"
     .backpage
       %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
     %p

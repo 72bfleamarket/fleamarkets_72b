@@ -57,7 +57,8 @@
               %tr
                 %th 出品者
                 %td
-                  = @product.user.name
+                  = link_to profile_path(@product.user.id) do
+                    = @product.user.name
               %tr
                 %th カテゴリー
                 %td

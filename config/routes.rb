@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-            registrations: "users/registrations",
-            sessions: "users/sessions",
-          }
+                       registrations: "users/registrations",
+                       sessions: "users/sessions",
+                     }
   devise_scope :user do
     get "new_user", to: "users/registrations#new_user"
     post "new_user", to: "users/registrations#create_user"
@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "password", to: "users/passwords#new"
     # post 'user', to: 'users//passwords#create'
+  end
+  devise_scope :user do
+    get "users/profile/:id", to: "users/sessions#show", as: "profile"
   end
   resources :users, path: "/users/mypage", only: :show
   root "products#index"

@@ -5,8 +5,17 @@ class Product < ApplicationRecord
   belongs_to :buyer, class_name: "User"
 
   accepts_nested_attributes_for :images, allow_destroy: true
-  validates :images, presence: true
+  validates :images, presence: { message: "は1枚以上10枚以下のアップロードが必要です" }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
+  validates :name, presence: { message: "は必須です" }
+  validates :detal, presence: { message: "は必須です" }
+  validates :category_id, presence: { message: "を選択してください" }
+  validates :condition, presence: { message: "を選択してください" }
+  validates :postage, presence: { message: "を選択してください" }
+  validates :prefecture_id, presence: { message: "を選択してください" }
+  validates :shipping_day, presence: { message: "を選択してください" }
+  validates :price, presence: { message: "を入力してください" }
 end
