@@ -15,10 +15,17 @@ Rails.application.routes.draw do
     get  'password', to: 'users/passwords#new'
     # post 'user', to: 'users//passwords#create'
   end
+
+  root "products#index"
   resources :products, only: [:index, :new, :create, :show] do
     resources :categories, only:[:create]
   end
-  root "products#index"
   resources :products
   resources :categories, only: [:index, :show]
+
+  resources :cards, only: [:new, :destroy, :show] do
+    collection do
+      post 'pay', to: 'cards#pay'
+    end
+  end
 end
