@@ -4,10 +4,12 @@
 .user-mypage{
   background-color: #f8f8f8;
   padding: 40px 200px ;
+  display: flex;
+  justify-content: space-evenly;
 
   &__side-bar{
     width: 280px;
-    float: left;
+    margin-right: 100px;
     &__title{
       font-size: 22px;
       padding: 16px;
@@ -18,6 +20,7 @@
       background-color: #ffffff;
       &__list{
         height: 50px;
+        font-size: 14px;
         line-height: 50px;
         padding:0px 16px;
         border-top: 1px solid #eee;
@@ -31,7 +34,64 @@
   }
   &__main-content{
     width: 700px;
-    float: right;
+    &__content-title{
+      text-align: center;
+      font-size: 22px;
+      padding: 16px;
+      font-weight: bold;
+    }
+    &__content-box{
+      background-color: #ffffff;
+      &__profile{
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        &__icons{
+          height: 60px;
+          width: 60px;
+          line-height: 60px;
+          .icons{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: black;
+          }
+          .hidden{
+            display: none;
+          }
+        }
+        &__name{
+          font-weight: bold;;
+          line-height: 60px;
+          &__box{
+            border: none;
+          }
+        }
+      }
+      &__comment{
+        height: 100px;
+        width: 100%;
+        padding: 0px 10px;
+        &__field{
+          height: 100px;
+          width: 100%;
+        }
+      }
+      &__btn{
+        text-align: center;
+        padding: 40px;
+        &__send-btn{
+          height: 50px;
+          width: 100%;
+          color: #ffffff;
+          background-color: red;
+          border: none;
+          &:hover{
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
   }
 }
 .clearfix:after{
@@ -45,3 +105,4 @@
   right: 16px;
   line-height: 50px;
 }
+
