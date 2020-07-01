@@ -17,7 +17,7 @@
 
   .form_body {
     padding-top: 130px;
-    height: 100%;
+    min-height: calc(100vh - 200px);
     width: 100%;
     color: #888888;
     font-size: 14px;
@@ -371,51 +371,6 @@
   }
 
   .product_footer {
-    background-color: #3e3e3e;
-    height: 200px;
-    width: 100%;
-    display: flex;
-    padding: 40px 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 13px;
-    position: fixed;
-    bottom: 0;
-
-    ul {
-      margin-bottom: 30px;
-      min-width: 300px;
-      display: flex;
-      justify-content: center;
-
-      li {
-        margin: 0 20px 0;
-
-        a {
-          text-decoration: none;
-          color: #ffffff;
-        }
-
-        a:hover {
-          color: #c0c0c0;
-          text-decoration: underline;
-        }
-
-        a:active {
-          color: #ffffff;
-          text-decoration: underline;
-        }
-      }
-    }
-
-    p {
-      color: #dcdcdc;
-    }
-  }
-
-  .products_footer {
     background-color: #3e3e3e;
     height: 200px;
     width: 100%;
