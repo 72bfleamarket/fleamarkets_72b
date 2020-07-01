@@ -49,6 +49,9 @@
           .showMain__content__topContent__itemBox__price__detail
             %span (税込)
             %span 送料込み
+          .showMain__content__topContent__itemBox__purchaseBtn
+            = link_to product_buyers_path(@product.id) do
+              購入画面に進む
         .showMain__content__topContent__itemBox__itemDetail
           = @product.detal
         .showMain__content__topContent__itemBox__table
