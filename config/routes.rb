@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get  'password', to: 'users/passwords#new'
     # post 'user', to: 'users//passwords#create'
   end
+  resources :users, only: :show
 
   root "products#index"
   resources :products do
