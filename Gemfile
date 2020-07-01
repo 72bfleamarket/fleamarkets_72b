@@ -81,3 +81,4 @@ gem 'devise'
 
 gem 'fog-aws'
 gem 'active_hash'
+gem 'rails-i18n'
