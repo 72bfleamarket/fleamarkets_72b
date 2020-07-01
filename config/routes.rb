@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'purchases/index'
-  get 'purchases/done'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -19,10 +17,15 @@ Rails.application.routes.draw do
   end
 
   root "products#index"
-  resources :products, only: [:index, :new, :create, :show] do
+  resources :products do
     resources :categories, only:[:create]
+    resources :buyers, only: [:index] do
+      collection do
+        get 'done', to: 'buyers#done'
+        post 'pay', to: 'buyers#pay'
+      end
+    end
   end
-  resources :products
   resources :categories, only: [:index, :show]
 
   resources :cards, only: [:new, :show, :destroy] do
