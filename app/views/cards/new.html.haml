@@ -58,3 +58,6 @@
   #card_token
   %br
   = submit_tag "追加する", id: "token_submit"
+
+= link_to "/users/#{current_user.id}" do
+  マイページへ戻る

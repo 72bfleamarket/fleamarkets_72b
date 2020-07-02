@@ -23,7 +23,10 @@
 
       %ul.header__headerInner__nav__listsRight
         - if user_signed_in?
-          %lii.header__headerInner__nav__listsRight__item
+          %li.header__headerInner__nav__listsRight__item
+            = link_to "/users/#{current_user.id}" do
+              マイページ
+          %li.header__headerInner__nav__listsRight__item
             = link_to destroy_user_session_path, method: :delete do
               ログアウト
         - else
