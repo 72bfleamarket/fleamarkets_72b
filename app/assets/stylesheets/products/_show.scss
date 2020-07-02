@@ -114,6 +114,17 @@
           }
         }
 
+        &__SoldOut {
+          font-size: 24px;
+          line-height: 60px;
+          margin-top: 16px;
+          background-color: #ea352d;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+        }
+
         &__purchaseBtn {
           font-size: 24px;
           line-height: 60px;
