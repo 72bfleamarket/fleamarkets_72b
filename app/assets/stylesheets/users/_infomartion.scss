@@ -1,0 +1,86 @@
+.body{
+  background-color: #f8f8f8;
+}
+.user-mypage{
+  background-color: #f8f8f8;
+  padding: 40px 200px ;
+  display: flex;
+  justify-content: space-evenly;
+
+  &__side-bar{
+    width: 280px;
+    margin-right: 100px;
+    &__title{
+      padding: 16px;
+    }
+    &__content-box{
+      display: list-item; 
+      list-style: none;
+      background-color: #ffffff;
+      &__list{
+        height: 50px;
+        font-size: 14px;
+        line-height: 50px;
+        padding:0px 16px;
+        border-top: 1px solid #eee;
+        position: relative;
+        &__item{
+          display: block;
+          color:black;
+        }
+      }
+    }
+  }
+  &__main-content{
+    width: 700px;
+    &__content-title{
+      text-align: center;
+      font-size: 22px;
+      padding: 16px;
+      font-weight: bold;
+    }
+    &__content-form{
+      background-color: #ffffff;
+      padding: 40px;
+      &__content-box{
+        margin-bottom: 30px;
+        &__infomartion{
+          font-size: 12px;
+          margin-bottom: 8px;
+          font-weight: bold;
+          &__form{
+            height: 40px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: normal;
+          }
+        }
+        &__btn{
+          text-align: center;
+          &__send-btn{
+            height: 50px;
+            width: 100%;
+            color: #ffffff;
+            background-color: red;
+            border: none;
+            &:hover{
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.clearfix:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.fa-chevron-right{
+  position: absolute;
+  right: 16px;
+  line-height: 50px;
+}
+
