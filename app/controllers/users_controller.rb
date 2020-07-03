@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    # @user = Address.includes(:phone_number)
   end
     
   def edit
