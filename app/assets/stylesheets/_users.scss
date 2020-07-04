@@ -104,6 +104,9 @@ body {
       font-size: 22px;
       border-bottom: 1px solid rgb(237, 237, 237);
     }
+    .head{
+      border-bottom: 1px solid rgb(237, 237, 237);
+    }
 
     &__box {
       padding: 24px 180px;
@@ -111,6 +114,9 @@ body {
 
       .btn-sns {
         margin-bottom: 15px;
+        border-color: #3ccace;
+        color: #3ccace;
+        background-color: white;
       }
 
       .btn {

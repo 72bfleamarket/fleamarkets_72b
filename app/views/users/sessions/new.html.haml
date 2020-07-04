@@ -5,7 +5,14 @@
 
   .new_user__body
     %h2.body_head ログイン画面
-    .new_user__body__box      
+    .new_user__body__box
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+          %label
+            会員登録がお済みでない方はこちら
+      = render "users/shared/links"
+    .head
+    .new_user__body__box
       .new_user__body__box__group
         .new_user__body__box__group__head
           %label
@@ -22,8 +29,8 @@
           = f.label :remember_me
       .new_user__body__box__group
         .new_user__body__box__group__head
-      = f.submit "Log in", class: 'btn-default btn'
-    = render "users/shared/links"
+      = f.submit "ログイン", class: 'btn-default btn'
+
 
   .new_user__footer
     %ul.clearfix.regulation
