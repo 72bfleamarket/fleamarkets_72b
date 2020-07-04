@@ -22,29 +22,25 @@
   .buy-content__user-info__inner
     %h3 支払方法
     .user-info-update
-      = link_to "#", class:"update-btn" do
-        変更する
+      = link_to '変更する', '#'
     .user-info-text
     - if @default_card_information.blank?
-      %br /
+      %br
     - else
       = "**** **** **** " + "#{@default_card_information.last4}"
       %br
-      - exp_month = @default_card_information.exp_month.to_s
-      - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-      = "有効期限 " + exp_month + " / " + exp_year
+      = "有効期限 " + @exp_month + " / " + @exp_year
       %br
 .buy-content__user-info
   .buy-content__user-info__inner              
     %h3 配送先
     .user-info-update
-      = link_to "#", class:"update-btn" do
-        変更する
+      = link_to '変更する', '#'
     .user-info-text
-      〒111-1111
+      = "〒#{@address.code} - 4567"
       %br
-      大阪府大阪市北区〇〇1-11
+      = @address.area + @address.city + @address.village + @address.building
       %br
-      山田太郎
+      = @buyer_first_name + @buyer_last_name
       = form_tag(action: :pay, method: :post) do
         %button.buy-button{type:"submit"} 購入する

@@ -3,6 +3,10 @@ class BuyersController < ApplicationController
   before_action :set_card, :set_product
 
   def index
+    @address = Address.find_by(user_id: current_user.id)
+    @buyer_first_name = current_user.first_name
+    @buyer_last_name = current_user.last_name
+
     if @card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       #保管した顧客IDでpayjpから情報取得
