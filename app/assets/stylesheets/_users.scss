@@ -2,7 +2,9 @@ html,
 body {
   height: 100vh;
 }
-
+.err_message {
+  color: red;
+}
 .btn-default {
   border-radius: 4px;
   display: block;
