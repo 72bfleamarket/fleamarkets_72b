@@ -52,9 +52,13 @@
           - if @product.buyer_id.present?
             .showMain__content__topContent__itemBox__SoldOut
               SOLD OUT
-          - else
+          - elsif user_signed_in?
             .showMain__content__topContent__itemBox__purchaseBtn
               = link_to product_buyers_path(@product.id) do
+                購入画面に進む
+          - else
+            .showMain__content__topContent__itemBox__purchaseBtn
+              = link_to user_session_path do
                 購入画面に進む
         .showMain__content__topContent__itemBox__itemDetail
           = @product.detal
