@@ -7,10 +7,12 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :brand
       t.string :condition, null: false
       t.string :postage, null: false
-      t.string :region, null: false
+      t.string :prefecture_id, null: false
       t.string :shipping_day, null: false
       t.integer :price, null: false
       t.integer :category_id
+      t.references :user
+      t.integer :buyer_id
       t.timestamps
     end
     add_index :products, :name

@@ -1,27 +1,46 @@
-html,body{
-     height:100%;
+html,
+body {
+  height: 100vh;
 }
-.new_user{
+
+.btn-default {
+  border-radius: 4px;
+  display: block;
+  line-height: 48px;
+  font-size: 14px;
+  width: 100%;
+  border: 1px solid;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+
+.new_user {
   font-size: 14px;
   color: rgb(51, 51, 51);
   background: rgb(245, 245, 245);
   text-align: center;
   min-height: 100%;
-  a{
+
+  a {
     text-decoration: none;
     color: #333;
   }
-  &__head{
+
+  &__head {
     height: 100px;
     line-height: 100px;
     display: flex;
     text-align: center;
     justify-content: center;
     position: relative;
-    h1{
+
+    h1 {
       padding-top: 20px;
     }
-    &__progress,&__progress__done{
+
+    &__progress,
+    &__progress__done {
       font-size: 12px;
       padding-left: 20px;
       position: relative;
@@ -30,7 +49,8 @@ html,body{
       text-align: center;
       justify-content: center;
       vertical-align: top;
-      &::after{
+
+      &::after {
         content: "";
         position: absolute;
         top: 64px;
@@ -42,8 +62,9 @@ html,body{
         background-color: #ddd;
       }
     }
-    &__progress{
-      &::before{
+
+    &__progress {
+      &::before {
         content: "";
         position: absolute;
         top: 69px;
@@ -54,82 +75,86 @@ html,body{
         background-color: #ddd;
       }
     }
-    .progress-active{
-      &::after{
+
+    .progress-active {
+      &::after {
         background-color: #3ccace;
       }
-      &__bar{
-        &::before{
+
+      &__bar {
+        &::before {
           background-color: #3ccace;
         }
       }
     }
 
   }
-  &__body{
+
+  &__body {
     background-color: #fff;
     width: 700px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    .body_head{
+
+    .body_head {
       padding: 32px;
       font-size: 22px;
       border-bottom: 1px solid rgb(237, 237, 237);
     }
-    &__box{
+
+    &__box {
       padding: 24px 180px;
       position: relative;
-      .btn-default{
-        border-radius: 4px;
-        display: block;
-        line-height: 48px;
-        font-size: 14px;
-        width: 100%;
-        border: 1px solid;
-        cursor: pointer;
-        text-align: center;
-        position: relative;
-      }
-      .btn-sns{
+
+      .btn-sns {
         margin-bottom: 15px;
       }
-      .btn{
+
+      .btn {
         background-color: #3ccace;
         position: relative;
         color: #fff;
         text-decoration: none;
-       }
-       .btn-sns-google{
-         background-color: #fff;
-         position: relative;
-         border: #979797 solid 1px;
-         color: #333;
-       }
-       .btn-sns-facebook{
-         background-color: #385185;
-         color: #fff;
-       }
-       .btn-sns-apple{
-         background-color: #000;
-         color: #fff;
-       }
-       a{
-         color: rgb(187, 207, 220);
-       }
-       .fab{
-         left: 20px;
-         top: 50%;
-         transform: translateY(-50%);
-         position: absolute;
-         font-size: 1.5em;
-       }
-       &__group{
+      }
+
+      .btn-sns-google {
+        background-color: #fff;
+        position: relative;
+        border: #979797 solid 1px;
+        color: #333;
+      }
+
+      .btn-sns-facebook {
+        background-color: #385185;
+        color: #fff;
+      }
+
+      .btn-sns-apple {
+        background-color: #000;
+        color: #fff;
+      }
+
+      a {
+        color: rgb(187, 207, 220);
+      }
+
+      .fab {
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        font-size: 1.5em;
+      }
+
+      &__group {
         margin-bottom: 15px;
-        &__head{
+
+        &__head {
           text-align: left;
         }
-        &__form{
+
+        &__form {
           border-radius: 4px;
           display: block;
           line-height: 48px;
@@ -139,31 +164,38 @@ html,body{
           margin-bottom: 15px;
           position: relative;
         }
-       }
-       .mandatory{
-         background-color: #ea352d;
-         color: #fff;
-         border-radius: 2px;
-         padding: 3px;
-       }
-       .namebox{
-         width: 343px;
-         height: 70px;
-         display: flex;
-         justify-content: space-between;
-       }
-       .nmform{
+      }
+
+      .mandatory {
+        background-color: #ea352d;
+        color: #fff;
+        border-radius: 2px;
+        padding: 3px;
+      }
+
+      .namebox {
+        width: 343px;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nmform {
         width: 160px;
         height: 48px;
         border-radius: 4px;
-       }
-       .datebox{
+      }
+
+      .datebox {
         width: 343px;
         height: 70px;
         display: flex;
         justify-content: left;
         align-items: center;
-        .year,.month,.day{
+
+        .year,
+        .month,
+        .day {
           margin: 0px;
           border-radius: 4px;
           display: block;
@@ -175,32 +207,34 @@ html,body{
           position: relative;
           width: 90px;
           margin-left: 4px;
-         }
-         .field_with_errors{
+        }
+
+        .field_with_errors {
           width: 343px;
           height: 70px;
           display: flex;
           justify-content: left;
           align-items: center;
-         }
-       }
+        }
+      }
 
     }
 
   }
-  &__footer{
+
+  &__footer {
     height: 200px;
-    .regulation{
+    .regulation {
       margin-top: 35px;
       display: flex;
       text-align: center;
       justify-content: center;
-      li{
+      li {
         margin: 10px;
-        a{
+        a {
           font-size: 12px;
         }
       }
     }
   }
-} 
+}

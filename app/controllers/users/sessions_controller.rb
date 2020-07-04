@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  def show
+    @user = User.find(params[:id])
+    @products = @user.products.order("created_at DESC")
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

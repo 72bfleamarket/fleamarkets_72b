@@ -1,7 +1,7 @@
 .breadCrumbs {
   width: 100%;
   border-top: 1px solid #eee;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
   padding: 0 60px;
 
   &__lists {
@@ -22,7 +22,7 @@
 
       &--icon {
         font-size: 14px;
-        
+
         &::before {
           content: "\f105";
         }
@@ -60,13 +60,13 @@
 
         &__body {
           margin-top: 16px;
-          
+
           & ul {
             list-style: none;
             display: flex;
             justify-content: center;
             position: relative;
-            
+
             & li {
               width: 560px;
               align-items: center;
@@ -299,7 +299,7 @@
 
             &__details {
               font-size: 16px;
-              
+
               & ul {
                 display: flex;
                 align-items: center;
@@ -315,5 +315,29 @@
         }
       }
     }
+  }
+}
+
+.purchaseBtn_edit {
+  width: 120px;
+  background-color: #3ccace;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 182px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+
+  &__text {
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+
+  &__icon {
+    width: 60%;
+    vertical-align: bottom;
   }
 }

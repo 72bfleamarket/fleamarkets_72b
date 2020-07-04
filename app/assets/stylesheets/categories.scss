@@ -1,3 +1,144 @@
-// Place all the styles related to the categories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.content {
+  width: 100%;
+  background-color: #f8f8f8;
+  &__all-products {
+    height: 100%;
+    width: 780px;
+    background-color: #f8f8f8;
+    color: #000000;
+    margin: 0 auto;
+    padding-top: 80px;
+
+    &:last-child {
+      padding-bottom: 80px;
+    }
+
+    &__product-box {
+      
+      &__title{
+        height: 60px;
+        border-radius: 5px 5px 0 0;
+        padding: 16px 10px 8px;
+        background-color: #3CCACE;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+      }
+      &__sub-lists {
+        list-style-type: disc;
+        padding-inline-start: 40px;
+        flex-wrap: wrap;
+        background-color: #ffffff;
+
+        &__sub-list {
+          line-height: 26px;
+          margin: 10px;
+          &__parants{
+            &__children{
+              &__grandchildren{
+              }
+            }
+
+          }
+          
+        }
+      }
+    }
+    &__product-lists {
+      width: 780px;
+      margin: 26px auto;
+      &__product-list {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+
+
+        &--link {
+          width: 220px;
+          text-decoration: none;
+          color: #333333;
+          margin-bottom: 30px;
+
+        }
+
+        &--icon {
+          height: 150px;
+          width: 100%;
+          object-fit: cover;
+        }
+
+        &__body {
+          height: 95px;
+          width: 220px;
+          padding: 16px;
+          background-color: #ffffff;
+
+          &__name {
+            font-size: 22px;
+            height: 24px;
+            line-height: 24px;
+          }
+
+          &__lists {
+            height: 24px;
+            display: flex;
+            justify-content: space-between;
+
+            &__list {
+              line-height: 24px;
+              font-size: 16px;
+              font-weight: normal;
+
+              &--icon {
+                font-size: 14px;
+              }
+            }
+          }
+
+          &__tax {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+ul:before, ul:after{
+  content: "";
+  clear: both;
+  display: block;
+  
+}
+a:hover {
+  color: skyblue;
+  font-weight: bold;
+}
+ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+li{
+  list-style: none;
+
+}
+
+a{
+  text-decoration: none;
+}
+
+.parent{
+  margin: 10px;
+}
+
+.child{
+  margin: 5px 10px;
+}
+
+.grandchild{
+  margin:5px 10px;
+}

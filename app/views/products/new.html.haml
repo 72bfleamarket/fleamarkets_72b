@@ -1,4 +1,8 @@
-.products-row
-  .products-form
-    %h3 登録する
-    = render 'products/shared/form'
+.form
+  = render 'shared/header'
+
+  .form_body
+    %h2 商品登録
+    = render 'products/shared/form', product: @product
+
+  = render 'shared/footer'
