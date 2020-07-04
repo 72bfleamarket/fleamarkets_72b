@@ -6,11 +6,11 @@ class CardsController < ApplicationController
     redirect_to card_path(current_user.id) if card.exists?
   end
 
-  def pay #payjpとCardのデータベース作成
+  def create #payjpとCardのデータベース作成
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     #保管した顧客IDでpayjpから情報取得
     if params['payjp-token'].blank?
-      redirect_to new_card_path
+      redirect_to action: :new
     else
       customer = Payjp::Customer.create(
         card: params['payjp-token'],
@@ -20,8 +20,21 @@ class CardsController < ApplicationController
       if @card.save
         redirect_to card_path(current_user.id)
       else
-        redirect_to pay_cards_path
+        redirect_to action: :create
       end
+    end
+  end
+
+  def show #Cardのデータpayjpに送り情報を取り出す
+    card = Card.find_by(user_id: current_user.id)
+    if card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+      @exp_month = @default_card_information.exp_month.to_s
+      @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+    else
+      redirect_to action: :new
     end
   end
 
@@ -33,17 +46,6 @@ class CardsController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to new_card_path
-  end
-
-  def show #Cardのデータpayjpに送り情報を取り出す
-    card = Card.find_by(user_id: current_user.id)
-    if card.blank?
-      redirect_to new_card_path
-    else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
-    end
+      redirect_to action: :new
   end
 end

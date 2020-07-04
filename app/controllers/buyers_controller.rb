@@ -9,6 +9,8 @@ class BuyersController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id) 
       #カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(@card.card_id)
+      @exp_month = @default_card_information.exp_month.to_s
+      @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
     else
       #登録された情報がない場合にカード登録画面に移動
       redirect_to new_card_path
