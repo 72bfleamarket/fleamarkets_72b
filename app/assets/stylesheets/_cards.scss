@@ -1,0 +1,235 @@
+.container {
+  background-color: #f5f5f5;
+  color: #333;
+
+  & h2 {
+    line-height: 1.4;
+    font-weight: bold;
+  }
+
+  & h3 {
+    font-weight: bold;
+  }
+
+  & ul {
+    list-style: none;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+
+  &__inner {
+    padding: 40px 0;
+    margin: 0 auto;
+    width: 1020px;
+    display: flex;
+
+    &__mypageNav {
+      float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
+
+      &__head {
+        margin: 40px 0 0;
+      }
+
+      &__list {
+        margin: 8px 0 0;
+      }
+
+      & li:first-child {
+        border: 0;
+      }
+
+      & a {
+        position: relative;
+        display: block;
+        min-height: 48px;
+        padding: 16px;
+        background-color: #fff;
+        font-size: 14px;
+        color: #333;
+      }
+    }
+
+    &__content {
+      float: right;
+      width: 700px;
+      background-color: #fff;
+
+      &__chapterContainer {
+        background-color: #fff;
+
+        &:first-child {
+          margin: 0;
+        }
+
+        & form {
+          padding: 40px 40px 64px;
+        }
+
+        &__singleContent {
+          max-width: 343px;
+          margin: 0 auto;
+
+          &__formGroup {
+  
+            &:first-child {
+              margin: 0;
+            }
+
+            & label {
+              font-size: 14px;
+              font-weight: 600;
+              display: inline-block;
+            }
+
+            &__formRequire {
+              background-color: #ea352d;
+              margin-left: 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+            }
+  
+            &__inputDefault {
+              width: 100%;
+              margin: 8px 0 0;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background-color: #fff;
+              line-height: 1.5;
+              display: block;
+            }
+  
+            &__signupCardList {
+              margin-top: 8px;
+              font-size: 0;
+              display: flex;
+  
+              & li {
+                margin-right: 5px;
+  
+                & img {
+                  vertical-align: middle;
+                }
+              }
+            }
+  
+            &.singleFormExpire {
+              margin-top: 32px;
+            }
+  
+            &__selectWrap {
+              float: left;
+              width: calc(50% - 2px);
+              margin: 8px 0 0;
+              position: relative;
+              background-color: #fff;
+  
+              &__selectDefault {
+                width: calc(100% - 38px);
+                position: relative;
+                z-index: 2;
+                height: 48px;
+                padding: 0 16px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: 0;
+                cursor: pointer;
+              }
+  
+              & span {
+                color: #333;
+                font-size: 14px;
+                line-height: 48px;
+              }
+            }
+  
+            &__submitBtn {
+              margin-top: 32px;
+              background-color: #3ccace;
+              border: 1px solid #3ccace;
+              color: #fff;
+              display: block;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              border-radius: 4px;
+              cursor: pointer;
+              text-align: center;
+            }
+          }
+        }
+
+        &__chapterHead {
+          font-size: 24px;
+          padding: 8px 24px;
+          border-bottom: 1px solid #f5f5f5;
+          text-align: center;
+        }
+
+        &__singleInner {
+          padding: 64px;
+          border-top: 1px solid #f5f5f5;
+
+          &__singleContent {
+            max-width: 320px;
+            margin: 0 auto;
+
+            &__settingsPaymentNum {
+              margin: 8px 0 0;
+            }
+  
+            &__settingsPaymentRemove {
+              position: absolute;
+              top: 0;
+              right: 0;
+              padding: 4px 6px;
+              background-color: #fff;
+              border-radius: 3px;
+              border: 1px solid #3ccace;
+              color: #3ccace;
+              min-height: 1.5em;
+              outline: 0;
+              line-height: inherit;
+              cursor: pointer;
+              font-size: 14px;
+            }
+          }
+
+          & li {
+            padding: 24px 0;
+            border-bottom: 1px solid #eee;
+
+            & form {
+              position: relative;
+
+              & img {
+                vertical-align: middle;
+              }
+            }
+          }
+
+          & a {
+            display: block;
+            margin: 40px 0 0;
+            text-align: right;
+            color: #0099e8;
+            font-size: 14px;
+            vertical-align: middle;
+
+            & i {
+              margin: 0 0 0 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,23 @@
-%h1 ユーザーマイページ
-= link_to new_card_path do
-  カードを登録する
-%br
-= link_to root_path do
-  トップページへ戻る
+= render 'products/shared/header'
+
+%nav.breadCrumbs
+  %ul.breadCrumbs__lists
+    %li.breadCrumbs__lists__list
+      = link_to root_path, class: 'breadCrumbs__lists__list--link' do
+        FURIMA
+    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
+    %li.breadCrumbs__lists__list
+      = link_to '#', class: 'breadCrumbs__lists__list--link' do
+        マイページ
+    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
+    %li.breadCrumbs__lists__list
+      = link_to '#', class: 'breadCrumbs__lists__list--link' do
+        支払い方法
+
+%main.container
+  .container__inner
+    = render 'users/shared/mypage_nav'
+
+= render 'products/shared/app_banner'
+
+= render 'products/shared/footer'
