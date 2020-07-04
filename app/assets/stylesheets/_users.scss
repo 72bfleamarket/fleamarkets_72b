@@ -3,7 +3,7 @@ body {
   height: 100vh;
 }
 .err_message {
-  color: red;
+  color: #CC3300;
 }
 .btn-default {
   border-radius: 4px;
@@ -118,6 +118,12 @@ body {
         position: relative;
         color: #fff;
         text-decoration: none;
+        &:hover {
+          background-color: #34AEB3;
+        }
+        &:active {
+          background-color: #2C9599;
+        }
       }
 
       .btn-sns-google {
