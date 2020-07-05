@@ -2,7 +2,9 @@ html,
 body {
   height: 100vh;
 }
-
+.err_message {
+  color: #CC3300;
+}
 .btn-default {
   border-radius: 4px;
   display: block;
@@ -102,6 +104,9 @@ body {
       font-size: 22px;
       border-bottom: 1px solid rgb(237, 237, 237);
     }
+    .head{
+      border-bottom: 1px solid rgb(237, 237, 237);
+    }
 
     &__box {
       padding: 24px 180px;
@@ -109,6 +114,9 @@ body {
 
       .btn-sns {
         margin-bottom: 15px;
+        border-color: #3ccace;
+        color: #3ccace;
+        background-color: white;
       }
 
       .btn {
@@ -116,6 +124,12 @@ body {
         position: relative;
         color: #fff;
         text-decoration: none;
+        &:hover {
+          background-color: #34AEB3;
+        }
+        &:active {
+          background-color: #2C9599;
+        }
       }
 
       .btn-sns-google {
@@ -163,6 +177,7 @@ body {
           border: 1px solid;
           margin-bottom: 15px;
           position: relative;
+          padding: 0 10px;
         }
       }
 

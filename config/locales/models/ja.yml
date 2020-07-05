@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       product: 商品
+      address: アドレス
     attributes:
       product:
         name: 商品名
@@ -13,3 +14,8 @@ ja:
         shipping_day: 発送日数
         price: 販売価格
         images: 商品画像
+      address:
+        code: 郵便番号
+        area: 都道府県
+        city: 市区町村
+        village: 番地
