@@ -54,7 +54,7 @@
               SOLD OUT
           - elsif user_signed_in?
             .showMain__content__topContent__itemBox__purchaseBtn
-              = link_to product_buyers_path(@product.id) do
+              = link_to new_product_buyer_path(@product.id) do
                 購入画面に進む
           - else
             .showMain__content__topContent__itemBox__purchaseBtn

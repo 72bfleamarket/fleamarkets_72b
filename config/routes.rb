@@ -20,12 +20,7 @@ Rails.application.routes.draw do
   root "products#index"
   resources :products do
     resources :categories, only:[:create]
-    resources :buyers, only: [:index] do
-      collection do
-        get 'done', to: 'buyers#done'
-        post 'pay', to: 'buyers#pay'
-      end
-    end
+    resources :buyers, only: [:new, :create]
   end
   resources :categories, only: [:index, :show]
 

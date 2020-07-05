@@ -23,5 +23,6 @@
           支払金額
         .buy-price-table__right
           = "¥#{@product.price.to_s}"
-      .buy-content__user-info__submit
-        = link_to "トップページへ戻る", root_path, class: 'buy-content__user-info__submit__button'
+
+.buy-content__user-info__submit
+  = link_to "商品詳細ページへ戻る", product_path(@product.id), class: 'buy-content__user-info__submit__button'

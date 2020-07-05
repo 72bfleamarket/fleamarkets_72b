@@ -42,5 +42,8 @@
       = @address.area + @address.city + @address.village + @address.building
       %br
       = @buyer_first_name + @buyer_last_name
-      = form_tag(action: :pay, method: :post) do
+      = form_tag(action: :create, method: :post) do
         %button.buy-button{type:"submit"} 購入する
+
+.buy-content__user-info__submit
+  = link_to "商品詳細ページへ戻る", product_path(@product.id), class: 'buy-content__user-info__submit__button'
