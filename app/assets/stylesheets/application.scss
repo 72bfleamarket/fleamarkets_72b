@@ -1,8 +1,9 @@
 @import 'reset';
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import 'products/index';
-@import 'users';
-@import 'products/show';
 @import 'products/form';
+@import 'products/show';
+@import 'products/buyers/create';
 @import 'cards';
+@import 'users';
