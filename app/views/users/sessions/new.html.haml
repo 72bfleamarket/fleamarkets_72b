@@ -30,6 +30,16 @@
       .new_user__body__box__group
         .new_user__body__box__group__head
       = f.submit "ログイン", class: 'btn-default btn'
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+      = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+        %button#google-login.btn-default.btn-sns.btn-sns-google
+          %i.fab.fa-google
+          Googleでログインする
+      = link_to user_facebook_omniauth_authorize_path, method: :post do
+        %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+          %i.fab.fa-facebook
+          Facebookでログインする
 
 
   .new_user__footer
