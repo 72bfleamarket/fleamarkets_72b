@@ -77,8 +77,10 @@ gem 'gretel'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
-gem 'devise'
 
 gem 'fog-aws'
 gem 'active_hash'
 gem 'rails-i18n'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"

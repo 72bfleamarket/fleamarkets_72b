@@ -7,11 +7,12 @@ class User < ApplicationRecord
   has_many :saling_products, -> { where("buyer_id is NULL") }, foreign_key: "user_id", class_name: "Product"
   has_many :sold_products, -> { where("buyer_id is not NULL") }, foreign_key: "user_id", class_name: "Product"
   has_many :products, dependent: :destroy
+  has_many :sns_credentials
   # has_many :comments //後から使用予定
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :validatable
+          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   # has_secure_password validations: false
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -26,4 +27,20 @@ class User < ApplicationRecord
   validates :first_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角平仮名で入力して下さい。" }
   validates :last_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角平仮名で入力して下さい。" }
   validates :birthday, presence: true
+
+  def self.from_omniauth(auth)
+    sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
+    # sns認証したことがあればアソシエーションで取得
+    # 無ければemailでユーザー検索して取得orビルド(保存はしない)
+    user = sns.user || User.where(email: auth.info.email).first_or_initialize(
+      name: auth.info.name,
+        email: auth.info.email
+    )
+    # userが登録済みの場合はそのままログインの処理へ行くので、ここでsnsのuser_idを更新しておく
+    if user.persisted?
+      sns.user = user
+      sns.save
+    end
+    user
+  end
 end
