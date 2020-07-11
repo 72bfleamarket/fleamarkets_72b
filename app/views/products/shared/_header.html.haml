@@ -27,7 +27,7 @@
             %span
               = "#{current_user.name}さん"
           %li.header__headerInner__nav__listsRight__item
-            = link_to user_path(@user) do
+            = link_to user_path(current_user.id) do
               %span マイページ
           %li.header__headerInner__nav__listsRight__item
             = link_to destroy_user_session_path, method: :delete do
