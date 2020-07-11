@@ -25,7 +25,7 @@
             %ul
               %li
                 = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form', class: 'container__inner__content__chapterContainer__singleInner__singleContent', name: "inputForm") do
-                  = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266",width:"32px",height:"20px"
+                  = image_tag "#{@card_src}", alt: @card_brand,  id: 'card_image'
                   .container__inner__content__chapterContainer__singleInner__singleContent__settingsPaymentNum
                     = "**** **** **** " + @default_card_information.last4
                   .container__inner__content__chapterContainer__singleInner__singleContent__settingsPaymentNum
