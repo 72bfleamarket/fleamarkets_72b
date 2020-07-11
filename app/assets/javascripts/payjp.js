@@ -19,7 +19,7 @@ $(function() {
           $('#exp_month').removeAttr('name');
           $('#exp_year').removeAttr('name'); //データを自サーバにpostしないように削除
           $('#card_token').append(
-          $('<input type="hidden" name="payjp-token">').val(response.id)
+            $('<input type="hidden" name="payjp-token">').val(response.id)
           ); //取得したトークンを送信できる状態
           $('#addCardForm').get(0).submit();
           alert('登録が完了しました'); 
