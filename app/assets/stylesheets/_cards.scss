@@ -2,6 +2,11 @@
   background-color: #f5f5f5;
   color: #333;
 
+  & p {
+    color: #ea352d;
+    text-align: center;
+  }
+
   & h2 {
     line-height: 1.4;
     font-weight: bold;
@@ -117,7 +122,32 @@
   
                 & img {
                   vertical-align: middle;
+                  height: 20px;
                 }
+              }
+
+              &__visa {
+                width: 49px;
+              }
+
+              &__masterCard {
+                width: 34px;
+              }
+
+              &__jcb {
+                width: 32px;
+              }
+
+              &__americanExpress {
+                width: 21px;
+              }
+
+              &__dinersclub {
+                width: 32px;
+              }
+
+              &__discover {
+                width: 32px;
               }
             }
   
@@ -232,4 +262,9 @@
       }
     }
   }
+}
+
+#card_image {
+  height: 20px;
+  width: 49px;
 }
