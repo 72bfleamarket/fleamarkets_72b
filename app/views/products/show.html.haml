@@ -48,10 +48,11 @@
           - if @product.buyer_id.present?
             .showMain__content__topContent__itemBox__SoldOut
               SOLD OUT
-          - elsif user_signed_in?
+          - elsif user_signed_in? && current_user.id != @product.user_id
             .showMain__content__topContent__itemBox__purchaseBtn
               = link_to new_product_buyer_path(@product.id) do
                 購入画面に進む
+          - elsif user_signed_in? && current_user.id == @product.user_id
           - else
             .showMain__content__topContent__itemBox__purchaseBtn
               = link_to user_session_path do
