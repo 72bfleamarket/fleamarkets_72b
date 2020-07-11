@@ -5,20 +5,23 @@
 
   .new_user__body
     %h2.body_head ログイン画面
-    .new_user__body__box      
+    .new_user__body__box
       .new_user__body__box__group
         .new_user__body__box__group__head
           %label
-            email
-          %span.mandatory
-            必須
+            会員登録がお済みでない方はこちら
+      = render "users/shared/links"
+    .head
+    .new_user__body__box
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+          %label
+            メールアドレス
           = f.email_field :email, autofocus: true, autocomplete: "email", class: "new_user__body__box__group__form", placeholder: "PC・携帯どちらでも可"
       .new_user__body__box__group
         .new_user__body__box__group__head
           %label
-            password
-          %span.mandatory
-            必須
+            パスワード
         = f.password_field :password, autofocus: true, autocomplete: "current-password", class: "new_user__body__box__group__form", placeholder: "７文字以上の半角英数字"
       - if devise_mapping.rememberable?
         .field
@@ -26,8 +29,18 @@
           = f.label :remember_me
       .new_user__body__box__group
         .new_user__body__box__group__head
-      = f.submit "Log in", class: 'btn-default btn'
-    = render "users/shared/links"
+      = f.submit "ログイン", class: 'btn-default btn'
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+      = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+        %button#google-login.btn-default.btn-sns.btn-sns-google
+          %i.fab.fa-google
+          Googleでログインする
+      = link_to user_facebook_omniauth_authorize_path, method: :post do
+        %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+          %i.fab.fa-facebook
+          Facebookでログインする
+
 
   .new_user__footer
     %ul.clearfix.regulation

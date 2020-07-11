@@ -1,7 +1,3 @@
--# TODO(Atuweb): breadcrumbs-listブランチで実装中
--# - breadcrumb :product
--# = render "layouts/breadcrumbs"
-
 = render 'products/shared/header'
 
 %nav.breadCrumbs
@@ -15,15 +11,15 @@
         すべてのカテゴリー
     %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
     %li.breadCrumbs__lists__list
-      = link_to category_path(Product.find(params[:id]).category.root.id), class: 'breadCrumbs__lists__list--link' do
+      = link_to category_path(@product.category.root.id), class: 'breadCrumbs__lists__list--link' do
         = @parents.name
     %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
     %li.breadCrumbs__lists__list
-      = link_to category_path(Product.find(params[:id]).category.parent.id), class: 'breadCrumbs__lists__list--link' do
+      = link_to category_path(@product.category.parent.id), class: 'breadCrumbs__lists__list--link' do
         = @children.name
     %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
     %li.breadCrumbs__lists__list
-      = link_to category_path(Product.find(params[:id]).category.id), class: 'breadCrumbs__lists__list--link' do
+      = link_to category_path(@product.category.id), class: 'breadCrumbs__lists__list--link' do
         = @category.name
     %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
     %li.breadCrumbs__lists__list
@@ -67,17 +63,19 @@
             %tbody
               %tr
                 %th 出品者
-                %td testuserさん
+                %td
+                  = link_to profile_path(@product.user.id) do
+                    = @product.user.name
               %tr
                 %th カテゴリー
                 %td
-                  = link_to '#' do
+                  = link_to category_path(@product.category.root.id) do
                     = @parents.name
                   %br
-                  = link_to '#' do
+                  = link_to category_path(@product.category.parent.id) do
                     = @children.name
                   %br
-                  = link_to '#' do
+                  = link_to category_path(@product.category.id) do
                     = @category.name
               %tr
                 %th ブランド
@@ -160,4 +158,12 @@
 
 = render 'products/shared/footer'
 
-= render 'products/shared/purchase_btn'
+- if user_signed_in? && current_user.id == @product.user_id
+  .products-edit
+    = link_to edit_product_path(@product) do
+      .purchaseBtn_edit
+        %span.purchaseBtn__text 編集する
+        = image_tag 'material/icon/icon_camera.png', class: 'purchaseBtn__icon'
+  = render 'products/shared/purchase_btn'
+- else
+  = render 'products/shared/purchase_btn'
