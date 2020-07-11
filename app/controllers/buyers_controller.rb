@@ -22,7 +22,7 @@ class BuyersController < ApplicationController
   end
 
   def create
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
     Payjp::Charge.create(
       :amount => @product.price, #支払金額を引っ張ってくる
       :customer => @card.customer_id,  #顧客ID

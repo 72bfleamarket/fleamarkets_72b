@@ -28,7 +28,7 @@ class CardsController < ApplicationController
   def show #Cardのデータpayjpに送り情報を取り出す
     card = Card.find_by(user_id: current_user.id)
     if card.present?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
       @exp_month = @default_card_information.exp_month.to_s
@@ -56,7 +56,7 @@ class CardsController < ApplicationController
   def destroy #PayjpとCardデータベースを削除
     card = Card.find_by(user_id: current_user.id)
     if card.present?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
