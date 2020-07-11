@@ -63,12 +63,13 @@ ActiveRecord::Schema.define(version: 2020_07_05_114431) do
     t.string "shipping_day", null: false
     t.integer "price", null: false
     t.integer "category_id"
+    t.bigint "user_id"
     t.integer "buyer_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_products_on_name"
     t.index ["price"], name: "index_products_on_price"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
