@@ -1,15 +1,8 @@
 = render 'products/shared/header'
 
 %nav.breadCrumbs
-  %ul.breadCrumbs__lists
-    %li.breadCrumbs__lists__list
-      = link_to 'FURIMA', root_path
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
-    %li.breadCrumbs__lists__list
-      = link_to 'マイページ', user_path(current_user.id)
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
-    %li.breadCrumbs__lists__list
-      = link_to '支払い方法', '#'
+  - breadcrumb :mypage
+  = render "layouts/breadcrumbs"
 
 %main.container.clearfix
   - flash.each do |notice, value|
@@ -24,10 +17,10 @@
       %section.container__inner__content
         %h2.container__inner__content__chapterHead
           = "#{@user.name}さんの出品商品一覧"
-        .container__inner__content__singleContent
-          .main__allProducts__productBox__productHead
-            = link_to '#' do
-              %h3.main__allProducts__productBox__productHead__title 投稿商品
+        .main__allProducts__productBox__productHead
+          = link_to '#' do
+            %h3.main__allProducts__productBox__productHead__title 投稿商品
+        .main__allProducts__productBox__productLists
           - @products.each do |product|
             .main__allProducts__productBox__productLists__productList
               = link_to product_path(product) do
@@ -44,3 +37,5 @@
                         %i.fas.fa-star
                         1
                     %p (税込)
+
+= render 'products/shared/purchase_btn'

@@ -1,15 +1,8 @@
 = render 'products/shared/header'
 
 %nav.breadCrumbs
-  %ul.breadCrumbs__lists
-    %li.breadCrumbs__lists__list
-      = link_to 'FURIMA', root_path
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
-    %li.breadCrumbs__lists__list
-      = link_to 'マイページ', user_path(current_user.id)
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
-    %li.breadCrumbs__lists__list
-      = link_to '支払い方法', '#'
+  - breadcrumb :payment
+  = render "layouts/breadcrumbs"
 
 %main.container
   - flash.each do |notice, value|
@@ -91,3 +84,5 @@
 = render 'products/shared/app_banner'
 
 = render 'products/shared/footer'
+
+= render 'products/shared/purchase_btn'
