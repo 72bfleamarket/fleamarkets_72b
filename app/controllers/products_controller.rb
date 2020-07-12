@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @products = Product.includes(:images).order("created_at DESC")
+    @search = Product.ransack(params[:q])
+    @products = @search.result.includes(:images).order("created_at DESC")
     if user_signed_in?
       @user = User.find(current_user.id)
     end

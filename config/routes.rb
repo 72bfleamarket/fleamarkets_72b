@@ -24,6 +24,6 @@ Rails.application.routes.draw do
     resources :buyers, only: [:new, :create]
   end
   resources :categories, only: [:index, :show]
-
   resources :cards, only: [:new, :create, :show, :destroy]
+  get 'search', to: 'products#search'
 end
