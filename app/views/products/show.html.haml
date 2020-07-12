@@ -24,6 +24,18 @@
           .showMain__content__topContent__itemBox__price__detail
             %span (税込)
             %span 送料込み
+          - if @product.buyer_id.present?
+            .showMain__content__topContent__itemBox__soldOut
+              SOLD OUT
+          - elsif user_signed_in? && current_user.id != @product.user_id
+            .showMain__content__topContent__itemBox__purchaseBtn
+              = link_to new_product_buyer_path(@product.id) do
+                購入画面に進む
+          - elsif user_signed_in? && current_user.id == @product.user_id
+          - else
+            .showMain__content__topContent__itemBox__purchaseBtn
+              = link_to user_session_path do
+                購入画面に進む
         .showMain__content__topContent__itemBox__itemDetail
           = @product.detal
         .showMain__content__topContent__itemBox__table
@@ -31,17 +43,19 @@
             %tbody
               %tr
                 %th 出品者
-                %td testuserさん
+                %td
+                  = link_to profile_path(@product.user.id) do
+                    = @product.user.name
               %tr
                 %th カテゴリー
                 %td
-                  = link_to '#' do
+                  = link_to category_path(@product.category.root.id) do
                     = @parents.name
                   %br
-                  = link_to '#' do
+                  = link_to category_path(@product.category.parent.id) do
                     = @children.name
                   %br
-                  = link_to '#' do
+                  = link_to category_path(@product.category.id) do
                     = @category.name
               %tr
                 %th ブランド
@@ -124,4 +138,12 @@
 
 = render 'products/shared/footer'
 
-= render 'products/shared/purchase_btn'
+- if user_signed_in? && current_user.id == @product.user_id
+  .products-edit
+    = link_to edit_product_path(@product) do
+      .purchaseBtn_edit
+        %span.purchaseBtn__text 編集する
+        = image_tag 'material/icon/icon_camera.png', class: 'purchaseBtn__icon'
+  = render 'products/shared/purchase_btn'
+- else
+  = render 'products/shared/purchase_btn'

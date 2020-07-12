@@ -1,0 +1,63 @@
+.form
+  = render 'shared/header'
+
+  .form_body
+    #product_form
+      .purchase-box
+        #product-about
+          #product-about__title
+            購入内容の確認
+        #product-about
+          #product-about__contents
+            .buyContent__container__inner__product__productImage
+              = image_tag "#{@product.images[0].item.url}"
+            .discription
+              = @product.name
+              %br
+              %a 送料込み（税込み）
+              = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
+        #product-about
+          .purchase-amount
+            .purchase-amount__left
+              %a 支払金額
+            .purchase-amount__right
+              = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
+        #product-about
+          .discription
+            .discription__top
+              .discription__top__left
+                支払方法
+              .discription__top__right
+                = link_to '変更する', card_path(current_user.id)
+                %i.fas.fa-chevron-right
+            .discription__bottom
+              - if @default_card_information.blank?
+                %br
+              - else
+                クレジットカード
+                %br
+                = "**** **** **** " + "#{@default_card_information.last4}"
+                %br
+                = "有効期限 " + @exp_month + " / " + @exp_year
+                %br
+              = image_tag "#{@card_src}", alt: @card_brand,  id: 'card_image'
+        #product-about
+          .discription
+            .discription__top
+              .discription__top__left
+                配送先
+              .discription__top__right
+                = link_to '変更する', '#'
+                %i.fas.fa-chevron-right
+            .discription__bottom
+              = "〒#{@address.code} - 4567"
+              %br
+              = @address.area + @address.city + @address.village + @address.building
+              %br
+              = @buyer_first_name + @buyer_last_name
+        #product-about
+          .discription
+            = form_tag(action: :create, method: :post) do
+              %button.discription__btn-default{type:"submit"} 購入する
+
+  = render 'shared/footer'

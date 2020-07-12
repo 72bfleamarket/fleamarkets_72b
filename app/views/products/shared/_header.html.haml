@@ -24,13 +24,19 @@
       %ul.header__headerInner__nav__listsRight
 
         - if user_signed_in?
-          %lii.header__headerInner__nav__listsRight__item
+          %li.header__headerInner__nav__listsRight__item
+            %span
+              = "#{current_user.name}さん"
+          %li.header__headerInner__nav__listsRight__item
+            = link_to user_path(current_user.id) do
+              %span マイページ
+          %li.header__headerInner__nav__listsRight__item
             = link_to destroy_user_session_path, method: :delete do
-              ログアウト
+              %span ログアウト
         - else
           %li.header__headerInner__nav__listsRight__item
             = link_to user_session_path do
-              ログイン
+              %span ログイン
           %li.header__headerInner__nav__listsRight__item
             = link_to new_user_registration_path do
-              新規会員登録
+              %span 新規会員登録

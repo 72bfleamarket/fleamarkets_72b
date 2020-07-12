@@ -13,14 +13,13 @@ $(document).on('turbolinks:load', () => {
   let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
-
   $('.hidden-destroy').hide();
 
+  //画像を追加
   $('#products-image').on('change', '.js-file', function (e) {
     const targetIndex = $(this).parent().data('index');
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {
@@ -32,17 +31,29 @@ $(document).on('turbolinks:load', () => {
     }
   });
 
+  //画像を削除
   $('#products-image').on('click', '.js-remove', function () {
     const targetIndex = $(this).parent().data('index');
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-
     $(this).parent().remove();
     $(this).remove();
     const image = $(`#product_images_attributes_${targetIndex}_item`);
     image.remove();
-
     $(`img[data-index="${targetIndex}"]`).remove();
     if ($('.js-file').length == 0) $('#products-image').append(buildFileField(fileIndex[0]));
   });
+
+  //文字数をカウント
+  $('#count_name').on('input', function () {
+    const count = $(this).val().length;
+    $('.up_count').text(count);
+  });
+  $('#count_area').on('input', function () {
+    const count = $(this).val().length;
+    $('.up_counter').text(count);
+  });
+  //再読み込み時の文字数をカウント
+  $('#count_name').trigger('input');
+  $('#count_area').trigger('input');
 });

@@ -1,0 +1,93 @@
+= render 'products/shared/header'
+
+%nav.breadCrumbs
+  %ul.breadCrumbs__lists
+    %li.breadCrumbs__lists__list
+      = link_to 'FURIMA', root_path
+    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
+    %li.breadCrumbs__lists__list
+      = link_to 'マイページ', user_path(current_user.id)
+    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
+    %li.breadCrumbs__lists__list
+      = link_to '支払い方法', '#'
+
+%main.container
+  - flash.each do |notice, value|
+    - notice
+    %p.container__notice
+      = value
+
+  .container__inner
+    = render 'users/shared/mypage_nav'
+
+    %section.container__inner__content
+      %h2.container__inner__content__chapterHead クレジットカード情報入力
+      = form_tag(cards_path, method: :post, id: 'addCardForm', class: 'container__inner__content__form', name: 'inputForm') do
+        .container__inner__content__singleContent
+          .container__inner__content__singleContent__formGroup
+            %label カード番号
+            %span.container__inner__content__singleContent__formGroup__formRequire 必須
+            %br
+            = text_field_tag "number", "", class: 'container__inner__content__singleContent__formGroup__inputDefault', placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+            %ul.container__inner__content__singleContent__formGroup__signupCardList
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__visa'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__masterCard'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__jcb'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__americanExpress'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__dinersclub'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__discover'
+
+          .container__inner__content__singleContent__formGroup.singleFormExpire
+            %label 有効期限
+            %span.container__inner__content__singleContent__formGroup__formRequire 必須
+            %br
+            .container__inner__content__singleContent__formGroup__selectWrap
+              %select#exp_month.container__inner__content__singleContent__formGroup__selectWrap__selectDefault{name: "exp_month", type: "text"}
+                %option{value: ""} --
+                %option{value: "1"}01
+                %option{value: "2"}02
+                %option{value: "3"}03
+                %option{value: "4"}04
+                %option{value: "5"}05
+                %option{value: "6"}06
+                %option{value: "7"}07
+                %option{value: "8"}08
+                %option{value: "9"}09
+                %option{value: "10"}10
+                %option{value: "11"}11
+                %option{value: "12"}12
+              %span 月
+            .container__inner__content__singleContent__formGroup__selectWrap
+              %select#exp_year.container__inner__content__singleContent__formGroup__selectWrap__selectDefault{name: "exp_year", type: "text"}
+                %option{value: ""} --
+                %option{value: "2019"}19
+                %option{value: "2020"}20
+                %option{value: "2021"}21
+                %option{value: "2022"}22
+                %option{value: "2023"}23
+                %option{value: "2024"}24
+                %option{value: "2025"}25
+                %option{value: "2026"}26
+                %option{value: "2027"}27
+                %option{value: "2028"}28
+                %option{value: "2029"}29
+              %span 年
+
+          .container__inner__content__singleContent__formGroup
+            %label セキュリティコード
+            %span.container__inner__content__singleContent__formGroup__formRequire 必須
+            = text_field_tag "cvc", "", class: 'container__inner__content__singleContent__formGroup__inputDefault', placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+          %br
+          #card_token
+          %br
+          = submit_tag "追加する", id: "token_submit", class: 'container__inner__content__singleContent__formGroup__submitBtn'
+
+= render 'products/shared/app_banner'
+
+= render 'products/shared/footer'

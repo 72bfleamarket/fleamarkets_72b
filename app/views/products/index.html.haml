@@ -92,6 +92,9 @@
       .main__allProducts__productBox__productLists
         - @products.each do |product|
           .main__allProducts__productBox__productLists__productList
+            - if product.buyer_id.present?
+              .main__allProducts__productBox__productLists__productList__soldOut
+                .main__allProducts__productBox__productLists__productList__soldOut__content Sold
             = link_to product_path(product) do
               %figure.main__allProducts__productBox__productLists__productList--img
                 = image_tag product.images[0].item.url

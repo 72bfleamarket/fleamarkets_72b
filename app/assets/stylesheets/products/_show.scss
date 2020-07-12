@@ -1,7 +1,7 @@
 .breadCrumbs {
   width: 100%;
   border-top: 1px solid #eee;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
   padding: 0 60px;
 
   &__lists {
@@ -63,13 +63,13 @@
 
         &__body {
           margin-top: 16px;
-          
+
           & ul {
             list-style: none;
             display: flex;
             justify-content: center;
             position: relative;
-            
+
             & li {
               width: 560px;
               align-items: center;
@@ -114,6 +114,32 @@
           &__detail {
             font-size: 16px;
             font-weight: normal;
+          }
+        }
+
+        &__soldOut {
+          font-size: 24px;
+          line-height: 60px;
+          margin-top: 16px;
+          background-color: #ea352d;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+        }
+
+        &__purchaseBtn {
+          font-size: 24px;
+          line-height: 60px;
+          margin-top: 16px;
+          background-color: #3ccace;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+
+          & a {
+            text-decoration: none;
+            color: #fff;
           }
         }
 
@@ -302,7 +328,7 @@
 
             &__details {
               font-size: 16px;
-              
+
               & ul {
                 display: flex;
                 align-items: center;
@@ -318,5 +344,29 @@
         }
       }
     }
+  }
+}
+
+.purchaseBtn_edit {
+  width: 120px;
+  background-color: #3ccace;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 182px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+
+  &__text {
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+
+  &__icon {
+    width: 60%;
+    vertical-align: bottom;
   }
 }
