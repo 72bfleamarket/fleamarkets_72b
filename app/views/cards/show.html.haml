@@ -1,0 +1,43 @@
+= render 'products/shared/header'
+
+%nav.breadCrumbs
+  %ul.breadCrumbs__lists
+    %li.breadCrumbs__lists__list
+      = link_to 'FURIMA', root_path
+    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
+    %li.breadCrumbs__lists__list
+      = link_to 'マイページ', user_path(current_user.id)
+    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
+    %li.breadCrumbs__lists__list
+      = link_to '支払い方法', '#'
+
+%main.container
+  .container__inner
+    = render 'users/shared/mypage_nav'
+
+    .container__inner__content
+      %section.container__inner__content
+        %h2.container__inner__content__chapterHead 支払い方法
+        .container__inner__content__singleInner
+          %section
+            .container__inner__content__singleInner__singleContent
+              %h3.container__inner__content__singleInner__singleContent__chapterSubHead クレジットカード一覧
+            %ul
+              %li
+                = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form', class: 'container__inner__content__singleInner__singleContent', name: "inputForm") do
+                  = image_tag "#{@card_src}", alt: @card_brand,  id: 'card_image'
+                  .container__inner__content__singleInner__singleContent__settingsPaymentNum
+                    = "**** **** **** " + @default_card_information.last4
+                  .container__inner__content__singleInner__singleContent__settingsPaymentNum
+                    = @exp_month + " / " + @exp_year
+                    %input{ type: "hidden", name: "card_id", value: "" }
+                    %button.container__inner__content__singleInner__singleContent__settingsPaymentRemove 削除する
+
+          .container__inner__content__singleInner__settingsNotRegist
+            = link_to user_path(current_user.id) do
+              %span マイページへ戻る
+              %i.fas.fa-chevron-right
+
+= render 'products/shared/app_banner'
+
+= render 'products/shared/footer'

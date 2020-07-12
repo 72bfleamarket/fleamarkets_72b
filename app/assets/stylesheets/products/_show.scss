@@ -15,7 +15,7 @@
     &__list {
       padding-right: 10px;
 
-      &--link {
+      & a {
         text-decoration: none;
         color: #333;
       }
@@ -111,6 +111,32 @@
           &__detail {
             font-size: 16px;
             font-weight: normal;
+          }
+        }
+
+        &__soldOut {
+          font-size: 24px;
+          line-height: 60px;
+          margin-top: 16px;
+          background-color: #ea352d;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+        }
+
+        &__purchaseBtn {
+          font-size: 24px;
+          line-height: 60px;
+          margin-top: 16px;
+          background-color: #3ccace;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+
+          & a {
+            text-decoration: none;
+            color: #fff;
           }
         }
 

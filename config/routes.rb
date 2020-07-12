@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     get "users/profile/:id", to: "users/sessions#show", as: "profile"
   end
   resources :users, path: "/users/mypage", only: :show
+
   root "products#index"
-  resources :products
+  resources :products do
+    resources :buyers, only: [:new, :create]
+  end
   resources :categories, only: [:index, :show]
+
+  resources :cards, only: [:new, :create, :show, :destroy]
 end
