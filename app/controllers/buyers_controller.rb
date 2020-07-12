@@ -15,6 +15,21 @@ class BuyersController < ApplicationController
       @default_card_information = customer.cards.retrieve(@card.card_id)
       @exp_month = @default_card_information.exp_month.to_s
       @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+      @card_brand = @default_card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266'
+      when "MasterCard"
+        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266'
+      when "JCB"
+        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266'
+      when "American Express"
+        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266'
+      when "Diners Club"
+        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266'
+      when "Discover"
+        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266'
+      end
     else
       #登録された情報がない場合にカード登録画面に移動
       redirect_to new_card_path, notice: '商品を購入するには、クレジットカードの登録が必要です'

@@ -1,49 +1,63 @@
-%h2.buy-content__title
-  購入内容の確認
-.buy-content__item
-  .buy-content__item__inner
-    .buy-item-main
-      .buy-item-image
-        = image_tag "#{@product.images[0].item.url}", size: '64x64', class: 'buydetails-contet__image'
-      .buy-item-detail
-        .buy-item-name
-          = @product.name
-          %p.buy-price
-            = "¥#{@product.price.to_s}"
-            %span.shipping-free (税込) 送料込み
-.buy-content__item
-  %form.buy-form
-    .buy-price-table
-      .buy-price-table__left
-        支払金額
-      .buy-price-table__right
-        = "¥#{@product.price.to_s}"
-.buy-content__user-info
-  .buy-content__user-info__inner
-    %h3 支払方法
-    .user-info-update
-      = link_to '変更する', '#'
-    .user-info-text
-    - if @default_card_information.blank?
-      %br
-    - else
-      = "**** **** **** " + "#{@default_card_information.last4}"
-      %br
-      = "有効期限 " + @exp_month + " / " + @exp_year
-      %br
-.buy-content__user-info
-  .buy-content__user-info__inner              
-    %h3 配送先
-    .user-info-update
-      = link_to '変更する', '#'
-    .user-info-text
-      = "〒#{@address.code} - 4567"
-      %br
-      = @address.area + @address.city + @address.village + @address.building
-      %br
-      = @buyer_first_name + @buyer_last_name
-      = form_tag(action: :create, method: :post) do
-        %button.buy-button{type:"submit"} 購入する
+.form
+  = render 'shared/header'
 
-.buy-content__user-info__submit
-  = link_to "商品詳細ページへ戻る", product_path(@product.id), class: 'buy-content__user-info__submit__button'
+  .form_body
+    #product_form
+      .purchase-box
+        #product-about
+          #product-about__title
+            購入内容の確認
+        #product-about
+          #product-about__contents
+            .buyContent__container__inner__product__productImage
+              = image_tag "#{@product.images[0].item.url}"
+            .discription
+              = @product.name
+              %br
+              %a 送料込み（税込み）
+              = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
+        #product-about
+          .purchase-amount
+            .purchase-amount__left
+              %a 支払金額
+            .purchase-amount__right
+              = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
+        #product-about
+          .discription
+            .discription__top
+              .discription__top__left
+                支払方法
+              .discription__top__right
+                = link_to '変更する', card_path(current_user.id)
+                %i.fas.fa-chevron-right
+            .discription__bottom
+              - if @default_card_information.blank?
+                %br
+              - else
+                クレジットカード
+                %br
+                = "**** **** **** " + "#{@default_card_information.last4}"
+                %br
+                = "有効期限 " + @exp_month + " / " + @exp_year
+                %br
+              = image_tag "#{@card_src}", alt: @card_brand,  id: 'card_image'
+        #product-about
+          .discription
+            .discription__top
+              .discription__top__left
+                配送先
+              .discription__top__right
+                = link_to '変更する', '#'
+                %i.fas.fa-chevron-right
+            .discription__bottom
+              = "〒#{@address.code} - 4567"
+              %br
+              = @address.area + @address.city + @address.village + @address.building
+              %br
+              = @buyer_first_name + @buyer_last_name
+        #product-about
+          .discription
+            = form_tag(action: :create, method: :post) do
+              %button.discription__btn-default{type:"submit"} 購入する
+
+  = render 'shared/footer'
