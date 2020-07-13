@@ -438,10 +438,11 @@ body {
             &__content {
               position: absolute;
               z-index: 1;
-              top: 15px;
+              top: 20px;
               left: 7px;
               color: #fff;
               font-weight: bold;
+              transform: rotate(-45deg);
             }
           }
 
