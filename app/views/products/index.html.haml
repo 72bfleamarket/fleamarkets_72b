@@ -89,14 +89,15 @@
       .main__allProducts__productBox__productHead
         = link_to '#' do
           %h3.main__allProducts__productBox__productHead__title 投稿商品
-
       .main__allProducts__productBox__productLists
         - @products.each do |product|
           .main__allProducts__productBox__productLists__productList
+            - if product.buyer_id.present?
+              .main__allProducts__productBox__productLists__productList__soldOut
+                .main__allProducts__productBox__productLists__productList__soldOut__content SOLD
             = link_to product_path(product) do
               %figure.main__allProducts__productBox__productLists__productList--img
-                - product.images.each do |image|
-                  = image_tag image.item.url
+                = image_tag product.images[0].item.url
               .main__allProducts__productBox__productLists__productList--body
                 .main__allProducts__productBox__productLists__productList__name
                   = product.name
@@ -113,7 +114,4 @@
 
 = render 'products/shared/footer'
 
-= link_to new_product_path(@product) do
-  .purchaseBtn
-    %span.purchaseBtn__text 出品する
-    = image_tag 'material/icon/icon_camera.png', class: 'purchaseBtn__icon'
+= render 'products/shared/purchase_btn'

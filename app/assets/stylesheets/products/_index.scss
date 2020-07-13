@@ -57,9 +57,9 @@ body {
           padding: 8px;
 
           & img {
-          width: 100%;
-          vertical-align: bottom;
-          border: 0;
+            width: 100%;
+            vertical-align: bottom;
+            border: 0;
           }
 
           &--btn {
@@ -76,16 +76,16 @@ body {
       font-size: 14px;
       display: flex;
       margin-bottom: 10px;
-  
+
       & ul {
         list-style: none;
       }
-  
+
       & a {
         color: #333333;
         text-decoration: none;
       }
-  
+
       &__listsLeft {
         position: relative;
         display: flex;
@@ -93,7 +93,7 @@ body {
         & a {
           padding-right: 30px;
         }
-  
+
         &__item {
           line-height: 32px;
 
@@ -137,7 +137,7 @@ body {
       padding-top: 35px;
 
       &__subTitle {
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
         font-size: 60px;
         line-height: 1.77778;
         color: #fff;
@@ -145,7 +145,7 @@ body {
       }
 
       &__text {
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
         font-size: 18px;
         line-height: 1.2;
         color: #fff;
@@ -184,7 +184,7 @@ body {
       right: 210px;
     }
   }
-  
+
   &__topIntroduction {
     padding: 60px 20px;
 
@@ -284,7 +284,7 @@ body {
 
     &__inner {
       color: #fff;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
       text-align: left;
       max-width: 1040px;
       width: 100%;
@@ -330,7 +330,7 @@ body {
       margin-bottom: 25px;
       padding-bottom: 15px;
       position: relative;
-      
+
       &::after {
         content: '';
         width: 70px;
@@ -427,6 +427,30 @@ body {
         &__productList {
           width: 220px;
           display: inline-block;
+          position: relative;
+
+          &__soldOut {
+
+            &:before {
+              content: '';
+              position: absolute;
+              z-index: 1;
+              border-top: 40px solid #ea352d;
+              border-right: 40px solid transparent;
+              border-left: 40px solid #ea352d;
+              border-bottom: 40px solid transparent;
+            }
+
+            &__content {
+              position: absolute;
+              z-index: 1;
+              top: 20px;
+              left: 7px;
+              color: #fff;
+              font-weight: bold;
+              transform: rotate(-45deg);
+            }
+          }
 
           & a {
             background-color: #fff;
@@ -461,7 +485,7 @@ body {
           &--body {
             background-color: white;
             padding: 16px;
-            }
+          }
 
           &__name {
             overflow: hidden;
@@ -470,7 +494,6 @@ body {
           }
 
           &__details {
-            
             & ul {
               display: flex;
               align-items: center;
@@ -500,7 +523,7 @@ body {
     text-align: center;
 
     &__title {
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
       font-size: 24px;
       font-weight: bold;
       line-height: 1.4;
@@ -508,7 +531,7 @@ body {
 
     &__text {
       font-size: 35px;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     }
 
     &__icon {
@@ -518,7 +541,7 @@ body {
       margin: 20px auto 0;
 
       & a {
-        
+
         &:first-child {
           margin-right: 10px;
         }

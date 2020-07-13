@@ -1,0 +1,129 @@
+= form_for(@user, url: new_user_path, html: {method: 'POST'}) do |f|
+  .new_user
+    .new_user__head
+      %h1
+        = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
+      %li.new_user__head__progress.progress-active
+        会員情報
+      %li.new_user__head__progress
+        電話番号
+      %li.new_user__head__progress__done
+        完了
+    .new_user__body
+      %h2.body_head 会員情報入力
+      - if @user.errors.any?
+        %span.err_message
+          = I18n.t("errors.messages.not_saved")
+      .new_user__body__box
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %label
+              ニックネーム
+            %span.mandatory
+              必須
+            %br
+            - if @user.errors.any?
+              %span.err_message
+                =  @user.errors.full_messages_for(:name).shift
+            = f.text_field :name, class: "new_user__body__box__group__form", placeholder: "例)テック太郎"
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %label
+              メールアドレス
+            %span.mandatory
+              必須
+            %br
+            - if @user.errors.any?
+              %span.err_message
+                =  @user.errors.full_messages_for(:email).shift
+            = f.email_field :email, class: "new_user__body__box__group__form", placeholder: "PC・携帯どちらでも可"
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %label
+              パスワード
+            %span.mandatory
+              必須
+            %br
+            - if @user.errors.any?
+              %span.err_message
+                =  @user.errors.full_messages_for(:password).shift
+            = f.password_field :password, class: "new_user__body__box__group__form", placeholder: "７文字以上の半角英数字"
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %label
+              パスワード確認
+            %span.mandatory
+              必須
+            %br
+            - if @user.errors.any?
+              %span.err_message
+                =  @user.errors.full_messages_for(:password).shift
+            = f.password_field :password, class: "new_user__body__box__group__form", placeholder: "７文字以上の半角英数字"
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %label
+              本人確認
+            %br
+            %a
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。
+              他のお客さまに公開されることはありません。
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %label
+              お名前（全角）
+            %span.mandatory
+              必須
+            %br
+            - if @user.errors.any?
+              %span.err_message
+                =  @user.errors.full_messages_for(:first_name).shift
+                %br
+                =  @user.errors.full_messages_for(:last_name).shift
+          .namebox
+            = f.text_field :first_name, class: "new_user__body__box__group__form nmform", placeholder: "例）山田"
+            = f.text_field :last_name, class: "new_user__body__box__group__form nmform", placeholder: "例）彩"
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %label
+              お名前カナ（全角）
+            %span.mandatory
+              必須
+            %br
+            - if @user.errors.any?
+              %span.err_message
+                =  @user.errors.full_messages_for(:first_kana).shift
+                %br
+                =  @user.errors.full_messages_for(:last_kana).shift
+          .namebox
+            = f.text_field :first_kana, class: "new_user__body__box__group__form nmform", placeholder: "例）ヤマダ"
+            = f.text_field :last_kana, class: "new_user__body__box__group__form nmform", placeholder: "例）アヤ"
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %label
+              生年月日
+            %span.mandatory
+              必須
+            %br
+            - if @user.errors.any?
+              %span.err_message
+                =  @user.errors.full_messages_for(:birthday).shift
+          .datebox
+            != sprintf(f.date_select(:birthday, prefix:'birthday', with_css_classes:'', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1940, date_separator:'%s'),'年','月')+'日'
+        .new_user__body__box__group
+          .new_user__body__box__group__head
+            %a
+              ※本人情報は正しく入力してください。
+              会員登録後、修正するにはお時間を頂く場合があります。
+        = f.submit "次へ進む", class: 'btn-default btn'
+    .new_user__footer
+      %ul.clearfix.regulation
+        %li
+          = link_to 'プライバシーポリシー', root_path
+        %li
+          = link_to 'フリマ利用規約', root_path
+        %li
+          = link_to '特定商取引に関する表記', root_path
+      %h1
+        = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
+      %p
+        %small © FURIMA, Inc.

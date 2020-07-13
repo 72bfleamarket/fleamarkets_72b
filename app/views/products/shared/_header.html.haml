@@ -22,9 +22,21 @@
             ブランド
 
       %ul.header__headerInner__nav__listsRight
-        %li.header__headerInner__nav__listsRight__item
-          = link_to '#' do
-            ログイン
-        %li.header__headerInner__nav__listsRight__item
-          = link_to '#' do
-            新規会員登録
+
+        - if user_signed_in?
+          %li.header__headerInner__nav__listsRight__item
+            %span
+              = "#{current_user.name}さん"
+          %li.header__headerInner__nav__listsRight__item
+            = link_to user_path(current_user.id) do
+              %span マイページ
+          %li.header__headerInner__nav__listsRight__item
+            = link_to destroy_user_session_path, method: :delete do
+              %span ログアウト
+        - else
+          %li.header__headerInner__nav__listsRight__item
+            = link_to user_session_path do
+              %span ログイン
+          %li.header__headerInner__nav__listsRight__item
+            = link_to new_user_registration_path do
+              %span 新規会員登録
