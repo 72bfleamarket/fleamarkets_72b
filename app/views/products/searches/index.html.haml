@@ -2,29 +2,10 @@
 
 .contentsRow
   .main__allProducts__productBox__productLists
-    - @products.each do |product|
-      .main__allProducts__productBox__productLists__productList
-        = link_to product_path(product) do
-          %figure.main__allProducts__productBox__productLists__productList--img
-            - product.images.each do |image|
-              = image_tag image.item.url
-          .main__allProducts__productBox__productLists__productList--body
-            .main__allProducts__productBox__productLists__productList__name
-              = product.name
-            .main__allProducts__productBox__productLists__productList__details
-              %ul
-                %li
-                  = "#{product.price.to_s(:delimited, delimiter: ',')}円"
-                %li
-                  %i.fas.fa-star
-                  1
-              %p (税込)
+    = render 'products/shared/product_list'
 
 = render 'products/shared/app_banner'
 
 = render 'products/shared/footer'
 
-= link_to new_product_path(@product) do
-  .purchaseBtn
-    %span.purchaseBtn__text 出品する
-    = image_tag 'material/icon/icon_camera.png', class: 'purchaseBtn__icon'
+= render 'products/shared/purchase_btn'

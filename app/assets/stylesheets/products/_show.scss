@@ -15,7 +15,6 @@
     &__list {
 
       & a {
-        text-decoration: none;
         color: #333;
       }
 
@@ -57,7 +56,6 @@
           margin-top: 16px;
 
           & ul {
-            list-style: none;
             display: flex;
             justify-content: center;
             position: relative;
@@ -70,12 +68,9 @@
                 object-fit: cover;
                 height: 346px;
                 width: 100%;
-                vertical-align: bottom;
-                border: 0;
               }
 
               & ul {
-                list-style: none;
                 margin-top: 10px;
 
                 & li {
@@ -86,8 +81,6 @@
                     object-fit: cover;
                     height: 87px;
                     width: 100%;
-                    vertical-align: bottom;
-                    border: 0;
                   }
                 }
               }
@@ -131,7 +124,6 @@
           transition: all ease-out .3s;
 
           & a {
-            text-decoration: none;
             color: #fff;
           }
         }
@@ -178,7 +170,6 @@
                   font-size: 14px;
 
                   & a {
-                    text-decoration: none;
                     color: #3ccace;
                   }
                 }
@@ -194,7 +185,6 @@
           & ul {
             margin-top: 10px;
             display: flex;
-            list-style: none;
           }
 
           &__optionalBtn {
@@ -206,7 +196,6 @@
               border-radius: 4px;
               color: #333;
               border: 1px solid #333;
-              text-decoration: none;
             }
           }
 
@@ -260,7 +249,6 @@
       justify-content: space-between;
 
       & a {
-        text-decoration: none;
         color: #3ccace;
       }
     }
@@ -271,7 +259,6 @@
         display: block;
         margin: 24px 0 8px;
         color: #3ccace;
-        text-decoration: none;
         font-weight: bold;
         font-size: 22px;
         position: relative;
@@ -303,7 +290,6 @@
               z-index: auto;
               height: 150px;
               object-fit: cover;
-              vertical-align: bottom;
             }
           }
 
@@ -326,7 +312,6 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                list-style: none;
               }
             }
 
