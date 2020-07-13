@@ -43,6 +43,7 @@
 
         & img {
           width: 100%;
+          vertical-align: bottom;
         }
 
         &__aBtn {
@@ -126,6 +127,7 @@
 
           & img {
             width: 100%;
+            vertical-align: bottom;
           }
         }
 
@@ -185,6 +187,7 @@
 
           & img {
             width: 180px;
+            vertical-align: bottom;
           }
         }
       }
@@ -237,6 +240,7 @@
 
           & img {
             width: 100%;
+            vertical-align: bottom;
           }
         }
 
@@ -344,6 +348,7 @@
               z-index: auto;
               height: 150px;
               object-fit: cover;
+              vertical-align: bottom;
             }
           }
 
