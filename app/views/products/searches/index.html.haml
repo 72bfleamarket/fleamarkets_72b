@@ -1,8 +1,121 @@
 = render 'products/shared/header'
 
-.contentsRow
-  .main__allProducts__productBox__productLists
-    = render 'products/shared/product_list'
+%main.container
+  .container__inner
+    .sideBar
+      = form_with(url: products_searches_path, local: true, method: :get, class: 'searchExtendForm') do |form|
+        %select.searchExtendForm__selectDefault
+          %option{value: ""} 並び替え
+          %option{value: "1"} 価格の安い順
+          %option{value: "2"} 価格の高い順
+          %option{value: "3"} 出品の新しい準備
+          %option{value: "4"} いいね!の多い順
+
+        .dropDownContent
+          %h3.dropDownContent__visualLarge 詳細検索
+          .formGroup
+            %label
+              %i.fas.fa-plus
+              %span キーワードを追加する
+              = form.text_field :keyword, value: "#{@search_word}", class: 'formGroup__inputDefault'
+
+          .formGroup
+            %label
+              %i.fas.fa-list-ul
+              %span カテゴリーを選択する
+            .formGroup__selectWrap
+              %select.searchExtendForm__selectDefault
+                %option{value: ""} すべて
+                %option{value: "1"} レディース
+                %option{value: "2"} メンズ
+                %option{value: "3"} ベビー・キッズ
+                %option{value: "4"} インテリア・住まい・小物
+                %option{value: "5"} 本・音楽・ゲーム
+                %option{value: "6"} おもちゃ・ホビー・グッズ
+                %option{value: "7"} コスメ・香水・美容
+                %option{value: "8"} 家電・スマホ・カメラ
+                %option{value: "9"} スポーツ・レジャー
+                %option{value: "10"} ハンドメイド
+                %option{value: "11"} チケット
+                %option{value: "12"} 自動車・オートバイ
+                %option{value: "13"} その他
+
+          .formGroup
+            %label
+              %i.fas.fa-tag
+              %span ブランド名から探す
+            %input.formGroup__inputDefault
+
+          .formGroup
+            %label
+              %i.fas.fa-window-maximize
+              %span サイズを指定する
+            .formGroup__selectWrap
+              %select.searchExtendForm__selectDefault
+                %option{value: ""} すべて
+                %option{value: "1"} 洋服のサイズ
+                %option{value: "2"} メンズ靴のサイズ
+                %option{value: "3"} レディース靴のサイズ
+                %option{value: "4"} スカートのサイズ
+                %option{value: "5"} キッズ服のサイズ
+                %option{value: "6"} ベビー・キッズ靴のサイズ
+                %option{value: "7"}  ベビー服のサイズ
+                %option{value: "8"} テレビのサイズ
+                %option{value: "9"} オートバイのサイズ
+                %option{value: "10"} ヘルメットのサイズ
+                %option{value: "11"} タイヤのサイズ
+                %option{value: "12"} スキーのサイズ
+                %option{value: "13"} スノーボードのサイズ
+
+          .formGroup
+            %label
+              %i.fas.fa-coins
+              %span 価格
+            .formGroup__selectWrap
+              %select.searchExtendForm__selectDefault
+                %option{value: ""} 選択してください
+                %option{value: "1"} 300 ~ 1000
+                %option{value: "2"} 1000 ~ 5000
+                %option{value: "3"} 5000 ~ 10000
+                %option{value: "4"} 10000 ~ 30000
+                %option{value: "5"} 30000 ~ 50000
+                %option{value: "6"} 50000 ~ 
+            %input.formGroup__inputDefault.price{placeholder: '¥ Min'}
+            %span ~ 
+            %input.formGroup__inputDefault.price{placeholder: '¥ Max'}
+
+          .formGroup
+            %label
+              %i.fas.fa-star
+              %span 商品の状態
+
+          .formGroup
+            %label
+              %i.fas.fa-truck
+              %span 配送料の負担
+
+          .formGroup
+            %label
+              %i.fas.fa-shopping-cart
+              %span 販売状況
+
+          .dropDownContent__searchExtendBtn
+            = button_tag type: 'submit', class: 'btnDefault btnDefault--gray', id: 'grayBtn' do
+              クリア
+            = form.submit '完了', class: 'btnDefault btnDefault--red', id: '#redBtn'
+
+    .searchResult
+      %h2.searchResult__head
+        - if @search_word.present?
+          = @search_word
+          %span の検索結果
+        - else
+          全投稿一覧
+
+      .searchResult__number
+        = "#{@products.count}件表示"
+
+      = render 'products/shared/product_list'
 
 = render 'products/shared/app_banner'
 
