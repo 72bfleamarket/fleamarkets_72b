@@ -1,0 +1,16 @@
+.Search {
+  padding: 30px;
+  &__Field {
+    margin-left: auto;
+    width: 100%;
+    & form {
+      width: 100%;
+      display: flex;
+      margin-bottom: 5px  ;
+    }
+  }
+  &__Result {
+    display: flex;
+    flex-direction: column;
+  }
+}

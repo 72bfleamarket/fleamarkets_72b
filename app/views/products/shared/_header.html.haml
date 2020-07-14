@@ -6,12 +6,11 @@
           = image_tag 'material/logo/logo.png'
 
       .header__headerInner__mainHeader__searchBox
-        %form
-          = search_form_for @search, url: search_path do |f|
-            = f.search_field :name_cont, placeholder: "キーワードから探す", class: "header__headerInner__mainHeader__searchBox--input"
-            = button_tag type: 'submit', class: 'header__headerInner__mainHeader__searchBox__submit' do
-              .header__headerInner__mainHeader__searchBox__icon
-                = image_tag 'material/icon/icon-search 1.png'
+        = search_form_for @search, url: search_path do |f|
+          = f.search_field :name_cont, placeholder: "キーワードから探す", class: "header__headerInner__mainHeader__searchBox--input"
+          = button_tag type: 'submit', class: 'header__headerInner__mainHeader__searchBox__submit' do
+            .header__headerInner__mainHeader__searchBox__icon
+              = image_tag 'material/icon/icon-search 1.png'
 
     .header__headerInner__nav
       %ul.header__headerInner__nav__listsLeft

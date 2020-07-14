@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :set_product, except: [:index, :new, :create]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :set_product, except: [:index, :new, :create, :search]
+  before_action :move_to_index, except: [:index, :show, :search]
 
   def index
+    @products = Product.includes(:images).order("created_at DESC")
     @search = Product.ransack(params[:q])
-    @products = @search.result.includes(:images).order("created_at DESC")
     if user_signed_in?
       @user = User.find(current_user.id)
     end
@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
+  end
+
+  def search
+    @search = Product.ransack(params[:q])
+    @product = @search.result.includes(:images).order("created_at DESC")
   end
 
   def create
