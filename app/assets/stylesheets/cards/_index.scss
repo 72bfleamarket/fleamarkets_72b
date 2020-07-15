@@ -45,17 +45,19 @@
       padding: 40px;
       &__content-box{
         margin-bottom: 30px;
+        text-align: center;
         &__infomartion{
           font-size: 12px;
           margin-bottom: 8px;
           font-weight: bold;
-          &__form{
-            height: 40px;
-            width: 100%;
-            font-size: 16px;
-            font-weight: normal;
-          }
         }
+        &__form{
+          height: 40px;
+          width: 300px;
+          font-size: 16px;
+          font-weight: normal;
+        }
+      
         &__btn{
           text-align: center;
           &__send-btn{

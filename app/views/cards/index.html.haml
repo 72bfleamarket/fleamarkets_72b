@@ -1,0 +1,20 @@
+= render 'products/shared/header'
+
+.user-mypage.clearfix
+  = render 'users/side-bar'
+
+  .user-mypage__main-content
+    .user-mypage__main-content__content-title
+      登録カード情報
+    .user-mypage__main-content__content-form
+      - @users.each do |user|
+        .user-mypage__main-content__content-form__content-box
+          .user-mypage__main-content__content-form__content-box__card-info
+            = "カード番号 #{user.name}"
+          .user-mypage__main-content__content-form__content-box__dele-btn
+            = "削除する"
+            -# = link_to card_destroy(card) do
+          .user-mypage__main-content__content-form__content-box__add-btn
+            = link_to root_path "追加"
+= render 'products/shared/footer'
+

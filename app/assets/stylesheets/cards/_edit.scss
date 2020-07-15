@@ -6,32 +6,6 @@
   padding: 40px 200px ;
   display: flex;
   justify-content: space-evenly;
-
-  &__side-bar{
-    width: 280px;
-    margin-right: 100px;
-    &__title{
-      font-size: 22px;
-      padding: 16px;
-    }
-    &__content-box{
-      display: list-item; 
-      list-style: none;
-      background-color: #ffffff;
-      &__list{
-        height: 50px;
-        font-size: 14px;
-        line-height: 50px;
-        padding:0px 16px;
-        border-top: 1px solid #eee;
-        position: relative;
-        &__item{
-          display: block;
-          color:black;
-        }
-      }
-    }
-  }
   &__main-content{
     width: 700px;
     &__content-title{
@@ -45,17 +19,32 @@
       padding: 40px;
       &__content-box{
         margin-bottom: 30px;
+        text-align: center;
         &__infomartion{
           font-size: 12px;
           margin-bottom: 8px;
           font-weight: bold;
-          &__form{
+        }
+        &__form{
+          height: 40px;
+          width: 300px;
+          font-size: 16px;
+          font-weight: normal;
+          &__year{
             height: 40px;
-            width: 100%;
+            width: 130px;
             font-size: 16px;
             font-weight: normal;
           }
+          &__month{
+            height: 40px;
+            width: 130px;
+            font-size: 16px;
+            font-weight: normal;
+            margin-left: 40px;
+          }
         }
+      
         &__btn{
           text-align: center;
           &__send-btn{
