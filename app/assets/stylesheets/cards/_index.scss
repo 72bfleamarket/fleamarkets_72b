@@ -6,32 +6,6 @@
   padding: 40px 200px ;
   display: flex;
   justify-content: space-evenly;
-
-  &__side-bar{
-    width: 280px;
-    margin-right: 100px;
-    &__title{
-      font-size: 22px;
-      padding: 16px;
-    }
-    &__content-box{
-      display: list-item; 
-      list-style: none;
-      background-color: #ffffff;
-      &__list{
-        height: 50px;
-        font-size: 14px;
-        line-height: 50px;
-        padding:0px 16px;
-        border-top: 1px solid #eee;
-        position: relative;
-        &__item{
-          display: block;
-          color:black;
-        }
-      }
-    }
-  }
   &__main-content{
     width: 700px;
     &__content-title{
@@ -46,21 +20,23 @@
       &__content-box{
         margin-bottom: 30px;
         text-align: center;
-        &__infomartion{
-          font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        &__card-info{
+          font-size: 16px;
           margin-bottom: 8px;
           font-weight: bold;
         }
-        &__form{
-          height: 40px;
-          width: 300px;
-          font-size: 16px;
-          font-weight: normal;
+        &__card-btn{
+          &__dele-btn{
+            color:blue;
+            width: 50px;
+          }
         }
-      
         &__btn{
           text-align: center;
-          &__send-btn{
+          width: 100%;
+          &__add-btn{
             height: 50px;
             width: 100%;
             color: #ffffff;
@@ -86,4 +62,15 @@
   right: 16px;
   line-height: 50px;
 }
-
+#add-btn{
+  height: 50px;
+  width: 100％;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  background-color: red;
+  border: none;
+  &:hover{
+    opacity: 0.6;
+  }
+}
