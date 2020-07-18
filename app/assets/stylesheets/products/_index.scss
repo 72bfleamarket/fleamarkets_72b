@@ -223,8 +223,7 @@
       max-width: calc(1040px + 20px);
       width: 100%;
       margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
+      @include wrap();
 
       &__item {
         display: flex;
@@ -295,6 +294,7 @@
         width: 780px;
         margin: 26px auto;
         @include wrap();
+        justify-content: center;
 
         &__productList {
           width: 220px;

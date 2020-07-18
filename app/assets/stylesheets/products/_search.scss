@@ -15,8 +15,8 @@
 
       .searchExtendForm {
         position: relative;
-
-        &__selectDefault {
+        
+        select {
           width: 100%;
           position: relative;
           z-index: 1;
@@ -26,6 +26,7 @@
           border: 1px solid #ccc;
           line-height: 1.5;
           cursor: pointer;
+          color: #333;
         }
 
         .dropDownContent{
@@ -75,6 +76,48 @@
             &__selectWrap {
               margin-top: 8px;
               position: relative;
+            }
+
+            div {
+              @include wrap();
+            }
+
+            &__checkboxDefault {
+              margin-top: 16px;
+              display: inline-block;
+              width: 48%;
+              vertical-align: middle;
+              position: relative;
+
+              input {
+                position: absolute;
+                top: 10%;
+                left: 0;
+                z-index: 1;
+                width: 20px;
+                height: 20px;
+                border-radius: 2px;
+                border: 1px solid #ccc;
+                color: #fff;
+                vertical-align: middle;
+                transition: all ease-out .3s;
+                margin-right: 4px;
+                cursor: pointer;
+              }
+
+              label {
+                display: block;
+                position: relative;
+                padding-left: 28px;
+                font-size: 14px;
+                font-weight: 400;
+                vertical-align: middle;
+                cursor: pointer;
+              }
+
+              &__parts {
+                line-height: 28px;
+              }
             }
           }
 
@@ -129,6 +172,19 @@
         margin: 16px 0;
         font-size: 12px;
         color: #888;
+        
+        span {
+          color: #888;
+
+          a {
+            color: #888;
+          }
+        }
+      }
+
+      &__lists {
+        max-width: 680px;
+        margin: 0 auto;
       }
     }
   }

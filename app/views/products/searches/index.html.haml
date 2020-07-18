@@ -4,7 +4,7 @@
   .container__inner
     .sideBar
       = form_with(url: products_searches_path, local: true, method: :get, class: 'searchExtendForm') do |form|
-        %select.searchExtendForm__selectDefault
+        %select
           %option{value: ""} 並び替え
           %option{value: "1"} 価格の安い順
           %option{value: "2"} 価格の高い順
@@ -24,62 +24,27 @@
               %i.fas.fa-list-ul
               %span カテゴリーを選択する
             .formGroup__selectWrap
-              %select.searchExtendForm__selectDefault
-                %option{value: ""} すべて
-                %option{value: "1"} レディース
-                %option{value: "2"} メンズ
-                %option{value: "3"} ベビー・キッズ
-                %option{value: "4"} インテリア・住まい・小物
-                %option{value: "5"} 本・音楽・ゲーム
-                %option{value: "6"} おもちゃ・ホビー・グッズ
-                %option{value: "7"} コスメ・香水・美容
-                %option{value: "8"} 家電・スマホ・カメラ
-                %option{value: "9"} スポーツ・レジャー
-                %option{value: "10"} ハンドメイド
-                %option{value: "11"} チケット
-                %option{value: "12"} 自動車・オートバイ
-                %option{value: "13"} その他
+              = form.collection_select(:category_id, @categories, :id, :name, {include_blank: 'すべて'})
 
           .formGroup
             %label
               %i.fas.fa-tag
               %span ブランド名から探す
-            %input.formGroup__inputDefault
+            %input.formGroup__inputDefault{placeholder: '例）シャネル'}
 
           .formGroup
             %label
               %i.fas.fa-window-maximize
               %span サイズを指定する
             .formGroup__selectWrap
-              %select.searchExtendForm__selectDefault
-                %option{value: ""} すべて
-                %option{value: "1"} 洋服のサイズ
-                %option{value: "2"} メンズ靴のサイズ
-                %option{value: "3"} レディース靴のサイズ
-                %option{value: "4"} スカートのサイズ
-                %option{value: "5"} キッズ服のサイズ
-                %option{value: "6"} ベビー・キッズ靴のサイズ
-                %option{value: "7"}  ベビー服のサイズ
-                %option{value: "8"} テレビのサイズ
-                %option{value: "9"} オートバイのサイズ
-                %option{value: "10"} ヘルメットのサイズ
-                %option{value: "11"} タイヤのサイズ
-                %option{value: "12"} スキーのサイズ
-                %option{value: "13"} スノーボードのサイズ
+              = form.collection_select(:size, @products, :id, :size, {include_blank: 'すべて'})
 
           .formGroup
             %label
               %i.fas.fa-coins
               %span 価格
             .formGroup__selectWrap
-              %select.searchExtendForm__selectDefault
-                %option{value: ""} 選択してください
-                %option{value: "1"} 300 ~ 1000
-                %option{value: "2"} 1000 ~ 5000
-                %option{value: "3"} 5000 ~ 10000
-                %option{value: "4"} 10000 ~ 30000
-                %option{value: "5"} 30000 ~ 50000
-                %option{value: "6"} 50000 ~ 
+              = form.select :price, [ ['300 ~ 1000', 1], ['1000 ~ 5000', 2], ['5000 ~ 10000', 3] ,['10000 ~ 30000', 4], ['30000 ~ 50000', 5], ['50000 ~ ', 6]  ], {prompt: '選択してください'}
             %input.formGroup__inputDefault.price{placeholder: '¥ Min'}
             %span ~ 
             %input.formGroup__inputDefault.price{placeholder: '¥ Max'}
@@ -88,16 +53,58 @@
             %label
               %i.fas.fa-star
               %span 商品の状態
+            %div
+              .formGroup__checkboxDefault
+                = form.check_box :condition, {}, 'true', 'false'
+                = form.label :condition, 'すべて'
+              .formGroup__checkboxDefault
+                = form.check_box :condition, {}, 'true', 'false'
+                = form.label :condition, '新品、未使用'
+              .formGroup__checkboxDefault
+                = form.check_box :condition, {}, 'true', 'false'
+                = form.label :condition, '未使用に近い', class: 'formGroup__checkboxDefault__parts'
+              .formGroup__checkboxDefault
+                = form.check_box :condition, {}, 'true', 'false'
+                = form.label :condition, '目立った傷や汚れなし'
+              .formGroup__checkboxDefault
+                = form.check_box :condition, {}, 'true', 'false'
+                = form.label :condition, 'やや傷や汚れあり'
+              .formGroup__checkboxDefault
+                = form.check_box :condition, {}, 'true', 'false'
+                = form.label :condition, '傷や汚れあり', class: 'formGroup__checkboxDefault__parts'
+              .formGroup__checkboxDefault
+                = form.check_box :condition, {}, 'true', 'false'
+                = form.label :condition, '全体的に状態が悪い'
 
           .formGroup
             %label
               %i.fas.fa-truck
               %span 配送料の負担
+            %div
+              .formGroup__checkboxDefault
+                = form.check_box :postage, {}, 'true', 'false'
+                = form.label :postage, 'すべて', class: 'formGroup__checkboxDefault__parts'
+              .formGroup__checkboxDefault
+                = form.check_box :postage, {}, 'true', 'false'
+                = form.label :postage, '着払い(購入者負担)'
+              .formGroup__checkboxDefault
+                = form.check_box :postage, {}, 'true', 'false'
+                = form.label :postage, '送料込み(出品者負担)'
 
           .formGroup
             %label
               %i.fas.fa-shopping-cart
               %span 販売状況
+            %div
+              .formGroup__checkboxDefault
+                = form.check_box :buyer_id, {}, 'true', 'false'
+                = form.label :buyer_id, 'すべて', class: 'formGroup__checkboxDefault__parts'
+              .formGroup__checkboxDefault
+                = form.check_box :buyer_id, {}, 'true', 'false'
+                = form.label :buyer_id, '販売中', class: 'formGroup__checkboxDefault__parts'
+              .formGroup__checkboxDefault
+                = form.check_box :buyer_id, {}, 'true', 'false'
+                = form.label :buyer_id, '売り切れ', class: 'formGroup__checkboxDefault__parts'
 
           .dropDownContent__searchExtendBtn
             = button_tag type: 'submit', class: 'btnDefault btnDefault--gray', id: 'grayBtn' do
@@ -115,7 +122,8 @@
       .searchResult__number
         = "#{@products.count}件表示"
 
-      = render 'products/shared/product_list'
+      .searchResult__lists
+        = render 'products/shared/product_list'
 
 = render 'products/shared/app_banner'
 
