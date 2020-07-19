@@ -10,14 +10,12 @@
       .new_user__body__box
         = link_to new_user_path, class: "btn-default btn-sns" do
           メールアドレスで登録する
-        = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
-          %button#google-login.btn-default.btn-sns.btn-sns-google
-            %i.fab.fa-google
-            Googleで登録する
-        = link_to user_facebook_omniauth_authorize_path, method: :post do
-          %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
-            %i.fab.fa-facebook
-            Facebookで登録する
+        = link_to user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google", id: "google-login" , method: :post do
+          %i.fab.fa-google
+          Googleで登録する
+        = link_to user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", id: "facebook-login" , method: :post do
+          %i.fab.fa-facebook
+          Facebookで登録する
         %button#apple-login.btn-default.btn-sns.btn-sns-apple
           %i.fab.fa-apple
           Appleで登録する
