@@ -8,9 +8,8 @@
     .new_user__body
       %h2.body_head 新規会員登録
       .new_user__body__box
-        = link_to new_user_path do
-          %button.btn-default.btn-sns
-            メールアドレスで登録する
+        = link_to new_user_path, class: "btn-default btn-sns" do
+          メールアドレスで登録する
         = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
           %button#google-login.btn-default.btn-sns.btn-sns-google
             %i.fab.fa-google
