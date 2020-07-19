@@ -4,6 +4,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]　/デフォルト記載
   # before_action :configure_account_update_params, only: [:update]　/デフォルト記載
 
+  def new
+    @user = User.new
+  end
+
   def new_user
     @user = User.new
   end
