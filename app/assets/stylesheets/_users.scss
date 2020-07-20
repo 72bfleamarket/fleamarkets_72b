@@ -2,9 +2,11 @@ html,
 body {
   height: 100vh;
 }
+
 .err_message {
   color: #CC3300;
 }
+
 .btn-default {
   border-radius: 4px;
   display: block;
@@ -104,7 +106,8 @@ body {
       font-size: 22px;
       border-bottom: 1px solid rgb(237, 237, 237);
     }
-    .head{
+
+    .head {
       border-bottom: 1px solid rgb(237, 237, 237);
     }
 
@@ -124,9 +127,11 @@ body {
         position: relative;
         color: #fff;
         text-decoration: none;
+
         &:hover {
           background-color: #34AEB3;
         }
+
         &:active {
           background-color: #2C9599;
         }
@@ -239,13 +244,16 @@ body {
 
   &__footer {
     height: 200px;
+
     .regulation {
       margin-top: 35px;
       display: flex;
       text-align: center;
       justify-content: center;
+
       li {
         margin: 10px;
+
         a {
           font-size: 12px;
         }

@@ -2,6 +2,7 @@
   - if @product.errors.any?
     .error_messages
       %ul.err_box
+        = I18n.t("errors.messages.not_saved")
         - @product.errors.full_messages.each do |message|
           %li= message
   #products-image
