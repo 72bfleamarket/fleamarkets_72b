@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', () => {
+$(function () {
   //郵便番号にハイフンを自動挿入するメソッド
   function insertStr(input) {
     return input.slice(0, 3) + '-' + input.slice(3, input.length);
