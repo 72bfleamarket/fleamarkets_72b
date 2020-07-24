@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { 
-    registrations: "users/registrations", sessions: "users/sessions",
-    omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  devise_for :users, controllers: {
+                       registrations: "users/registrations", sessions: "users/sessions",
+                       omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations",
+                     }
   devise_scope :user do
     get "new_user", to: "users/registrations#new_user"
     post "new_user", to: "users/registrations#create_user"
@@ -22,8 +23,10 @@ Rails.application.routes.draw do
   root "products#index"
   resources :products do
     resources :buyers, only: [:new, :create]
+    collection do
+      get :search
+    end
   end
   resources :categories, only: [:index, :show]
-
   resources :cards, only: [:new, :create, :show, :destroy]
 end
