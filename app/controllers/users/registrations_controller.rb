@@ -38,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
-    if @address.valid!
+    if @address.valid?
       @user.save
       @address = Address.new(address_params.merge(user_id: @user.id))
       @address.save
