@@ -10,14 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new_user
     @user = User.new
+  end
+  
+  def create_user
     if params[:sns_auth] == 'true'
       pass = Devise.friendly_token
       params[:user][:password] = pass
       params[:user][:password_confirmation] = pass
     end
-  end
-
-  def create_user
     params[:user][:birthday] = birthday_join
     @user = User.new(sign_up_params)
     @address = Address.new
