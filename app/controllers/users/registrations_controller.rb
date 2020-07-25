@@ -16,6 +16,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params[:user][:birthday] = birthday_join
     @user = User.new(sign_up_params)
     @address = Address.new
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
     if @user.valid?
       session["devise.regist_data"] = { user: @user.attributes }
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
