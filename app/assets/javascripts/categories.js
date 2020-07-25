@@ -83,4 +83,29 @@ $(document).on('turbolinks:load', () => {
       $(".gc_category_id").remove();
     }
   });
+
+  // ページ内リンクのスクロール
+  $('a[href^=#]').click(function () {
+    let adjust = 0;
+    let speed = 500;
+    let href = $(this).attr("href");
+    let target = $(href == "#" || href == "" ? 'html' : href);
+    let position = target.offset().top + adjust;
+    $('body,html').animate({
+      scrollTop: position
+    }, speed, 'swing');
+    return false;
+  });
+
+  $("a#scroll_top[href^=#]").click(function () {
+    let speeds = 500;
+    let hrefTop = $(this).attr("href");
+    let targets = $(hrefTop == "#" || hrefTop == "" ? "html" : hrefTop);
+    let position = targets.offset().top;
+
+    $("body, html").animate({
+      scrollTop: position
+    }, speeds, "swing");
+    return false;
+  });
 });

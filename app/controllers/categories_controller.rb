@@ -2,18 +2,16 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: :show
 
   def index
-    @parents = Category.all.order("ancestry ASC").limit(2)
+    @parents = Category.where(ancestry: nil)
     @products = Product.all
     @categories = Product.includes(:images).order("created_at DESC")
   end
-
 
   def show
     @parents = Category.all.order("ancestry ASC").limit(2)
     @category = Category.find(params[:id])
     @products = Product.includes(:images).order("created_at DESC").where(category_id: @category)
   end
-
 
   private
 
@@ -29,5 +27,4 @@ class CategoriesController < ApplicationController
       @category_links = @category.siblings
     end
   end
-
 end

@@ -1,39 +1,67 @@
-.content       
+= render 'products/shared/header'
+%nav.breadCrumbs
+  - breadcrumb :categories
+  = render "layouts/breadcrumbs"
+.content
   .content__all-products
     .content__all-products__product-box
-      .content__all-products__product-box__title
-        = "商品一覧"
-      %ul.content__all-products__product-box__sub-lists
-        %li.content__all-products__product-box__sub-lists__sub-list          
+      .content__all-products__product-box__categories
+        = "カテゴリー一覧"
+      .content__all-products__product-box__categories-lists
+        %ul.content__all-products__product-box__categories-lists__category
           - @parents.each do |parent|
-            %li.parent
-              = link_to "#{parent.name}", category_path(parent)
+            %li.category_parent
+              = link_to "##{parent.id}" do
+                %input{type: "button", value: "#{parent.name}"}
 
-            %ul.content__all-products__product-box__sub-lists__sub-list__parents__children
-              - parent.children.each do |child|
-                %li.child
-                  = link_to "#{child.name}", category_path(child)
+    .content__all-products__product-box
+      - @parents.each do |parent|
+        .content__all-products__product-box__parents{id: "#{parent.id}"}
+          = "#{parent.name}"
+        .content__all-products__product-box__parents-all
+          = link_to "#{parent.name}のすべて",category_path(parent)
+        - parent.children.each do |child|
+          .content__all-products__product-box__children
+            = "#{child.name}"
+          %ul.content__all-products__product-box__children
+            %li.content__all-products__product-box__children__all
+              = link_to "#{child.name}のすべて", category_path(child)
+            - child.children.each do |grandchild|
+              %li.content__all-products__product-box__children__all
+                = link_to "#{grandchild.name}", category_path(grandchild)
 
-                  %ul.content__all-products__product-box__sub-lists__sub-list__parents__children__grandchildren
-                    -child.children.each do |grandchild|
-                      %li.grandchild
-                        = link_to "#{grandchild.name}", category_path(grandchild)
-
-    .content__all-products__product-lists
-      .content__all-products__product-lists__product-list
+    %section.main__allProducts
+    .main__allProducts__head 商品一覧
+    .main__allProducts__productBox
+      .main__allProducts__productBox__productHead
+        = link_to '#' do
+          %h3.main__allProducts__productBox__productHead__title 投稿商品
+      .main__allProducts__productBox__productLists
         - @products.each do |product|
-          .content__all-products__product-lists__product-list--link
+          .main__allProducts__productBox__productLists__productList
+            - if product.buyer_id.present?
+              .main__allProducts__productBox__productLists__productList__soldOut
+                .main__allProducts__productBox__productLists__productList__soldOut__content SOLD
             = link_to product_path(product) do
-              = image_tag product.images[0].item.url, class: 'content__all-products__product-lists__product-list--icon'
-            .content__all-products__product-lists__product-list__body
-              .content__all-products__product-lists__product-list__body__name
-                = product.name
-              %ul.content__all-products__product-lists__product-list__body__lists
-                %li.content__all-products__product-lists__product-list__body__lists__list
-                  = "#{product.price.to_s(:delimited, delimiter: ',')}円"
-                %li.content__all-products__product-lists__product-list__body__lists__list
-                  %i.fas.fa-star.content__all-products__product-lists__product-list__body__lists__list--icon
-                  0
-              .content__all-products__product-lists__product-list__body__tax
-                (税込)
+              %figure.main__allProducts__productBox__productLists__productList--img
+                = image_tag product.images[0].item.url
+              .main__allProducts__productBox__productLists__productList--body
+                .main__allProducts__productBox__productLists__productList__name
+                  = product.name
+                .main__allProducts__productBox__productLists__productList__details
+                  %ul
+                    %li
+                      = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+                    %li
+                      %i.fas.fa-star
+                      1
+                  %p (税込)
+    .backpage
+      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
 
+= render 'products/shared/footer'
+= render 'products/shared/purchase_btn'
+.scroll_button
+  %span
+    = link_to "#" , id: "scroll_top" do
+      ページTOPへ戻る
