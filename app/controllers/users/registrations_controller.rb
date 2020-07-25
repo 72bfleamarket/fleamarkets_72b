@@ -10,17 +10,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new_user
     @user = User.new
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
   end
 
   def create_user
     params[:user][:birthday] = birthday_join
     @user = User.new(sign_up_params)
     @address = Address.new
-    if params[:sns_auth] == 'true'
-      pass = Devise.friendly_token
-      params[:user][:password] = pass
-      params[:user][:password_confirmation] = pass
-    end
     if @user.valid?
       session["devise.regist_data"] = { user: @user.attributes }
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
@@ -38,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
-    if @address.valid?
+    if @address.valid!
       @user.save
       @address = Address.new(address_params.merge(user_id: @user.id))
       @address.save

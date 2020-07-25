@@ -60,8 +60,8 @@
               %br
               - if @user.errors.any?
                 %span.err_message
-                  =  @user.errors.full_messages_for(:password).shift
-              = f.password_field :password, class: "new_user__body__box__group__form", placeholder: "７文字以上の半角英数字"
+                  =  @user.errors.full_messages_for(:password_confirmation).shift
+              = f.password_field :password_confirmation, class: "new_user__body__box__group__form", placeholder: "７文字以上の半角英数字"
         .new_user__body__box__group
           .new_user__body__box__group__head
             %label
