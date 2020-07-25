@@ -24,6 +24,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.valid?
       session["devise.regist_data"] = { user: @user.attributes }
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
+      session["devise.regist_data"][:user]["password_confirmation"] = params[:user][:password_confirmation]
+
       render :new_address
     else
       render :new_user
