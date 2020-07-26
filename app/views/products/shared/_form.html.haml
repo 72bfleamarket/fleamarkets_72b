@@ -35,16 +35,9 @@
 
     = form.fields_for :images do |i|
       .box
-        .box-field
-          .box-preview__1
-          %label.box-field__1
-            %i.fas.fa-camera
-            = i.file_field :item, type: 'file', class: "box__select"
-        .box-field2
-          .box-preview__2
-          %label.box-field2__2
-            %i.fas.fa-camera
-            = i.file_field :item, type: 'file', class: "box__select"
+        %label.box-field
+          %i.fas.fa-camera
+          = i.file_field :item, type: 'file', class: "box__select"
 
 
   #product-about

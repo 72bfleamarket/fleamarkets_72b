@@ -45,22 +45,15 @@ $(document).on('turbolinks:load', () => {
   // });
 
 
-  //test1
+  //Drag&Drop
   $(function(){
     //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
     $('.box').on('change', 'input[type="file"]', function(e) {
       var file = e.target.files[0];
       reader = new FileReader();
-      var preview1 = $(".box-preview__1");
-      var preview2 = $(".box-preview__2");
-      var dropbox1 = $(".box-field__1");
-      var dropbox2 = $(".box-field2__2");
-      var box2 = $(".box-field2");
-      var inputs  =[];
+      var dropbox = $(".box-field");
+      var box = $(".box");
 
-      
-      t = this;
-      
       // 画像ファイル判別し画像ファイル以外はfalse
       if(file.type.indexOf("image") < 0){
         return false;
@@ -75,64 +68,98 @@ $(document).on('turbolinks:load', () => {
           </div>
           <div class='preview__delete', id='back'>削除</div>
           </div>`
+
           //box要素の前にhtmlを差し込む
-          if($(".preview").length <= 4){
-          preview1.append(html);
-          console.log("a")
-          console.log($(".preview").length)
-        }else{
-              preview2.append(html);
-            }
-        if($(".preview").length >= 5) {
-          dropbox2.css({'display': 'block'})
-          dropbox1.css({'display': 'none'})
-          console.log("b")
-            // console.log($(".preview").length)
-          };
+          dropbox.before(html);
+
+          //写真追加によるviewの変更
           if ($(".preview").length == 10){
-            dropbox2.css({'display': 'none'})
+            dropbox.css({'display': 'none'})
+          }else{
+            dropbox.css({'display': 'block'})
           }
-          // if($(".preview").length > 5) {
-          //   preview2.append(html);
-          //   console.log($(".preview").length)
-
-          // }
-            //画像を削除
-            $(document).on("click", '.preview__delete', function(){
-              //プレビュー要素を取得
-              var target_image = $(this).parent()
-
-              //プレビューを削除
-              target_image.remove();
-              console.log($(".preview").length)
-
-              if ($(".preview").length <= 4) {
-                dropbox1.css({'display': 'block'})
-                dropbox2.css({'display': 'none'})
-              }else{
-                dropbox2.css({'display': 'block'})
-                dropbox1.css({'display': 'none'})
-              }
-              
-            })
+          if($(".preview").length == 9) {
+            dropbox.css({'width': '20%'})
+          }
+          if($(".preview").length == 8) {
+            dropbox.css({'width': '40%'})
+          }
+          if($(".preview").length == 7) {
+            dropbox.css({'width': '60%'})
+          }
+          if($(".preview").length == 6) {
+            dropbox.css({'width': '80%'})
+          }
+          if($(".preview").length == 5) {
+            dropbox.css({'width': '100%'})
             }
+          if($(".preview").length == 4) {
+            dropbox.css({'width': '20%'})
+            }
+          if($(".preview").length == 3) {
+            dropbox.css({'width': '40%'})
+            }
+          if($(".preview").length == 2) {
+            dropbox.css({'width': '60%'})
+            }
+          if($(".preview").length == 1) {
+            dropbox.css({'width': '80%'})
+            }
+          if($(".preview").length == 0) {
+            dropbox.css({'width': '100%'})
+            }
+
+          //削除ボタンを押下した際の画像削除イベント
+          $(document).on("click", '.preview__delete', function(){
+            //Preview要素を取得
+            var target_image = $(this).parent()
+
+            //Preview要素を削除
+            target_image.remove();
+            console.log($(".preview").length)
+
+            //写真追加によるviewの変更
+            if ($(".preview").length <= 9) {
+              dropbox.css({'display': 'block'})
+            }
+            if($(".preview").length == 9) {
+              dropbox.css({'width': '20%'})
+            }
+            if($(".preview").length == 8) {
+              dropbox.css({'width': '40%'})
+            }
+            if($(".preview").length == 7) {
+              dropbox.css({'width': '60%'})
+            }
+            if($(".preview").length == 6) {
+              dropbox.css({'width': '80%'})
+            }
+            if($(".preview").length == 5) {
+              dropbox.css({'width': '100%'})
+              }
+            if($(".preview").length == 4) {
+              dropbox.css({'width': '20%'})
+              }
+            if($(".preview").length == 3) {
+              dropbox.css({'width': '40%'})
+              }
+            if($(".preview").length == 2) {
+              dropbox.css({'width': '60%'})
+              }
+            if($(".preview").length == 1) {
+              dropbox.css({'width': '80%'})
+              }
+            if($(".preview").length == 0) {
+              dropbox.css({'width': '100%'})
+              }
+            })
+          }
         })
         (file);
         reader.readAsDataURL(file);
-        
-
+        console.log(reader)
     });
-
-
-
-    // $('.preview__delete').on('click', function() {
-    //   $('.box-field').removeClass('change');
-    // });
-
   });
-  $(function(){
-});
-  
 
 
   //文字数をカウント

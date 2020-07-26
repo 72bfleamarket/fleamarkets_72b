@@ -406,39 +406,20 @@
 
 .box {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
   .box-field {
-    display: flex;
+    border-radius: 3px;
     width: 100%;
-    &__1 {
-      border-radius: 3px;
-      width: 100%;
-      height: 100px;
-      position: relative;
-      border: gray 0.5px solid;
-      display: flex;
-    }
-  }
-  .box-field2 {
-    display: flex;
-    width: 100%;
-    &__2 {
-      border-radius: 3px;
-      width: 100%;
-      height: 100px;
-      position: relative;
-      border: gray 0.5px solid;
-      display: none;
-    }
+    height: 100px;
+    position: relative;
+    border: gray 0.5px solid;
   }
   &__select {
     opacity: 0;
     width: 100%;
     height: 100%;
   }
-}
 .fa-camera {
   font-size: 1.5em;
   cursor: pointer;
@@ -454,10 +435,4 @@
   background-color: gray;
   color: white;
 }
-
-.box-preview__1{
-  display: flex;
-}
-.box-preview__2{
-  display: flex;
 }
