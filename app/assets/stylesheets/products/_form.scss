@@ -442,4 +442,9 @@
     position: absolute;
     width: 100%!important;
   }
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
