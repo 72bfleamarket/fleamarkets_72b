@@ -85,9 +85,20 @@ $(document).on('turbolinks:load', () => {
   });
 
   // ページ内リンクのスクロール
-  $('a[href^=#]').click(function () {
+  $('a#scroll_top[href^="#"]').click(function () {
+    let speedTop = 400;
+    let hrefTop = $(this).attr("href");
+    let targets = $(hrefTop == "#" || hrefTop == "" ? "html" : hrefTop);
+    let position = targets.offset().top;
+    $("body, html").animate({
+      scrollTop: position
+    }, speedTop, "swing");
+    return false;
+  });
+
+  $('a[href^="#"]').click(function () {
     let adjust = 0;
-    let speed = 500;
+    let speed = 3000;
     let href = $(this).attr("href");
     let target = $(href == "#" || href == "" ? 'html' : href);
     let position = target.offset().top + adjust;
@@ -97,15 +108,21 @@ $(document).on('turbolinks:load', () => {
     return false;
   });
 
-  $("a#scroll_top[href^=#]").click(function () {
-    let speeds = 500;
-    let hrefTop = $(this).attr("href");
-    let targets = $(hrefTop == "#" || hrefTop == "" ? "html" : hrefTop);
-    let position = targets.offset().top;
-
-    $("body, html").animate({
-      scrollTop: position
-    }, speeds, "swing");
-    return false;
+  // 子カテゴリーの表示切替
+  $(document).ready(function () {
+    $('#categories-lists').hide();
   });
+
+  $('#sub_category').click(function () {
+    $('#sub_category').hide();
+    $('#categories-lists').show();
+  });
+
+  $('#close_category').click(function () {
+    $('#categories-lists').hide();
+    $('#sub_category').show();
+  });
+
+  // ブラウザバック時に強制的にイベントを発火
+  $('#close_category').trigger('click');
 });

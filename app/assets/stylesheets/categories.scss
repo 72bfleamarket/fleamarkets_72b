@@ -1,14 +1,11 @@
-html {
-  scroll-behavior: smooth;
-}
-
 .content {
   width: 100%;
   background-color: #f8f8f8;
 
   &__all-products {
     min-height: calc(100vh - 107px - 350px);
-    width: 780px;
+    min-width: 700px;
+    max-width: 1040px;
     background-color: #f8f8f8;
     color: #000000;
     margin: 0 auto;
@@ -16,6 +13,95 @@ html {
 
     &:last-child {
       padding-bottom: 20px;
+    }
+
+    .children-lists {
+      input {
+        display: block;
+        margin: 0 auto;
+        background-color: #f8f8f8;
+        border: solid #f8f8f8;
+        color: #888888;
+        font-size: 16px;
+        cursor: pointer;
+        bottom: 0;
+      }
+
+      input:hover {
+        color: #c0c0c0;
+        text-decoration: underline;
+      }
+
+      input:active {
+        color: #3e3e3e;
+        text-decoration: underline;
+      }
+    }
+
+    #categories-lists {
+
+      input {
+        display: block;
+        margin: 0 auto;
+        background-color: #f8f8f8;
+        border: solid #f8f8f8;
+        color: #888888;
+        font-size: 16px;
+        cursor: pointer;
+        bottom: 0;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #f8f8f8;
+      }
+
+      input:hover {
+        color: #c0c0c0;
+        text-decoration: underline;
+      }
+
+      input:active {
+        color: #3e3e3e;
+        text-decoration: underline;
+      }
+
+      .category_btn {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #f8f8f8;
+        padding-left: 40px;
+
+        .category_child {
+          margin: 0 5px 10px;
+
+          input[type="button"] {
+            display: inline-block;
+            height: 35px;
+            font-size: 18px;
+            padding: 0.25em 0.5em;
+            text-decoration: none;
+            color: #3ccace;
+            background: #ffffff;
+            transition: .4s;
+            border-radius: 6px;
+            border: 1px solid #34AEB3;
+            box-shadow: 4px 4px 4px #999;
+            padding: 0 1.2em;
+            cursor: pointer;
+          }
+
+          input[type="button"]:hover {
+            background: #62d4d7;
+            color: white;
+          }
+
+          input[type="button"]:active {
+            -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+            background-image: linear-gradient(#b1e9eb 0%, #30a1a4 100%);
+          }
+        }
+      }
     }
 
     &__product-box {
@@ -97,6 +183,7 @@ html {
           display: flex;
           flex-wrap: wrap;
           background-color: #f8f8f8;
+          padding-left: 40px;
 
 
           .category_parent {
@@ -129,67 +216,6 @@ html {
               box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
               background-image: linear-gradient(#b1e9eb 0%, #30a1a4 100%);
             }
-          }
-        }
-      }
-    }
-
-    &__product-lists {
-      width: 780px;
-      margin: 26px 0 auto;
-
-      &__product-list {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-
-
-
-        &--link {
-          width: 220px;
-          text-decoration: none;
-          color: #333333;
-          margin-bottom: 30px;
-
-        }
-
-        &--icon {
-          height: 150px;
-          width: 100%;
-          object-fit: cover;
-        }
-
-        &__body {
-          height: 95px;
-          width: 220px;
-          padding: 16px;
-          background-color: #ffffff;
-
-          &__name {
-            font-size: 22px;
-            height: 24px;
-            line-height: 24px;
-          }
-
-          &__lists {
-            height: 24px;
-            display: flex;
-            justify-content: space-between;
-
-            &__list {
-              line-height: 24px;
-              font-size: 16px;
-              font-weight: normal;
-
-              &--icon {
-                font-size: 14px;
-              }
-            }
-          }
-
-          &__tax {
-            font-size: 10px;
           }
         }
       }
