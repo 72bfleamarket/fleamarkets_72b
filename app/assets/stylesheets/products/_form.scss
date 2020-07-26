@@ -436,3 +436,10 @@
   color: white;
 }
 }
+
+@media screen and (max-width:760px){
+  .box-field {
+    position: absolute;
+    width: 100%!important;
+  }
+}
