@@ -1,39 +1,8 @@
 = render 'products/shared/header'
 
-- if user_signed_in? && current_user.id == @product.user_id
-  .products-edit
-    = link_to '編集', edit_product_path(@product.id)
-  .products-delete
-    = link_to '削除', product_path(@product.id), method: :delete
-
-- if user_signed_in? && current_user.id != @product.user_id
-  .products-buy
-    = link_to '購入', edit_product_path(@product.id)
-
 %nav.breadCrumbs
-  %ul.breadCrumbs__lists
-    %li.breadCrumbs__lists__list
-      = link_to root_path, class: 'breadCrumbs__lists__list--link' do
-        FURIMA
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
-    %li.breadCrumbs__lists__list
-      = link_to categories_path, class: 'breadCrumbs__lists__list--link' do
-        すべてのカテゴリー
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list.breadCrumbs__lists__list--icon
-    %li.breadCrumbs__lists__list
-      = link_to category_path(Product.find(params[:id]).category.root.id), class: 'breadCrumbs__lists__list--link' do
-        = @parents.name
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-    %li.breadCrumbs__lists__list
-      = link_to category_path(Product.find(params[:id]).category.parent.id), class: 'breadCrumbs__lists__list--link' do
-        = @children.name
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-    %li.breadCrumbs__lists__list
-      = link_to category_path(Product.find(params[:id]).category.id), class: 'breadCrumbs__lists__list--link' do
-        = @category.name
-    %li.fas.fa-angle-right.angle-right.breadCrumbs__lists__list
-    %li.breadCrumbs__lists__list
-      = @product.name
+  - breadcrumb :product
+  = render "layouts/breadcrumbs"
 
 .showMain
   .showMain__content
@@ -55,6 +24,19 @@
           .showMain__content__topContent__itemBox__price__detail
             %span (税込)
             %span 送料込み
+          - if @product.buyer_id.present?
+            .showMain__content__topContent__itemBox__soldOut
+              SOLD OUT
+          - elsif user_signed_in? && current_user.id != @product.user_id
+            .showMain__content__topContent__itemBox__purchaseBtn
+              = link_to new_product_buyer_path(@product.id) do
+                購入画面に進む
+          - elsif user_signed_in? && current_user.id == @product.user_id
+            .showMain__content__topContent__itemBox__purchaseBtn 出品中
+          - else
+            .showMain__content__topContent__itemBox__purchaseBtn
+              = link_to user_session_path do
+                購入画面に進む
         .showMain__content__topContent__itemBox__itemDetail
           = @product.detal
         .showMain__content__topContent__itemBox__table
@@ -63,17 +45,18 @@
               %tr
                 %th 出品者
                 %td
-                  = @product.user.name
+                  = link_to profile_path(@product.user.id) do
+                    = @product.user.name
               %tr
                 %th カテゴリー
                 %td
-                  = link_to '#' do
+                  = link_to category_path(@product.category.root.id) do
                     = @parents.name
                   %br
-                  = link_to '#' do
+                  = link_to category_path(@product.category.parent.id) do
                     = @children.name
                   %br
-                  = link_to '#' do
+                  = link_to category_path(@product.category.id) do
                     = @category.name
               %tr
                 %th ブランド
@@ -156,5 +139,12 @@
 
 = render 'products/shared/footer'
 
-= render 'products/shared/purchase_btn'
-
+- if user_signed_in? && current_user.id == @product.user_id
+  .products-edit
+    = link_to edit_product_path(@product) do
+      .purchaseBtn_edit
+        %span.purchaseBtn__text 編集する
+        = image_tag 'material/icon/icon_camera.png', class: 'purchaseBtn__icon'
+  = render 'products/shared/purchase_btn'
+- else
+  = render 'products/shared/purchase_btn'

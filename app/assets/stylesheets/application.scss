@@ -1,10 +1,9 @@
 @import 'reset';
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'mixin/clearfix';
 @import 'categories';
 @import 'products/index';
-@import 'users';
-@import 'products/show';
 @import 'products/form';
 @import 'users/show';
 @import 'users/profile';
@@ -12,3 +11,8 @@
 @import 'users/email-pass';
 @import 'cards/index';
 @import 'cards/edit';
+@import 'products/show';
+@import 'products/buyers/new';
+@import 'products/buyers/create';
+@import 'cards';
+@import 'users';

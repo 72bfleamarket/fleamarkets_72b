@@ -3,6 +3,22 @@ body {
   height: 100vh;
 }
 
+.err_message {
+  color: #CC3300;
+}
+
+.btn-default {
+  border-radius: 4px;
+  display: block;
+  line-height: 48px;
+  font-size: 14px;
+  width: 100%;
+  border: 1px solid;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+
 .new_user {
   font-size: 14px;
   color: rgb(51, 51, 51);
@@ -81,6 +97,7 @@ body {
   &__body {
     background-color: #fff;
     width: 700px;
+    min-height: calc(100vh - 100px - 200px);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -91,24 +108,19 @@ body {
       border-bottom: 1px solid rgb(237, 237, 237);
     }
 
+    .head {
+      border-bottom: 1px solid rgb(237, 237, 237);
+    }
+
     &__box {
       padding: 24px 180px;
       position: relative;
 
-      .btn-default {
-        border-radius: 4px;
-        display: block;
-        line-height: 48px;
-        font-size: 14px;
-        width: 100%;
-        border: 1px solid;
-        cursor: pointer;
-        text-align: center;
-        position: relative;
-      }
-
       .btn-sns {
         margin-bottom: 15px;
+        border-color: #3ccace;
+        color: #3ccace;
+        background-color: white;
       }
 
       .btn {
@@ -116,6 +128,14 @@ body {
         position: relative;
         color: #fff;
         text-decoration: none;
+
+        &:hover {
+          background-color: #34AEB3;
+        }
+
+        &:active {
+          background-color: #2C9599;
+        }
       }
 
       .btn-sns-google {
@@ -127,11 +147,13 @@ body {
 
       .btn-sns-facebook {
         background-color: #385185;
+        border: #385185 solid 1px;
         color: #fff;
       }
 
       .btn-sns-apple {
         background-color: #000;
+        border: #000 solid 1px;
         color: #fff;
       }
 
@@ -163,6 +185,7 @@ body {
           border: 1px solid;
           margin-bottom: 15px;
           position: relative;
+          padding: 0 10px;
         }
       }
 

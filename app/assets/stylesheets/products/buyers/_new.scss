@@ -1,0 +1,56 @@
+.purchase-amount {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+
+  &__right {
+    line-height: 30px;
+  }
+}
+
+.discription {
+  color: #333;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    &__left {
+      font-weight: bold;
+    }
+
+    & a {
+      text-decoration: none;
+      color: #0095ee;
+    }
+
+    & i {
+      color: #0095ee;
+    }
+  }
+
+  &__bottom {
+
+    img {
+      margin-top: 8px;
+      max-height: 32px;
+      max-width: 48px;
+    }
+  }
+
+  &__btn-default {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    background-color: #3ccace;
+    border: 1px solid #3ccace;
+    color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+  }
+}

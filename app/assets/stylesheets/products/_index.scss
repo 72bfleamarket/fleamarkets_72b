@@ -421,6 +421,30 @@ body {
         &__productList {
           width: 220px;
           display: inline-block;
+          position: relative;
+
+          &__soldOut {
+
+            &:before {
+              content: '';
+              position: absolute;
+              z-index: 1;
+              border-top: 40px solid #ea352d;
+              border-right: 40px solid transparent;
+              border-left: 40px solid #ea352d;
+              border-bottom: 40px solid transparent;
+            }
+
+            &__content {
+              position: absolute;
+              z-index: 1;
+              top: 20px;
+              left: 7px;
+              color: #fff;
+              font-weight: bold;
+              transform: rotate(-45deg);
+            }
+          }
 
           & a {
             background-color: #fff;

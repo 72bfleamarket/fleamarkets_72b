@@ -1,5 +1,4 @@
 = form_for(@address, url: addresses_path, html: {method: 'POST'}) do |f|
-  = render "devise/shared/error_messages", resource: @address
   .new_user
     .new_user__head
       %h1
@@ -14,6 +13,9 @@
 
     .new_user__body
       %h2.body_head 会員情報入力
+      - if @address.errors.any?
+        %span.err_message
+          = I18n.t("errors.messages.not_saved")
       .new_user__body__box
         .new_user__body__box__group
           .new_user__body__box__group__head
@@ -21,12 +23,20 @@
               郵便番号
             %span.mandatory
               必須
-            = f.text_field :code, class: "new_user__body__box__group__form", placeholder: "例)123-4567"
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:code).shift
+            = f.text_field :code, class: "new_user__body__box__group__form", placeholder: "例)123-4567", maxlength:'8'
           .new_user__body__box__group__head
             %label
               都道府県
             %span.mandatory
               必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:area).shift
             = f.text_field :area, class: "new_user__body__box__group__form", placeholder: "例)東京都"
         .new_user__body__box__group
           .new_user__body__box__group__head
@@ -34,6 +44,10 @@
               市区町村
             %span.mandatory
               必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:city).shift
             = f.text_field :city, class: "new_user__body__box__group__form", placeholder: "例)渋谷区"
         .new_user__body__box__group
           .new_user__body__box__group__head
@@ -41,14 +55,16 @@
               番地
             %span.mandatory
               必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:village).shift
             = f.text_field :village, class: "new_user__body__box__group__form", placeholder: "例)道玄坂2丁目23-12"
         .new_user__body__box__group
           .new_user__body__box__group__head
             %label
               建物名
-            %span.mandatory
-              必須
-            = f.text_field :building, class: "new_user__body__box__group__form", placeholder: "例)フォンティスビル7F"
+          = f.text_field :building, class: "new_user__body__box__group__form", placeholder: "例)フォンティスビル7F"
         .new_user__body__box__group
           .new_user__body__box__group__head
             %a
@@ -56,15 +72,15 @@
               会員登録後、修正するにはお時間を頂く場合があります。
         = f.submit "次へ進む", class: 'btn-default btn'
 
-  .new_user__footer
-    %ul.clearfix.regulation
-      %li
-        = link_to 'プライバシーポリシー', root_path
-      %li
-        = link_to 'フリマ利用規約', root_path
-      %li
-        = link_to '特定商取引に関する表記', root_path
-    %h1
-      = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
-    %p
-      %small © FURIMA, Inc.
+    .new_user__footer
+      %ul.clearfix.regulation
+        %li
+          = link_to 'プライバシーポリシー', root_path
+        %li
+          = link_to 'フリマ利用規約', root_path
+        %li
+          = link_to '特定商取引に関する表記', root_path
+      %h1
+        = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
+      %p
+        %small © FURIMA, Inc.

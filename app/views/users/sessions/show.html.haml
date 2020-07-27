@@ -1,0 +1,37 @@
+.form
+  = render 'shared/header'
+
+  .form_body
+    %h1
+      = "#{@user.name}さんのプロフィール"
+
+    .products_lists
+      %section.main__allProducts
+        .main__allProducts__head
+          = "#{@user.name}さんの出品商品一覧"
+        .main__allProducts__productBox
+          .main__allProducts__productBox__productHead
+            = link_to '#' do
+              %h3.main__allProducts__productBox__productHead__title 投稿商品
+      .main__allProducts__productBox__productLists
+        - @products.each do |product|
+          .main__allProducts__productBox__productLists__productList
+            - if product.buyer_id.present?
+              .main__allProducts__productBox__productLists__productList__soldOut
+                .main__allProducts__productBox__productLists__productList__soldOut__content SOLD
+            = link_to product_path(product) do
+              %figure.main__allProducts__productBox__productLists__productList--img
+                = image_tag product.images[0].item.url
+              .main__allProducts__productBox__productLists__productList--body
+                .main__allProducts__productBox__productLists__productList__name
+                  = product.name
+                .main__allProducts__productBox__productLists__productList__details
+                  %ul
+                    %li
+                      = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+                    %li
+                      %i.fas.fa-star
+                      1
+                  %p (税込)
+
+  = render 'shared/footer'

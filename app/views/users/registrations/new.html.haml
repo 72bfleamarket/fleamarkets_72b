@@ -8,11 +8,12 @@
     .new_user__body
       %h2.body_head 新規会員登録
       .new_user__body__box
-        = link_to 'メールアドレスで登録する', user_path, class: 'btn-default btn-sns btn-mail'
-        %button#google-login.btn-default.btn-sns.btn-sns-google
+        = link_to new_user_path, class: "btn-default btn-sns" do
+          メールアドレスで登録する
+        = link_to user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google", id: "google-login" , method: :post do
           %i.fab.fa-google
           Googleで登録する
-        %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+        = link_to user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", id: "facebook-login" , method: :post do
           %i.fab.fa-facebook
           Facebookで登録する
         %button#apple-login.btn-default.btn-sns.btn-sns-apple

@@ -92,6 +92,9 @@
       .main__allProducts__productBox__productLists
         - @products.each do |product|
           .main__allProducts__productBox__productLists__productList
+            - if product.buyer_id.present?
+              .main__allProducts__productBox__productLists__productList__soldOut
+                .main__allProducts__productBox__productLists__productList__soldOut__content SOLD
             = link_to product_path(product) do
               %figure.main__allProducts__productBox__productLists__productList--img
                 = image_tag product.images[0].item.url
@@ -107,15 +110,7 @@
                       1
                   %p (税込)
 
-%aside.appBanner
-  .appBanner__inner
-    %h2.appBanner__inner__title だれでもかんたん、人生を変えるフリマアプリ
-    %p.appBanner__inner__text 今すぐ無料ダウンロード！
-    .appBanner__inner__icon
-      = link_to '#' do
-        = image_tag 'app-store.png'
-      = link_to '#' do
-        = image_tag 'google-play.png'
+= render 'products/shared/app_banner'
 
 = render 'products/shared/footer'
 
