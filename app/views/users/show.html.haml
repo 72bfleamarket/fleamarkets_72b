@@ -4,15 +4,11 @@
   - breadcrumb :mypage
   = render "layouts/breadcrumbs"
 
-%main.container.clearfix
-  - flash.each do |notice, value|
-    - notice
-    %p
-      = value
-
 .user-mypage.clearfix
   = render 'side-bar'
   = render 'email-pass'
+
+= render 'products/shared/app_banner'
 
 = render 'products/shared/footer'
 
