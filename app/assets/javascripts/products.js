@@ -47,13 +47,25 @@ $(document).on('turbolinks:load', () => {
 
   //Drag&Drop
   $(function(){
+    const buildFileField =(num) => {
+      const field = `<label class="box-field field-${num}" data-index="${num}">
+                        <i class="fas fa-camera"></i>
+                        <input class="box__select" type="file" name="product[images_attributes][${num}][item]" id="product_images_attributes_${num}_item">
+                      </label>`;
+      return field;
+    }
+
+    // let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    // lastIndex = $('.box-field:last').data('index');
+
     //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
     $('.box').on('change', 'input[type="file"]', function(e) {
-      var file = e.target.files[0];
+      const targetIndex = $(this).parent().data('index');
+      const file = e.target.files[0];
       reader = new FileReader();
-      var dropbox = $(".box-field");
+      const dropbox = $(".box-field");
       var box = $(".box");
-
+      const images_no = dropbox.length
       // 画像ファイル判別し画像ファイル以外はfalse
       if(file.type.indexOf("image") < 0){
         return false;
@@ -62,8 +74,9 @@ $(document).on('turbolinks:load', () => {
       reader.onload = (function(file) {
         return function(e) {
           var src = reader.result
-          var html= `<div class='preview' data-image="${file.name}">
-          <div class=' preview__content'>
+          console.log(images_no)
+          var html= `<div class='preview img-${images_no}' data-image="${file.name}">
+          <div class='preview__content'>
           <img src=${src} width="134" height="75" >
           </div>
           <div class='preview__delete', id='back'>削除</div>
@@ -71,41 +84,101 @@ $(document).on('turbolinks:load', () => {
 
           //box要素の前にhtmlを差し込む
           dropbox.before(html);
+          // var num = fileIndex.shift();
+          box.append(buildFileField(images_no));
+
 
           //写真追加によるviewの変更
-          if ($(".preview").length == 10){
+          if (images_no == 10){
             dropbox.css({'display': 'none'})
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            $(".field-2").css({'display': 'none'})
+            $(".field-3").css({'display': 'none'})
+            $(".field-4").css({'display': 'none'})
+            $(".field-5").css({'display': 'none'})
+            $(".field-6").css({'display': 'none'})
+            $(".field-7").css({'display': 'none'})
+            $(".field-8").css({'display': 'none'})
+            $(".field-9").css({'display': 'none'})
           }else{
             dropbox.css({'display': 'block'})
           }
-          if($(".preview").length == 9) {
+          if(images_no == 9) {
             dropbox.css({'width': '20%'})
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            $(".field-2").css({'display': 'none'})
+            $(".field-3").css({'display': 'none'})
+            $(".field-4").css({'display': 'none'})
+            $(".field-5").css({'display': 'none'})
+            $(".field-6").css({'display': 'none'})
+            $(".field-7").css({'display': 'none'})
+            $(".field-8").css({'display': 'none'})
           }
-          if($(".preview").length == 8) {
+          if(images_no == 8) {
             dropbox.css({'width': '40%'})
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            $(".field-2").css({'display': 'none'})
+            $(".field-3").css({'display': 'none'})
+            $(".field-4").css({'display': 'none'})
+            $(".field-5").css({'display': 'none'})
+            $(".field-6").css({'display': 'none'})
+            $(".field-7").css({'display': 'none'})
           }
-          if($(".preview").length == 7) {
+          if(images_no == 7) {
             dropbox.css({'width': '60%'})
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            $(".field-2").css({'display': 'none'})
+            $(".field-3").css({'display': 'none'})
+            $(".field-4").css({'display': 'none'})
+            $(".field-5").css({'display': 'none'})
+            $(".field-6").css({'display': 'none'})
           }
-          if($(".preview").length == 6) {
+          if(images_no == 6) {
             dropbox.css({'width': '80%'})
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            $(".field-2").css({'display': 'none'})
+            $(".field-3").css({'display': 'none'})
+            $(".field-4").css({'display': 'none'})
+            $(".field-5").css({'display': 'none'})
           }
-          if($(".preview").length == 5) {
+          if(images_no == 5) {
             dropbox.css({'width': '100%'})
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            $(".field-2").css({'display': 'none'})
+            $(".field-3").css({'display': 'none'})
+            $(".field-4").css({'display': 'none'})
             }
-          if($(".preview").length == 4) {
+          if(images_no == 4) {
             dropbox.css({'width': '20%'})
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            $(".field-2").css({'display': 'none'})
+            $(".field-3").css({'display': 'none'})
             }
-          if($(".preview").length == 3) {
+          if(images_no == 3) {
             dropbox.css({'width': '40%'})
-            }
-          if($(".preview").length == 2) {
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            $(".field-2").css({'display': 'none'})
+            // $(".img-2").css({'display': 'none'})
+          }
+          if(images_no == 2) {
             dropbox.css({'width': '60%'})
-            }
-          if($(".preview").length == 1) {
+            $(".field-0").css({'display': 'none'})
+            $(".field-1").css({'display': 'none'})
+            // $(".img-1").css({'display': 'none'})
+          }
+          if(images_no == 1) {
             dropbox.css({'width': '80%'})
+            $(".field-0").css({'display': 'none'})
             }
-          if($(".preview").length == 0) {
+          if(images_no == 0) {
             dropbox.css({'width': '100%'})
             }
 

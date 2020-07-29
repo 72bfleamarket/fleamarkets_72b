@@ -35,9 +35,9 @@
 
     = form.fields_for :images do |i|
       .box
-        %label.box-field
+        %label.box-field.field-0{"data-index": "#{@product.images.count}"}
           %i.fas.fa-camera
-          = i.file_field :item, type: 'file', class: "box__select"
+          = i.file_field :item, name: "product[images_attributes][#{@product.images.count}][item]", type: 'file', class: "box__select"
 
 
   #product-about
