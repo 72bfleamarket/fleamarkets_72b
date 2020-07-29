@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', () => {
     }
 
     let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    
+
     //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
     $('.box').on('change', 'input[type="file"]', function(e) {
       const targetIndex = $(this).parent().data('index');
@@ -29,14 +29,13 @@ $(document).on('turbolinks:load', () => {
       reader.onload = (function(file) {
         return function(e) {
           var src = reader.result
-          console.log(dropbox_no)
           var html= `<div class='preview' data-image="${file.name}">
           <div class='preview__content'>
           <img src=${src} width="134" height="75" >
           </div>
           <div class='preview__delete', id='back'>削除</div>
           </div>`
-          
+
           //box要素の前にhtmlを差し込む
           $(".dummy").before(html);
           var num = fileIndex.shift();
@@ -96,7 +95,6 @@ $(document).on('turbolinks:load', () => {
             //Preview要素を削除
             target_image.remove();
             const images_no = $(".preview").length;
-            console.log(images_no)
 
             //写真追加によるviewの変更
             if(images_no == 9) {
@@ -154,7 +152,6 @@ $(document).on('turbolinks:load', () => {
         })
         (file);
         reader.readAsDataURL(file);
-        console.log(reader)
     });
   });
 
