@@ -17,8 +17,8 @@ $(document).on('turbolinks:load', () => {
       const targetIndex = $(this).parent().data('index');
       const file = e.target.files[0];
       reader = new FileReader();
-      const dropbox = $(".box-field");
       var box = $(".box");
+      const dropbox = $(".box-field");
       const dropbox_no = dropbox.length
 
       // 画像ファイル判別し画像ファイル以外はfalse
@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', () => {
           </div>`
           
           //box要素の前にhtmlを差し込む
-          box.append(html);
+          $(".dummy").before(html);
           var num = fileIndex.shift();
           box.append(buildFileField(dropbox_no));
 
@@ -143,7 +143,6 @@ $(document).on('turbolinks:load', () => {
               $(".field-1").css({'width': '80%'})
               $(".field-1").css({'display': 'block'})
               $(".field-2").remove()
-              // $(".field-0").css({'display': 'none'})
             }
             if(images_no == 0) {
               dropbox.css({'width': '100%'})
