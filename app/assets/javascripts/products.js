@@ -1,49 +1,4 @@
 $(document).on('turbolinks:load', () => {
-  // const buildFileField = (num) => {
-  //   const html = `<div class="js-file_group" data-index="${num}">
-  //                   <input class="js-file" type="file" name="product[images_attributes][${num}][item]" id="product_images_attributes_${num}_item">
-  //                 </div>`;
-  //   return html;
-  // }
-  // const buildImg = (index, url) => {
-  //   const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
-  //   return html;
-  // }
-
-  // let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  // lastIndex = $('.js-file_group:last').data('index');
-  // fileIndex.splice(0, lastIndex);
-  // $('.hidden-destroy').hide();
-
-  // //画像を追加
-  // $('#products-image').on('change', '.js-file', function (e) {
-  //   const targetIndex = $(this).parent().data('index');
-  //   const file = e.target.files[0];
-  //   const blobUrl = window.URL.createObjectURL(file);
-  //   if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-  //     img.setAttribute('src', blobUrl);
-  //   } else {
-  //     $('#previews').append(buildImg(targetIndex, blobUrl));
-  //     $('#products-image').append(buildFileField(fileIndex[0]));
-  //     fileIndex.shift();
-  //     fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
-  //     $(this).after('<span class="js-remove">削除</span>');
-  //   }
-  // });
-
-  // //画像を削除
-  // $('#products-image').on('click', '.js-remove', function () {
-  //   const targetIndex = $(this).parent().data('index');
-  //   const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-  //   if (hiddenCheck) hiddenCheck.prop('checked', true);
-  //   $(this).parent().remove();
-  //   $(this).remove();
-  //   const image = $(`#product_images_attributes_${targetIndex}_item`);
-  //   image.remove();
-  //   $(`img[data-index="${targetIndex}"]`).remove();
-  //   if ($('.js-file').length == 0) $('#products-image').append(buildFileField(fileIndex[0]));
-  // });
-
 
   //Drag&Drop
   $(function(){
@@ -56,8 +11,7 @@ $(document).on('turbolinks:load', () => {
     }
 
     let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    // lastIndex = $('.box-field:last').data('index');
-
+    
     //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
     $('.box').on('change', 'input[type="file"]', function(e) {
       const targetIndex = $(this).parent().data('index');
@@ -92,86 +46,38 @@ $(document).on('turbolinks:load', () => {
           //写真追加によるviewの変更
           if (dropbox_no == 10){
             $(".field-10").css({'display': 'none'})
-            $(".field-0").css({'display': 'none'})
-            $(".field-1").css({'display': 'none'})
-            $(".field-2").css({'display': 'none'})
-            $(".field-3").css({'display': 'none'})
-            $(".field-4").css({'display': 'none'})
-            $(".field-5").css({'display': 'none'})
-            $(".field-6").css({'display': 'none'})
-            $(".field-7").css({'display': 'none'})
-            $(".field-8").css({'display': 'none'})
             $(".field-9").css({'display': 'none'})
-          }else{
-            dropbox.css({'display': 'block'})
           }
           if(dropbox_no == 9) {
             $(".field-9").css({'width': '20%'})
-            $(".field-0").css({'display': 'none'})
-            $(".field-1").css({'display': 'none'})
-            $(".field-2").css({'display': 'none'})
-            $(".field-3").css({'display': 'none'})
-            $(".field-4").css({'display': 'none'})
-            $(".field-5").css({'display': 'none'})
-            $(".field-6").css({'display': 'none'})
-            $(".field-7").css({'display': 'none'})
             $(".field-8").css({'display': 'none'})
           }
           if(dropbox_no == 8) {
             $(".field-8").css({'width': '40%'})
-            $(".field-0").css({'display': 'none'})
-            $(".field-1").css({'display': 'none'})
-            $(".field-2").css({'display': 'none'})
-            $(".field-3").css({'display': 'none'})
-            $(".field-4").css({'display': 'none'})
-            $(".field-5").css({'display': 'none'})
-            $(".field-6").css({'display': 'none'})
             $(".field-7").css({'display': 'none'})
           }
           if(dropbox_no == 7) {
             $(".field-7").css({'width': '60%'})
-            $(".field-0").css({'display': 'none'})
-            $(".field-1").css({'display': 'none'})
-            $(".field-2").css({'display': 'none'})
-            $(".field-3").css({'display': 'none'})
-            $(".field-4").css({'display': 'none'})
-            $(".field-5").css({'display': 'none'})
             $(".field-6").css({'display': 'none'})
           }
           if(dropbox_no == 6) {
             $(".field-6").css({'width': '80%'})
-            $(".field-0").css({'display': 'none'})
-            $(".field-1").css({'display': 'none'})
-            $(".field-2").css({'display': 'none'})
-            $(".field-3").css({'display': 'none'})
-            $(".field-4").css({'display': 'none'})
             $(".field-5").css({'display': 'none'})
           }
           if(dropbox_no == 5) {
             $(".field-5").css({'width': '100%'})
-            // box.css({'flex-wrap': 'wrap'})
-            $(".field-0").css({'display': 'none'})
-            $(".field-1").css({'display': 'none'})
-            $(".field-2").css({'display': 'none'})
-            $(".field-3").css({'display': 'none'})
             $(".field-4").css({'display': 'none'})
             }
           if(dropbox_no == 4) {
             $(".field-4").css({'width': '20%'})
-            $(".field-0").css({'display': 'none'})
-            $(".field-1").css({'display': 'none'})
-            $(".field-2").css({'display': 'none'})
             $(".field-3").css({'display': 'none'})
             }
           if(dropbox_no == 3) {
             $(".field-3").css({'width': '40%'})
-            $(".field-0").css({'display': 'none'})
-            $(".field-1").css({'display': 'none'})
             $(".field-2").css({'display': 'none'})
           }
           if(dropbox_no == 2) {
             $(".field-2").css({'width': '60%'})
-            $(".field-0").css({'display': 'none'})
             $(".field-1").css({'display': 'none'})
           }
           if(dropbox_no == 1) {
@@ -194,94 +100,50 @@ $(document).on('turbolinks:load', () => {
 
             //写真追加によるviewの変更
             if(images_no == 9) {
-              dropbox.css({'width': '20%'})
-              dropbox.css({'display': 'block'})
+              $(".field-9").css({'width': '20%'})
+              $(".field-9").css({'display': 'block'})
               $(".field-10").remove()
-              $(".field-8").css({'display': 'none'})
-              $(".field-7").css({'display': 'none'})
-              $(".field-6").css({'display': 'none'})
-              $(".field-5").css({'display': 'none'})
-              $(".field-4").css({'display': 'none'})
-              $(".field-3").css({'display': 'none'})
-              $(".field-2").css({'display': 'none'})
-              $(".field-1").css({'display': 'none'})
-              $(".field-0").css({'display': 'none'})
             }
             if(images_no == 8) {
-              dropbox.css({'width': '40%'})
-              dropbox.css({'display': 'block'})
+              $(".field-8").css({'width': '40%'})
+              $(".field-8").css({'display': 'block'})
               $(".field-9").remove()
-              $(".field-7").css({'display': 'none'})
-              $(".field-6").css({'display': 'none'})
-              $(".field-5").css({'display': 'none'})
-              $(".field-4").css({'display': 'none'})
-              $(".field-3").css({'display': 'none'})
-              $(".field-2").css({'display': 'none'})
-              $(".field-1").css({'display': 'none'})
-              $(".field-0").css({'display': 'none'})
             }
             if(images_no == 7) {
-              dropbox.css({'width': '60%'})
-              dropbox.css({'display': 'block'})
+              $(".field-7").css({'width': '60%'})
+              $(".field-7").css({'display': 'block'})
               $(".field-8").remove()
-              $(".field-6").css({'display': 'none'})
-              $(".field-5").css({'display': 'none'})
-              $(".field-4").css({'display': 'none'})
-              $(".field-3").css({'display': 'none'})
-              $(".field-2").css({'display': 'none'})
-              $(".field-1").css({'display': 'none'})
-              $(".field-0").css({'display': 'none'})
             }
             if(images_no == 6) {
-              dropbox.css({'width': '80%'})
-              dropbox.css({'display': 'block'})
+              $(".field-6").css({'width': '80%'})
+              $(".field-6").css({'display': 'block'})
               $(".field-7").remove()
-              $(".field-5").css({'display': 'none'})
-              $(".field-4").css({'display': 'none'})
-              $(".field-3").css({'display': 'none'})
-              $(".field-2").css({'display': 'none'})
-              $(".field-1").css({'display': 'none'})
-              $(".field-0").css({'display': 'none'})
             }
             if(images_no == 5) {
-              dropbox.css({'width': '100%'})
-              dropbox.css({'display': 'block'})
+              $(".field-5").css({'width': '100%'})
+              $(".field-5").css({'display': 'block'})
               $(".field-6").remove()
-              $(".field-4").css({'display': 'none'})
-              $(".field-3").css({'display': 'none'})
-              $(".field-2").css({'display': 'none'})
-              $(".field-1").css({'display': 'none'})
-              $(".field-0").css({'display': 'none'})
               }
             if(images_no == 4) {
-              dropbox.css({'width': '20%'})
-              dropbox.css({'display': 'block'})
+              $(".field-4").css({'width': '20%'})
+              $(".field-4").css({'display': 'block'})
               $(".field-5").remove()
-              $(".field-3").css({'display': 'none'})
-              $(".field-2").css({'display': 'none'})
-              $(".field-1").css({'display': 'none'})
-              $(".field-0").css({'display': 'none'})
               }
             if(images_no == 3) {
-              dropbox.css({'width': '40%'})
-              dropbox.css({'display': 'block'})
+              $(".field-3").css({'width': '40%'})
+              $(".field-3").css({'display': 'block'})
               $(".field-4").remove()
-              $(".field-2").css({'display': 'none'})
-              $(".field-1").css({'display': 'none'})
-              $(".field-0").css({'display': 'none'})
             }
             if(images_no == 2) {
-              dropbox.css({'width': '60%'})
-              dropbox.css({'display': 'block'})
+              $(".field-2").css({'width': '60%'})
+              $(".field-2").css({'display': 'block'})
               $(".field-3").remove()
-              $(".field-1").css({'display': 'none'})
-              $(".field-0").css({'display': 'none'})
             }
             if(images_no == 1) {
-              dropbox.css({'width': '80%'})
-              dropbox.css({'display': 'block'})
+              $(".field-1").css({'width': '80%'})
+              $(".field-1").css({'display': 'block'})
               $(".field-2").remove()
-              $(".field-0").css({'display': 'none'})
+              // $(".field-0").css({'display': 'none'})
             }
             if(images_no == 0) {
               dropbox.css({'width': '100%'})
