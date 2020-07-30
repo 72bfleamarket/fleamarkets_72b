@@ -59,8 +59,17 @@ $(document).on('turbolinks:load', () => {
 
   //SHOWPAGE
   $('.subImg').mouseover(function() {
-    var pic = $('.subImg').length
-    console.log(pic)
+    // var pic = $('.subImg').length
+    // console.log(pic)
+    const result = $(this).data('index');
+    const show = `<%= image_tag @product.images[${result}].item.url %>`;
+    console.log(result)
+    console.log(show)
+    if result == 1 {
+      $('#pic').append(show)
+      
+    }
+
 
 
   })
