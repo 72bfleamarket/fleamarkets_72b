@@ -154,6 +154,8 @@ $(document).on('turbolinks:load', () => {
     e.stopPropagation();
     $('#tree_menu').show();
     $('.categoryTree').show();
+  }, function () {
+    // あえて何も記述しないことで親要素に外れた際のアクションだけを伝搬する
   });
 
   // 子カテゴリーを表示
@@ -245,6 +247,23 @@ $(document).on('turbolinks:load', () => {
       $(".category_grandchild").remove();
     }
   }, '#tree_menu');
+
+  $(document).on({
+    mouseenter: function () {
+      $('#tree_menu').show();
+      $('.categoryTree').show();
+    },
+    mouseleave: function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      $(".categoryTree-grandchild").hide();
+      $(".categoryTree-child").hide();
+      $(".categoryTree").hide();
+      $("#tree_menu").hide();
+      $(".category_child").remove();
+      $(".category_grandchild").remove();
+    }
+  }, '.header__headerInner__nav__listsLeft__item');
 
   // ブラウザバック時に強制的に非表示イベントを発火
   $('#tree_menu').trigger('mouseleave');
