@@ -56,19 +56,12 @@ $(document).on('turbolinks:load', () => {
   //再読み込み時の文字数をカウント
   $('#count_name').trigger('input');
   $('#count_area').trigger('input');
-});
 
-$(document).ready(function(){
-  $('.thumbnail').slick({
-    infinite: true,
-    arrows: false,
-    fade: true,
-    draggable: false
-  });
-  $('.thumbnail-thumb').slick({
-    infinite: true,
-    slidesToShow: 10,
-    focusOnSelect: true,
-    asNavFor: '.thumbnail',
-  });
+  //SHOWPAGE
+  $('#sub').mouseover(function() {
+    var pic = $('.subImg').length
+    console.log(pic)
+
+
+  })
 });

@@ -11,32 +11,11 @@
         %h2.showMain__content__topContent__itemBox__name
           = @product.name
         .showMain__content__topContent__itemBox__body
-          %ul
-            %li
-              = image_tag @product.images[0].item.url
-              %ul
-                - @product.images.each do |image|
-                  %li
-                    = image_tag image.item.url
-
-          .thumbnail
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/1.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/2.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/3.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/4.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/5.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/6.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/7.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/8.jpg", alt: ""
-          .thumbnail-thumb
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/1.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/2.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/3.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/4.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/5.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/6.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/7.jpg", alt: ""
-            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/8.jpg", alt: ""
+          .showMain__content__topContent__itemBox__body__pic#pic
+            = image_tag @product.images[0].item.url
+            .showMain__content__topContent__itemBox__body__pic__sub
+              - @product.images.each do |image|
+                = image_tag image.item.url, class: "sub-0 sumImg", id: "sub"
         .showMain__content__topContent__itemBox__price
           %span
             = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
