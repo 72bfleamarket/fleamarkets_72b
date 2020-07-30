@@ -24,9 +24,9 @@
         %input{type: "button", value: "さらに絞り込む >> ", id: "sub_category"}
       #categories-lists
         %input{type: "button", value: "絞り込みを閉じる", id: "close_category"}
-        %ul.category_btn
+        %ul.categorys_btn
           - @category.children.each do |child|
-            %li.category_child
+            %li.categorys_children
               = link_to "#{child.id}" do
                 %input{type: "button", value: "#{child.name}"}
 

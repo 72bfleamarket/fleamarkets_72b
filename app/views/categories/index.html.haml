@@ -5,6 +5,9 @@
 .content
   .content__all-products
     .content__all-products__product-box
+      .content__all-products__product-box__products
+        = link_to "#allProducts" do
+          %input{type: "button", value: "すべての商品を見る >> "}
       .content__all-products__product-box__categories
         = "カテゴリー一覧"
       .content__all-products__product-box__categories-lists
@@ -31,7 +34,8 @@
                 = link_to "#{grandchild.name}", category_path(grandchild)
 
     %section.main__allProducts
-    .main__allProducts__head 商品一覧
+    .main__allProducts__head{id: "allProducts"}
+      = "すべての商品一覧"
     .main__allProducts__productBox
       .main__allProducts__productBox__productHead
         = link_to '#' do

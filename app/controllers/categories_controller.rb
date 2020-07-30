@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @parents = Category.where(ancestry: nil)
     if @category.has_children?
       @products = Product.includes(:images).order("created_at DESC").where(category_id: @category.descendants)
     else

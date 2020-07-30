@@ -86,15 +86,22 @@ body {
         position: relative;
         display: flex;
 
-        & a {
-          padding-right: 30px;
-        }
 
         &__item {
+          width: 160px;
           line-height: 32px;
 
-          &--brand {
-            padding-left: 16px;
+          a {
+            padding-right: 10px;
+          }
+        }
+
+        &__brand {
+          width: 160px;
+          line-height: 32px;
+
+          a {
+            padding-right: 10px;
           }
         }
       }
