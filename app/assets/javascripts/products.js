@@ -65,7 +65,7 @@ $(document).on('turbolinks:load', () => {
     const show = `<%= image_tag @product.images[${result}].item.url %>`;
     console.log(result)
     console.log(show)
-    if result == 1 {
+    if (result == 1) {
       $('#pic').append(show)
       
     }
