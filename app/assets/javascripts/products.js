@@ -58,19 +58,15 @@ $(document).on('turbolinks:load', () => {
   $('#count_area').trigger('input');
 
   //SHOWPAGE
-  $('.subImg').mouseover(function() {
+  $('.subImg').mouseover(function(e) {
     // var pic = $('.subImg').length
     // console.log(pic)
     const result = $(this).data('index');
-    const show = `<%= image_tag @product.images[${result}].item.url %>`;
+    const show = `<img data-index="${result}" class="subImg" id="sub" src="<% @product.images[${result}].item.url%>">`;
     console.log(result)
     console.log(show)
     if (result == 1) {
-      $('#pic').append(show)
-      
+      $('#sub').before(show)
     }
-
-
-
   })
 });

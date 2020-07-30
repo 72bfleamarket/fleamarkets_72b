@@ -13,7 +13,7 @@
         .showMain__content__topContent__itemBox__body
           .showMain__content__topContent__itemBox__body__pic#pic
             = image_tag @product.images[0].item.url
-            .showMain__content__topContent__itemBox__body__pic__sub
+            .showMain__content__topContent__itemBox__body__pic__sub#sub
               - @product.images.each_with_index do |image, i|
                 = image_tag image.item.url, data: { index: i }, class: "subImg", id: "sub"
         .showMain__content__topContent__itemBox__price
