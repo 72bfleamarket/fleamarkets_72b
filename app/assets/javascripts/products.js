@@ -57,3 +57,18 @@ $(document).on('turbolinks:load', () => {
   $('#count_name').trigger('input');
   $('#count_area').trigger('input');
 });
+
+$(document).ready(function(){
+  $('.thumbnail').slick({
+    infinite: true,
+    arrows: false,
+    fade: true,
+    draggable: false
+  });
+  $('.thumbnail-thumb').slick({
+    infinite: true,
+    slidesToShow: 10,
+    focusOnSelect: true,
+    asNavFor: '.thumbnail',
+  });
+});

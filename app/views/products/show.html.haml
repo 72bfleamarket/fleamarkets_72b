@@ -18,6 +18,25 @@
                 - @product.images.each do |image|
                   %li
                     = image_tag image.item.url
+
+          .thumbnail
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/1.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/2.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/3.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/4.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/5.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/6.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/7.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/8.jpg", alt: ""
+          .thumbnail-thumb
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/1.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/2.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/3.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/4.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/5.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/6.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/7.jpg", alt: ""
+            = image_tag "https://www.jungleocean.com/demo/jquery-slick/images/8.jpg", alt: ""
         .showMain__content__topContent__itemBox__price
           %span
             = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
