@@ -58,7 +58,7 @@ $(document).on('turbolinks:load', () => {
   $('#count_area').trigger('input');
 
   //SHOWPAGE
-  $('#sub').mouseover(function() {
+  $('.subImg').mouseover(function() {
     var pic = $('.subImg').length
     console.log(pic)
 
