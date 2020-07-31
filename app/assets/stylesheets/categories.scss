@@ -1,8 +1,8 @@
 #tree_menu {
-  width: 100%;
+  width: 200px;
   position: absolute;
-  display: flex;
   z-index: 1;
+  display: flex;
 
   .categoryTree {
     display: none;
@@ -43,7 +43,6 @@
   }
 
   .categoryTree-child {
-    min-height: 457px;
     display: none;
     height: 100%;
     border: 1px solid #34AEB3;
@@ -85,7 +84,6 @@
   }
 
   .categoryTree-grandchild {
-    min-height: 667px;
     display: none;
     height: 100%;
     border: 1px solid #34AEB3;

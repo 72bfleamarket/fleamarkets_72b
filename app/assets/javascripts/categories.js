@@ -152,70 +152,74 @@ $(document).on('turbolinks:load', () => {
   $('#categoBtn').hover(function (e) {
     e.preventDefault();
     e.stopPropagation();
-    $('#tree_menu').show();
-    $('.categoryTree').show();
+    timeOut = setTimeout(function () {
+      $('#tree_menu').show();
+      $('.categoryTree').show();
+    }, 500)
   }, function () {
-    // あえて何も記述しないことで親要素に外れた際のアクションだけを伝搬する
+    clearTimeout(timeOut)
   });
 
   // 子カテゴリーを表示
-  $('.parent_btn').hover(function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+  $('.parent_btn').hover(function () {
     let categoryParent = $(this).attr('name');
-    $.ajax({
-        url: '/products/search',
-        type: 'GET',
-        data: {
-          parent_id: categoryParent
-        },
-        dataType: 'json'
-      })
-      .done(function (data) {
-        $(".categoryTree-grandchild").hide();
-        $(".category_child").remove();
-        $(".category_grandchild").remove();
-        $('.categoryTree-child').show();
-        data.forEach(function (child) {
-          let child_html = childBuild(child)
-          $(".categoryTree-child").append(child_html);
-        });
-      })
-      .fail(function () {
-        alert("カテゴリーを選択してください");
-      });
-  }, function () {
-    // あえて何も記述しないことで親要素に外れた際のアクションだけを伝搬する
-  });
-
-  // 孫カテゴリーを表示
-  $(document).on({
-    mouseenter: function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      let categoryChild = $(this).attr('name');
+    timeParent = setTimeout(function () {
       $.ajax({
           url: '/products/search',
           type: 'GET',
           data: {
-            children_id: categoryChild
+            parent_id: categoryParent
           },
           dataType: 'json'
         })
-        .done(function (gc_data) {
+        .done(function (data) {
+          $(".categoryTree-grandchild").hide();
+          $(".category_child").remove();
           $(".category_grandchild").remove();
-          $('.categoryTree-grandchild').show();
-          gc_data.forEach(function (gc) {
-            let gc_html = gcBuild(gc)
-            $(".categoryTree-grandchild").append(gc_html);
+          $('.categoryTree-child').show();
+          data.forEach(function (child) {
+            let child_html = childBuild(child)
+            $(".categoryTree-child").append(child_html);
           });
+          $('#tree_menu').css('max-height', '490px');
         })
         .fail(function () {
           alert("カテゴリーを選択してください");
         });
+    }, 500)
+  }, function () {
+    clearTimeout(timeParent);
+  });
+
+  // 孫カテゴリーを表示
+  $(document).on({
+    mouseenter: function () {
+      let categoryChild = $(this).attr('name');
+      timeChild = setTimeout(function () {
+        $.ajax({
+            url: '/products/search',
+            type: 'GET',
+            data: {
+              children_id: categoryChild
+            },
+            dataType: 'json'
+          })
+          .done(function (gc_data) {
+            $(".category_grandchild").remove();
+            $('.categoryTree-grandchild').show();
+            gc_data.forEach(function (gc) {
+              let gc_html = gcBuild(gc)
+              $(".categoryTree-grandchild").append(gc_html);
+            });
+            $('#tree_menu').css('max-height', '490px');
+          })
+          .fail(function () {
+            alert("カテゴリーを選択してください");
+          });
+      }, 500)
     },
     mouseleave: function () {
-      // あえて何も記述しないことで親要素に外れた際のアクションだけを伝搬する
+      clearTimeout(timeChild);
     }
   }, '.child_btn');
 
@@ -231,31 +235,40 @@ $(document).on('turbolinks:load', () => {
     // あえて何も記述しないことで親要素に外れた際のアクションだけを伝搬する
   });
 
-  // カテゴリーを非表示
+  // カテゴリーを非表示(カテゴリーメニュから0.8秒以上カーソルを外したら消える)
   $(document).on({
-    mouseenter: function () {
-      $('.categoryTree').show();
-    },
     mouseleave: function (e) {
       e.stopPropagation();
       e.preventDefault();
-      $(".categoryTree-grandchild").hide();
-      $(".categoryTree-child").hide();
-      $(".categoryTree").hide();
-      $(this).hide();
-      $(".category_child").remove();
-      $(".category_grandchild").remove();
+      timeChosed = setTimeout(function () {
+        $(".categoryTree-grandchild").hide();
+        $(".categoryTree-child").hide();
+        $(".categoryTree").hide();
+        $(this).hide();
+        $(".category_child").remove();
+        $(".category_grandchild").remove();
+      }, 800);
+    },
+    mouseenter: function () {
+      $('.categoryTree').show();
+      clearTimeout(timeChosed);
     }
   }, '#tree_menu');
 
+  // カテゴリーボタンの処理
   $(document).on({
-    mouseenter: function () {
-      $('#tree_menu').show();
-      $('.categoryTree').show();
+    mouseenter: function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      timeOpened = setTimeout(function () {
+        $('#tree_menu').show();
+        $('.categoryTree').show();
+      }, 500);
     },
     mouseleave: function (e) {
       e.stopPropagation();
       e.preventDefault();
+      clearTimeout(timeOpened);
       $(".categoryTree-grandchild").hide();
       $(".categoryTree-child").hide();
       $(".categoryTree").hide();
