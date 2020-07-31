@@ -223,61 +223,61 @@ $(document).on('turbolinks:load', () => {
     }
   }, '.child_btn');
 
-  // // カテゴリー一覧ページのボタン
-  // $('#all_btn').hover(function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   $(".categoryTree-grandchild").hide();
-  //   $(".categoryTree-child").hide();
-  //   $(".category_grandchild").remove();
-  //   $(".category_child").remove();
-  // }, function () {
-  //   // あえて何も記述しないことで親要素に外れた際のアクションだけを伝搬する
-  // });
+  // カテゴリー一覧ページのボタン
+  $('#all_btn').hover(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(".categoryTree-grandchild").hide();
+    $(".categoryTree-child").hide();
+    $(".category_grandchild").remove();
+    $(".category_child").remove();
+  }, function () {
+    // あえて何も記述しないことで親要素に外れた際のアクションだけを伝搬する
+  });
 
-  // // カテゴリーを非表示(カテゴリーメニュから0.8秒以上カーソルを外したら消える)
-  // $(document).on({
-  //   mouseleave: function (e) {
-  //     e.stopPropagation();
-  //     e.preventDefault();
-  //     timeChosed = setTimeout(function () {
-  //       $(".categoryTree-grandchild").hide();
-  //       $(".categoryTree-child").hide();
-  //       $(".categoryTree").hide();
-  //       $(this).hide();
-  //       $(".category_child").remove();
-  //       $(".category_grandchild").remove();
-  //     }, 800);
-  //   },
-  //   mouseenter: function () {
-  //     $('.categoryTree').show();
-  //     clearTimeout(timeChosed);
-  //   }
-  // }, '#tree_menu');
+  // カテゴリーを非表示(カテゴリーメニュから0.8秒以上カーソルを外したら消える)
+  $(document).on({
+    mouseleave: function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      timeChosed = setTimeout(function () {
+        $(".categoryTree-grandchild").hide();
+        $(".categoryTree-child").hide();
+        $(".categoryTree").hide();
+        $(this).hide();
+        $(".category_child").remove();
+        $(".category_grandchild").remove();
+      }, 800);
+    },
+    mouseenter: function () {
+      $('.categoryTree').show();
+      clearTimeout(timeChosed);
+    }
+  }, '#tree_menu');
 
-  // // カテゴリーボタンの処理
-  // $(document).on({
-  //   mouseenter: function (e) {
-  //     e.stopPropagation();
-  //     e.preventDefault();
-  //     timeOpened = setTimeout(function () {
-  //       $('#tree_menu').show();
-  //       $('.categoryTree').show();
-  //     }, 500);
-  //   },
-  //   mouseleave: function (e) {
-  //     e.stopPropagation();
-  //     e.preventDefault();
-  //     clearTimeout(timeOpened);
-  //     $(".categoryTree-grandchild").hide();
-  //     $(".categoryTree-child").hide();
-  //     $(".categoryTree").hide();
-  //     $("#tree_menu").hide();
-  //     $(".category_child").remove();
-  //     $(".category_grandchild").remove();
-  //   }
-  // }, '.header__headerInner__nav__listsLeft__item');
+  // カテゴリーボタンの処理
+  $(document).on({
+    mouseenter: function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      timeOpened = setTimeout(function () {
+        $('#tree_menu').show();
+        $('.categoryTree').show();
+      }, 500);
+    },
+    mouseleave: function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      clearTimeout(timeOpened);
+      $(".categoryTree-grandchild").hide();
+      $(".categoryTree-child").hide();
+      $(".categoryTree").hide();
+      $("#tree_menu").hide();
+      $(".category_child").remove();
+      $(".category_grandchild").remove();
+    }
+  }, '.header__headerInner__nav__listsLeft__item');
 
-  // // ブラウザバック時に強制的に非表示イベントを発火
-  // $('.header__headerInner__nav__listsLeft__item').trigger('mouseleave');
+  // ブラウザバック時に強制的に非表示イベントを発火
+  $('.header__headerInner__nav__listsLeft__item').trigger('mouseleave');
 });
