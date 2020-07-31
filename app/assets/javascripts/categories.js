@@ -279,5 +279,5 @@ $(document).on('turbolinks:load', () => {
   }, '.header__headerInner__nav__listsLeft__item');
 
   // ブラウザバック時に強制的に非表示イベントを発火
-  $('#tree_menu').trigger('mouseleave');
+  $('.header__headerInner__nav__listsLeft__item').trigger('mouseleave');
 });
