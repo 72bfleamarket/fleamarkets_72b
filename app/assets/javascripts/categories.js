@@ -273,7 +273,6 @@ $(document).ready(function () {
     }
   }, '.header__headerInner__nav__listsLeft__item');
 
-  console.log('hoge');
   // ブラウザバック時に強制的に非表示イベントを発火
   $('.header__headerInner__nav__listsLeft__item').trigger('mouseleave');
 });
