@@ -430,6 +430,12 @@ a {
   position: fixed;
   padding: 15px;
 
+  .icon::before {
+    font-size: 1.5em;
+    margin-right: 5px;
+
+  }
+
   #scroll_top {
     display: block;
     margin: 0 auto;

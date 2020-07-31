@@ -6,13 +6,8 @@
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    / Add the slick-theme.css if you want default styling
-    %link{:href => "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css", :rel => "stylesheet", :type => "text/css"}/
-    / Add the slick-theme.css if you want default styling
-    %link{:href => "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css", :rel => "stylesheet", :type => "text/css"}/
-
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   %body
     = yield
     %script{:src => "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js", :type => "text/javascript"}
