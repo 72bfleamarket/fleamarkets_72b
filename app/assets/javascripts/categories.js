@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', () => {
+$(document).ready(function () {
   function build_childSelect() {
     let child_select = `
                         <select name="product[category_id]" class="child_category_id">
@@ -106,11 +106,6 @@ $(document).on('turbolinks:load', () => {
       scrollTop: position
     }, speed, 'swing');
     return false;
-  });
-
-  // 子カテゴリーの表示切替
-  $(document).ready(function () {
-    $('#categories-lists').hide();
   });
 
   $('#sub_category').click(function () {
