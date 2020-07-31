@@ -231,18 +231,18 @@ $(document).ready(function () {
   });
 
   // カテゴリーを非表示(カテゴリーメニュから0.8秒以上カーソルを外したら消える)
+  let timeChosed = setTimeout(function () {
+    $(".categoryTree-grandchild").hide();
+    $(".categoryTree-child").hide();
+    $(".categoryTree").hide();
+    $(this).hide();
+    $(".category_child").remove();
+    $(".category_grandchild").remove();
+  }, 800);
   $(document).on({
     mouseleave: function (e) {
       e.stopPropagation();
       e.preventDefault();
-      timeChosed = setTimeout(function () {
-        $(".categoryTree-grandchild").hide();
-        $(".categoryTree-child").hide();
-        $(".categoryTree").hide();
-        $(this).hide();
-        $(".category_child").remove();
-        $(".category_grandchild").remove();
-      }, 800);
     },
     mouseenter: function () {
       $('.categoryTree').show();
@@ -251,14 +251,14 @@ $(document).ready(function () {
   }, '#tree_menu');
 
   // カテゴリーボタンの処理
+  let timeOpened = setTimeout(function () {
+    $('#tree_menu').show();
+    $('.categoryTree').show();
+  }, 500);
   $(document).on({
     mouseenter: function (e) {
       e.stopPropagation();
       e.preventDefault();
-      timeOpened = setTimeout(function () {
-        $('#tree_menu').show();
-        $('.categoryTree').show();
-      }, 500);
     },
     mouseleave: function (e) {
       e.stopPropagation();
@@ -273,6 +273,7 @@ $(document).ready(function () {
     }
   }, '.header__headerInner__nav__listsLeft__item');
 
+  console.log('hoge');
   // ブラウザバック時に強制的に非表示イベントを発火
   $('.header__headerInner__nav__listsLeft__item').trigger('mouseleave');
 });

@@ -66,6 +66,4 @@
 = render 'products/shared/footer'
 = render 'products/shared/purchase_btn'
 .scroll_button
-  %span
-    = link_to "#" , id: "scroll_top" do
-      ページTOPへ戻る
+  %a.icon.fas.fa-arrow-circle-up{href: "#", id:'scroll_top'} TOPへ戻る⤴︎
