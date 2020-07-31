@@ -17,7 +17,7 @@ $(document).on('turbolinks:load', () => {
       const targetIndex = $(this).parent().data('index');
       const file = e.target.files[0];
       reader = new FileReader();
-      var box = $(".box");
+      let box = $(".box");
       const dropbox = $(".box-field");
       const dropbox_no = dropbox.length
 
@@ -28,8 +28,8 @@ $(document).on('turbolinks:load', () => {
         // ファイル読み込みが完了した際のイベント登録
       reader.onload = (function(file) {
         return function(e) {
-          var src = reader.result
-          var html= `<div class='preview' data-image="${file.name}">
+          let src = reader.result
+          let html= `<div class='preview' data-image="${file.name}">
           <div class='preview__content'>
           <img src=${src} width="134" height="75" >
           </div>
@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', () => {
 
           //box要素の前にhtmlを差し込む
           $(".dummy").before(html);
-          var num = fileIndex.shift();
+          let num = fileIndex.shift();
           box.append(buildFileField(dropbox_no));
 
 
@@ -93,7 +93,7 @@ $(document).on('turbolinks:load', () => {
           //削除ボタンを押下した際の画像削除イベント
           $(document).on("click", '.preview__delete', function(){
             //Preview要素を取得
-            var target_image = $(this).parent()
+            let target_image = $(this).parent()
 
             //Preview要素を削除
             target_image.remove();
