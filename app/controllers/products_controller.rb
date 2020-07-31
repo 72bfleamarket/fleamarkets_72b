@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create, :search]
-  before_action :move_to_index, except: [:index, :show]
-  before_action :set_parents, only: [:new, :create, :edit, :update]
+  before_action :move_to_index, except: [:index, :show, :search]
+  before_action :set_parents, only: [:index, :show, :new, :create, :edit, :update]
 
   def index
     @products = Product.includes(:images).order("created_at DESC")
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
+    if @product.save  
       return
     else
       @product.images.new
@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
     end
     @images = @product.images
     @category = @product.category
-    @parents = @category.root
+    @parent = @category.root
     @children = @category.parent
   end
 

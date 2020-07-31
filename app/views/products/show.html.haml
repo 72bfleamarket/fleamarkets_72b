@@ -49,7 +49,7 @@
                 %th カテゴリー
                 %td
                   = link_to category_path(@product.category.root.id) do
-                    = @parents.name
+                    = @parent.name
                   %br
                   = link_to category_path(@product.category.parent.id) do
                     = @children.name
@@ -116,7 +116,7 @@
 
       .showMain__content__relatedItems
         = link_to '#' do
-          = "#{@parents.name}をもっと見る"
+          = "#{@parent.name}をもっと見る"
         .showMain__content__relatedItems__productLists
           .showMain__content__relatedItems__productLists__productList
             = link_to '#' do
