@@ -9,6 +9,35 @@ crumb :categories do
   parent :root
 end
 
+crumb :parent do
+  link Category.find(params[:id]).name
+  parent :categories
+end
+
+crumb :parentParent do
+  link Category.find(params[:id]).root.name, category_path(Category.find(params[:id]).root)
+  parent :categories
+end
+
+crumb :child do
+  link Category.find(params[:id]).name
+  parent :parentParent
+end
+
+crumb :childChild do
+  link Category.find(params[:id]).parent.name, category_path(Category.find(params[:id]).parent)
+  parent :parentParent
+end
+
+crumb :grandchild do
+  link Category.find(params[:id]).name
+  parent :childChild
+end
+
+crumb :category do
+  link Category.find(params[:id]).children.name, category_path(Category.find(params[:id]).children)
+end
+
 crumb :parents do
   link Product.find(params[:id]).category.root.name, category_path(Product.find(params[:id]).category.root.id)
   parent :categories

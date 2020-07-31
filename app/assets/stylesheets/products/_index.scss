@@ -3,6 +3,8 @@ body {
 }
 
 .header {
+  height: 107px;
+  min-width: 700px;
   padding: 0 60px;
 
   &__headerInner {
@@ -84,15 +86,22 @@ body {
         position: relative;
         display: flex;
 
-        & a {
-          padding-right: 30px;
-        }
 
         &__item {
+          width: 160px;
           line-height: 32px;
 
-          &--brand {
-            padding-left: 16px;
+          a {
+            padding-right: 10px;
+          }
+        }
+
+        &__brand {
+          width: 160px;
+          line-height: 32px;
+
+          a {
+            padding-right: 10px;
           }
         }
       }
@@ -551,6 +560,8 @@ body {
 }
 
 .footer {
+  height: 350px;
+  min-width: 700px;
   padding: 60px 0;
   color: #fff;
   background-color: #272727;
