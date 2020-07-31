@@ -15,7 +15,7 @@
             = image_tag @product.images[0].item.url
             .showMain__content__topContent__itemBox__body__pic__sub#sub
               - @product.images.each_with_index do |image, i|
-                = image_tag image.item.url, data: { index: i }, class: "subImg", id: "sub"
+                = image_tag image.item.url, data: { index: i }, class: "subImg", id: "sub", type: 'file'
         .showMain__content__topContent__itemBox__price
           %span
             = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"

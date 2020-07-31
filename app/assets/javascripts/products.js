@@ -59,8 +59,10 @@ $(document).on('turbolinks:load', () => {
 
   //SHOWPAGE
   $('.subImg').mouseover(function(e) {
-    // var pic = $('.subImg').length
+    // var pic = e.target.files[0];
     // console.log(pic)
+
+    // var pic = $('.subImg').length
     const result = $(this).data('index');
     const show = `<img data-index="${result}" class="subImg" id="sub" src="<% @product.images[${result}].item.url%>">`;
     console.log(result)
