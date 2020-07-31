@@ -43,49 +43,52 @@ $(document).on('turbolinks:load', () => {
 
 
           //写真追加によるviewの変更
-          if (dropbox_no == 10){
-            $(".field-10").css({'display': 'none'})
-            $(".field-9").css({'display': 'none'})
+          switch(dropbox_no) {
+            case 10:
+              $(".field-10").css({'display': 'none'})
+              $(".field-9").css({'display': 'none'})
+              break;
+            case 9:
+              $(".field-9").css({'width': '20%'})
+              $(".field-8").css({'display': 'none'})
+              break;
+            case 8:
+              $(".field-8").css({'width': '40%'})
+              $(".field-7").css({'display': 'none'})
+              break;
+            case 7:
+              $(".field-7").css({'width': '60%'})
+              $(".field-6").css({'display': 'none'})
+              break;
+            case 6:
+              $(".field-6").css({'width': '80%'})
+              $(".field-5").css({'display': 'none'})
+              break;
+            case 5:
+              $(".field-5").css({'width': '100%'})
+              $(".field-4").css({'display': 'none'})
+              break;
+            case 4:
+              $(".field-4").css({'width': '20%'})
+              $(".field-3").css({'display': 'none'})
+              break;
+            case 3:
+              $(".field-3").css({'width': '40%'})
+              $(".field-2").css({'display': 'none'})
+              break;
+            case 2:
+              $(".field-2").css({'width': '60%'})
+              $(".field-1").css({'display': 'none'})
+              break;
+            case 1:
+              $(".field-1").css({'width': '80%'})
+              $(".field-0").css({'display': 'none'})
+              break;
+            case 0:
+              dropbox.css({'width': '100%'})
+              break;
           }
-          if(dropbox_no == 9) {
-            $(".field-9").css({'width': '20%'})
-            $(".field-8").css({'display': 'none'})
-          }
-          if(dropbox_no == 8) {
-            $(".field-8").css({'width': '40%'})
-            $(".field-7").css({'display': 'none'})
-          }
-          if(dropbox_no == 7) {
-            $(".field-7").css({'width': '60%'})
-            $(".field-6").css({'display': 'none'})
-          }
-          if(dropbox_no == 6) {
-            $(".field-6").css({'width': '80%'})
-            $(".field-5").css({'display': 'none'})
-          }
-          if(dropbox_no == 5) {
-            $(".field-5").css({'width': '100%'})
-            $(".field-4").css({'display': 'none'})
-            }
-          if(dropbox_no == 4) {
-            $(".field-4").css({'width': '20%'})
-            $(".field-3").css({'display': 'none'})
-            }
-          if(dropbox_no == 3) {
-            $(".field-3").css({'width': '40%'})
-            $(".field-2").css({'display': 'none'})
-          }
-          if(dropbox_no == 2) {
-            $(".field-2").css({'width': '60%'})
-            $(".field-1").css({'display': 'none'})
-          }
-          if(dropbox_no == 1) {
-            $(".field-1").css({'width': '80%'})
-            $(".field-0").css({'display': 'none'})
-            }
-          if(dropbox_no == 0) {
-            dropbox.css({'width': '100%'})
-            }
+
 
           //削除ボタンを押下した際の画像削除イベント
           $(document).on("click", '.preview__delete', function(){
@@ -97,56 +100,58 @@ $(document).on('turbolinks:load', () => {
             const images_no = $(".preview").length;
 
             //写真追加によるviewの変更
-            if(images_no == 9) {
-              $(".field-9").css({'width': '20%'})
-              $(".field-9").css({'display': 'block'})
-              $(".field-10").remove()
+            switch(images_no) {
+              case 9:
+                $(".field-9").css({'width': '20%'})
+                $(".field-9").css({'display': 'block'})
+                $(".field-10").remove()
+                break;
+              case 8:
+                $(".field-8").css({'width': '40%'})
+                $(".field-8").css({'display': 'block'})
+                $(".field-9").remove()
+                break;
+              case 7:
+                $(".field-7").css({'width': '60%'})
+                $(".field-7").css({'display': 'block'})
+                $(".field-8").remove()
+                break;
+              case 6:
+                $(".field-6").css({'width': '80%'})
+                $(".field-6").css({'display': 'block'})
+                $(".field-7").remove()
+                break;
+              case 5:
+                $(".field-5").css({'width': '100%'})
+                $(".field-5").css({'display': 'block'})
+                $(".field-6").remove()
+                break;
+              case 4:
+                $(".field-4").css({'width': '20%'})
+                $(".field-4").css({'display': 'block'})
+                $(".field-5").remove()
+                break;
+              case 3:
+                $(".field-3").css({'width': '40%'})
+                $(".field-3").css({'display': 'block'})
+                $(".field-4").remove()
+                break;
+              case 2:
+                $(".field-2").css({'width': '60%'})
+                $(".field-2").css({'display': 'block'})
+                $(".field-3").remove()
+                break;
+              case 1:
+                $(".field-1").css({'width': '80%'})
+                $(".field-1").css({'display': 'block'})
+                $(".field-2").remove()
+                break;
+              case 0:
+                dropbox.css({'width': '100%'})
+                dropbox.css({'display': 'block'})
+                $(".field-1").remove()
+                break;
             }
-            if(images_no == 8) {
-              $(".field-8").css({'width': '40%'})
-              $(".field-8").css({'display': 'block'})
-              $(".field-9").remove()
-            }
-            if(images_no == 7) {
-              $(".field-7").css({'width': '60%'})
-              $(".field-7").css({'display': 'block'})
-              $(".field-8").remove()
-            }
-            if(images_no == 6) {
-              $(".field-6").css({'width': '80%'})
-              $(".field-6").css({'display': 'block'})
-              $(".field-7").remove()
-            }
-            if(images_no == 5) {
-              $(".field-5").css({'width': '100%'})
-              $(".field-5").css({'display': 'block'})
-              $(".field-6").remove()
-              }
-            if(images_no == 4) {
-              $(".field-4").css({'width': '20%'})
-              $(".field-4").css({'display': 'block'})
-              $(".field-5").remove()
-              }
-            if(images_no == 3) {
-              $(".field-3").css({'width': '40%'})
-              $(".field-3").css({'display': 'block'})
-              $(".field-4").remove()
-            }
-            if(images_no == 2) {
-              $(".field-2").css({'width': '60%'})
-              $(".field-2").css({'display': 'block'})
-              $(".field-3").remove()
-            }
-            if(images_no == 1) {
-              $(".field-1").css({'width': '80%'})
-              $(".field-1").css({'display': 'block'})
-              $(".field-2").remove()
-            }
-            if(images_no == 0) {
-              dropbox.css({'width': '100%'})
-              dropbox.css({'display': 'block'})
-              $(".field-1").remove()
-              }
             })
           }
         })
