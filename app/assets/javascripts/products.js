@@ -174,18 +174,12 @@ $(document).on('turbolinks:load', () => {
   $('#count_name').trigger('input');
   $('#count_area').trigger('input');
 
-  //SHOWPAGE
+  //SHOWPAGE画像きり変え
   $('.subImg').mouseover(function(e) {
-    // var pic = e.target.files[0];
-    // console.log(pic)
-
-    // var pic = $('.subImg').length
-    const result = $(this).data('index');
-    const show = `<img data-index="${result}" class="subImg" id="sub" src="<% @product.images[${result}].item.url%>">`;
-    console.log(result)
-    console.log(show)
-    if (result == 1) {
-      $('#sub').before(show)
-    }
+    const url = $(this).attr("src");
+    $('.mainImg').attr('src', url)
+  })
+  $('.subImg').on('click', function(){
+    $('.mainImg').mouseover()
   })
 });
