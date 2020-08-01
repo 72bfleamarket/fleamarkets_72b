@@ -4,9 +4,31 @@
   - breadcrumb :mypage
   = render "layouts/breadcrumbs"
 
-.user-mypage.clearfix
-  = render 'side-bar'
-  = render 'email-pass'
+%main.container
+  .container__inner
+    = render 'side-bar'
+
+    .container__inner__content
+      %section.container__inner__content
+        %h2.container__inner__content__chapterHead
+          = "#{@user.name}さんの出品商品一覧"
+        .mypageProductLists
+          - @products.each do |product|
+            .main__allProducts__productBox__productLists__productList
+              = link_to product_path(product) do
+                %figure.main__allProducts__productBox__productLists__productList--img
+                  = image_tag product.images[0].item.url
+                .main__allProducts__productBox__productLists__productList--body
+                  .main__allProducts__productBox__productLists__productList__name
+                    = product.name
+                  .main__allProducts__productBox__productLists__productList__details
+                    %ul
+                      %li
+                        = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+                      %li
+                        %i.fas.fa-star
+                        1
+                    %p (税込)
 
 = render 'products/shared/app_banner'
 
