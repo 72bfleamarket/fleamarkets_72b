@@ -42,8 +42,6 @@ $(window).load(function () {
         break;
       case 0:
         $(".field-0").css({'width': '100%'})
-        $(".field-0").css({'display': 'block'})
-        $(".field-1").remove()
         break;
     }
 
@@ -58,7 +56,7 @@ $(window).load(function () {
       //Preview要素を削除
       // target_image.prop("checked",true)
       target_image.remove();
-      let images_no = $(".preview").length;
+      const images_no = $(".preview").length;
       const dropbox_no = $(".box-field").length
       console.log(dropbox_no)
 
@@ -155,7 +153,7 @@ $(window).load(function () {
     $('.box').on('change', 'input[type="file"]', function(e) {
       const file = e.target.files[0];
       reader = new FileReader();
-      let box = $(".box");
+      const box = $(".box");
       const dropbox_no = $(".box-field").length
 
 
@@ -166,8 +164,8 @@ $(window).load(function () {
       // ファイル読み込みが完了した際のイベント登録
       reader.onload = (function (file) {
           return function () {
-            let src = reader.result
-            let html = `<div class='preview' data-image="${file.name}">
+            const src = reader.result
+            const html = `<div class='preview' data-image="${file.name}">
           <div class='preview__content'>
           <img src=${src} width="134" height="75" >
           </div>
@@ -176,7 +174,7 @@ $(window).load(function () {
 
             //box要素の前にhtmlを差し込む
             $(".dummy").before(html);
-            let images_no = $(".preview").length;
+            const images_no = $(".preview").length;
             box.append(buildFileField(images_no));
 
 
