@@ -2,6 +2,7 @@
   - if @product.errors.any?
     .error_messages
       %ul.err_box
+        = I18n.t("errors.messages.not_saved")
         - @product.errors.full_messages.each do |message|
           %li= message
   #products-image
@@ -14,21 +15,13 @@
         =  @product.errors.full_messages_for(:images).shift
     %p
       最大10枚までアップロードできます
-    #previews
-      - if @product.persisted?
-        - @product.images.each_with_index do |image, i|
-          = image_tag image.item.url, data: { index: i }, width: "100", height: '100', class: "aaa"
-    = form.fields_for :images do |image|
-      .js-file_group{"data-index": "#{image.index}"}
-        = image.file_field :item, class: 'js-file', accept:"image/*"
-        - if @product.persisted?
-          %span.js-remove 削除
-      .save-box
-        - if @product.persisted?
-          = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-    - if @product.persisted?
-      .js-file_group{"data-index": "#{@product.images.count}"}
-        = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
+
+    = form.fields_for :images do |i|
+      .box
+        .dummy
+        %label.box-field.field-0{"data-index": "#{@product.images.count}"}
+          %i.fas.fa-camera
+          = i.file_field :item, name: "product[images_attributes][#{@product.images.count}][item]", type: 'file', class: "box__select"
 
 
   #product-about
@@ -68,9 +61,12 @@
       - if @product.errors.any?
         %span.err_message
           =  @product.errors.full_messages_for(:category_id).shift
-    = form.collection_select :category_id, Category.where('ancestry IS NULL'), :id, :name, {prompt: "---"}
-    = form.collection_select :category_id, Category.where.not('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
-    = form.collection_select :category_id, Category.where('ancestry like ?', '%/%'), :id, :name, {prompt: "---"}
+    #category_field
+      = form.collection_select :category_id, @parents, :id, :name, {prompt: "---", selected: @product.category&.root_id}, id: "category_form"
+      - if @product.category.present?
+        = form.collection_select :category_id, Category.where("ancestry like ?", "#{@product.category.parent.ancestry}"), :id, :name, {prompt: "---", selected: "#{@product.category.parent.id}"}, class: "child_category_id"
+        = form.collection_select :category_id, Category.where("ancestry like ?", "#{@product.category.ancestry}"), :id, :name, {prompt: "---", selected: "#{@product.category.id}"}, class: "gc_category_id"
+
     #product-about__brand
       %label
         ブランド

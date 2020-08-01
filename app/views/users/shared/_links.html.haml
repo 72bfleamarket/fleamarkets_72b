@@ -2,9 +2,8 @@
   = link_to "ログイン", new_session_path(resource_name)
   %br/
 - if devise_mapping.registerable? && controller_name != 'registrations'
-  = link_to new_user_path do
-    %button#google-login.btn-default.btn-sns
-      新規会員登録
+  = link_to new_user_path, class: "btn-default btn-sns" do
+    新規会員登録
   %br/
 -# - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'　/パスワード確認機能削除
 -#   = link_to "Forgot your password?", password_path(resource_name)　/パスワード確認機能削除

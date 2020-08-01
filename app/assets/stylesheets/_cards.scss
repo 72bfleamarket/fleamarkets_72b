@@ -8,13 +8,21 @@
     text-align: center;
   }
 
-  & h2 {
+  h2 {
     line-height: 1.4;
     font-weight: bold;
   }
 
-  & h3 {
+  h3 {
     font-weight: bold;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   &__inner {
@@ -35,14 +43,14 @@
       &__list {
         margin: 8px 0 0;
 
-        & li:first-child {
+        li:first-child {
           border: 0;
         }
   
-        & li {
+        li {
           width: 100%;
 
-          & a {
+          a {
             position: relative;
             display: block;
             min-height: 48px;
@@ -52,7 +60,7 @@
             color: #333;
           }
 
-          & i {
+          i {
             position: absolute;
             top: 50px;
             right: 16px;
@@ -84,7 +92,7 @@
             margin: 0;
           }
 
-          & label {
+          label {
             font-size: 14px;
             font-weight: 600;
             display: inline-block;
@@ -117,10 +125,10 @@
             font-size: 0;
             display: flex;
 
-            & li {
+            li {
               margin-right: 5px;
 
-              & img {
+              img {
                 vertical-align: middle;
                 height: 20px;
               }
@@ -174,7 +182,7 @@
               cursor: pointer;
             }
 
-            & span {
+            span {
               color: #333;
               font-size: 14px;
               line-height: 48px;
@@ -208,6 +216,7 @@
       &__singleInner {
         padding: 64px;
         border-top: 1px solid #f5f5f5;
+        position: relative;
 
         &__singleContent {
           max-width: 320px;
@@ -234,30 +243,32 @@
           }
         }
 
-        & li {
+        li {
           width: 100%;
           padding: 24px 0;
           border-bottom: 1px solid #eee;
 
-          & form {
+          form {
             position: relative;
 
-            & img {
+            img {
               vertical-align: middle;
             }
           }
         }
 
-        & a {
+        a {
           display: block;
-          margin: 40px 0 0;
+          margin: 40px 8px 0 0;
           text-align: right;
           color: #0099e8;
           font-size: 14px;
           vertical-align: middle;
 
-          & i {
-            margin: 0 0 0 8px;
+          i {
+            position: absolute;
+            top: 235px;
+            right: 58px;
           }
         }
       }

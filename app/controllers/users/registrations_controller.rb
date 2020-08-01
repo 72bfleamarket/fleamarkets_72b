@@ -4,17 +4,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]　/デフォルト記載
   # before_action :configure_account_update_params, only: [:update]　/デフォルト記載
 
-  def new_user
+  def new
     @user = User.new
   end
 
+  def new_user
+    @user = User.new
+  end
+  
   def create_user
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
     params[:user][:birthday] = birthday_join
     @user = User.new(sign_up_params)
     @address = Address.new
     if @user.valid?
       session["devise.regist_data"] = { user: @user.attributes }
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
+      session["devise.regist_data"][:user]["password_confirmation"] = params[:user][:password_confirmation]
+
       render :new_address
     else
       render :new_user

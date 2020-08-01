@@ -1,6 +1,7 @@
 .err_message {
   color: #CC3300;
 }
+
 .btn-default {
   border-radius: 4px;
   display: block;
@@ -91,6 +92,7 @@
   &__body {
     background-color: #fff;
     width: 700px;
+    min-height: calc(100vh - 100px - 200px);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -100,7 +102,8 @@
       font-size: 22px;
       border-bottom: 1px solid rgb(237, 237, 237);
     }
-    .head{
+
+    .head {
       border-bottom: 1px solid rgb(237, 237, 237);
     }
 
@@ -120,9 +123,11 @@
         position: relative;
         color: #fff;
         text-decoration: none;
+
         &:hover {
           background-color: #34AEB3;
         }
+
         &:active {
           background-color: #2C9599;
         }
@@ -137,11 +142,13 @@
 
       .btn-sns-facebook {
         background-color: #385185;
+        border: #385185 solid 1px;
         color: #fff;
       }
 
       .btn-sns-apple {
         background-color: #000;
+        border: #000 solid 1px;
         color: #fff;
       }
 
@@ -235,17 +242,24 @@
 
   &__footer {
     height: 200px;
+
     .regulation {
       margin-top: 35px;
       display: flex;
       text-align: center;
       justify-content: center;
+
       li {
         margin: 10px;
+
         a {
           font-size: 12px;
         }
       }
     }
   }
+}
+
+.mypageProductLists {
+  margin: 10px;
 }

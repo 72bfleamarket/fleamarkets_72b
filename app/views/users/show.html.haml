@@ -4,23 +4,19 @@
   - breadcrumb :mypage
   = render "layouts/breadcrumbs"
 
-%main.container.clearfix
-  - flash.each do |notice, value|
-    - notice
-    %p
-      = value
-
+%main.container
   .container__inner
-    = render 'users/shared/mypage_nav'
+    = render 'side-bar'
 
     .container__inner__content
       %section.container__inner__content
         %h2.container__inner__content__chapterHead
           = "#{@user.name}さんの出品商品一覧"
-        .main__allProducts__productBox__productHead
-          = link_to '#' do
-            %h3.main__allProducts__productBox__productHead__title 投稿商品
         .main__allProducts__productBox__productLists
           = render 'products/shared/product_list'
+
+= render 'products/shared/app_banner'
+
+= render 'products/shared/footer'
 
 = render 'products/shared/purchase_btn'

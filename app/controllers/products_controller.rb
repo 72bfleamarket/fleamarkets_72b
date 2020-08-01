@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product, except: [:index, :new, :create]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :set_product, except: [:index, :new, :create, :search]
+  before_action :move_to_index, except: [:index, :show, :search]
+  before_action :set_parents, only: [:index, :show, :new, :create, :edit, :update]
 
   def index
     @products = Product.includes(:images).order("created_at DESC")
@@ -17,7 +18,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
+    if @product.save  
       return
     else
       @product.images.new
@@ -47,7 +48,7 @@ class ProductsController < ApplicationController
     end
     @images = @product.images
     @category = @product.category
-    @parents = @category.root
+    @parent = @category.root
     @children = @category.parent
   end
 
@@ -56,6 +57,19 @@ class ProductsController < ApplicationController
       redirect_to root_path
     else
       redirect_to product_path
+    end
+  end
+
+  def search
+    respond_to do |format|
+      format.html
+      format.json do
+        if params[:parent_id]
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
+      end
     end
   end
 
@@ -71,5 +85,9 @@ class ProductsController < ApplicationController
 
   def move_to_index
     redirect_to user_session_path unless user_signed_in?
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end

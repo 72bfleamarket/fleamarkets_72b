@@ -15,11 +15,22 @@
     .header__headerInner__nav
       %ul.header__headerInner__nav__listsLeft
         %li.header__headerInner__nav__listsLeft__item
-          = link_to '#', id: 'catBtn' do
-            カテゴリー
-        %li.header__headerInner__nav__listsLeft__item.header__headerInner__nav__listsLeft__item--brand
+          = link_to categories_path, id: 'categoBtn' do
+            カテゴリーから探す
+          #tree_menu
+            %ul.categoryTree
+              - @parents.each do |parent|
+                %li.category_parent
+                  = link_to category_path(parent) do
+                    %input{type: "button", value: "#{parent.name}", name: "#{parent.id}", class: "parent_btn"}
+              %li.category_parent
+                = link_to categories_path do
+                  %input{type: "button", value: "全てのカテゴリー", id: "all_btn"}
+            %ul.categoryTree-child
+            %ul.categoryTree-grandchild
+        %li.header__headerInner__nav__listsLeft__brand
           = link_to '#' do
-            ブランド
+            ブランドから探す
 
       %ul.header__headerInner__nav__listsRight
         - if user_signed_in?

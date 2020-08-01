@@ -1,0 +1,55 @@
+.user-mypage__side-bar
+  %h1.user-mypage__side-bar__title
+    商品情報
+  %ul.user-mypage__side-bar__content-box
+    %li.user-mypage__side-bar__content-box__list
+      = link_to user_path(current_user.id), class: 'user-mypage__side-bar__content-box__list__item' do
+        マイページ
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        お気に入り
+        %i.fas.fa-chevron-right    
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        出品した商品 − 出品中
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        出品した商品 − 取引中
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        出品した商品 - 売却済み
+        %i.fas.fa-chevron-right   
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        購入した商品 - 取引中
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        購入した商品 - 購入済み
+        %i.fas.fa-chevron-right
+  %h1.user-mypage__side-bar__title
+    設定
+  %ul.user-mypage__side-bar__content-box
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        プロフィール
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+        本人情報
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to new_card_path, class: 'user-mypage__side-bar__content-box__list__item' do
+        カード情報
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list
+      = link_to edit_user_path(current_user.id), class: 'user-mypage__side-bar__content-box__list__item' do
+        メール/パスワード
+        %i.fas.fa-chevron-right
+    %li.user-mypage__side-bar__content-box__list 
+      = link_to destroy_user_session_path, method: :delete, class: 'user-mypage__side-bar__content-box__list__item' do
+        ログアウト
+        %i.fas.fa-chevron-right
