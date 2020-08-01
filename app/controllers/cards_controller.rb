@@ -1,5 +1,7 @@
 class CardsController < ApplicationController
   before_action :set_cards, only: [:index, :edit]
+  before_action :set_parents, only: [:new, :show]
+
   require 'payjp'
   
   def index
@@ -76,5 +78,9 @@ class CardsController < ApplicationController
 
   def set_cards
     @cards = Card.all
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end
