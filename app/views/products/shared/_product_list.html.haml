@@ -15,5 +15,5 @@
               = "#{product.price.to_s(:delimited, delimiter: ',')}円"
             %li
               %i.fas.fa-star
-              1
+              = "#{product.likes_count}"
           %p.productTax (税込)

@@ -122,29 +122,10 @@
             %i.fa.fa-angle-right
 
       .showMain__content__relatedItems
-        = link_to category_path(@product.category.root.id) do
+        = link_to category_path(@product.category.root.id), class: 'showMain__content__relatedItems__category' do
           = "#{@parent.name}をもっと見る"
-        .showMain__content__relatedItems__productLists
-          .showMain__content__relatedItems__productLists__productList
-            - @products.each do |product|
-              .main__allProducts__productBox__productLists__productList
-                - if product.buyer_id.present?
-                  .main__allProducts__productBox__productLists__productList__soldOut
-                    .main__allProducts__productBox__productLists__productList__soldOut__content SOLD
-                = link_to product_path(product) do
-                  %figure.main__allProducts__productBox__productLists__productList--img
-                    = image_tag product.images[0].item.url
-                  .main__allProducts__productBox__productLists__productList--body
-                    .main__allProducts__productBox__productLists__productList__name
-                      = product.name
-                    .main__allProducts__productBox__productLists__productList__details
-                      %ul
-                        %li
-                          = "#{product.price.to_s(:delimited, delimiter: ',')}円"
-                        %li
-                          %i.fas.fa-star
-                            = "#{product.likes_count}"
-                      %p (税込)
+        .main__allProducts__productBox__productLists
+          = render 'products/shared/product_list'
       .backpage
         %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
 
