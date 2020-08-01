@@ -1,24 +1,59 @@
-.content__all-products
-  .content__all-products__product-box
-    %h2.content__all-products__product-box__title
-      = "#{@category.name}商品一覧"
-    %ul.content__all-products__product-box__sub-lists
-      = render partial: 'category'
-  .content__all-products__product-lists
-    .content__all-products__product-lists__product-list
-      - @products.each do |product|
-        .content__all-products__product-lists__product-list--link
-          = link_to category_path(@products.ids) do
-            = image_tag product.images[0].item.url, class: 'content__all-products__product-lists__product-list--icon'
-          .content__all-products__product-lists__product-list__body
-            .content__all-products__product-lists__product-list__body__name
-              = product.name
-            %ul.content__all-products__product-lists__product-list__body__lists
-              %li.content__all-products__product-lists__product-list__body__lists__list
-                = "#{product.price.to_s(:delimited, delimiter: ',')}円"
-              %li.content__all-products__product-lists__product-list__body__lists__list
-                %i.fas.fa-star.content__all-products__product-lists__product-list__body__lists__list--icon
-                0
-            .content__all-products__product-lists__product-list__body__tax
-              (税込)
+= render 'products/shared/header'
+%nav.breadCrumbs
+  - if @category.ancestry == nil
+    - breadcrumb :parent
+    = render "layouts/breadcrumbs"
+  - elsif @category.ancestry =~ /^[0-9]+$/
+    - breadcrumb :child
+    = render "layouts/breadcrumbs"
+  - else
+    - breadcrumb :grandchild
+    = render "layouts/breadcrumbs"
 
+.content
+  .content__all-products
+    %section.main__allProducts
+    .main__allProducts__head
+      = "#{@category.name}の商品一覧"
+    .main__allProducts__productBox
+      .main__allProducts__productBox__productHead
+        = link_to '#' do
+          %h3.main__allProducts__productBox__productHead__title 投稿商品
+    - if @category.has_children?
+      .children-lists
+        %input{type: "button", value: "さらに絞り込む >> ", id: "sub_category"}
+      #categories-lists
+        %input{type: "button", value: "絞り込みを閉じる", id: "close_category"}
+        %ul.categorys_btn
+          - @category.children.each do |child|
+            %li.categorys_children
+              = link_to "#{child.id}" do
+                %input{type: "button", value: "#{child.name}"}
+
+    .main__allProducts__productBox__productLists
+      - @products.each do |product|
+        .main__allProducts__productBox__productLists__productList
+          - if product.buyer_id.present?
+            .main__allProducts__productBox__productLists__productList__soldOut
+              .main__allProducts__productBox__productLists__productList__soldOut__content SOLD
+          = link_to product_path(product) do
+            %figure.main__allProducts__productBox__productLists__productList--img
+              = image_tag product.images[0].item.url
+            .main__allProducts__productBox__productLists__productList--body
+              .main__allProducts__productBox__productLists__productList__name
+                = product.name
+              .main__allProducts__productBox__productLists__productList__details
+                %ul
+                  %li
+                    = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+                  %li
+                    %i.fas.fa-star
+                    1
+                %p (税込)
+    .backpage
+      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
+
+= render 'products/shared/footer'
+= render 'products/shared/purchase_btn'
+.scroll_button
+  %a.icon.fas.fa-arrow-circle-up{href: "#", id:'scroll_top'} TOPへ戻る⤴︎

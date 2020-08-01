@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @parents = Category.where(ancestry: nil)
     if user_signed_in? && current_user.id == @user.id
       @products = @user.products.order("created_at DESC")
     else
