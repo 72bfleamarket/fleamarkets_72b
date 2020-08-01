@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
+  before_action :set_cards, only: [:index, :edit]
   require 'payjp'
   
   def index
-    @cards = Card.all
     @users = User.all
   end
 
@@ -31,7 +31,6 @@ class CardsController < ApplicationController
   end
   
   def edit
-    @cards = Card.all
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す
@@ -71,5 +70,11 @@ class CardsController < ApplicationController
       card.delete
     end
       redirect_to action: :new
+  end
+
+  private
+
+  def set_cards
+    @cards = Card.all
   end
 end
