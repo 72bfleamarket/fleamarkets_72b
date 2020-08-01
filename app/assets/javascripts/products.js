@@ -66,71 +66,54 @@ $(window).load(function () {
       switch (images_no) {
         case 9:
           $(".field-0").css({'width': '20%'})
-          // $(".field-0").css({'display': 'block'})
           $(".field-9").css({'width': '20%'})
           $(".field-9").css({'display': 'block'})
           $(".field-10").remove()
           break;
         case 8:
           $(".field-0").css({'width': '40%'})
-          // $(".field-0").css({'display': 'block'})
-
           $(".field-8").css({'width': '40%'})
           $(".field-8").css({'display': 'block'})
           $(".field-9").remove()
           break;
         case 7:
           $(".field-0").css({'width': '60%'})
-          // $(".field-0").css({'display': 'block'})
-
           $(".field-7").css({'width': '60%'})
           $(".field-7").css({'display': 'block'})
           $(".field-8").remove()
           break;
         case 6:
           $(".field-0").css({'width': '80%'})
-          // $(".field-0").css({'display': 'block'})
-
           $(".field-6").css({'width': '80%'})
           $(".field-6").css({'display': 'block'})
           $(".field-7").remove()
           break;
         case 5:
           $(".field-0").css({'width': '100%'})
-          // $(".field-0").css({'display': 'block'})
-
           $(".field-5").css({'width': '100%'})
           $(".field-5").css({'display': 'block'})
           $(".field-6").remove()
           break;
         case 4:
           $(".field-0").css({'width': '20%'})
-          // $(".field-0").css({'display': 'block'})
-
           $(".field-4").css({'width': '20%'})
           $(".field-4").css({'display': 'block'})
           $(".field-5").remove()
           break;
         case 3:
           $(".field-0").css({'width': '40%'})
-          // $(".field-0").css({'display': 'block'})
-
           $(".field-3").css({'width': '40%'})
           $(".field-3").css({'display': 'block'})
           $(".field-4").remove()
           break;
         case 2:
           $(".field-0").css({'width': '60%'})
-          // $(".field-0").css({'display': 'block'})
-
           $(".field-2").css({'width': '60%'})
           $(".field-2").css({'display': 'block'})
           $(".field-3").remove()
           break;
         case 1:
           $(".field-0").css({'width': '80%'})
-          // $(".field-0").css({'display': 'block'})
-
           $(".field-1").css({'width': '80%'})
           $(".field-1").css({'display': 'block'})
           $(".field-2").remove()
