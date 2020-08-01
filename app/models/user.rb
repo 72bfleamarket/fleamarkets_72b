@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :sold_products, -> { where("buyer_id is not NULL") }, foreign_key: "user_id", class_name: "Product"
   has_many :products, dependent: :destroy
   has_many :sns_credentials
+  has_many :likes, dependent: :destroy
+  has_many :like_products, through: :likes, source: :product
   # has_many :comments //後から使用予定
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
