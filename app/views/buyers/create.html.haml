@@ -1,4 +1,5 @@
-= render 'products/shared/header'
+.form
+  = render 'shared/header'
 
 .buyContent
   .buyContent__container
@@ -30,6 +31,4 @@
       .buyContent__container__inner__returnBtn
         = link_to "商品詳細ページへ戻る", product_path(@product.id)
 
-= render 'products/shared/app_banner'
-
-= render 'products/shared/footer'
+  = render 'products/shared/footer'
