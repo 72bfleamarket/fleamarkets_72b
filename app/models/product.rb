@@ -3,6 +3,12 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :images, dependent: :destroy
   belongs_to :buyer, class_name: "User"
+  has_many :likes
+  has_many :like_users, through: :likes, source: :user
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
+  end
 
   accepts_nested_attributes_for :images, allow_destroy: true
   validates :images, presence: { message: "は1枚以上10枚以下のアップロードが必要です" }
