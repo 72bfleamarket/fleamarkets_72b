@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   root "products#index"
   resources :products do
     resources :buyers, only: [:new, :create]
+    resources :comments, only: :create
     post "add", to: "likes#create"
     delete "/add", to: "likes#destroy"
     collection do
