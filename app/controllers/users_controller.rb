@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show]
+  before_action :set_parents, only: [:edit, :show]
 
   def edit
   end
@@ -13,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @parents = Category.where(ancestry: nil)
     if user_signed_in? && current_user.id == @user.id
       @products = @user.products.order("created_at DESC")
     else
@@ -29,5 +29,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end
