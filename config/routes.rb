@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "users/profile/:id", to: "users/sessions#show", as: "profile"
   end
-  resources :users, path: "/users/mypage", only: :show
+  resources :users, path: "/users/mypage", only: [:show, :edit]
 
   root "products#index"
   resources :products do
@@ -28,5 +28,5 @@ Rails.application.routes.draw do
     end
   end
   resources :categories, only: [:index, :show]
-  resources :cards, only: [:new, :create, :show, :destroy]
+  resources :cards, only: [:index, :new, :create, :edit, :show, :destroy]
 end
