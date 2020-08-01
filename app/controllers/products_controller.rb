@@ -52,9 +52,7 @@ class ProductsController < ApplicationController
     @children = @category.parent
     @products = Product.includes(:images).order("created_at DESC").where(category_id: @parent.descendants).where.not(category_id: @category)
     @likes = Like.where(product_id: @product.id).count
-    if @likes.nil?
-      @likes = 0
-    end
+    @likes = 0 if @likes.nil?
   end
 
   def destroy
