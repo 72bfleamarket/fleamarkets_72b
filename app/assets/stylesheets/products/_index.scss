@@ -24,11 +24,11 @@ body {
         margin-right: 30px;
         border-radius: 4px;
 
-        & a {
+        a {
           width: 140px;
           display: block;
 
-          & img {
+          img {
             width: 100%;
             vertical-align: bottom;
           }
@@ -39,7 +39,7 @@ body {
         margin-left: auto;
         width: 100%;
 
-        & form {
+        form {
           width: 100%;
           display: flex;
           margin-bottom: 5px;
@@ -59,7 +59,7 @@ body {
           background-color: #3ccace;
           padding: 8px;
 
-          & img {
+          img {
             width: 100%;
             vertical-align: bottom;
             border: 0;
@@ -73,11 +73,11 @@ body {
       display: flex;
       margin-bottom: 10px;
 
-      & ul {
+      ul {
         list-style: none;
       }
 
-      & a {
+      a {
         color: #333333;
         text-decoration: none;
       }
@@ -85,7 +85,6 @@ body {
       &__listsLeft {
         position: relative;
         display: flex;
-
 
         &__item {
           width: 160px;
@@ -158,13 +157,13 @@ body {
         display: flex;
         margin-top: 24px;
 
-        & a {
+        a {
 
           &:first-child {
             margin-right: 10px;
           }
 
-          & img {
+          img {
             width: 100%;
             vertical-align: bottom;
             border: 0;
@@ -250,7 +249,7 @@ body {
             color: #fff;
           }
 
-          & img {
+          img {
             width: 100%;
             vertical-align: bottom;
             border: 0;
@@ -263,7 +262,7 @@ body {
           line-height: 50px;
           margin-bottom: 2px;
 
-          & span {
+          span {
             color: #3ccace;
           }
         }
@@ -308,10 +307,10 @@ body {
       &__btn {
         display: flex;
 
-        & a {
+        a {
           margin-right: 10px;
 
-          & img {
+          img {
             width: 180px;
             vertical-align: bottom;
             border: 0;
@@ -365,7 +364,7 @@ body {
           margin: 0 auto;
           line-height: 120px;
 
-          & img {
+          img {
             width: 100%;
             vertical-align: bottom;
             border: 0;
@@ -409,7 +408,7 @@ body {
       &__productHead {
         text-align: center;
 
-        & a {
+        a {
           font-size: 24px;
           text-decoration: none;
           color: #3ccace;
@@ -455,7 +454,7 @@ body {
             }
           }
 
-          & a {
+          a {
             background-color: #fff;
             display: inline-block;
             text-decoration: none;
@@ -470,7 +469,7 @@ body {
             margin: 0;
             z-index: auto;
 
-            & img {
+            img {
               position: absolute;
               top: 0;
               left: 0;
@@ -497,13 +496,13 @@ body {
           }
 
           &__details {
-            & ul {
+            ul {
               display: flex;
               align-items: center;
               justify-content: space-between;
             }
 
-            & p {
+            p {
               font-size: 10px;
               text-align: left;
             }
@@ -543,13 +542,13 @@ body {
       justify-content: center;
       margin: 20px auto 0;
 
-      & a {
+      a {
 
         &:first-child {
           margin-right: 10px;
         }
 
-        & img {
+        img {
           width: 180px;
           vertical-align: bottom;
           border: 0;
@@ -567,18 +566,18 @@ body {
   background-color: #272727;
   text-align: center;
 
-  & ul {
+  ul {
     list-style: none;
   }
 
-  & a {
+  a {
     color: #fff;
     text-decoration: none;
     font-size: 12px;
     line-height: 32px;
   }
 
-  & p {
+  p {
     font-size: 14px;
   }
 
@@ -616,7 +615,7 @@ body {
     width: 100%;
     margin: 0 auto;
 
-    & img {
+    img {
       width: 100%;
       vertical-align: bottom;
     }

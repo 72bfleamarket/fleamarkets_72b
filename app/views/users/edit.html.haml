@@ -1,0 +1,15 @@
+= render 'products/shared/header'
+
+%nav.breadCrumbs
+  - breadcrumb :mypage
+  = render "layouts/breadcrumbs"
+
+.user-mypage.clearfix
+  = render 'side-bar'
+  = render 'email-pass'
+
+= render 'products/shared/app_banner'
+
+= render 'products/shared/footer'
+
+= render 'products/shared/purchase_btn'

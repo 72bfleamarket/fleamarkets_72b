@@ -1,5 +1,12 @@
 class CardsController < ApplicationController
+  before_action :set_cards, only: [:index, :edit]
+  before_action :set_parents, only: [:new, :show]
+
   require 'payjp'
+  
+  def index
+    @users = User.all
+  end
 
   def new
     card = Card.where(user_id: current_user.id)
@@ -23,6 +30,9 @@ class CardsController < ApplicationController
         redirect_to action: :create
       end
     end
+  end
+  
+  def edit
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す
@@ -62,5 +72,15 @@ class CardsController < ApplicationController
       card.delete
     end
       redirect_to action: :new
+  end
+
+  private
+
+  def set_cards
+    @cards = Card.all
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end

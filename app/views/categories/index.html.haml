@@ -58,7 +58,7 @@
                       = "#{product.price.to_s(:delimited, delimiter: ',')}円"
                     %li
                       %i.fas.fa-star
-                      1
+                        = "#{product.likes_count}"
                   %p (税込)
     .backpage
       %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
