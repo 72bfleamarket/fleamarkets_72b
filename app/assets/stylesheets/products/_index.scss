@@ -336,7 +336,6 @@
             position: relative;
             overflow: hidden;
             margin: 0;
-            z-index: auto;
 
             img {
               position: absolute;
@@ -345,7 +344,6 @@
               right: 0;
               bottom: 0;
               width: 100%;
-              z-index: auto;
               height: 150px;
               object-fit: cover;
               vertical-align: bottom;

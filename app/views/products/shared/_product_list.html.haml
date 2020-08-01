@@ -10,10 +10,10 @@
         .main__allProducts__productBox__productLists__productList__name
           = product.name
         .main__allProducts__productBox__productLists__productList__details
-          %ul
+          %ul.productListDetails
             %li
               = "#{product.price.to_s(:delimited, delimiter: ',')}円"
             %li
               %i.fas.fa-star
               1
-          %p (税込)
+          %p.productTax (税込)

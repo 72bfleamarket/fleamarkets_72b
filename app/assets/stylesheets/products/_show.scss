@@ -1,30 +1,3 @@
-.breadCrumbs {
-  width: 100%;
-  border-top: 1px solid #eee;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
-  padding: 0 60px;
-
-  &__lists {
-    width: 1040px;
-    display: flex;
-    padding: 17px 0 16px;
-    margin: 0 auto;
-    color: #333;
-    font-size: 14px;
-
-    &__list {
-
-      a {
-        color: #333;
-      }
-
-      .current {
-        font-weight: bold;
-      }
-    }
-  }
-}
-
 .showMain {
   background-color: #f8f8f8;
   padding: 40px;
@@ -257,7 +230,7 @@
 
     &__relatedItems {
 
-      a {
+      &__category {
         display: block;
         margin: 24px 0 8px;
         color: #3ccace;
@@ -266,62 +239,8 @@
         position: relative;
       }
 
-      &__productLists {
-        display: flex;
-
-        &__productList {
-          margin-bottom: 10px;
-          width: calc(100% / 3);
-
-          &--img {
-            background-color: #fff;
-            width: 233px;
-            height: 150px;
-            position: relative;
-            overflow: hidden;
-            margin: 0;
-            z-index: auto;
-
-            img {
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              width: 100%;
-              z-index: auto;
-              height: 150px;
-              object-fit: cover;
-            }
-          }
-
-          &__body {
-            background-color: white;
-            color: #333;
-            padding: 16px;
-
-            &__name {
-              overflow: hidden;
-              line-height: 1.5;
-              font-size: 16px;
-              text-align: left;
-            }
-
-            &__details {
-              font-size: 16px;
-
-              ul {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-              }
-            }
-
-            p {
-              font-size: 10px;
-            }
-          }
-        }
+      .productListDetails, .productTax {
+        font-weight: bold;
       }
     }
   }

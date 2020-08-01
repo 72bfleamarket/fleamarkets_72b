@@ -117,23 +117,10 @@
             %i.fa.fa-angle-right
 
       .showMain__content__relatedItems
-        = link_to '#' do
+        = link_to '#', class: 'showMain__content__relatedItems__category' do
           = "#{@parent.name}をもっと見る"
-        .showMain__content__relatedItems__productLists
-          .showMain__content__relatedItems__productLists__productList
-            = link_to '#' do
-              %figure.showMain__content__relatedItems__productLists__productList--img
-                = image_tag 'product_03.png'
-              .showMain__content__relatedItems__productLists__productList__body
-                %h3.showMain__content__relatedItems__productLists__productList__body__name product3
-                .showMain__content__relatedItems__productLists__productList__body__details
-                  %ul
-                    %li
-                      30,000円
-                    %li
-                      %i.fa.fa-star
-                      0
-                  %p (税込)
+        .main__allProducts__productBox__productLists
+          = render 'products/shared/product_list'
 
 = render 'products/shared/app_banner'
 

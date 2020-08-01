@@ -1,4 +1,6 @@
 .header {
+  height: 107px;
+  min-width: 700px;
   padding: 0 60px;
 
   &__headerInner {
@@ -18,11 +20,11 @@
         margin-right: 30px;
         border-radius: 4px;
 
-        & a {
+        a {
           width: 140px;
           display: block;
 
-          & img {
+          img {
             width: 100%;
             vertical-align: bottom;
           }
@@ -33,7 +35,7 @@
         margin-left: auto;
         width: 100%;
 
-        & form {
+        form {
           width: 100%;
           display: flex;
           margin-bottom: 5px;
@@ -43,6 +45,7 @@
           width: calc(100% - 26px);
           height: 36px;
           padding-left: 5px;
+          line-height: 36px;
         }
 
         &__submit {
@@ -52,10 +55,9 @@
           background-color: #3ccace;
           padding: 8px;
 
-          & img {
+          img {
             width: 100%;
             vertical-align: bottom;
-            border: 0;
           }
 
           &--btn {
@@ -73,11 +75,11 @@
       display: flex;
       margin-bottom: 10px;
 
-      & ul {
+      ul {
         list-style: none;
       }
 
-      & a {
+      a {
         color: #333333;
         text-decoration: none;
       }
@@ -86,16 +88,13 @@
         position: relative;
         display: flex;
 
-        & a {
-          padding-right: 30px;
+        a {
+          padding-right: 10px;
         }
 
-        &__item {
+        &__item, &__brand {
+          width: 160px;
           line-height: 32px;
-
-          &--brand {
-            padding-left: 16px;
-          }
         }
       }
 
