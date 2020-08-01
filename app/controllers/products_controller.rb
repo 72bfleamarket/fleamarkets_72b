@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save  
+    if @product.save
       return
     else
       @product.images.new
@@ -50,6 +50,9 @@ class ProductsController < ApplicationController
     @category = @product.category
     @parent = @category.root
     @children = @category.parent
+    @products = Product.includes(:images).order("created_at DESC").where(category_id: @parent.descendants).where.not(category_id: @category)
+    @likes = Like.where(product_id: @product.id).count
+    @likes = 0 if @likes.nil?
   end
 
   def destroy

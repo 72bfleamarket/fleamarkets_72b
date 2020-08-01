@@ -1,0 +1,20 @@
+- if user_signed_in? && current_user.id == @product.user_id
+  %i.fa-lg.fas.fa-star.icon-btn
+  %span
+    お気に入り
+  %span.like-count
+    = product.likes.count
+- elsif product.like_user(current_user.id)
+  = link_to(product_add_path(product_id: product.id, user_id: current_user.id), method: :delete, remote: true, id: :"like-button-#{product.id}", class: :"faa-parent animated-hover") do
+    %i.fa-lg.fas.fa-star.faa-tada.icon-btn.liked
+    %span.yes-like
+      気に入ってます！
+    %span.like-count
+      = product.likes.count
+- else
+  = link_to(product_add_path(product_id: product.id, user_id: current_user.id), method: :post, remote: true, id: :"like-button-#{product.id}", class: :"faa-parent animated-hover") do
+    %i.fa-lg.fas.fa-star.faa-bounce.icon-btn.not-like
+    %span.do-like
+      お気に入りにする？
+    %span.like-count
+      = product.likes.count

@@ -1,0 +1,76 @@
+.body{
+  background-color: #f8f8f8;
+}
+.user-mypage{
+  background-color: #f8f8f8;
+  padding: 40px 200px ;
+  display: flex;
+  justify-content: space-evenly;
+  &__main-content{
+    width: 700px;
+    &__content-title{
+      text-align: center;
+      font-size: 22px;
+      padding: 16px;
+      font-weight: bold;
+    }
+    &__content-form{
+      background-color: #ffffff;
+      padding: 40px;
+      &__content-box{
+        margin-bottom: 30px;
+        text-align: center;
+        &__infomartion{
+          font-size: 12px;
+          margin-bottom: 8px;
+          font-weight: bold;
+        }
+        &__form{
+          height: 40px;
+          width: 300px;
+          font-size: 16px;
+          font-weight: normal;
+          &__year{
+            height: 40px;
+            width: 130px;
+            font-size: 16px;
+            font-weight: normal;
+          }
+          &__month{
+            height: 40px;
+            width: 130px;
+            font-size: 16px;
+            font-weight: normal;
+            margin-left: 40px;
+          }
+        }
+      
+        &__btn{
+          text-align: center;
+          &__send-btn{
+            height: 50px;
+            width: 100%;
+            color: #ffffff;
+            background-color: #3ccace;
+            border: none;
+            &:hover{
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.clearfix:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.fa-chevron-right{
+  position: absolute;
+  right: 16px;
+  line-height: 50px;
+}
+
