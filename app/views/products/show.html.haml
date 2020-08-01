@@ -11,13 +11,11 @@
         %h2.showMain__content__topContent__itemBox__name
           = @product.name
         .showMain__content__topContent__itemBox__body
-          %ul
-            %li
-              = image_tag @product.images[0].item.url
-              %ul
-                - @product.images.each do |image|
-                  %li
-                    = image_tag image.item.url
+          .showMain__content__topContent__itemBox__body__pic
+            = image_tag @product.images[0].item.url, class: "mainImg"
+            .showMain__content__topContent__itemBox__body__pic__sub
+              - @product.images.each_with_index do |image|
+                = image_tag image.item.url, class: "subImg"
         .showMain__content__topContent__itemBox__price
           %span
             = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
