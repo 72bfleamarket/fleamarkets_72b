@@ -14,14 +14,20 @@
       %span.err_message
         =  @product.errors.full_messages_for(:images).shift
     %p
-      最大10枚までアップロードできます
+    最大10枚までアップロードできます
 
-    = form.fields_for :images do |i|
-      .box
-        .dummy
-        %label.box-field.field-0{"data-index": "#{@product.images.count}"}
-          %i.fas.fa-camera
+    .box
+      - if @product.persisted?
+        - @product.images.each_with_index do |image, i|
+          .preview{data: { index: i }}
+            = image_tag image.item.url, class: 'preview__content'
+            .preview__delete 削除
+      .dummy
+      %label.box-field#default.field-0{"data-index": "#{@product.images.count}"}
+        %i.fas.fa-camera
+        = form.fields_for :images do |i|
           = i.file_field :item, name: "product[images_attributes][#{@product.images.count}][item]", type: 'file', class: "box__select"
+          = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
 
 
   #product-about
@@ -147,15 +153,15 @@
     %p
       %small
         禁止されている
-        %a{href: '#'} 行為
+        = link_to "行為"
         および
-        %a{href: '#'} 出品物
+        = link_to "出品物"
         を必ずご確認ください。
-        %a{href: '#'} 偽ブランド品
+        = link_to "偽ブランド品"
         や
-        %a{href: '#'} 盗品物
+        = link_to "盗品物"
         などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
-        %a{href: '#'} フリマ利用規約
+        = link_to "フリマ利用規約"
         に同意したことになります。
 
 

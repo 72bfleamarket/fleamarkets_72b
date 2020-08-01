@@ -11,13 +11,11 @@
         %h2.showMain__content__topContent__itemBox__name
           = @product.name
         .showMain__content__topContent__itemBox__body
-          %ul
-            %li
-              = image_tag @product.images[0].item.url
-              %ul
-                - @product.images.each do |image|
-                  %li
-                    = image_tag image.item.url
+          .showMain__content__topContent__itemBox__body__pic
+            = image_tag @product.images[0].item.url, class: "mainImg"
+            .showMain__content__topContent__itemBox__body__pic__sub
+              - @product.images.each_with_index do |image|
+                = image_tag image.item.url, class: "subImg"
         .showMain__content__topContent__itemBox__price
           %span
             = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
@@ -85,9 +83,16 @@
                   = @product.shipping_day
         .showMain__content__topContent__itemBox__optionalArea
           %ul
-            %li.showMain__content__topContent__itemBox__optionalArea__likeBtn
-              %i.fa.fa-star
-              お気に入り 0
+            - if user_signed_in?
+              %li.showMain__content__topContent__itemBox__optionalArea__likeBtn
+                %i{id:"like-btn-#{@product.id}"}
+                  = render 'likes/like', product: @product
+            - else
+              %li.showMain__content__topContent__itemBox__optionalArea__likeBtn
+                %i{id:"like-btn-#{@product.id}"}
+                  %i.fa-lg.fas.fa-star.icon-btn
+                    %span
+                      = "お気に入り #{@product.likes.count}"
           %ul
             %li.showMain__content__topContent__itemBox__optionalArea__optionalBtn
               = link_to '#' do
@@ -117,10 +122,31 @@
             %i.fa.fa-angle-right
 
       .showMain__content__relatedItems
-        = link_to '#', class: 'showMain__content__relatedItems__category' do
+        = link_to category_path(@product.category.root.id) do
           = "#{@parent.name}をもっと見る"
-        .main__allProducts__productBox__productLists
-          = render 'products/shared/product_list'
+        .showMain__content__relatedItems__productLists
+          .showMain__content__relatedItems__productLists__productList
+            - @products.each do |product|
+              .main__allProducts__productBox__productLists__productList
+                - if product.buyer_id.present?
+                  .main__allProducts__productBox__productLists__productList__soldOut
+                    .main__allProducts__productBox__productLists__productList__soldOut__content SOLD
+                = link_to product_path(product) do
+                  %figure.main__allProducts__productBox__productLists__productList--img
+                    = image_tag product.images[0].item.url
+                  .main__allProducts__productBox__productLists__productList--body
+                    .main__allProducts__productBox__productLists__productList__name
+                      = product.name
+                    .main__allProducts__productBox__productLists__productList__details
+                      %ul
+                        %li
+                          = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+                        %li
+                          %i.fas.fa-star
+                            = "#{product.likes_count}"
+                      %p (税込)
+      .backpage
+        %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
 
 = render 'products/shared/app_banner'
 

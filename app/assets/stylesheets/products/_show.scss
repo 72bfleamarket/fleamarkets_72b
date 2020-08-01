@@ -27,37 +27,36 @@
 
         &__body {
           margin-top: 16px;
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          position: relative;
 
-          ul {
-            display: flex;
-            justify-content: center;
-            position: relative;
+          &__pic {
+            width: 560px;
+            align-items: center;
 
-            li {
-              width: 560px;
-              align-items: center;
+            & img {
+              object-fit: cover;
+              height: 346px;
+              width: 100%;
+              vertical-align: bottom;
+              border: 0;
+            }
+
+            &__sub {
+              list-style: none;
+              margin-top: 10px;
+              width: 100%;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
 
               img {
                 object-fit: cover;
-                height: 346px;
-                width: 100%;
+                height: 87px;
+                width: 20%;
                 vertical-align: bottom;
-              }
-
-              ul {
-                margin-top: 10px;
-
-                li {
-                  width: 25%;
-                  margin-right: 10px;
-
-                  img {
-                    object-fit: cover;
-                    height: 87px;
-                    width: 100%;
-                    vertical-align: bottom;
-                  }
-                }
               }
             }
           }
@@ -176,10 +175,43 @@
 
           &__likeBtn {
             margin: 0 auto;
-            padding: 6px 10px;
+            padding: 0 10px;
             border-radius: 40px;
-            color: #3ccace;
             border: 1px solid #ffb340;
+
+            .icon-btn {
+              margin-right: 5px;
+              font-size: 1.2rem;
+              color: #3ccace;
+              line-height: 35px;
+              vertical-align: baseline;
+            }
+
+            .icon-btn.liked {
+              color: #ffcc33;
+              font-size: 1.5rem;
+            }
+
+            span {
+              font-style: normal;
+              color: #888888;
+            }
+
+            .yes-like {
+              color: #e95388;
+              font-weight: bolder;
+              font-size: 1.2rem;
+            }
+
+            .do-like {
+              color: #666666;
+            }
+
+            .like-count {
+              font-weight: bold;
+              padding: 0 5px;
+              font-size: 1.3rem;
+            }
           }
         }
       }
@@ -214,6 +246,30 @@
           border-radius: 100px;
           margin: 0 auto;
           cursor: pointer;
+        }
+      }
+
+      .backpage {
+        input {
+          display: block;
+          margin: 0 auto;
+          width: 150px;
+          background-color: #f8f8f8;
+          border: solid #f8f8f8;
+          color: #888888;
+          font-size: 16px;
+          cursor: pointer;
+          bottom: 0;
+        }
+
+        input:hover {
+          color: #c0c0c0;
+          text-decoration: underline;
+        }
+
+        input:active {
+          color: #3e3e3e;
+          text-decoration: underline;
         }
       }
     }
