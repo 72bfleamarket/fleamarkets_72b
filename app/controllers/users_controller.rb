@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
-  def show
-    @user = User.find(params[:id])
-    # @user = Address.includes(:phone_number)
-  end
-    
+  before_action :set_user, only: [:edit, :show]
+
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -17,7 +13,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     if user_signed_in? && current_user.id == @user.id
       @products = @user.products.order("created_at DESC")
     else
@@ -29,5 +24,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
