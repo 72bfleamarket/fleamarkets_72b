@@ -21,13 +21,12 @@
         .preview
           = image_tag image.item.url, data: { index: i }, class: 'preview__content'
           .preview__delete 削除
-          -# = image.check_box :_destroy
-          -# = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
       .dummy
-      %label.box-field.field-0{"data-index": "#{@product.images.count}"}
+      %label.box-field#default.field-0{"data-index": "#{@product.images.count}"}
         %i.fas.fa-camera
         = form.fields_for :images do |i|
           = i.file_field :item, name: "product[images_attributes][#{@product.images.count}][item]", type: 'file', class: "box__select"
+          = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
 
 
   #product-about

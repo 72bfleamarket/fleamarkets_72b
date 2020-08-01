@@ -10,67 +10,130 @@ $(window).load(function () {
       return field;
     }
 
+    const images_no = $(".preview").length;
+
+    switch (images_no) {
+      case 9:
+        $(".field-0").css({'width': '20%'})
+        break;
+      case 8:
+        $(".field-0").css({'width': '40%'})
+        break;
+      case 7:
+        $(".field-0").css({'width': '60%'})
+        break;
+      case 6:
+        $(".field-0").css({'width': '80%'})
+        break;
+      case 5:
+        $(".field-0").css({'width': '100%'})
+        break;
+      case 4:
+        $(".field-0").css({'width': '20%'})
+        break;
+      case 3:
+        $(".field-0").css({'width': '40%'})
+        break;
+      case 2:
+        $(".field-0").css({'width': '60%'})
+        break;
+      case 1:
+        $(".field-0").css({'width': '80%'})
+        break;
+      case 0:
+        $(".field-0").css({'width': '100%'})
+        $(".field-0").css({'display': 'block'})
+        $(".field-1").remove()
+        break;
+    }
+
     //削除ボタンを押下した際の画像削除イベント
     $(document).on("click", '.preview__delete', function () {
       //Preview要素を取得
       let target_image = $(this).parent()
-
+      // .data("index")
+      let target_index = target_image.attr("index")
+      console.log(target_image)
+      // target_image.attr(index)
       //Preview要素を削除
+      // target_image.prop("checked",true)
       target_image.remove();
       let images_no = $(".preview").length;
+      const dropbox_no = $(".box-field").length
+      console.log(dropbox_no)
 
       //写真追加によるviewの変更
+      if (dropbox_no == 2) {
+        $(".field-0").css({'display': 'block'})
+      }
       switch (images_no) {
         case 9:
           $(".field-0").css({'width': '20%'})
+          // $(".field-0").css({'display': 'block'})
           $(".field-9").css({'width': '20%'})
           $(".field-9").css({'display': 'block'})
           $(".field-10").remove()
           break;
         case 8:
           $(".field-0").css({'width': '40%'})
+          // $(".field-0").css({'display': 'block'})
+
           $(".field-8").css({'width': '40%'})
           $(".field-8").css({'display': 'block'})
           $(".field-9").remove()
           break;
         case 7:
           $(".field-0").css({'width': '60%'})
+          // $(".field-0").css({'display': 'block'})
+
           $(".field-7").css({'width': '60%'})
           $(".field-7").css({'display': 'block'})
           $(".field-8").remove()
           break;
         case 6:
           $(".field-0").css({'width': '80%'})
+          // $(".field-0").css({'display': 'block'})
+
           $(".field-6").css({'width': '80%'})
           $(".field-6").css({'display': 'block'})
           $(".field-7").remove()
           break;
         case 5:
           $(".field-0").css({'width': '100%'})
+          // $(".field-0").css({'display': 'block'})
+
           $(".field-5").css({'width': '100%'})
           $(".field-5").css({'display': 'block'})
           $(".field-6").remove()
           break;
         case 4:
           $(".field-0").css({'width': '20%'})
+          // $(".field-0").css({'display': 'block'})
+
           $(".field-4").css({'width': '20%'})
           $(".field-4").css({'display': 'block'})
           $(".field-5").remove()
           break;
         case 3:
           $(".field-0").css({'width': '40%'})
+          // $(".field-0").css({'display': 'block'})
+
           $(".field-3").css({'width': '40%'})
           $(".field-3").css({'display': 'block'})
           $(".field-4").remove()
           break;
         case 2:
           $(".field-0").css({'width': '60%'})
+          // $(".field-0").css({'display': 'block'})
+
           $(".field-2").css({'width': '60%'})
           $(".field-2").css({'display': 'block'})
           $(".field-3").remove()
           break;
         case 1:
           $(".field-0").css({'width': '80%'})
+          // $(".field-0").css({'display': 'block'})
+
           $(".field-1").css({'width': '80%'})
           $(".field-1").css({'display': 'block'})
           $(".field-2").remove()
@@ -113,50 +176,68 @@ $(window).load(function () {
 
             //box要素の前にhtmlを差し込む
             $(".dummy").before(html);
-            box.append(buildFileField(dropbox_no));
+            let images_no = $(".preview").length;
+            box.append(buildFileField(images_no));
 
-           let images_no = $(".preview").length;
 
             console.log(images_no)
 
 
             //写真追加によるviewの変更
-            switch (dropbox_no) {
+            switch (images_no) {
               case 10:
                 $(".field-10").css({'display': 'none'})
                 $(".field-9").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 9:
                 $(".field-9").css({'width': '20%'})
                 $(".field-8").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 8:
                 $(".field-8").css({'width': '40%'})
                 $(".field-7").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 7:
                 $(".field-7").css({'width': '60%'})
                 $(".field-6").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 6:
                 $(".field-6").css({'width': '80%'})
                 $(".field-5").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 5:
                 $(".field-5").css({'width': '100%'})
                 $(".field-4").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 4:
                 $(".field-4").css({'width': '20%'})
                 $(".field-3").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 3:
                 $(".field-3").css({'width': '40%'})
                 $(".field-2").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 2:
                 $(".field-2").css({'width': '60%'})
                 $(".field-1").css({'display': 'none'})
+                $(".field-0").css({'display': 'none'})
+
                 break;
               case 1:
                 $(".field-1").css({'width': '80%'})
