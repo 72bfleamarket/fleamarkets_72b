@@ -14,13 +14,14 @@
       %span.err_message
         =  @product.errors.full_messages_for(:images).shift
     %p
-      最大10枚までアップロードできます
+    最大10枚までアップロードできます
 
     .box
-      - @product.images.each_with_index do |image, i|
-        .preview
-          = image_tag image.item.url, data: { index: i }, class: 'preview__content'
-          .preview__delete 削除
+      - if @product.persisted?
+        - @product.images.each_with_index do |image, i|
+          .preview{data: { index: i }}
+            = image_tag image.item.url, class: 'preview__content'
+            .preview__delete 削除
       .dummy
       %label.box-field#default.field-0{"data-index": "#{@product.images.count}"}
         %i.fas.fa-camera

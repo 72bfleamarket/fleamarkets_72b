@@ -42,6 +42,8 @@ $(window).load(function () {
         break;
       case 0:
         $(".field-0").css({'width': '100%'})
+        $(".field-0").css({'display': 'block'})
+
         break;
     }
 
@@ -49,16 +51,13 @@ $(window).load(function () {
     $(document).on("click", '.preview__delete', function () {
       //Preview要素を取得
       let target_image = $(this).parent()
-      // .data("index")
-      let target_index = target_image.attr("index")
-      console.log(target_image)
-      // target_image.attr(index)
+      let target_view_index = target_image.attr("data-index")
+      console.log(target_view_index)
+      $(`#product_images_attributes_${target_view_index}__destroy`).prop("checked",true)
       //Preview要素を削除
-      // target_image.prop("checked",true)
       target_image.remove();
       const images_no = $(".preview").length;
       const dropbox_no = $(".box-field").length
-      console.log(dropbox_no)
 
       //写真追加によるviewの変更
       if (dropbox_no == 2) {
