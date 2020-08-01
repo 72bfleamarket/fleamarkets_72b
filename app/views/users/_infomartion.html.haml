@@ -1,0 +1,46 @@
+.user-mypage__main-content
+  .user-mypage__main-content__content-title
+    本人情報
+  = form_with model: @user, class: 'user-mypage__main-content__content-form' do |form|
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        お名前（漢字）
+      %h1.user-mypage__main-content__content-form__content-box__content
+        = "#{@user.first_name} #{@user.last_name}"
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        お名前（カナ）
+      %h1.user-mypage__main-content__content-form__content-box__content
+        = "#{@user.first_kana} #{@user.last_kana}"
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        生年月日
+      %h1.user-mypage__main-content__content-form__content-box__content
+        = "#{@user.birthday}"
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion 
+        電話番号
+      = form.text_field :name , class: 'user-mypage__main-content__content-form__content-box__infomartion__form'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        郵便番号
+      = form.text_field :name , class: 'user-mypage__main-content__content-form__content-box__infomartion__form'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        都道府県
+      = form.text_field :name , class: 'user-mypage__main-content__content-form__content-box__infomartion__form'
+    .user-mypage__main-content__content-form__content-box        
+      .user-mypage__main-content__content-form__content-box__infomartion         
+        市区町村
+      = form.text_field :name , class: 'user-mypage__main-content__content-form__content-box__infomartion__form'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        番地
+      = form.text_field :name , class: 'user-mypage__main-content__content-form__content-box__infomartion__form'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        建物名
+      = form.text_field :name , class: 'user-mypage__main-content__content-form__content-box__infomartion__form'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__btn
+      = form.submit '登録する', class: 'user-mypage__main-content__content-form__content-box__btn__send-btn'

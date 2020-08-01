@@ -1,0 +1,72 @@
+.main-content{
+  width: 700px;
+  &__content-title{
+    text-align: center;
+    font-size: 22px;
+    padding: 16px;
+    font-weight: bold;
+  }
+  &__content-box{
+    background-color: #ffffff;
+    &__profile{
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      &__icons{
+        height: 60px;
+        width: 60px;
+        line-height: 60px;
+        .icons{
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          color: black;
+        }
+        .hidden{
+          display: none;
+        }
+      }
+      &__name{
+        font-weight: bold;;
+        line-height: 60px;
+        &__box{
+          border: none;
+        }
+      }
+    }
+    &__comment{
+      height: 100px;
+      width: 100%;
+      padding: 0px 10px;
+      &__field{
+        height: 100px;
+        width: 100%;
+      }
+    }
+    &__btn{
+      text-align: center;
+      padding: 40px;
+      &__send-btn{
+        height: 50px;
+        width: 100%;
+        color: #ffffff;
+        background-color: red;
+        border: none;
+        &:hover{
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+.clearfix:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.fa-chevron-right{
+  position: absolute;
+  right: 16px;
+  line-height: 50px;
+}

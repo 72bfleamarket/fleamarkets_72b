@@ -1,0 +1,23 @@
+.user-mypage__main-content
+  .user-mypage__main-content__content-title
+    メールアドレス/パスワード
+  = form_with model: @user, class: 'user-mypage__main-content__content-form' do |form|
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion 
+        Email
+      = form.email_field :email , class: 'user-mypage__main-content__content-form__content-box__form', placeholder: 'メールアドレス'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        現在のパスワード
+      = form.password_field :password, class: 'user-mypage__main-content__content-form__content-box__form', placeholder: '現在のパスワード'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__infomartion
+        新しいパスワード
+      = form.password_field :password , class: 'user-mypage__main-content__content-form__content-box__form', placeholder: '新しいパスワード'
+    .user-mypage__main-content__content-form__content-box        
+      .user-mypage__main-content__content-form__content-box__infomartion         
+        新しいパスワード（再入力）
+      = form.password_field :password , class: 'user-mypage__main-content__content-form__content-box__form', placeholder: '新しいパスワード（再入力）'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__btn
+      = form.submit '登録する', class: 'user-mypage__main-content__content-form__content-box__btn__send-btn'
