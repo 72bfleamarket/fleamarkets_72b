@@ -10,13 +10,91 @@ $(window).load(function () {
       return field;
     }
 
+    //削除ボタンを押下した際の画像削除イベント
+    $(document).on("click", '.preview__delete', function () {
+      //Preview要素を取得
+      let target_image = $(this).parent()
+
+      //Preview要素を削除
+      target_image.remove();
+      let images_no = $(".preview").length;
+
+      //写真追加によるviewの変更
+      switch (images_no) {
+        case 9:
+          $(".field-0").css({'width': '20%'})
+          $(".field-9").css({'width': '20%'})
+          $(".field-9").css({'display': 'block'})
+          $(".field-10").remove()
+          break;
+        case 8:
+          $(".field-0").css({'width': '40%'})
+          $(".field-8").css({'width': '40%'})
+          $(".field-8").css({'display': 'block'})
+          $(".field-9").remove()
+          break;
+        case 7:
+          $(".field-0").css({'width': '60%'})
+          $(".field-7").css({'width': '60%'})
+          $(".field-7").css({'display': 'block'})
+          $(".field-8").remove()
+          break;
+        case 6:
+          $(".field-0").css({'width': '80%'})
+          $(".field-6").css({'width': '80%'})
+          $(".field-6").css({'display': 'block'})
+          $(".field-7").remove()
+          break;
+        case 5:
+          $(".field-0").css({'width': '100%'})
+          $(".field-5").css({'width': '100%'})
+          $(".field-5").css({'display': 'block'})
+          $(".field-6").remove()
+          break;
+        case 4:
+          $(".field-0").css({'width': '20%'})
+          $(".field-4").css({'width': '20%'})
+          $(".field-4").css({'display': 'block'})
+          $(".field-5").remove()
+          break;
+        case 3:
+          $(".field-0").css({'width': '40%'})
+          $(".field-3").css({'width': '40%'})
+          $(".field-3").css({'display': 'block'})
+          $(".field-4").remove()
+          break;
+        case 2:
+          $(".field-0").css({'width': '60%'})
+          $(".field-2").css({'width': '60%'})
+          $(".field-2").css({'display': 'block'})
+          $(".field-3").remove()
+          break;
+        case 1:
+          $(".field-0").css({'width': '80%'})
+          $(".field-1").css({'width': '80%'})
+          $(".field-1").css({'display': 'block'})
+          $(".field-2").remove()
+          break;
+        case 0:
+          $(".field-0").css({
+            'width': '100%'
+          })
+          $(".field-0").css({
+            'display': 'block'
+          })
+          $(".field-1").remove()
+          break;
+      }
+    })
+
+
     //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
     $('.box').on('change', 'input[type="file"]', function(e) {
       const file = e.target.files[0];
       reader = new FileReader();
       let box = $(".box");
-      const dropbox = $(".box-field");
-      const dropbox_no = dropbox.length
+      const dropbox_no = $(".box-field").length
+
 
       // 画像ファイル判別し画像ファイル以外はfalse
       if (file.type.indexOf("image") < 0) {
@@ -36,6 +114,10 @@ $(window).load(function () {
             //box要素の前にhtmlを差し込む
             $(".dummy").before(html);
             box.append(buildFileField(dropbox_no));
+
+           let images_no = $(".preview").length;
+
+            console.log(images_no)
 
 
             //写真追加によるviewの変更
@@ -81,78 +163,9 @@ $(window).load(function () {
                 $(".field-0").css({'display': 'none'})
                 break;
               case 0:
-                dropbox.css({'width': '100%'})
+                $(".field-0").css({'width': '100%'})
                 break;
             }
-
-
-            //削除ボタンを押下した際の画像削除イベント
-            $(document).on("click", '.preview__delete', function () {
-              //Preview要素を取得
-              let target_image = $(this).parent()
-
-              //Preview要素を削除
-              target_image.remove();
-              const images_no = $(".preview").length;
-
-              //写真追加によるviewの変更
-              switch (images_no) {
-                case 9:
-                  $(".field-9").css({'width': '20%'})
-                  $(".field-9").css({'display': 'block'})
-                  $(".field-10").remove()
-                  break;
-                case 8:
-                  $(".field-8").css({'width': '40%'})
-                  $(".field-8").css({'display': 'block'})
-                  $(".field-9").remove()
-                  break;
-                case 7:
-                  $(".field-7").css({'width': '60%'})
-                  $(".field-7").css({'display': 'block'})
-                  $(".field-8").remove()
-                  break;
-                case 6:
-                  $(".field-6").css({'width': '80%'})
-                  $(".field-6").css({'display': 'block'})
-                  $(".field-7").remove()
-                  break;
-                case 5:
-                  $(".field-5").css({'width': '100%'})
-                  $(".field-5").css({'display': 'block'})
-                  $(".field-6").remove()
-                  break;
-                case 4:
-                  $(".field-4").css({'width': '20%'})
-                  $(".field-4").css({'display': 'block'})
-                  $(".field-5").remove()
-                  break;
-                case 3:
-                  $(".field-3").css({'width': '40%'})
-                  $(".field-3").css({'display': 'block'})
-                  $(".field-4").remove()
-                  break;
-                case 2:
-                  $(".field-2").css({'width': '60%'})
-                  $(".field-2").css({'display': 'block'})
-                  $(".field-3").remove()
-                  break;
-                case 1:
-                  $(".field-1").css({'width': '80%'})
-                  $(".field-1").css({'display': 'block'})
-                  $(".field-2").remove()
-                  break;
-                case 0:
-                  dropbox.css({
-                    'width': '100%'
-                  })
-                  dropbox.css({
-                    'display': 'block'
-                  })
-                  $(".field-1").remove()
-                  break;
-              }
-            })
           }
         })
         (file);

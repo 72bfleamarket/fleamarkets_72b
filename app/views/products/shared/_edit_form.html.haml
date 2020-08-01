@@ -17,13 +17,12 @@
       最大10枚までアップロードできます
 
     .box
-      - @product.images.each_with_index do |image, i|
-        .preview
-          = image_tag image.item.url, data: { index: i }, class: 'preview__content'
-          .preview__delete 削除
-          = image_tag.check_box :_destroy
+    - @product.images.each_with_index do |image, i|
+      .preview#editView
+        = image_tag image.item.url, data: { index: i }, class: 'preview__content', id: 'preview__content'
+        .preview-edit__delete 削除
       .dummy
-      %label.box-field.field-0{"data-index": "#{@product.images.count}"}
+      %label.box-edit-field.field-0{"data-index": "#{@product.images.count}"}
         %i.fas.fa-camera
         = form.fields_for :images do |i|
           = i.file_field :item, name: "product[images_attributes][#{@product.images.count}][item]", type: 'file', class: "box__select"
