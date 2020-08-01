@@ -245,20 +245,19 @@ $(document).ready(function () {
       }, 800);
     },
     mouseenter: function () {
-      $('.categoryTree').show();
       clearTimeout(timeChosed);
     }
   }, '#tree_menu');
 
   // カテゴリーボタンの処理
-  let timeOpened = setTimeout(function () {
-    $('#tree_menu').show();
-    $('.categoryTree').show();
-  }, 500);
   $(document).on({
     mouseenter: function (e) {
       e.stopPropagation();
       e.preventDefault();
+      timeOpened = setTimeout(function () {
+        $('#tree_menu').show();
+        $('.categoryTree').show();
+      }, 500);
     },
     mouseleave: function (e) {
       e.stopPropagation();
@@ -272,8 +271,4 @@ $(document).ready(function () {
       $(".category_grandchild").remove();
     }
   }, '.header__headerInner__nav__listsLeft__item');
-
-  console.log('hoge');
-  // ブラウザバック時に強制的に非表示イベントを発火
-  $('.header__headerInner__nav__listsLeft__item').trigger('mouseleave');
 });
