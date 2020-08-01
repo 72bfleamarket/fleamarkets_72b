@@ -21,7 +21,8 @@
         .preview
           = image_tag image.item.url, data: { index: i }, class: 'preview__content'
           .preview__delete 削除
-          = image_tag.check_box :_destroy
+          -# = image.check_box :_destroy
+          -# = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
       .dummy
       %label.box-field.field-0{"data-index": "#{@product.images.count}"}
         %i.fas.fa-camera
