@@ -1,6 +1,7 @@
 .buyContent {
   background-color: #f5f5f5;
   color: #333;
+  padding: 40px 0;
 
   & h2 {
     font-weight: bold;
@@ -8,6 +9,10 @@
 
   & h3 {
     font-weight: bold;
+  }
+
+  & a {
+    text-decoration: none;
   }
 
   &__container {

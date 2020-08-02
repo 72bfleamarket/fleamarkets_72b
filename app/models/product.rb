@@ -24,9 +24,4 @@ class Product < ApplicationRecord
   validates :prefecture_id, presence: { message: "を選択してください" }
   validates :shipping_day, presence: { message: "を選択してください" }
   validates :price, presence: { message: "を入力してください" }
-
-  def self.search(search)
-    return Product.all unless search
-    Product.where('name LIKE(?)', "%#{search}%")
-  end
 end
