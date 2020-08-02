@@ -1,31 +1,3 @@
-.breadCrumbs {
-  width: 100%;
-  border-top: 1px solid #eee;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
-  padding: 0 60px;
-
-  &__lists {
-    width: 1040px;
-    display: flex;
-    padding: 17px 0 16px;
-    margin: 0 auto;
-    color: #333;
-    font-size: 14px;
-
-    &__list {
-
-      a {
-        text-decoration: none;
-        color: #333;
-      }
-
-      .current {
-        font-weight: bold;
-      }
-    }
-  }
-}
-
 .showMain {
   background-color: #f8f8f8;
   padding: 40px;
@@ -80,13 +52,11 @@
               flex-wrap: wrap;
               justify-content: center;
 
-
               img {
                 object-fit: cover;
                 height: 87px;
                 width: 20%;
                 vertical-align: bottom;
-                border: 0;
               }
             }
           }
@@ -128,7 +98,6 @@
           transition: all ease-out .3s;
 
           a {
-            text-decoration: none;
             color: #fff;
           }
         }
@@ -175,7 +144,6 @@
                   font-size: 14px;
 
                   a {
-                    text-decoration: none;
                     color: #3ccace;
                   }
                 }
@@ -191,7 +159,6 @@
           ul {
             margin-top: 10px;
             display: flex;
-            list-style: none;
           }
 
           &__optionalBtn {
@@ -203,7 +170,6 @@
               border-radius: 4px;
               color: #333;
               border: 1px solid #333;
-              text-decoration: none;
             }
           }
 
@@ -324,23 +290,24 @@
       justify-content: space-between;
 
       a {
-        text-decoration: none;
         color: #3ccace;
       }
     }
 
     &__relatedItems {
 
-      a {
+      &__productLists {
+        @include wrap();
+      }
+
+      &__category {
         display: block;
         margin: 24px 0 8px;
         color: #3ccace;
-        text-decoration: none;
         font-weight: bold;
         font-size: 22px;
         position: relative;
       }
-
       &__productLists {
         display: flex;
         width: 700px;
@@ -402,6 +369,8 @@
             }
           }
         }
+      .productListDetails, .productTax {
+        font-weight: bold;
       }
     }
   }

@@ -1,34 +1,35 @@
 .form
   = render 'shared/header'
 
-.buyContent
-  .buyContent__container
-    .buyContent__container__inner
-      %h1.buyContent__container__inner__attention
-        %i.far.fa-clock
-          発送をお待ちください
-      %h2.buyContent__container__inner__title 購入が完了しました
+  .form_body
+    .buyContent
+      .buyContent__container
+        .buyContent__container__inner
+          %h1.buyContent__container__inner__attention
+            %i.far.fa-clock
+              発送をお待ちください
+          %h2.buyContent__container__inner__title 購入が完了しました
 
-      .buyContent__container__inner__product
-        .buyContent__container__inner__product__productImage
-          = image_tag "#{@product.images[0].item.url}"
-        .buyContent__container__inner__product__productDetail
-          %p.buyContent__container__inner__product__productDetail__productName
-            = @product.name
-          %br
-          %p.buyContent__container__inner__product__productDetail__buyPrice
-            = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
-          %br
-          %p.buyContent__container__inner__product__productDetail__shippingFree (税込) 送料込み
+          .buyContent__container__inner__product
+            .buyContent__container__inner__product__productImage
+              = image_tag "#{@product.images[0].item.url}"
+            .buyContent__container__inner__product__productDetail
+              %p.buyContent__container__inner__product__productDetail__productName
+                = @product.name
+              %br
+              %p.buyContent__container__inner__product__productDetail__buyPrice
+                = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
+              %br
+              %p.buyContent__container__inner__product__productDetail__shippingFree (税込) 送料込み
 
-      .buyContent__container__inner__paymentAmount
-        %form.buyContent__container__inner__paymentAmount__buyForm
-          .buyContent__container__inner__paymentAmount__buyForm__left
-            支払金額
-          .buyContent__container__inner__paymentAmount__buyForm__right
-            = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
+          .buyContent__container__inner__paymentAmount
+            %form.buyContent__container__inner__paymentAmount__buyForm
+              .buyContent__container__inner__paymentAmount__buyForm__left
+                支払金額
+              .buyContent__container__inner__paymentAmount__buyForm__right
+                = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
 
-      .buyContent__container__inner__returnBtn
-        = link_to "商品詳細ページへ戻る", product_path(@product.id)
-.form
-  = render 'products/shared/footer'
+          .buyContent__container__inner__returnBtn
+            = link_to "商品詳細ページへ戻る", product_path(@product.id)
+
+= render 'products/shared/footer'

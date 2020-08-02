@@ -4,9 +4,12 @@
   - breadcrumb :mypage
   = render "layouts/breadcrumbs"
 
-.user-mypage.clearfix
-  = render 'side-bar'
-  = render 'email-pass'
+%main.container
+  .container__inner
+    = render 'side-bar'
+
+    %section.container__inner__content
+      = render 'email-pass'
 
 = render 'products/shared/app_banner'
 

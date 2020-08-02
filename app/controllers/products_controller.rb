@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create, :search]
+  before_action :set_products, only: [:index, :show]
   before_action :move_to_index, except: [:index, :show, :search]
   before_action :set_parents, only: [:index, :show, :new, :create, :edit, :update]
 
   def index
-    @products = Product.includes(:images).order("created_at DESC")
     if user_signed_in?
       @user = User.find(current_user.id)
     end
@@ -86,6 +86,10 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_products
+    @products = Product.includes(:images).order("created_at DESC")
   end
 
   def move_to_index

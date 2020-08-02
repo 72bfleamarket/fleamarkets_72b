@@ -1,8 +1,22 @@
 @import 'reset';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
 @import 'mixin/clearfix';
-@import 'categories';
+@import 'mixin/container';
+@import 'mixin/inner';
+@import 'mixin/main-content';
+@import 'mixin/side-bar';
+@import 'mixin/wrap';
+
+@import 'modules/share';
+@import 'modules/header';
+@import 'modules/bread-crumbs';
+@import 'modules/app-banner';
+@import 'modules/footer';
+@import 'modules/purchase-btn';
+
+@import 'users';
 @import 'products/index';
 @import 'products/form';
 @import 'users/show';
@@ -12,7 +26,8 @@
 @import 'cards/index';
 @import 'cards/edit';
 @import 'products/show';
+@import 'products/search';
 @import 'products/buyers/new';
 @import 'products/buyers/create';
+@import 'categories';
 @import 'cards';
-@import 'users';

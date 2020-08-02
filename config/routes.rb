@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :users, path: "/users/mypage", only: [:show, :edit]
 
   root "products#index"
+  namespace :products do
+    resources :searches, only: :index
+  end
   resources :products do
     resources :buyers, only: [:new, :create]
     resources :comments, only: [:create, :destroy]
