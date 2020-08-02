@@ -248,12 +248,12 @@ $(window).load(function () {
   $('#count_name').trigger('input');
   $('#count_area').trigger('input');
 
-    //SHOWPAGE画像きり変え
-    $('.subImg').mouseover(function(e) {
-      const url = $(this).attr("src");
-      $('.mainImg').attr('src', url)
-    })
-    $('.subImg').on('click', function(){
-      $('.mainImg').mouseover()
-    })
+  //SHOWPAGE画像きり変え
+  $('.subImg').mouseover(function(e) {
+    const url = $(this).attr("src");
+    $('.mainImg').attr('src', url)
+  })
+  $('.subImg').on('click', function(){
+    $('.mainImg').mouseover()
+  })
 });
