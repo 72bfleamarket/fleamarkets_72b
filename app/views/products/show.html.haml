@@ -100,8 +100,9 @@
                 不適切な商品の通報
 
       .showMain__content__topContent__commentBox
-        %form
-          %input.showMain__content__topContent__commentBox__textField{type: "text"}
+      - if current_user
+        = form_with(model: [@product, @comment], local: true) do |f|
+          = f.text_area :text, id: :count_comment, maxlength: "400", class: "showMain__content__topContent__commentBox__textField"
           .showMain__content__topContent__commentBox__noticeMsg
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
