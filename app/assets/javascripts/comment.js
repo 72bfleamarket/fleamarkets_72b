@@ -7,10 +7,18 @@
                     </div>`
       return html;
     }
+    function buildOwnerHTML(comment){
+      let html = `<div class="comments__box">
+                      <a class="comments__box__name" href=/users/${comment.user_id}>${comment.user_name}</a>
+                      <div class="comments__box__name__mark">出品者</div>
+                      <div class="comments__box__text">${comment.text}</div>
+                    </div>`
+      return html;
+    }
     $('#new_comment').on('submit', function(e){
       e.preventDefault();
+      let sellerId = $(this).attr('data-user')
       let formData = new FormData(this);
-      console.log(formData)
       let url = $(this).attr('action')
       $.ajax({
         url: url,
@@ -21,7 +29,15 @@
         contentType: false
       })
       .done(function(data){
-        let html = buildHTML(data);
+        if (sellerId == data.user_id) {
+          let html = buildOwnerHTML(data);
+          console.log(1)
+        } else {
+          let html = buildHTML(data);
+          console.log(2)
+        }
+        console.log(data.user_id)
+        console.log(sellerId)
         $('.comments').append(html);
         $('.showMain__content__topContent__commentBox__textField').val('');
         $('.showMain__content__topContent__commentBox__submitBtn').prop('disabled', false);

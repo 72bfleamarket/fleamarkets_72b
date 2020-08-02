@@ -52,7 +52,6 @@ $(window).load(function () {
       //Preview要素を取得
       let target_image = $(this).parent()
       let target_view_index = target_image.attr("data-index")
-      console.log(target_view_index)
       $(`#product_images_attributes_${target_view_index}__destroy`).prop("checked",true)
       //Preview要素を削除
       target_image.remove();
@@ -119,12 +118,8 @@ $(window).load(function () {
           $(".field-2").remove()
           break;
         case 0:
-          $(".field-0").css({
-            'width': '100%'
-          })
-          $(".field-0").css({
-            'display': 'block'
-          })
+          $(".field-0").css({'width': '100%'})
+          $(".field-0").css({'display': 'block'})
           $(".field-1").remove()
           break;
       }
@@ -158,10 +153,6 @@ $(window).load(function () {
             $(".dummy").before(html);
             const images_no = $(".preview").length;
             box.append(buildFileField(images_no));
-
-
-            console.log(images_no)
-
 
             //写真追加によるviewの変更
             switch (images_no) {

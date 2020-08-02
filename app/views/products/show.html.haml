@@ -112,7 +112,7 @@
                   %p
                     = c.text
         - if current_user
-          = form_with(model: [@product, @comment], local: true, id: "new_comment") do |f|
+          = form_with(model: [@product, @comment], local: true, id: "new_comment", data: {user:@product.user.id} ) do |f|
             = f.text_area :text, id: :count_comment, placeholder: "コメントする", maxlength: "400", class: "showMain__content__topContent__commentBox__textField", rows: "4"
             .showMain__content__topContent__commentBox__noticeMsg
               相手のことを考え丁寧なコメントを心がけましょう。
