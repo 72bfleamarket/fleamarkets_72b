@@ -328,6 +328,10 @@
             background-color: #fff;
             display: inline-block;
             color: #333;
+
+            &:hover {
+              color: #333;
+            }
           }
 
           &--img {
