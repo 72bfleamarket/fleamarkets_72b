@@ -310,13 +310,11 @@
       }
       &__productLists {
         display: flex;
-        width: 700px;
-        
+        width: 100%;
+        justify-content: center;
         &__productList {
           margin-bottom: 10px;
           width: calc(100% / 3);
-          display: flex;
-          flex-wrap: wrap;
 
           &--img {
             background-color: #fff;
