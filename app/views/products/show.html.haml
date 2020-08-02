@@ -124,7 +124,7 @@
       .showMain__content__relatedItems
         = link_to category_path(@product.category.root.id), class: 'showMain__content__relatedItems__category' do
           = "#{@parent.name}をもっと見る"
-        .main__allProducts__productBox__productLists
+        .showMain__content__relatedItems__productLists
           = render 'products/shared/product_list'
       .backpage
         %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
