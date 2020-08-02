@@ -400,42 +400,43 @@
   }
 }
 
-.comments {
-  display: flex;
-  flex-direction: column;
-  &__box {
+  .comments {
     display: flex;
-    text-align: start;
     flex-direction: column;
-    margin-bottom: 30px;
-    &__name {
-      cursor: pointer;
-      margin-top: 5px;
-      color: #3ccace;
-      &__mark {
-        font-size: 5px;
+    &__box {
+      display: flex;
+      text-align: start;
+      flex-direction: column;
+      margin-bottom: 30px;
+      &__name {
+        cursor: pointer;
+        margin-top: 5px;
         color: #3ccace;
+        &__mark {
+          font-size: 5px;
+          color: #3ccace;
+        }
       }
-    }
-    &__text {
-      display: inline-block;
-      position: relative;
-      margin: 0 0 0 50px;
-      padding: 10px;
-      max-width: 500px;
-      border-radius: 12px;
-      background: #cfcfcf;
-      min-height: 50px;
-      &:after {
-        content: "";
+      &__text {
         display: inline-block;
-        position: absolute;
-        top: 3px;
-        left: -19px;
-        border: 8px solid transparent;
-        border-right: 18px solid #cfcfcf;
-        -webkit-transform: rotate(35deg);
-        transform: rotate(35deg);
+        position: relative;
+        margin: 0 0 0 50px;
+        padding: 10px;
+        max-width: 500px;
+        border-radius: 12px;
+        background: #cfcfcf;
+        min-height: 50px;
+        &:after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          top: 3px;
+          left: -19px;
+          border: 8px solid transparent;
+          border-right: 18px solid #cfcfcf;
+          -webkit-transform: rotate(35deg);
+          transform: rotate(35deg);
+        }
       }
     }
   }
