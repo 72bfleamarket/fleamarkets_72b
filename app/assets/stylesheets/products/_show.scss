@@ -281,6 +281,16 @@
           margin: 0 auto;
           cursor: pointer;
         }
+        &__submitBtnSold {
+          line-height: 48px;
+          background-color: gray;
+          border: 1px solid gray;
+          color: #fff;
+          width: 60%;
+          font-size: 18px;
+          border-radius: 100px;
+          margin: 0 auto;
+        }
       }
 
       .backpage {

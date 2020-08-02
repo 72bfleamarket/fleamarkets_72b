@@ -116,9 +116,13 @@
               %br
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
             %br
-            = button_tag type: 'submit', class: 'showMain__content__topContent__commentBox__submitBtn' do
-              %i.fa.fa-comment
-              コメントする
+            - if @product.buyer_id.present?
+              .showMain__content__topContent__commentBox__submitBtnSold
+                売り切れのため購入できません
+            -else
+              = button_tag type: 'submit', class: 'showMain__content__topContent__commentBox__submitBtn' do
+                %i.fa.fa-comment
+                コメントする
         - else
           .showMain__content__topContent__commentBox__noticeMsg
             ＊コメントの投稿には新規登録/ログインが必要です。
