@@ -417,3 +417,21 @@
     vertical-align: bottom;
   }
 }
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  &__box {
+    display: flex;
+    text-align: start;
+    flex-direction: column;
+    &__name {
+      cursor: pointer;
+      margin-top: 5px;
+      color: #3ccace;
+    }
+    &__text {
+      margin-top: 1px;
+    }
+  }
+}

@@ -100,17 +100,28 @@
                 不適切な商品の通報
 
       .showMain__content__topContent__commentBox
-      - if current_user
-        = form_with(model: [@product, @comment], local: true) do |f|
-          = f.text_area :text, id: :count_comment, maxlength: "400", class: "showMain__content__topContent__commentBox__textField"
-          .showMain__content__topContent__commentBox__noticeMsg
-            相手のことを考え丁寧なコメントを心がけましょう。
+        .comments
+          コメント一覧
+          .comments__box
+            - if @comments
+              - @comments.each do |c|
+                = link_to c.user.name, profile_path(c.user.id), class: "comments__box__name"
+                .comments__box__text
+                  = c.text
+        - if current_user
+          = form_with(model: [@product, @comment], local: true) do |f|
+            = f.text_area :text, id: :count_comment, maxlength: "400", class: "showMain__content__topContent__commentBox__textField", rows: "4"
+            .showMain__content__topContent__commentBox__noticeMsg
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
             %br
-            不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %br
-          = button_tag type: 'submit', class: 'showMain__content__topContent__commentBox__submitBtn' do
-            %i.fa.fa-comment
-            コメントする
+            = button_tag type: 'submit', class: 'showMain__content__topContent__commentBox__submitBtn' do
+              %i.fa.fa-comment
+              コメントする
+        - else
+          .showMain__content__topContent__commentBox__noticeMsg
+            コメントの投稿には新規登録/ログインが必要です。
 
       %ul.showMain__content__links
         %li

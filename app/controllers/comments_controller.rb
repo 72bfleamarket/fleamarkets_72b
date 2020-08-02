@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
     @comment = Comment.new(comment_params)
-    redirect_to "/products/#{comment.product.id}"
+    redirect_to "/products/#{@comment.product.id}"
   end
 
   private
