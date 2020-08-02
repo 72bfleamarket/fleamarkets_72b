@@ -6,11 +6,11 @@
           = image_tag 'material/logo/logo.png'
 
       .header__headerInner__mainHeader__searchBox
-        %form
-          %input{type: "text", name: "key", placeholder: "キーワードから探す", class: "header__headerInner__mainHeader__searchBox--input"}
-          = button_tag type: 'submit', class: 'header__headerInner__mainHeader__searchBox__submit' do
-            .header__headerInner__mainHeader__searchBox__icon
-              = image_tag 'material/icon/icon-search 1.png'
+        = form_with(url: products_searches_path, local: true, method: :get) do |form|
+          = form.text_field :keyword, placeholder: 'キーワードから探す', class: 'header__headerInner__mainHeader__searchBox--input'
+          %label{class: "header__headerInner__mainHeader__searchBox__submit"}
+            = image_tag 'material/icon/icon-search 1.png'
+            = form.submit '検索', class: 'header__headerInner__mainHeader__searchBox__submit--btn'
 
     .header__headerInner__nav
       %ul.header__headerInner__nav__listsLeft
@@ -33,7 +33,6 @@
             ブランドから探す
 
       %ul.header__headerInner__nav__listsRight
-
         - if user_signed_in?
           %li.header__headerInner__nav__listsRight__item
             %span

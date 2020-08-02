@@ -44,6 +44,7 @@ class BuyersController < ApplicationController
       :currency => 'jpy',              #日本円
     )
     @product.update(buyer_id: current_user.id)
+    @parents = Category.where(ancestry: nil)
   end
 
   private
