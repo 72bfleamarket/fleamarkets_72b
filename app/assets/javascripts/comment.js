@@ -17,7 +17,6 @@
     }
     $('#new_comment').on('submit', function(e){
       e.preventDefault();
-      let sellerId = $(this).attr('data-user')
       let formData = new FormData(this);
       let url = $(this).attr('action')
       $.ajax({
@@ -29,16 +28,15 @@
         contentType: false
       })
       .done(function(data){
-        if (sellerId == data.user_id) {
+        if (data.seller_id == data.user_id) {
           let html = buildOwnerHTML(data);
+          $('.comments').append(html);
           console.log(1)
         } else {
           let html = buildHTML(data);
+          $('.comments').append(html);
           console.log(2)
         }
-        console.log(data.user_id)
-        console.log(sellerId)
-        $('.comments').append(html);
         $('.showMain__content__topContent__commentBox__textField').val('');
         $('.showMain__content__topContent__commentBox__submitBtn').prop('disabled', false);
       })
