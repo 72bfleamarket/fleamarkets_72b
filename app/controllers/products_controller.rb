@@ -71,6 +71,20 @@ class ProductsController < ApplicationController
           @childrens = Category.find(params[:parent_id]).children
         elsif params[:children_id]
           @grandChilds = Category.find(params[:children_id]).children
+        elsif params[:keyword]
+          @keywords = params[:keyword]
+          return nil if @keywords == ""
+          @allProducts = []
+          @keywords.split(/[[:blank:]]+/).each do |keyword|
+            @allProducts += Product.all.where("name LIKE(?) OR brand LIKE(?)", "%#{keyword}%", "%#{keyword}%").order(created_at: :desc)
+          end
+          @allProducts.uniq!
+
+          @allCategorys = []
+          @keywords.split(/[[:blank:]]+/).each do |keyword|
+            @allCategorys += Category.where("name LIKE(?)", "%#{keyword}%")
+          end
+          @allCategorys.uniq!
         end
       end
     end

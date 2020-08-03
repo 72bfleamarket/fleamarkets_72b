@@ -34,6 +34,7 @@
       &__searchBox {
         margin-left: auto;
         width: 100%;
+        position: relative;
 
         form {
           width: 100%;
@@ -67,6 +68,61 @@
             display: none;
           }
         }
+
+        #keyword {
+          max-width: 870px;
+          position: absolute;
+          display: flex;
+          z-index: 10;
+          flex-wrap: wrap;
+
+          .keyword-box {
+            height: 100%;
+            border: 1px solid #34AEB3;
+            background-color: #ffffff;
+            border-radius: 4px;
+            box-shadow: 4px 4px 4px #999;
+            margin-right: 10px;
+
+            input[type="button"] {
+              min-width: 30px;
+              height: 20px;
+              font-size: 13px;
+              text-decoration: none;
+              color: #3ccace;
+              background: #ffffff;
+              transition: .4s;
+              border: #ffffff;
+              padding: 0 0.9em;
+              cursor: pointer;
+            }
+
+            input[type="button"]:hover {
+              background: #62d4d7;
+              color: white;
+            }
+
+            input[type="button"]:active {
+              -webkit-transform: translateY(2px);
+              transform: translateY(2px);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+              background-image: linear-gradient(#b1e9eb 0%, #30a1a4 100%);
+            }
+          }
+
+          .trash-btn {
+            position: relative;
+
+            .trash {
+              position: absolute;
+              bottom: 0;
+              background-color: #ffffff;
+              color: #3ccace;
+              cursor: pointer;
+              font-size: 1.4rem;
+            }
+          }
+        }
       }
     }
 
@@ -92,7 +148,8 @@
           padding-right: 10px;
         }
 
-        &__item, &__brand {
+        &__item,
+        &__brand {
           width: 160px;
           line-height: 32px;
         }
