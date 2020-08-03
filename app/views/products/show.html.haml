@@ -125,7 +125,7 @@
             %br
             - if @product.buyer_id.present?
               .showMain__content__topContent__commentBox__submitBtnSold
-                売り切れのため購入できません
+                売り切れのためコメントできません
             -else
               = button_tag type: 'submit', class: 'showMain__content__topContent__commentBox__submitBtn' do
                 %i.fa.fa-comment
