@@ -114,7 +114,7 @@
         - else
           .comments__box
             .comments__box__noComment
-              *まだコメントはありません
+              ＊まだコメントはありません
         - if current_user
           = form_with(model: [@product, @comment], local: true, id: "new_comment") do |f|
             = f.text_area :text, id: :count_comment, placeholder: "コメントする", maxlength: "400", class: "showMain__content__topContent__commentBox__textField", rows: "4"

@@ -406,6 +406,10 @@
       text-align: start;
       flex-direction: column;
       margin-bottom: 30px;
+      &__noComment {
+        padding: 8px;
+        font-size: 14px;
+      }
       &__name {
         cursor: pointer;
         margin-top: 5px;
