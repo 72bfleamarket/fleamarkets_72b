@@ -31,11 +31,9 @@
         if (data.seller_id == data.user_id) {
           let html = buildOwnerHTML(data);
           $('.comments').append(html);
-          console.log(1)
         } else {
           let html = buildHTML(data);
           $('.comments').append(html);
-          console.log(2)
         }
         $('.showMain__content__topContent__commentBox__textField').val('');
         $('.showMain__content__topContent__commentBox__submitBtn').prop('disabled', false);
