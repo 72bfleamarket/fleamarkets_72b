@@ -53,6 +53,8 @@ class ProductsController < ApplicationController
     @products = Product.includes(:images).order("created_at DESC").where(category_id: @parent.descendants).where.not(category_id: @category)
     @likes = Like.where(product_id: @product.id).count
     @likes = 0 if @likes.nil?
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
   end
 
   def destroy

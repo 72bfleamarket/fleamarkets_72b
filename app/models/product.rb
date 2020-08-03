@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   belongs_to :buyer, class_name: "User"
   has_many :likes
   has_many :like_users, through: :likes, source: :user
+  has_many :comments
 
   def like_user(user_id)
     likes.find_by(user_id: user_id)
