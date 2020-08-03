@@ -102,15 +102,19 @@
       .showMain__content__topContent__commentBox
         .comments
           コメント一覧
-          - if @comments
-            - @comments.each do |c|
-              .comments__box
-                = link_to c.user.name, profile_path(c.user.id), class: "comments__box__name"
-                - if c.user.id === @product.user.id
-                  .comments__box__name__mark 出品者
-                .comments__box__text
-                  %p
-                    = c.text
+        - if @comments.exists?
+          - @comments.each do |c|
+            .comments__box
+              = link_to c.user.name, profile_path(c.user.id), class: "comments__box__name"
+              - if c.user.id === @product.user.id
+                .comments__box__name__mark 出品者
+              .comments__box__text
+                %p
+                  = c.text
+        - else
+          .comments__box
+            .comments__box__noComment
+              *まだコメントはありません
         - if current_user
           = form_with(model: [@product, @comment], local: true, id: "new_comment") do |f|
             = f.text_area :text, id: :count_comment, placeholder: "コメントする", maxlength: "400", class: "showMain__content__topContent__commentBox__textField", rows: "4"

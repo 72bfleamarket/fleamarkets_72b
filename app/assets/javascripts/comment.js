@@ -35,6 +35,7 @@
           let html = buildHTML(data);
           $('.comments').append(html);
         }
+        $('.comments__box__noComment').remove()
         $('.showMain__content__topContent__commentBox__textField').val('');
         $('.showMain__content__topContent__commentBox__submitBtn').prop('disabled', false);
       })
