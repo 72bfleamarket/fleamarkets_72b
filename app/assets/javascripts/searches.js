@@ -99,7 +99,8 @@ $(function () {
   $(document).on('click', '.keyword_search', function () {
     let wordBtn = $(this).val();
     let wordSear = $("#search-input").val();
-    $("#search-input").val(wordSear + ' ' + wordBtn);
+    let lastword = wordSear.replace(/[^( |　)+\S*$]|\S*$/, wordBtn);
+    $("#search-input").val(lastword + " ");
     $('#search-input').trigger('keyup');
   });
   // 候補リストを削除
