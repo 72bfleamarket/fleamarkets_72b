@@ -101,7 +101,7 @@ $(function () {
     let wordSear = $("#search-input").val();
     let lastword = wordSear.replace(/[^( |　)+\S*$]|\S*$/, wordBtn);
     $("#search-input").val(lastword + " ");
-    $('#search-input').trigger('keyup');
+    // $('#search-input').trigger('keyup');
   });
   // 候補リストを削除
   $(document).on('click', '.trash', function () {

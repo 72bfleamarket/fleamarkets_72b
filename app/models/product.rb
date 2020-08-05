@@ -10,6 +10,15 @@ class Product < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
+  scope :with_keywords, -> keywords {
+    if keywords.present?
+      columns = [:name, :brand]
+      where(keywords.to_s.split(/[[:blank:]]+/).reject(&:empty?).map {|keyword|
+        columns.map { |a| arel_table[a].matches("%#{keyword}%") }.inject(:or)
+      }.inject(:or))
+    end
+  }
+
   accepts_nested_attributes_for :images, allow_destroy: true
   validates :images, presence: { message: "は1枚以上10枚以下のアップロードが必要です" }
 

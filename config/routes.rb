@@ -22,7 +22,11 @@ Rails.application.routes.draw do
 
   root "products#index"
   namespace :products do
-    resources :searches, only: :index
+    resources :searches, only: :index do
+      collection do
+        get :search
+      end
+    end
   end
   resources :products do
     resources :buyers, only: [:new, :create]

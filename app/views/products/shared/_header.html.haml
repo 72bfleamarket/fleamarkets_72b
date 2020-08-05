@@ -7,10 +7,16 @@
 
       .header__headerInner__mainHeader__searchBox
         = form_with(url: products_searches_path, local: true, method: :get) do |form|
-          = form.text_field :keyword, placeholder: 'キーワードから探す', class: 'header__headerInner__mainHeader__searchBox--input', id: 'search-input', autocomplete: "off"
-          %label{class: "header__headerInner__mainHeader__searchBox__submit"}
-            = image_tag 'material/icon/icon-search 1.png'
-            = form.submit '検索', class: 'header__headerInner__mainHeader__searchBox__submit--btn'
+          - if @search_word.present?
+            = form.text_field :keyword, placeholder: 'キーワードから探す', class: 'header__headerInner__mainHeader__searchBox--input', id: 'search-input', autocomplete: "off", value: "#{@search_word}"
+            %label{class: "header__headerInner__mainHeader__searchBox__submit"}
+              = image_tag 'material/icon/icon-search 1.png'
+              = form.submit '検索', class: 'header__headerInner__mainHeader__searchBox__submit--btn'
+          - else
+            = form.text_field :keyword, placeholder: 'キーワードから探す', class: 'header__headerInner__mainHeader__searchBox--input', id: 'search-input', autocomplete: "off"
+            %label{class: "header__headerInner__mainHeader__searchBox__submit"}
+              = image_tag 'material/icon/icon-search 1.png'
+              = form.submit '検索', class: 'header__headerInner__mainHeader__searchBox__submit--btn'
         %ul#keyword
 
     .header__headerInner__nav
