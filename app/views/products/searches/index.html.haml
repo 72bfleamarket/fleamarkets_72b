@@ -17,7 +17,7 @@
             %label
               %i.fas.fa-plus
               %span キーワードを追加する
-              = form.text_field :keywords, required: false, value: params.dig(:q, :keywords), class: 'formGroup__inputDefault'
+              = form.text_field :key, required: false, value: params.dig(:q, :keywords), class: 'formGroup__inputDefault'
 
           -# .formGroup
           -#   %label
@@ -116,10 +116,10 @@
         - if params[:keyword]
           = @search_word
           %span の検索結果
-        - elsif params[:q][:keywords] == ""
+        - elsif params[:q][:key] == ""
           = "絞り込み検索結果"
-        - elsif params[:q][:keywords]
-          = params[:q][:keywords]
+        - elsif params[:q][:key]
+          = params[:q][:key]
           %span の絞り込み検索結果
         - else
           検索に一致する商品はありませんでした

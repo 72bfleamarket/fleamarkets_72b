@@ -38,4 +38,14 @@ class Product < ApplicationRecord
     return Product.all unless search
     Product.where('name LIKE(?)', "%#{search}%")
   end
+
+
+  scope :key, ->(search_param = nil) {
+    return if search_param.blank?
+    joins("INNER JOIN categories ON categories.id = products.category_id")
+      .where("products.name LIKE ? OR products.brand LIKE ?  OR categories.name LIKE ? ", "%#{search_param}%", "%#{search_param}%", "%#{search_param}%")
+  }
+  def self.ransackable_scopes(auth_object = nil)
+    %i(key)
+  end
 end

@@ -11,15 +11,4 @@ class Category < ApplicationRecord
           end
         }
 
-  scope :keyword, ->(search_param = nil) {
-          return if search_param.blank?
-          joins("INNER JOIN products ON products.category_id = categories.id")
-            .where("products.category_id LIKE ? OR categories.id LIKE ? ", "%#{search_param}%", "%#{search_param}%")
-        }
-
-  private
-
-  def self.ransackable_scopes(auth_object = nil)
-    %i(keyword)
-  end
 end
