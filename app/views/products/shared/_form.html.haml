@@ -68,9 +68,9 @@
         %span.err_message
           =  @product.errors.full_messages_for(:category_id).shift
     #category_field
-      = form.collection_select :category_id, @parents, :id, :name, {prompt: "---", selected: @product.category&.root_id}, id: "category_form"
+      = form.collection_select :parent_id, @parents, :id, :name, {prompt: "---", selected: @product.category&.root_id}, id: "category_form"
       - if @product.category.present?
-        = form.collection_select :category_id, Category.where("ancestry like ?", "#{@product.category.parent.ancestry}"), :id, :name, {prompt: "---", selected: "#{@product.category.parent.id}"}, class: "child_category_id"
+        = form.collection_select :child_id, Category.where("ancestry like ?", "#{@product.category.parent.ancestry}"), :id, :name, {prompt: "---", selected: "#{@product.category.parent.id}"}, class: "child_category_id"
         = form.collection_select :category_id, Category.where("ancestry like ?", "#{@product.category.ancestry}"), :id, :name, {prompt: "---", selected: "#{@product.category.id}"}, class: "gc_category_id"
 
     #product-about__brand
