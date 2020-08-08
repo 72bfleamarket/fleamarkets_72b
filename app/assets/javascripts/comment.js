@@ -30,10 +30,10 @@
       .done(function(data){
         if (data.seller_id == data.user_id) {
           let html = buildOwnerHTML(data);
-          $('.comments').append(html).sort();
+          $('#new_comment').before(html);
         } else {
           let html = buildHTML(data);
-          $('.comments').append(html).sort();
+          $('#new_comment').before(html);
         }
         $('.comments__box__noComment').remove()
         $('.showMain__content__topContent__commentBox__textField').val('');
