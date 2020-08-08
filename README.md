@@ -109,7 +109,7 @@ Coming soon...
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|||add_column :categories, :ancestry, :string|
+|ancestry|string|default: null|
 |||add_index :categories, :ancestry|
 |||add_index :categories, :name|
 
