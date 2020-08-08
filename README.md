@@ -1,4 +1,14 @@
+# サイトURL（BASIC認証キー）
+
+# Gem/Ver
+- パブリックIP: http://54.238.15.114/
+- ユーザーID: admin
+- パスワード: flemakt72b
+
 # DB設計
+## ER図
+Coming soon...
+
 ## productsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -14,6 +24,8 @@
 |user_id|references|null: false, foreign_key: true|
 |buyer_id|integer|null: false|
 |likes_count|integer|default: 0|
+|||add_index :products, :name|
+|||add_index :products, :price|
 
 ### Association
 - belongs_to :user, foreign_key: "user_id"
@@ -56,6 +68,7 @@
 |name|string|null: false|
 |||add_column :categories, :ancestry, :string|
 |||add_index :categories, :ancestry|
+|||add_index :categories, :name|
 
 ### Association
 - has_many: products
@@ -74,6 +87,9 @@
 |birthday|date|null: false|
 |profile|text||
 |icons|string||
+|||add_index :users, :name|
+|||add_index :users, :email, unique: true|
+|||add_index :users, :reset_password_token, unique: true|
 
 
 ### Association
@@ -111,12 +127,23 @@
 |code|integer|null: false|
 |area|string|null: false|
 |city|string|null: false|
-|address|string|null: false|
+|village|string|null: false|
 |building|string||
+|phone_number|integer||
 |user_id|references|null: false, foreign_key: true|
+|||add_index :addresses, :area|
+|||add_index :addresses, :city|
 
 ### Association
 - belongs_to :user
+- belongs_to :user, optional: true
+
+- VALID_CODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/
+
+- validates :code, presence: true, format: { with: VALID_CODE_REGEX, message: "は3桁の半角数字、ハイフン（-）、4桁の半角数字の順で記入してください。" }
+- validates :area, presence: true
+- validates :city, presence: true
+- validates :village, presence: true
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -128,6 +155,7 @@
 ### Association
 - belongs_to :product
 - belongs_to :user
+- validates :text, presence: true
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -138,3 +166,17 @@
 
 ### Association
 - belongs_to :user
+
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|product_id|references||
+|user_id|references||
+
+### Association
+- belongs_to :user, foreign_key: "user_id"
+- belongs_to :product, foreign_key: "product_id", counter_cache: :likes_count
+
+- validates :user_id, presence: true
+- validates :product_id, presence: true
+- validates_uniqueness_of :product_id, scope: :user_id
