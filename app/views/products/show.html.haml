@@ -112,14 +112,17 @@
             コメントする
 
       %ul.showMain__content__links
-        %li
-          = link_to '#' do
-            %i.fa.fa-angle-left
-            %span 前の商品
-        %li
-          = link_to '#' do
-            %span 後ろの商品
-            %i.fa.fa-angle-right
+        - if @product.previous.present?
+          %li
+            = link_to product_path(@product.previous) do
+              %i.fa.fa-angle-left
+              %span 前の商品
+
+        - if @product.next.present?
+          %li
+            = link_to product_path(@product.next) do
+              %span 後ろの商品
+              %i.fa.fa-angle-right
 
       .showMain__content__relatedItems
         = link_to category_path(@product.category.root.id), class: 'showMain__content__relatedItems__category' do

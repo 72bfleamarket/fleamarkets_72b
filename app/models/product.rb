@@ -29,4 +29,12 @@ class Product < ApplicationRecord
     return Product.all unless search
     Product.where('name LIKE(?)', "%#{search}%")
   end
+
+  def previous
+    Product.where('id < ?', self.id).order('id DESC').first
+    end
+
+    def next
+    Product.where('id > ?', self.id).order('id ASC').first
+    end
 end
