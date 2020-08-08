@@ -104,8 +104,9 @@ $(function () {
     // $('#search-input').trigger('keyup');
   });
   // 候補リストを削除
-  $(document).on('click', '.trash', function () {
-    $(this).parent().remove();
+  $(document).on('click', '.trash-btn', function () {
+    $('.keyword-box').remove();
+    $(this).hide();
   });
 
   // クリアボタン
