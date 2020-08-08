@@ -1,9 +1,48 @@
-# サイトURL（BASIC認証キー）
+# このアプリについて
+<img width="1453" alt="Fleamarket_sample_72b" src="https://user-images.githubusercontent.com/62044473/89704084-0e7ddd80-d98c-11ea-8af2-26fad000c4af.png">
+このアプリはMercariを参考にして作成したフリーマーケットサイトです。商品ユーザー登録、商品登録、商品購入、カテゴリー、検索、コメント機能がメイン機能として実装されています。
 
-# Gem/Ver
+開発メンバー：TECH CAMP 72期夜間メンバー4名
+制作期間:Jun 6th,2020 ~ Aug 15th,2020
+
+# サイトURL（BASIC認証キー）
 - パブリックIP: http://54.238.15.114/
 - ユーザーID: admin
 - パスワード: flemakt72b
+
+# Gem/Ver
+
+- ruby 2.5.1
+- rails 5.2.3
+
+- gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+- gem 'sass-rails', '~> 5.0'
+- gem 'jbuilder', '~> 2.5'
+- gem 'unicorn', '5.4.1'
+- gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+- gem 'capistrano'
+- gem 'capistrano-rbenv'
+- gem 'capistrano-bundler'
+- gem 'capistrano-rails'
+- gem 'capistrano3-unicorn'
+- gem 'rspec-rails'
+- gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+- gem "haml-rails"
+- gem 'font-awesome-sass'
+- gem 'devise'
+- gem 'pry-rails'
+- gem 'ancestry'
+- gem 'gretel'
+- gem 'carrierwave'
+- gem 'mini_magick'
+- gem 'jquery-rails'
+- gem 'fog-aws'
+- gem 'active_hash'
+- gem 'payjp'
+- gem 'rails-i18n'
+- gem 'omniauth-facebook'
+- gem 'omniauth-google-oauth2'
+- gem 'omniauth-rails_csrf_protection'
 
 # DB設計
 ## ER図
