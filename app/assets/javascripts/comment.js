@@ -2,14 +2,14 @@
   $(function(){
     function buildHTML(comment){
       let html = `<div class="comments__box">
-                      <a class="comments__box__name" href=/users/${comment.user_id}>${comment.user_name}</a>
+                      <a class="comments__box__name" href=/users/profile/${comment.user_id}>${comment.user_name}</a>
                       <div class="comments__box__text">${comment.text}</div>
                     </div>`
       return html;
     }
     function buildOwnerHTML(comment){
       let html = `<div class="comments__box">
-                      <a class="comments__box__name" href=/users/${comment.user_id}>${comment.user_name}</a>
+                      <a class="comments__box__name" href=/users/profile/${comment.user_id}>${comment.user_name}</a>
                       <div class="comments__box__name__mark">出品者</div>
                       <div class="comments__box__text">${comment.text}</div>
                     </div>`
@@ -30,10 +30,10 @@
       .done(function(data){
         if (data.seller_id == data.user_id) {
           let html = buildOwnerHTML(data);
-          $('.comments').append(html);
+          $('.comments').append(html).sort();
         } else {
           let html = buildHTML(data);
-          $('.comments').append(html);
+          $('.comments').append(html).sort();
         }
         $('.comments__box__noComment').remove()
         $('.showMain__content__topContent__commentBox__textField').val('');
