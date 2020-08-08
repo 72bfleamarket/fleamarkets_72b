@@ -28,6 +28,10 @@
         &__item{
           display: block;
           color:black;
+
+          &:hover {
+            color:black;
+          }
         }
       }
     }
