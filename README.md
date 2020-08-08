@@ -6,6 +6,9 @@
 - 開発メンバー：TECH CAMP 72期夜間メンバー4名  
 - 制作期間:Jun 6th,2020 ~ Aug 15th,2020  
 
+# 実装内容
+Coming soon...
+
 # サイトURL（BASIC認証キー）
 - パブリックIP: http://54.238.15.114/
 - ユーザーID: admin
