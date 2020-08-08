@@ -223,3 +223,13 @@ Coming soon...
 - validates :user_id, presence: true
 - validates :product_id, presence: true
 - validates_uniqueness_of :product_id, scope: :user_id
+
+## Sns_credentialテーブル
+|Column|Type|Options|
+|------|----|-------|
+|provider|string||
+|uid|string||
+|user_id|integer|foreign_key: true|
+
+### Association
+- belongs_to :user, optional: true
