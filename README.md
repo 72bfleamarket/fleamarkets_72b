@@ -61,12 +61,12 @@ Coming soon...
 |brand|string||
 |condition|string|null: false|
 |postage|string|null: false|
-|prefecture_id|string|null: false|
 |shipping_day|string|null: false|
 |price|integer|null: false|
+|likes_count|integer|default: 0|
+|prefecture_id|string|null: false|
 |user_id|references|null: false, foreign_key: true|
 |buyer_id|integer|null: false|
-|likes_count|integer|default: 0|
 |||add_index :products, :name|
 |||add_index :products, :price|
 
