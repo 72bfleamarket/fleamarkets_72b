@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :sns_credentials
   has_many :likes, dependent: :destroy
   has_many :like_products, through: :likes, source: :product
+  has_many :comments
   # has_many :comments //後から使用予定
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

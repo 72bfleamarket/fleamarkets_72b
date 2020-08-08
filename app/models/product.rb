@@ -5,12 +5,13 @@ class Product < ApplicationRecord
   belongs_to :buyer, class_name: "User"
   has_many :likes
   has_many :like_users, through: :likes, source: :user
+  has_many :comments
 
   def like_user(user_id)
     likes.find_by(user_id: user_id)
   end
 
-  accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :images, allow_destroy: true,reject_if: proc { |attributes| attributes['item'].blank?}
   validates :images, presence: { message: "は1枚以上10枚以下のアップロードが必要です" }
 
   extend ActiveHash::Associations::ActiveRecordExtensions

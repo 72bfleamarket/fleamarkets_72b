@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
   resources :products do
     resources :buyers, only: [:new, :create]
+    resources :comments, only: [:create, :destroy]
     post "add", to: "likes#create"
     delete "/add", to: "likes#destroy"
     collection do
