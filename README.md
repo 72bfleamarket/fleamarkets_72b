@@ -50,7 +50,7 @@ Coming soon...
 
 # DB設計
 ## ER図
-![ER Diagram](https://user-images.githubusercontent.com/62044473/89707216-2747bc80-d9a7-11ea-8d12-18aaa0aa55c5.png)
+![ER Diagram](https://user-images.githubusercontent.com/62044473/89707506-a0481380-d9a9-11ea-8ec1-c0dc16ba0b4a.png)
 
 ## productsテーブル
 |Column|Type|Options|
