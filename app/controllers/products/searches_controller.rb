@@ -1,14 +1,12 @@
 class Products::SearchesController < ApplicationController
-  # before_action :set_search
+  before_action :set_search
 
   def index
     @parents = Category.where(ancestry: nil)
     @products = []
     categories = []
-    pp = []
     aaa = []
     if params[:keyword]
-      @search = Product.ransack(params[:q])
       @search_word = params[:keyword]
       nil if @search_word == ""
       split_keyword = @search_word.to_s.split(/[[:blank:]]+/)
@@ -31,40 +29,55 @@ class Products::SearchesController < ApplicationController
       end
       @products.push(categories).flatten!
     else
-      @c = Category.cwith_keywords(params.dig(:q, :keywords)).ransack(params[:q])
-      # binding.pry
-      cates = @c.result(distinct: true).order(created_at: "DESC")
-      cates.each do |cate|
-        if cate.has_children?
-          cate_ids = cate.descendants
-          categories.push(Product.includes(:images).order("created_at DESC").where(category_id: cate_ids)).flatten!
+      if params.dig(:q, :keywords).present?
+        cates = Category.with_keywords(params.dig(:q, :keywords))
+        cates.each do |cate|
+          if cate.has_children?
+            cate_ids = cate.descendants
+            @c = Product.includes(:images).order("created_at DESC").where(category_id: cate_ids).ransack(params[:q])
+            categories += @c.result(distinct: true)
+          else
+            @c = Product.includes(:images).order("created_at DESC").where(category_id: cate).ransack(params[:q])
+            categories += @c.result(distinct: true)
+          end
+        end
+        @products.push(categories).flatten!
+      end
+      @searches = Product.with_keywords(params.dig(:q, :keywords)).ransack(params[:q])
+      @products += @searches.result(distinct: true)
+      if params[:q][:category_id_in].present?
+        @category = Category.find(params[:q][:category_id_in])
+        if @category.has_children?
+          @products += Product.includes(:images).order("created_at DESC").where(category_id: @category.descendants)
         else
-          categories.push(Product.includes(:images).order("created_at DESC").where(category_id: cate)).flatten!
+          @category = Category.find(params[:q][:category_id_in])
+          @products += Product.includes(:images).order("created_at DESC").where(category_id: @category)
         end
       end
-      @search = Product.with_keywords(params.dig(:q, :keywords)).ransack(params[:q])
-      aaa += @search.result(distinct: true).order(created_at: "DESC")
-      # binding.pry
-      aaa += categories
-      aaa.select { |a| aaa.count(a) > 1 }.uniq
-      @products += aaa
-      @products.uniq!
 
-      # newProduct = []
-      # @products.each do |p|
-      #   if p.price > lessthan
-      #     newProduct << p
-      #   end
+      if params[:q][:sorts] == "id desc"
+        @products.sort_by! { |a| a[:id] }.reverse!
+      elsif params[:q][:sorts] == "price asc"
+        @products.sort_by! { |a| a[:price] }
+      elsif params[:q][:sorts] == "price desc"
+        @products.sort_by! { |a| a[:price] }.reverse!
+      elsif params[:q][:sorts] == "updated_at asc"
+        @products.sort_by! { |a| a[:updated_at] }
+      elsif params[:q][:sorts] == "updated_at desc"
+        @products.sort_by! { |a| a[:updated_at] }.reverse!
+      elsif params[:q][:sorts] == "likes_count desc"
+        @products.sort_by! { |a| a[:likes_count] }.reverse!
+      end
 
-      #   if p.price < greaterthan
-      #   end
-      # end
+      @checked = "checked" if params[:q][:condition_id_true]
+      @checkeds = "checked" if params[:q][:postage_id_true]
     end
+    @products.uniq!
+  end
 
-    # private
+  private
 
-    # def set_search
-    #   @searchs = Category.ransack(params[:q])
-    # end
+  def set_search
+    @search = Product.ransack(params[:q])
   end
 end

@@ -38,7 +38,9 @@
         %li.header__headerInner__nav__listsLeft__brand
           = link_to '#' do
             ブランドから探す
-
+        %li.header__headerInner__nav__listsLeft__search
+          = link_to products_searches_path(keyword: ""), local: true, method: :get do
+            条件を決めてから探す
       %ul.header__headerInner__nav__listsRight
         - if user_signed_in?
           %li.header__headerInner__nav__listsRight__item

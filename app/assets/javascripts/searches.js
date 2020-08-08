@@ -105,7 +105,173 @@ $(function () {
   });
   // 候補リストを削除
   $(document).on('click', '.trash', function () {
-    $(".keyword-box").remove();
     $(this).parent().remove();
+  });
+
+  // クリアボタン
+  $(document).on('click', "#grayBtn", function () {
+    let searchCheckbox = $('input[type="checkbox"]');
+    let searchText = $('input[type="text"]');
+    let searchbox = $('input[type="search"]');
+    $(searchCheckbox).removeAttr('checked').prop('checked', false).change();
+    $(searchText).removeAttr('value').prop('value', '').change();
+    $(searchbox).removeAttr('value').prop('value', '').change();
+    $("#q_gc_category_id").remove();
+    $("#q_cd_category_id").remove();
+    $('#q_category_id').prop('selectedIndex', 0);
+    $('#q_price').prop('selectedIndex', 0);
+  })
+
+  // セレクトボックスでの金額の絞り込み
+  $(document).on('change', '#q_price', function () {
+    let price = $('[name="q[price]"] option:selected').text();
+    let maxRan = /([^( )+]+([0-9][0-9]?)?)$/;
+    let ccci = new RegExp(maxRan, 'g');
+    let mxArr = price.match(ccci);
+    let maxArr = $.trim(mxArr)
+    let maArr = maxArr.replace(/,/g, "");
+    if (maArr == '選択してください') {
+      $('#q_price_lteq').val('');
+    } else {
+      $("#q_price_lteq").val(maArr);
+    }
+
+    let minRan = /[0-9]{1,}([^( )+]+([0-9][0-9]?)?)+[( )+]/
+    let fffi = new RegExp(minRan, 'g');
+    let mnArr = price.match(fffi);
+    let minArr = $.trim(mnArr)
+    let miArr = minArr.replace(/,/g, "");
+    $("#q_price_gteq").val(miArr);
+  });
+
+  //「全て選択」する
+  $('#all-cdtion').on('click', function () {
+    $("input[name='q[condition_id_eq_any][]']").prop('checked', this.checked);
+  });
+  // 「全て選択」以外のチェックボックスのアクション
+  $(document).on('click', "input[name='q[condition_id_eq_any][]']", function () {
+    if ($('.seach_conditon :checked').length == $('.seach_conditon').children().length) {
+      $('#all-cdtion').prop('checked', true);
+    } else {
+      $('#all-cdtion').prop('checked', false);
+    }
+  });
+  //「全て選択」する
+  $('#all-postage').on('click', function () {
+    $("input[name='q[postage_id_eq_any][]']").prop('checked', this.checked);
+  });
+  // 「全て選択」以外のチェックボックスのアクション
+  $(document).on('click', "input[name='q[postage_id_eq_any][]']", function () {
+    if ($('.seach_postage :checked').length == $('.seach_postage').children().length) {
+      $('#all-postage').prop('checked', true);
+    } else {
+      $('#all-postage').prop('checked', false);
+    }
+  });
+
+  $(document).on('click', "input[name='q[buyer_id_null]']", function () {
+    $('#buyer-true').prop('checked', false);
+  });
+
+  $(document).on('click', "input[name='q[buyer_id_not_null]']", function () {
+    $('#buyer-false').prop('checked', false);
+  });
+
+  function build_childSelect() {
+    let q_child_select = `
+    <select name="q[category_id_in]" id="q_cd_category_id">
+    <option value="">すべて</option>
+    </select>
+    `
+    return q_child_select;
+  }
+
+  function build_Option(children) {
+    let option_html = `
+    <option value=${children.id}>${children.name}</option>
+    `
+    return option_html;
+  }
+
+  function build_gcSelect() {
+    let q_gc_select = `
+    <select name="q[category_id_in]" id="q_gc_category_id">
+    <option value="">すべて</option>
+    </select>
+    `
+    return q_gc_select;
+  }
+
+  // 親セレクトを変更したらjQueryが発火する
+  $("#q_category_id").change(function () {
+    let parentVal = $("#q_category_id").val();
+    if (parentVal != "") {
+      $.ajax({
+          url: '/products/search',
+          type: 'GET',
+          data: {
+            parent_id: parentVal
+          },
+          dataType: 'json'
+        })
+        .done(function (data) {
+          let q_child_select = build_childSelect
+          $("#q_gc_category_id").remove();
+          $("#q_cd_category_id").remove();
+          $(".formGroup__selectWrap--categories").append(q_child_select);
+          data.forEach(function (d) {
+            let option_html = build_Option(d)
+            $("#q_cd_category_id").append(option_html);
+            console.log("#q_cd_category_id");
+          });
+        })
+        .fail(function () {
+          alert("カテゴリーを選択してください");
+        });
+    } else {
+      $("#q_gc_category_id").remove();
+      $("#q_cd_category_id").remove();
+    }
+  });
+  // 子セレクトを変更したらjQueryが発火する
+  $(document).on("change", "#q_cd_category_id", function () {
+    let childVal = $("#q_cd_category_id").val();
+    if (childVal != "") {
+      $.ajax({
+          url: '/products/search',
+          type: 'GET',
+          data: {
+            children_id: childVal
+          },
+          dataType: 'json'
+        })
+        .done(function (gc_data) {
+          let q_gc_select = build_gcSelect
+          $("#q_gc_category_id").remove();
+          $(".formGroup__selectWrap--categories").append(q_gc_select);
+          gc_data.forEach(function (gc_d) {
+            let option_html = build_Option(gc_d);
+            $("#q_gc_category_id").append(option_html);
+          });
+        })
+        .fail(function () {
+          alert("カテゴリーを選択してください");
+        });
+    } else {
+      $("#q_gc_category_id").remove();
+      $("#q_cd_category_id").remove();
+    }
+  });
+  // 絞り込みリストの並べ替え
+  $(document).on('change', '#q_sorts', function () {
+    $("#product_search").submit();
+  });
+
+  $(document).on('click', "#redBtn", function () {
+    if ($('#q_gc_category_id').val() == "") {
+      $('#q_gc_category_id').remove();
+    } else if ($('#q_cd_category_id').val() == "") {
+      $('#q_cd_category_id').remove();
+    }
   });
 });

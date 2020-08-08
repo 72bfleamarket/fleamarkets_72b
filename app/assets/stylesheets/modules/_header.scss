@@ -150,9 +150,12 @@
 
         &__item,
         &__brand {
-          width: 160px;
+          width: 140px;
           line-height: 32px;
+          text-align: center;
         }
+
+        line-height: 32px;
       }
 
       &__listsRight {

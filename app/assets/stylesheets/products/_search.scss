@@ -15,7 +15,7 @@
 
       .searchExtendForm {
         position: relative;
-        
+
         select {
           width: 100%;
           position: relative;
@@ -29,7 +29,7 @@
           color: #333;
         }
 
-        .dropDownContent{
+        .dropDownContent {
           background-color: #fff;
           padding: 16px;
           margin-top: 40px;
@@ -51,7 +51,7 @@
                 color: #888;
                 vertical-align: middle;
               }
-  
+
               span {
                 font-size: 14px;
                 vertical-align: middle;
@@ -82,12 +82,17 @@
               @include wrap();
             }
 
+            .all_seach {
+              margin-top: 5px;
+            }
+
             &__checkboxDefault {
-              margin-top: 16px;
+              padding-top: 16px;
               display: inline-block;
               width: 48%;
               vertical-align: middle;
               position: relative;
+              height: 36px;
 
               input {
                 position: absolute;
@@ -99,24 +104,26 @@
                 border-radius: 2px;
                 border: 1px solid #ccc;
                 color: #fff;
-                vertical-align: middle;
                 transition: all ease-out .3s;
                 margin-right: 4px;
                 cursor: pointer;
               }
 
               label {
-                display: block;
-                position: relative;
-                padding-left: 28px;
-                font-size: 14px;
-                font-weight: 400;
+                position: absolute;
+                top: 10%;
+                left: 0;
+                display: inline-block;
                 vertical-align: middle;
+                padding-left: 28px;
+                font-size: 0.95em;
+                font-weight: 400;
+                text-align: left;
                 cursor: pointer;
               }
 
               &__parts {
-                line-height: 28px;
+                line-height: 20px;
               }
             }
           }
@@ -135,7 +142,7 @@
               cursor: pointer;
               text-align: center;
               color: #fff;
-              
+
               &--gray {
                 float: left;
                 background-color: #aaa;
@@ -155,11 +162,13 @@
 
     .searchResult {
       @include mainContent();
+      padding-top: 20px;
 
       &__head {
         font-size: 22px;
         margin-bottom: 8px;
         font-weight: 600;
+        padding-left: 20px;
 
         span {
           font-size: 18px;
@@ -170,9 +179,10 @@
 
       &__number {
         margin: 16px 0;
-        font-size: 12px;
+        font-size: 16px;
+        padding: 0 20px;
         color: #888;
-        
+
         span {
           color: #888;
 

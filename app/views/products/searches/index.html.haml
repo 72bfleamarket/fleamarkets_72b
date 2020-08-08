@@ -4,12 +4,10 @@
   .container__inner
     .sideBar
       = search_form_for @search, url: products_searches_path, class: 'searchExtendForm' do |form|
-        %select
-          %option{value: ""} 並び替え
-          %option{value: "1"} 価格の安い順
-          %option{value: "2"} 価格の高い順
-          %option{value: "3"} 出品の新しい準備
-          %option{value: "4"} いいね!の多い順
+        - if params[:keyword]
+          = form.select(:sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc', 'いいね!の多い順': 'likes_count desc' })
+        - else
+          = form.select(:sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc', 'いいね!の多い順': 'likes_count desc' }, selected: params[:q][:sorts])
 
         .dropDownContent
           %h3.dropDownContent__visualLarge 詳細検索
@@ -17,103 +15,129 @@
             %label
               %i.fas.fa-plus
               %span キーワードを追加する
-              = form.text_field :keywords, required: false, value: params.dig(:q, :keywords), class: 'formGroup__inputDefault'
+              - if params[:keyword]
+                = form.text_field :keywords, required: false, value: params[:keyword], class: 'formGroup__inputDefault', placeholder: "ブランド、カテゴリなど"
+              - else
+                = form.text_field :keywords, required: false, value: params.dig(:q, :keywords), class: 'formGroup__inputDefault', placeholder: "ブランド、カテゴリなど"
 
-          -# .formGroup
-          -#   %label
-          -#     %i.fas.fa-list-ul
-          -#     %span カテゴリーを選択する
-          -#   .formGroup__selectWrap
-          -#     = form.collection_select(:category_id, @parents, :id, :name, {include_blank: 'すべて'})
+          .formGroup
+            %label
+              %i.fas.fa-list-ul
+              %span カテゴリーを選択する
+            .formGroup__selectWrap--categories
+              - if params[:keyword]
+                = form.select :category_id_in, options_from_collection_for_select(Category.where(ancestry: nil), :id, :name), {include_blank: 'すべて'}, id: "q_category_id"
+              - elsif params[:q][:category_id_in] == ""
+                = form.select :category_id_in, options_from_collection_for_select(Category.where(ancestry: nil), :id, :name), {include_blank: 'すべて'}, id: "q_category_id"
+              - elsif params[:q][:category_id_in]
+                = form.select :category_id_in, options_from_collection_for_select(Category.where(ancestry: nil), :id, :name, selected: "#{@category&.root.id}"), {include_blank: 'すべて'}, id: "q_category_id"
+                - if @category.has_parent? && @category.has_children?
+                  = form.select :category_id_in, options_from_collection_for_select(Category.where("ancestry like ?", "#{@category.ancestry}"), :id, :name, selected: params[:q][:category_id_in]), {include_blank: 'すべて'}, id: "q_cd_category_id"
+                - elsif @category.is_childless?
+                  = form.select :category_id_in, options_from_collection_for_select(Category.where("ancestry like ?", "#{@category.parent.ancestry}"), :id, :name, selected: "#{@category.parent.id}"), {include_blank: 'すべて'}, id: "q_cd_category_id"
+                  = form.select :category_id_in, options_from_collection_for_select(Category.where("ancestry like ?", "#{@category.ancestry}"), :id, :name, selected: params[:q][:category_id_in]), {include_blank: 'すべて'}, id: "q_gc_category_id"
 
-          -# .formGroup
-          -#   %label
-          -#     %i.fas.fa-tag
-          -#     %span ブランド名から探す
-          -#   %input.formGroup__inputDefault{placeholder: '例）シャネル'}
-
-          -# .formGroup
-          -#   %label
-          -#     %i.fas.fa-window-maximize
-          -#     %span サイズを指定する
-          -#   .formGroup__selectWrap
-          -#     = form.collection_select(:size, @products, :id, :size, {include_blank: 'すべて'})
-
+          .formGroup
+            %label
+              %i.fas.fa-tag
+              %span ブランド名から探す
+            .formGroup__selectWrap
+              = form.search_field :brand_cont, class: 'formGroup__inputDefault', placeholder: "例）シャネル"
+          .formGroup
+            %label
+              %i.fas.fa-window-maximize
+              %span サイズを指定する
+            .formGroup__selectWrap
+              = form.search_field :size_cont, class: 'formGroup__inputDefault', placeholder: "S, M, L, フリー, 90cm〜 など"
           .formGroup
             %label
               %i.fas.fa-coins
               %span 価格
-            -# .formGroup__selectWrap
-            -#   = form.select :price, [ ['300 ~ 1000', 1], ['1000 ~ 5000', 2], ['5000 ~ 10000', 3] ,['10000 ~ 30000', 4], ['30000 ~ 50000', 5], ['50000 ~ ', 6]  ], {prompt: '選択してください'}
+            .formGroup__selectWrap
+              - if params[:keyword]
+                = form.select :price, options_from_collection_for_select(PriceSelect.all, :id, :name), { prompt: "選択してください"}
+              - else
+                = form.select :price, options_from_collection_for_select(PriceSelect.all, :id, :name, selected: params[:q][:price]), { prompt: "選択してください"}
             = form.search_field :price_gteq, placeholder: "¥ Min", class: "formGroup__inputDefault price"
             %span ~
             = form.search_field :price_lteq, placeholder: "¥ Max", class: "formGroup__inputDefault price"
 
-          -# .formGroup
-          -#   %label
-          -#     %i.fas.fa-star
-          -#     %span 商品の状態
-          -#   %div
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :condition, {}, 'true', 'false'
-          -#       = form.label :condition, 'すべて'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :condition, {}, 'true', 'false'
-          -#       = form.label :condition, '新品、未使用'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :condition, {}, 'true', 'false'
-          -#       = form.label :condition, '未使用に近い', class: 'formGroup__checkboxDefault__parts'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :condition, {}, 'true', 'false'
-          -#       = form.label :condition, '目立った傷や汚れなし'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :condition, {}, 'true', 'false'
-          -#       = form.label :condition, 'やや傷や汚れあり'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :condition, {}, 'true', 'false'
-          -#       = form.label :condition, '傷や汚れあり', class: 'formGroup__checkboxDefault__parts'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :condition, {}, 'true', 'false'
-          -#       = form.label :condition, '全体的に状態が悪い'
+          .formGroup
+            %label
+              %i.fas.fa-star
+              %span 商品の状態
+            .all_seach
+              .formGroup__checkboxDefault
+                = form.label '全てを選択', class: 'formGroup__checkboxDefault__parts'
+                - if params[:keyword]
+                  = form.check_box :condition_id_true, {multiple: true, id: 'all-cdtion'}, true, false
+                - else
+                  = form.check_box :condition_id_true, {multiple: true, id: 'all-cdtion', checked: @checked}, true, false
+            .seach_conditon
+              .formGroup__checkboxDefault
+                = form.label '新品、未使用', class: 'formGroup__checkboxDefault__parts'
+                = form.check_box :condition_id_eq_any, {multiple: true}, 1, nil
+              .formGroup__checkboxDefault
+                = form.label '未使用に近い', class: 'formGroup__checkboxDefault__parts'
+                = form.check_box :condition_id_eq_any, {multiple: true}, 2, nil
+              .formGroup__checkboxDefault
+                = form.label '目立った傷や汚れなし'
+                = form.check_box :condition_id_eq_any, {multiple: true}, 3, nil
+              .formGroup__checkboxDefault
+                = form.label 'やや傷や汚れあり'
+                = form.check_box :condition_id_eq_any, {multiple: true}, 4, nil
+              .formGroup__checkboxDefault
+                = form.label '傷や汚れあり', class: 'formGroup__checkboxDefault__parts'
+                = form.check_box :condition_id_eq_any, {multiple: true}, 5, nil
+              .formGroup__checkboxDefault
+                = form.label '全体的に状態が悪い'
+                = form.check_box :condition_id_eq_any, {multiple: true}, 6, nil
+              .formGroup__checkboxDefault
+                = form.label 'ジャンク品', class: 'formGroup__checkboxDefault__parts'
+                = form.check_box :condition_id_eq_any, {multiple: true}, 7, nil
 
-          -# .formGroup
-          -#   %label
-          -#     %i.fas.fa-truck
-          -#     %span 配送料の負担
-          -#   %div
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :postage, {}, 'true', 'false'
-          -#       = form.label :postage, 'すべて', class: 'formGroup__checkboxDefault__parts'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :postage, {}, 'true', 'false'
-          -#       = form.label :postage, '着払い(購入者負担)'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :postage, {}, 'true', 'false'
-          -#       = form.label :postage, '送料込み(出品者負担)'
+          .formGroup
+            %label
+              %i.fas.fa-truck
+              %span 配送料の負担
+            .all_seach
+              .formGroup__checkboxDefault
+                = form.label '全てを選択', class: 'formGroup__checkboxDefault__parts'
+                - if params[:keyword]
+                  = form.check_box :postage_id_true, {multiple: true, id: 'all-postage'}, true, false
+                - else
+                  = form.check_box :postage_id_true, {multiple: true, id: 'all-postage', checked: @checkeds}, true, false
+            .seach_postage
+              .formGroup__checkboxDefault
+                = form.label '送料込み', class: 'formGroup__checkboxDefault__parts'
+                = form.check_box :postage_id_eq_any, {multiple: true}, 1, nil
+              .formGroup__checkboxDefault
+                = form.label '着払い', class: 'formGroup__checkboxDefault__parts'
+                = form.check_box :postage_id_eq_any, {multiple: true}, 2, nil
 
-          -# .formGroup
-          -#   %label
-          -#     %i.fas.fa-shopping-cart
-          -#     %span 販売状況
-          -#   %div
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :buyer_id, {}, 'true', 'false'
-          -#       = form.label :buyer_id, 'すべて', class: 'formGroup__checkboxDefault__parts'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :buyer_id, {}, 'true', 'false'
-          -#       = form.label :buyer_id, '販売中', class: 'formGroup__checkboxDefault__parts'
-          -#     .formGroup__checkboxDefault
-          -#       = form.check_box :buyer_id, {}, 'true', 'false'
-          -#       = form.label :buyer_id, '売り切れ', class: 'formGroup__checkboxDefault__parts'
+          .formGroup
+            %label
+              %i.fas.fa-shopping-cart
+              %span 販売状況
+            .all_seach
+            .seach_buyer
+              .formGroup__checkboxDefault
+                = form.label '販売中のみ', class: 'formGroup__checkboxDefault__parts'
+                = form.check_box :buyer_id_null, include_hidden: false, id: 'buyer-false'
+              .formGroup__checkboxDefault
+                = form.label '売り切れ', class: 'formGroup__checkboxDefault__parts'
+                = form.check_box :buyer_id_not_null, include_hidden: false, id: 'buyer-true'
 
           .dropDownContent__searchExtendBtn
-            = button_tag type: 'submit', class: 'btnDefault btnDefault--gray', id: 'grayBtn' do
+            = button_tag type: 'button', class: 'btnDefault btnDefault--gray', id: 'grayBtn' do
               クリア
-            = form.submit '完了', class: 'btnDefault btnDefault--red', id: '#redBtn'
+            = form.submit '完了', class: 'btnDefault btnDefault--red', id: 'redBtn'
 
     .searchResult
       %h2.searchResult__head
-        - if params[:keyword]
+        - if params[:keyword] == ""
+          = "お探しは何ですか？"
+        - elsif params[:keyword]
           = @search_word
           %span の検索結果
         - elsif params[:q][:keywords] == ""
