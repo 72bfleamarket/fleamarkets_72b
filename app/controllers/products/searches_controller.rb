@@ -49,7 +49,6 @@ class Products::SearchesController < ApplicationController
         if @category.has_children?
           @products += Product.includes(:images).order("created_at DESC").where(category_id: @category.descendants)
         else
-          @category = Category.find(params[:q][:category_id_in])
           @products += Product.includes(:images).order("created_at DESC").where(category_id: @category)
         end
       end
