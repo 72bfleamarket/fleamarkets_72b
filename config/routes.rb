@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     get "addresses", to: "users/registrations#new_address"
     post "addresses", to: "users/registrations#create_address"
     get "users/profile/:id", to: "users/sessions#show", as: "profile"
-    get "edit_addresses/:id", to: "users/sessions#edit"
-    post "edit_addresses/:id", to: "users/sessions#create"
+    get "edit_address/:id", to: "users#edit_address", as: "edit_address"
+    post "edit_address/:id", to: "users#update_address"
     get "password", to: "users/passwords#new"
   end
 

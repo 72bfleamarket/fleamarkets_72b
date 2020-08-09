@@ -21,6 +21,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_address
+    if user_signed_in?
+      @address = Address.find(current_user.id)
+      return
+    else
+      redirect_to product_path
+    end
+  end
+
+  def update_address
+    @address = Address.find(current_user.id)
+    if @address.valid?
+      @address.save
+    else
+      render :edit_address
+    end
+  end
+
   private
 
   def user_params
