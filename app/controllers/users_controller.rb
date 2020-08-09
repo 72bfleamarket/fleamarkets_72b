@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show]
-  before_action :set_parents, only: [:edit, :show]
+  before_action :set_parents, only: [:edit, :show, :edit_address]
 
   def edit
   end
