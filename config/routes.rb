@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     post "new_user", to: "users/registrations#create_user"
     get "addresses", to: "users/registrations#new_address"
     post "addresses", to: "users/registrations#create_address"
-    get "password", to: "users/passwords#new"
     get "users/profile/:id", to: "users/sessions#show", as: "profile"
+    get "edit_addresses/:id", to: "users/sessions#edit"
+    post "edit_addresses/:id", to: "users/sessions#create"
+    get "password", to: "users/passwords#new"
   end
   resources :users, path: "/users/mypage", only: [:show, :edit]
 
