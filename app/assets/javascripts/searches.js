@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function () {
   function buildKeyword(word) {
     let keyword_select = `<li class="keyword-box">
                             <input class="keyword_search" name="${word.id}" type="button" value="${word.name}">
@@ -223,7 +223,6 @@ $(function () {
           data.forEach(function (d) {
             let option_html = build_Option(d)
             $("#q_cd_category_id").append(option_html);
-            console.log("#q_cd_category_id");
           });
         })
         .fail(function () {
@@ -260,14 +259,19 @@ $(function () {
         });
     } else {
       $("#q_gc_category_id").remove();
-      $("#q_cd_category_id").remove();
     }
   });
   // 絞り込みリストの並べ替え
   $(document).on('change', '#q_sorts', function () {
+    if ($('#q_gc_category_id').val() == "") {
+      $('#q_gc_category_id').remove();
+    } else if ($('#q_cd_category_id').val() == "") {
+      $('#q_cd_category_id').remove();
+    }
     $("#product_search").submit();
   });
 
+  // カテゴリーセレクトの処理
   $(document).on('click', "#redBtn", function () {
     if ($('#q_gc_category_id').val() == "") {
       $('#q_gc_category_id').remove();
@@ -275,4 +279,18 @@ $(function () {
       $('#q_cd_category_id').remove();
     }
   });
+
+  // 全てを探すボタンの処理
+  $(document).on('click', "#search_alls", function () {
+    $('#grayBtn').trigger('click');
+    $("#product_search").submit();
+  });
+
+  // ページ読み込み時のカテゴリー処理
+  if ($('#q_cd_category_id').val() != "" && !$('#q_gc_category_id').length) {
+    $('#q_cd_category_id').trigger('change');
+  }
+  if ($('#q_category_id').val() != "" && !$('#q_cd_category_id').length) {
+    $('#q_category_id').trigger('change');
+  }
 });

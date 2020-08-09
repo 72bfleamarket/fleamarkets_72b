@@ -5,7 +5,6 @@ class Products::SearchesController < ApplicationController
     @parents = Category.where(ancestry: nil)
     @products = []
     categories = []
-    aaa = []
     if params[:keyword]
       @search_word = params[:keyword]
       nil if @search_word == ""

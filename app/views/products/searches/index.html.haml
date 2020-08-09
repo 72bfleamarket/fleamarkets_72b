@@ -13,8 +13,8 @@
           %h3.dropDownContent__visualLarge 詳細検索
           .formGroup
             %label
-              %i.fas.fa-plus
-              %span キーワードを追加する
+              %i.fas.fa-plus.keywords_any
+              %span.keywords_any キーワードを追加する
               - if params[:keyword]
                 = form.text_field :keywords, required: false, value: params[:keyword], class: 'formGroup__inputDefault', placeholder: "ブランド、カテゴリなど"
               - else
@@ -32,10 +32,10 @@
               - elsif params[:q][:category_id_in]
                 = form.select :category_id_in, options_from_collection_for_select(Category.where(ancestry: nil), :id, :name, selected: "#{@category&.root.id}"), {include_blank: 'すべて'}, id: "q_category_id"
                 - if @category.has_parent? && @category.has_children?
-                  = form.select :category_id_in, options_from_collection_for_select(Category.where("ancestry like ?", "#{@category.ancestry}"), :id, :name, selected: params[:q][:category_id_in]), {include_blank: 'すべて'}, id: "q_cd_category_id"
+                  = form.select :category_id_in, options_from_collection_for_select(Category.where("ancestry like ?", "#{@category.ancestry}"), :id, :name, selected: "#{@category.id}"), {include_blank: 'すべて'}, id: "q_cd_category_id"
                 - elsif @category.is_childless?
                   = form.select :category_id_in, options_from_collection_for_select(Category.where("ancestry like ?", "#{@category.parent.ancestry}"), :id, :name, selected: "#{@category.parent.id}"), {include_blank: 'すべて'}, id: "q_cd_category_id"
-                  = form.select :category_id_in, options_from_collection_for_select(Category.where("ancestry like ?", "#{@category.ancestry}"), :id, :name, selected: params[:q][:category_id_in]), {include_blank: 'すべて'}, id: "q_gc_category_id"
+                  = form.select :category_id_in, options_from_collection_for_select(Category.where("ancestry like ?", "#{@category.ancestry}"), :id, :name, selected: "#{@category.id}"), {include_blank: 'すべて'}, id: "q_gc_category_id"
 
           .formGroup
             %label
@@ -136,6 +136,8 @@
     .searchResult
       %h2.searchResult__head
         - if params[:keyword] == ""
+          .all-search-btn
+            %input{type: "button", value: "とりあえず、全ての商品を見て考える >> ", id: "search_alls"}
           = "お探しは何ですか？"
         - elsif params[:keyword]
           = @search_word
