@@ -6,16 +6,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "new_user", to: "users/registrations#new_user"
     post "new_user", to: "users/registrations#create_user"
-  end
-  devise_scope :user do
     get "addresses", to: "users/registrations#new_address"
     post "addresses", to: "users/registrations#create_address"
-  end
-  devise_scope :user do
     get "password", to: "users/passwords#new"
-    # post 'user', to: 'users//passwords#create'
-  end
-  devise_scope :user do
     get "users/profile/:id", to: "users/sessions#show", as: "profile"
   end
   resources :users, path: "/users/mypage", only: [:show, :edit]

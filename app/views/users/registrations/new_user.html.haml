@@ -1,19 +1,19 @@
-= form_for(@user, url: new_user_path, html: {method: 'POST'}) do |f|
-  .new_user
-    .new_user__head
-      %h1
-        = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
-      %li.new_user__head__progress.progress-active
-        会員情報
-      %li.new_user__head__progress
-        電話番号
-      %li.new_user__head__progress__done
-        完了
-    .new_user__body
-      %h2.body_head 会員情報入力
-      - if @user.errors.any?
-        %span.err_message
-          = I18n.t("errors.messages.not_saved")
+.new_user
+  .new_user__head
+    %h1
+      = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
+    %li.new_user__head__progress.progress-active
+      会員情報
+    %li.new_user__head__progress
+      電話番号
+    %li.new_user__head__progress__done
+      完了
+  .new_user__body
+    %h2.body_head 会員情報入力
+    - if @user.errors.any?
+      %span.err_message
+        = I18n.t("errors.messages.not_saved")
+    = form_for(@user, url: new_user_path, html: {method: 'POST'}) do |f|
       .new_user__body__box
         .new_user__body__box__group
           .new_user__body__box__group__head
@@ -118,15 +118,15 @@
               ※本人情報は正しく入力してください。
               会員登録後、修正するにはお時間を頂く場合があります。
         = f.submit "次へ進む", class: 'btn-default btn'
-    .new_user__footer
-      %ul.clearfix.regulation
-        %li
-          = link_to 'プライバシーポリシー', root_path
-        %li
-          = link_to 'フリマ利用規約', root_path
-        %li
-          = link_to '特定商取引に関する表記', root_path
-      %h1
-        = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
-      %p
-        %small © FURIMA, Inc.
+  .new_user__footer
+    %ul.clearfix.regulation
+      %li
+        = link_to 'プライバシーポリシー', root_path
+      %li
+        = link_to 'フリマ利用規約', root_path
+      %li
+        = link_to '特定商取引に関する表記', root_path
+    %h1
+      = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
+    %p
+      %small © FURIMA, Inc.
