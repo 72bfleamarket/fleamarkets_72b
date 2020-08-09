@@ -8,10 +8,10 @@ ja:
         name: 商品名
         detal: 商品の説明文
         category_id: カテゴリー
-        condition: 商品の状態
-        postage: 送料の負担
+        condition_id: 商品の状態
+        postage_id: 送料の負担
         prefecture_id: 地域
-        shipping_day: 発送日数
+        shippingday_id: 発送日数
         price: 販売価格
         images: 商品画像
       address:

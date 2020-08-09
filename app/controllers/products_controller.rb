@@ -73,6 +73,20 @@ class ProductsController < ApplicationController
           @childrens = Category.find(params[:parent_id]).children
         elsif params[:children_id]
           @grandChilds = Category.find(params[:children_id]).children
+        elsif params[:keyword]
+          @keywords = params[:keyword]
+          return nil if @keywords == ""
+          @allProducts = []
+          @keywords.split(/[[:blank:]]+/).each do |keyword|
+            @allProducts += Product.all.where("name LIKE(?) OR brand LIKE(?)", "%#{keyword}%", "%#{keyword}%").order(created_at: :desc)
+          end
+          @allProducts.uniq!
+
+          @allCategorys = []
+          @keywords.split(/[[:blank:]]+/).each do |keyword|
+            @allCategorys += Category.where("name LIKE(?)", "%#{keyword}%")
+          end
+          @allCategorys.uniq!
         end
       end
     end
@@ -81,7 +95,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :brand, :size, :prefecture_id, :condition, :postage, :shipping_day, :detal, :category_id, :buyer_id, images_attributes: [:item, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :price, :brand, :size, :prefecture_id, :condition_id, :postage_id, :shippingday_id, :detal, :category_id, :buyer_id, images_attributes: [:item, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_product

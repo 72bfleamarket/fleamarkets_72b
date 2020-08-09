@@ -52,10 +52,14 @@
                     = @parent.name
                   %br
                   = link_to category_path(@product.category.parent.id) do
-                    = @children.name
+                    %i.fas.fa-angle-right
+                    %span
+                      = @children.name
                   %br
                   = link_to category_path(@product.category.id) do
-                    = @category.name
+                    %i.fas.fa-angle-right
+                    %span
+                      = @category.name
               %tr
                 %th ブランド
                 %td
@@ -67,20 +71,19 @@
               %tr
                 %th 商品の状態
                 %td
-                  = @product.condition
+                  = @product.condition.name
               %tr
                 %th 配送料の負担
                 %td
-                  = "#{@product.postage.to_s}"
+                  = @product.postage.name
               %tr
                 %th 発送元の地域
                 %td
-                  = link_to '#' do
-                    = @product.prefecture.name
+                  = @product.prefecture.name
               %tr
                 %th.showMain__content__topContent__itemBox__table__title 発送日の目安
                 %td.showMain__content__topContent__itemBox__table__data
-                  = @product.shipping_day
+                  = @product.shippingday.name
         .showMain__content__topContent__itemBox__optionalArea
           %ul
             - if user_signed_in?
@@ -88,11 +91,11 @@
                 %i{id:"like-btn-#{@product.id}"}
                   = render 'likes/like', product: @product
             - else
-              %li.showMain__content__topContent__itemBox__optionalArea__likeBtn
+              %li.showMain__content__topContent__itemBox__optionalArea__likeBtn{title:"ログインが必要です"}
                 %i{id:"like-btn-#{@product.id}"}
-                  %i.fa-lg.fas.fa-star.icon-btn
-                    %span
-                      = "お気に入り #{@product.likes.count}"
+                  %i.fa-lg.fas.fa-star.faa-ring.animated.icon-btn
+                  %span.likes-text
+                    = "お気に入り #{@product.likes.count}"
           %ul
             %li.showMain__content__topContent__itemBox__optionalArea__optionalBtn
               = link_to '#' do

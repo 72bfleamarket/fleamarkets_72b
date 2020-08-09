@@ -15,7 +15,7 @@
 
       .searchExtendForm {
         position: relative;
-        
+
         select {
           width: 100%;
           position: relative;
@@ -29,7 +29,7 @@
           color: #333;
         }
 
-        .dropDownContent{
+        .dropDownContent {
           background-color: #fff;
           padding: 16px;
           margin-top: 40px;
@@ -51,8 +51,26 @@
                 color: #888;
                 vertical-align: middle;
               }
-  
+
+              i.keywords_any {
+                display: inline-block;
+                margin-bottom: 8px;
+                position: relative;
+                top: -1px;
+                margin-right: 4px;
+                color: #888;
+                vertical-align: middle;
+              }
+
               span {
+                font-size: 14px;
+                vertical-align: middle;
+                font-weight: 600;
+              }
+
+              span.keywords_any {
+                display: inline-block;
+                margin-bottom: 8px;
                 font-size: 14px;
                 vertical-align: middle;
                 font-weight: 600;
@@ -62,7 +80,6 @@
             &__inputDefault {
               height: 48px;
               width: 100%;
-              margin-top: 8px;
               padding: 10px 16px 8px;
               border-radius: 4px;
               border: 1px solid #ccc;
@@ -75,19 +92,29 @@
 
             &__selectWrap {
               margin-top: 8px;
+              margin-bottom: 5px;
               position: relative;
+
+              &--categories {
+                margin-top: 8px;
+              }
             }
 
             div {
               @include wrap();
             }
 
+            .all_seach {
+              margin-top: 5px;
+            }
+
             &__checkboxDefault {
-              margin-top: 16px;
+              padding-top: 16px;
               display: inline-block;
               width: 48%;
               vertical-align: middle;
               position: relative;
+              height: 36px;
 
               input {
                 position: absolute;
@@ -99,24 +126,26 @@
                 border-radius: 2px;
                 border: 1px solid #ccc;
                 color: #fff;
-                vertical-align: middle;
                 transition: all ease-out .3s;
                 margin-right: 4px;
                 cursor: pointer;
               }
 
               label {
-                display: block;
-                position: relative;
-                padding-left: 28px;
-                font-size: 14px;
-                font-weight: 400;
+                position: absolute;
+                top: 10%;
+                left: 0;
+                display: inline-block;
                 vertical-align: middle;
+                padding-left: 28px;
+                font-size: 0.95em;
+                font-weight: 400;
+                text-align: left;
                 cursor: pointer;
               }
 
               &__parts {
-                line-height: 28px;
+                line-height: 20px;
               }
             }
           }
@@ -135,7 +164,7 @@
               cursor: pointer;
               text-align: center;
               color: #fff;
-              
+
               &--gray {
                 float: left;
                 background-color: #aaa;
@@ -155,11 +184,43 @@
 
     .searchResult {
       @include mainContent();
+      padding-top: 20px;
+      position: relative;
+
+      .all-search-btn {
+        position: absolute;
+        width: 100%;
+        top: - 30px;
+        right: 0;
+
+        input {
+          display: block;
+          width: 305px;
+          margin-left: auto;
+          background-color: #F5F5F2;
+          border: solid #F5F5F2;
+          color: #888888;
+          font-size: 16px;
+          cursor: pointer;
+          bottom: 0;
+        }
+
+        input:hover {
+          color: #c0c0c0;
+          text-decoration: underline;
+        }
+
+        input:active {
+          color: #3e3e3e;
+          text-decoration: underline;
+        }
+      }
 
       &__head {
         font-size: 22px;
         margin-bottom: 8px;
         font-weight: 600;
+        padding-left: 20px;
 
         span {
           font-size: 18px;
@@ -170,9 +231,10 @@
 
       &__number {
         margin: 16px 0;
-        font-size: 12px;
+        font-size: 16px;
+        padding: 0 20px;
         color: #888;
-        
+
         span {
           color: #888;
 

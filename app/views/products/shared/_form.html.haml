@@ -92,8 +92,8 @@
         必須
       - if @product.errors.any?
         %span.err_message
-          =  @product.errors.full_messages_for(:condition).shift
-    = form.select :condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"], ["目立った傷や汚れなし", "目立った傷や汚れなし"], ["やや傷や汚れあり", "やや傷や汚れあり"], ["傷や汚れあり", "傷や汚れあり"], ["全体的に状態が悪い", "全体的に状態が悪い"], ["ジャンク品", "ジャンク品"]], include_blank: "選択して下さい"
+          =  @product.errors.full_messages_for(:condition_id).shift
+    = form.collection_select(:condition_id, Condition.all, :id, :name,{include_blank: "選択して下さい"} )
   #product-about
     %p 配送について
     #product-about__postage
@@ -103,8 +103,8 @@
         必須
       - if @product.errors.any?
         %span.err_message
-          =  @product.errors.full_messages_for(:postage).shift
-    = form.select :postage, [["送料込み(出品者負担)", "出品者負担"], ["着払い(購入者負担)", "購入者負担"]], include_blank: "選択して下さい"
+          =  @product.errors.full_messages_for(:postage_id).shift
+    = form.collection_select(:postage_id, Postage.all, :id, :name,{include_blank: "選択して下さい"} )
     #product-about__region
       %label
         発送元の地域
@@ -114,7 +114,6 @@
         %span.err_message
           =  @product.errors.full_messages_for(:prefecture_id).shift
     = form.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "選択して下さい"} )
-
     #product-about__delivery
       %label
         発送までの日数
@@ -122,8 +121,8 @@
         必須
       - if @product.errors.any?
         %span.err_message
-          =  @product.errors.full_messages_for(:shipping_day).shift
-    = form.select :shipping_day, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], include_blank: "選択して下さい"
+          =  @product.errors.full_messages_for(:shippingday_id).shift
+    = form.collection_select(:shippingday_id, Shippingday.all, :id, :name,{include_blank: "選択して下さい"} )
   #product-about
     %p 価格 (¥100 〜 9,999,999)
     #product-about__price
