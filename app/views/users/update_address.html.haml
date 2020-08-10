@@ -1,1 +1,12 @@
-完了
+.new_user
+  .new_user__head
+    %h1
+      = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
+
+
+  .new_user__body
+    %h2.body_head 完了
+    .new_user__body__box
+      = link_to 'マイページへ戻る', user_path, class: 'btn-default btn'
+
+  = render 'users/registrations/user_footer'

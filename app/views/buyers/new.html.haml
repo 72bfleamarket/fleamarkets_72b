@@ -47,7 +47,7 @@
               .discription__top__left
                 配送先
               .discription__top__right
-                = link_to '変更する', '#'
+                = link_to '変更する', edit_address_path(current_user.id)
                 %i.fas.fa-chevron-right
             .discription__bottom
               = "〒#{@address.code}"

@@ -31,10 +31,9 @@ class UsersController < ApplicationController
   end
 
   def update_address
-    @user = current_user
     @address = Address.find(current_user.id)
     if @address.valid?
-      @address.update(address_params.merge(user_id: @user.id))
+      @address.update(address_params.merge(user_id: current_user.id))
     else
       render :edit_address
     end
