@@ -69,6 +69,11 @@ crumb :payment do
   parent :mypage
 end
 
+crumb :mylike do
+  link "#{current_user.name}のお気に入り一覧"
+  parent :mypage
+end
+
 # If you want to split your breadcrumbs configuration over multiple files, you
 # can create a folder named `config/breadcrumbs` and put your configuration
 # files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that
