@@ -24,8 +24,11 @@ class UsersController < ApplicationController
   def search
     if params[:likes]
       like_list = params[:likes]
-      like = Like.where(user_id: like_list)
-      @likes = Product.includes(:images).order("created_at DESC").where(id: like)
+      @likes = []
+      likes = Like.where(user_id: like_list).order("created_at DESC")
+      likes.each do |like|
+        @likes += Product.includes(:images).where(id: like.product_id)
+      end
     end
     partial = render_to_string(partial: "like-products", locals: { likes: @likes })
     puts partial
