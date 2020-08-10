@@ -87,6 +87,8 @@ class ProductsController < ApplicationController
             @allCategorys += Category.where("name LIKE(?)", "%#{keyword}%")
           end
           @allCategorys.uniq!
+        elsif params[:userid]
+          @user = User.where(id: params[:userid])
         end
       end
     end
