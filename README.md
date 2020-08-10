@@ -84,7 +84,7 @@ TOPページ
 
 # DB設計
 ## ER図
-![ER Diagram](https://user-images.githubusercontent.com/62044473/89707733-e1412780-d9ab-11ea-82f2-88b61c389c01.png)
+![ER Diagram](https://user-images.githubusercontent.com/62044473/89771450-4aa37080-db3b-11ea-9174-3ae235c3274b.png)
 
 
 ## productsテーブル
