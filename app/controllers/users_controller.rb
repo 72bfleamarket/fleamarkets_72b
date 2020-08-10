@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     else
       render :edit_address
     end
+  end
 
   def search
     if params[:likes]
