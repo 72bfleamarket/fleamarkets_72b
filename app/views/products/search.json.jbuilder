@@ -15,3 +15,7 @@ json.array! @allCategorys do |category|
   json.id category.id
   json.name category.name
 end
+json.array! @user do |user|
+  json.id user.id
+  json.name user.name
+end
