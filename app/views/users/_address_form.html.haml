@@ -43,8 +43,8 @@
       .new_user__body__box__group__head
         %label
           郵便番号
-        %span.mandatory
-          必須
+        %span
+          任意
         %br
         - if @address.errors.any?
           %span.err_message
@@ -53,8 +53,8 @@
       .new_user__body__box__group__head
         %label
           都道府県
-        %span.mandatory
-          必須
+        %span
+          任意
         %br
         - if @address.errors.any?
           %span.err_message
@@ -64,8 +64,8 @@
       .new_user__body__box__group__head
         %label
           市区町村
-        %span.mandatory
-          必須
+        %span
+          任意
         %br
         - if @address.errors.any?
           %span.err_message
@@ -75,8 +75,8 @@
       .new_user__body__box__group__head
         %label
           番地
-        %span.mandatory
-          必須
+        %span
+          任意
         %br
         - if @address.errors.any?
           %span.err_message
@@ -86,6 +86,9 @@
       .new_user__body__box__group__head
         %label
           建物名
+        %span
+          任意
+        %br
       = a.text_field :building, class: "new_user__body__box__group__form", placeholder: "例)フォンティスビル7F"
     .new_user__body__box__group
       .new_user__body__box__group__head
