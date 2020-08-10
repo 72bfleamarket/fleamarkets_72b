@@ -46,13 +46,14 @@ TOPページ
 - gem 'jquery-rails'
 - カテゴリー一覧のページ内リンク
 - マウスホバーによるカテゴリー選択機能
-- seeds.rb使用
 ### キーワード検索機能
 - gem 'jquery-rails'
+- 複数モデルからのインクリメンタルサーチ
 ### 詳細検索、並べ替え機能
 - gem 'ransack'
 - gem 'active_hash'
 - gem 'jquery-rails'
+- ransackと独自メゾットの併用での検索
 ### パンクズ機能
 - gem 'gretel'
 ### いいね機能
