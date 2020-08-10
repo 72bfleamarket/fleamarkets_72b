@@ -180,10 +180,10 @@ $(document).ready(function () {
 
   function build_childSelect() {
     let q_child_select = `
-    <select name="q[category_id_in]" id="q_cd_category_id">
-    <option value="">すべて</option>
-    </select>
-    `
+                          <select name="q[category_id_in]" id="q_cd_category_id">
+                            <option value="">すべて</option>
+                          </select>
+                          `
     return q_child_select;
   }
 
@@ -196,10 +196,10 @@ $(document).ready(function () {
 
   function build_gcSelect() {
     let q_gc_select = `
-    <select name="q[category_id_in]" id="q_gc_category_id">
-    <option value="">すべて</option>
-    </select>
-    `
+                      <select name="q[category_id_in]" id="q_gc_category_id">
+                        <option value="">すべて</option>
+                      </select>
+                      `
     return q_gc_select;
   }
 

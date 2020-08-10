@@ -21,6 +21,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    if params[:likes]
+      like_list = params[:likes]
+      like = Like.where(user_id: like_list)
+      @likes = Product.includes(:images).order("created_at DESC").where(id: like)
+    end
+    partial = render_to_string(partial: "like-products", locals: { likes: @likes })
+    puts partial
+    render json: { html: partial }
+  end
+
   private
 
   def user_params

@@ -1,76 +1,118 @@
-.body{
+.body {
   background-color: #f8f8f8;
 }
-.user-mypage{
+
+.user-mypage {
   background-color: #f8f8f8;
-  padding: 40px 200px ;
+  padding: 40px 200px;
   display: flex;
   justify-content: space-evenly;
 
-  &__side-bar{
+  &__side-bar {
     width: 280px;
     margin-right: 100px;
-    &__title{
+
+    &__title {
       font-size: 22px;
       padding: 16px;
     }
-    &__content-box{
-      display: list-item; 
+
+    &__content-box {
+      display: list-item;
       list-style: none;
       background-color: #ffffff;
-      &__list{
+
+      &__list {
         height: 50px;
         font-size: 14px;
         line-height: 50px;
-        padding:0px 16px;
+        padding: 0px 16px;
         border-top: 1px solid #eee;
         position: relative;
-        &__item{
+
+
+
+        &__item {
           display: block;
-          color:black;
+          color: black;
 
           &:hover {
-            color:black;
+            color: black;
           }
+        }
+      }
+
+      &__like {
+        height: 50px;
+        font-size: 14px;
+        line-height: 50px;
+        padding: 0px 16px;
+        border-top: 1px solid #eee;
+        position: relative;
+
+        button {
+          padding: unset;
+          width: 100%;
+          border: #ffffff;
+          background-color: #ffffff;
+          outline: none;
+          text-align: start;
+        }
+
+        button:hover {
+          cursor: pointer;
+          font-weight: bold;
+        }
+
+        button:active {
+          outline: none;
         }
       }
     }
   }
-  &__main-content{
+
+  &__main-content {
     width: 700px;
-    &__content-title{
+
+    &__content-title {
       text-align: center;
       font-size: 22px;
       padding: 16px;
       font-weight: bold;
     }
-    &__content-form{
+
+    &__content-form {
       background-color: #ffffff;
       padding: 40px;
-      &__content-box{
+
+      &__content-box {
         margin-bottom: 30px;
         text-align: center;
-        &__infomartion{
+
+        &__infomartion {
           font-size: 12px;
           margin-bottom: 8px;
           font-weight: bold;
         }
-        &__form{
+
+        &__form {
           height: 40px;
           width: 300px;
           font-size: 16px;
           font-weight: normal;
         }
-      
-        &__btn{
+
+        &__btn {
           text-align: center;
-          &__send-btn{
+
+          &__send-btn {
             height: 50px;
             width: 100%;
             color: #ffffff;
             background-color: red;
             border: none;
-            &:hover{
+
+            &:hover {
               opacity: 0.6;
             }
           }
@@ -79,15 +121,15 @@
     }
   }
 }
-.clearfix:after{
+
+.clearfix:after {
   content: "";
   clear: both;
   display: block;
 }
 
-.fa-chevron-right{
+.fa-chevron-right {
   position: absolute;
   right: 16px;
   line-height: 50px;
 }
-
