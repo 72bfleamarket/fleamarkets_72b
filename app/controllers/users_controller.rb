@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   def edit_address
     if user_signed_in?
       @address = Address.find(current_user.id)
-      # @user = User.find(current_user.id)
       return
     else
       redirect_to user_path
@@ -72,8 +71,4 @@ class UsersController < ApplicationController
   def address_params
     params.require(:address).permit(:code, :area, :city, :village, :building)
   end
-
-  # def user_edit_params
-  #   params.require(:user).permit(:first_name, :last_name, :first_kana, :last_kana)
-  # end
 end
