@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def show_my_info
       current_user
+      @address = Address.find(current_user.id)
   end
 
   def show_my_profile

@@ -1,5 +1,3 @@
-%h2.new_user__body__address
-  お届け先住所変更
 - if @address.errors.any?
   %span.err_message
     = I18n.t("errors.messages.not_saved")
@@ -95,4 +93,4 @@
         %a
           ※本人情報は正しく入力してください。
           会員登録後、修正するにはお時間を頂く場合があります。
-    = a.submit "次へ進む", class: 'btn-default btn'
+    = a.submit "変更", class: 'btn-default btn'

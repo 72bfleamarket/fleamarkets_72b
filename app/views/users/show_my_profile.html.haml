@@ -1,1 +1,21 @@
-profile
+= render 'products/shared/header'
+
+%nav.breadCrumbs
+  - breadcrumb :mypage
+  = render "layouts/breadcrumbs"
+
+
+.new_user
+  .new_user__body
+    .new_user__body__box
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+          profile
+
+    .new_user__body__box
+      = link_to 'マイページへ戻る', user_path, class: 'btn-default btn'
+
+
+= render 'products/shared/footer'
+
+= render 'products/shared/purchase_btn'
