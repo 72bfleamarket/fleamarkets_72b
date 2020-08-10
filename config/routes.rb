@@ -3,26 +3,25 @@ Rails.application.routes.draw do
                        registrations: "users/registrations", sessions: "users/sessions",
                        omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations",
                      }
+
   devise_scope :user do
     get "new_user", to: "users/registrations#new_user"
     post "new_user", to: "users/registrations#create_user"
-  end
-  devise_scope :user do
     get "addresses", to: "users/registrations#new_address"
     post "addresses", to: "users/registrations#create_address"
-  end
-  devise_scope :user do
-    get "password", to: "users/passwords#new"
-    # post 'user', to: 'users//passwords#create'
-  end
-  devise_scope :user do
     get "users/profile/:id", to: "users/sessions#show", as: "profile"
+    get "edit_address/:id", to: "users#edit_address", as: "edit_address"
+    patch "edit_address/:id", to: "users#update_address"
+    put "edit_address/:id", to: "users#update_address"
+    get "password", to: "users/passwords#new"
   end
-  resources :users, path: "/users/mypage", only: [:show, :edit] do
+
+  resources :users, path: "/users/mypage", only: [:show, :edit, :update] do
     collection do
       post :search
     end
   end
+
 
   root "products#index"
   namespace :products do

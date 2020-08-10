@@ -1,33 +1,64 @@
 # このアプリについて
 <img width="1453" alt="Fleamarket_sample_72b" src="https://user-images.githubusercontent.com/62044473/89704084-0e7ddd80-d98c-11ea-8af2-26fad000c4af.png">
-このアプリはMercariを参考にして作成したフリーマーケットサイトです。商品ユーザー登録、商品登録、商品購入、カテゴリー、検索、コメント機能がメイン機能として実装されています。  
+このアプリはMercariを参考にして作成したフリーマーケットサイトです。商品ユーザー登録、商品登録、商品購入、カテゴリー、検索、コメント機能がメイン機能として実装されています。
 
-- 開発メンバー：TECH CAMP 72期夜間メンバー4名  
-- 制作期間:Jun 6th,2020 ~ Aug 15th,2020  
+- 開発メンバー：TECH CAMP 72期夜間メンバー4名
+- 制作期間:Jun 6th,2020 ~ Aug 15th,2020
 
 # 実装内容
-- マークアップ
-TOPページ  
-ユーザー新規登録/ログインページ  
-商品出品ページ（出品ボタン）  
-商品詳細ページ（編集ボタン）  
-商品購入確認ページ  
-ユーザーマイページ  
+## マークアップ
+TOPページ
+ユーザー新規登録/ログインページ
+商品出品ページ（出品ボタン）
+商品詳細ページ（編集ボタン）
+商品購入確認ページ
+ユーザーマイページ
 
-- サーバーサイド
-ユーザー新規登録/ログイン/ログアウト（ウィザード形式での住所登録）  
-ユーザー新規登録/ログイン/パスワード不要(SNS)  
-商品出品機能（ドラッグ&ドロップでの画像投稿）  
-商品編集機能（ドラッグ&ドロップでの画像投稿）  
-商品詳細情報表示（マウスホバー＆クリックでの拡大画像表示）  
-商品削除機能  
-商品一覧機能  
-商品購入機能（クレジットカード登録。情報表示）  
-商品についての質問・コメント機能（出品者タグ＆完売後のコメントブロック）  
-カテゴリー機能  
-検索機能  
-パンクズ機能  
-いいね機能  
+## サーバーサイド
+### 自動デプロイ
+- gem 'capistrano'
+- gem 'capistrano-rbenv'
+- gem 'capistrano-bundler'
+- gem 'capistrano-rails'
+- gem 'capistrano3-unicorn'
+- gem 'fog-aws'
+### ユーザー新規登録/ログイン/ログアウト（ウィザード形式での住所登録）
+- gem 'devise'
+### ユーザー新規登録/ログイン/パスワード不要(SNS)
+- gem 'omniauth-facebook'
+- gem 'omniauth-google-oauth2'
+- gem 'omniauth-rails_csrf_protection'
+### 商品出品・編集機能（ドラッグ&ドロップでの画像投稿）
+- gem 'carrierwave'
+- gem 'mini_magick'
+- gem 'active_hash'
+- gem 'jquery-rails'
+### 商品詳細情報表示（マウスホバー＆クリックでの拡大画像表示）
+- gem 'jquery-rails'
+### 商品削除機能
+### 商品一覧機能
+### 商品購入機能（クレジットカード登録。情報表示）
+- gem 'payjp'
+- gem 'rspec-rails'
+### 商品についての質問・コメント機能（出品者タグ＆完売後のコメントブロック）
+### カテゴリー機能
+- gem 'ancestry'
+- gem 'jquery-rails'
+- カテゴリー一覧のページ内リンク
+- マウスホバーによるカテゴリー選択機能
+- seeds.rb使用
+### キーワード検索機能
+- gem 'jquery-rails'
+### 詳細検索、並べ替え機能
+- gem 'ransack'
+- gem 'active_hash'
+- gem 'jquery-rails'
+### パンクズ機能
+- gem 'gretel'
+### いいね機能
+- Font Awesomeのアニメーション仕様
+### バリデーションの日本語化
+- gem 'rails-i18n'
 
 
 
@@ -36,7 +67,7 @@ TOPページ
 - ユーザーID: admin
 - パスワード: flemakt72b
 
-# Gem/Ver
+# その他、Gem/Ver
 
 - ruby 2.5.1
 - rails 5.2.3
@@ -46,33 +77,14 @@ TOPページ
 - gem 'jbuilder', '~> 2.5'
 - gem 'unicorn', '5.4.1'
 - gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-- gem 'capistrano'
-- gem 'capistrano-rbenv'
-- gem 'capistrano-bundler'
-- gem 'capistrano-rails'
-- gem 'capistrano3-unicorn'
-- gem 'rspec-rails'
 - gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 - gem "haml-rails"
 - gem 'font-awesome-sass'
-- gem 'devise'
 - gem 'pry-rails'
-- gem 'ancestry'
-- gem 'gretel'
-- gem 'carrierwave'
-- gem 'mini_magick'
-- gem 'jquery-rails'
-- gem 'fog-aws'
-- gem 'active_hash'
-- gem 'payjp'
-- gem 'rails-i18n'
-- gem 'omniauth-facebook'
-- gem 'omniauth-google-oauth2'
-- gem 'omniauth-rails_csrf_protection'
 
 # DB設計
 ## ER図
-![ER Diagram](https://user-images.githubusercontent.com/62044473/89707733-e1412780-d9ab-11ea-82f2-88b61c389c01.png)
+![ER Diagram](https://user-images.githubusercontent.com/62044473/89771450-4aa37080-db3b-11ea-9174-3ae235c3274b.png)
 
 
 ## productsテーブル
@@ -82,9 +94,9 @@ TOPページ
 |detal|text|null: false|
 |size|string|null: false|
 |brand|string||
-|condition|string|null: false|
-|postage|string|null: false|
-|shipping_day|string|null: false|
+|condition_id|integer|null: false|
+|postage_id|integer|null: false|
+|shippingday_id|integer|null: false|
 |price|integer|null: false|
 |likes_count|integer|default: 0|
 |prefecture_id|string|null: false|
@@ -101,21 +113,6 @@ TOPページ
 - has_many :likes
 - has_many :like_users, through: :likes, source: :user
 - has_many :comments
-
-- accepts_nested_attributes_for :images, allow_destroy: true,reject_if: proc { |attributes| attributes['item'].blank?}
-- validates :images, presence: { message: "は1枚以上10枚以下のアップロードが必要です" }
-
-- extend ActiveHash::Associations::ActiveRecordExtensions
-- belongs_to_active_hash :prefecture
-
-- validates :name, presence: { message: "は必須です" }
-- validates :detal, presence: { message: "は必須です" }
-- validates :category_id, presence: { message: "を選択してください" }
-- validates :condition, presence: { message: "を選択してください" }
-- validates :postage, presence: { message: "を選択してください" }
-- validates :prefecture_id, presence: { message: "を選択してください" }
-- validates :shipping_day, presence: { message: "を選択してください" }
-- validates :price, presence: { message: "を入力してください" }
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -172,19 +169,6 @@ TOPページ
 - devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
-- VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-- VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
-- VALID_KANA_REGEX = /\A[ァ-ンー－]+\z/
-
-- validates :name, presence: true
-- validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-- validates :password, presence: true
-- validates :password_confirmation, presence: true
-- validates :first_name, presence: true, format: { with: VALID_NAME_REGEX, message: "は全角文字で入力して下さい。" }
-- validates :last_name, presence: true, format: { with: VALID_NAME_REGEX, message: "は全角文字で入力して下さい。" }
-- validates :first_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角平仮名で入力して下さい。" }
-- validates :last_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角平仮名で入力して下さい。" }
-- validates :birthday, presence: true
 
 
 ## Addressesテーブル
@@ -204,12 +188,6 @@ TOPページ
 - belongs_to :user
 - belongs_to :user, optional: true
 
-- VALID_CODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/
-
-- validates :code, presence: true, format: { with: VALID_CODE_REGEX, message: "は3桁の半角数字、ハイフン（-）、4桁の半角数字の順で記入してください。" }
-- validates :area, presence: true
-- validates :city, presence: true
-- validates :village, presence: true
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -221,7 +199,6 @@ TOPページ
 ### Association
 - belongs_to :product
 - belongs_to :user
-- validates :text, presence: true
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -242,10 +219,6 @@ TOPページ
 ### Association
 - belongs_to :user, foreign_key: "user_id"
 - belongs_to :product, foreign_key: "product_id", counter_cache: :likes_count
-
-- validates :user_id, presence: true
-- validates :product_id, presence: true
-- validates_uniqueness_of :product_id, scope: :user_id
 
 ## Sns_credentialテーブル
 |Column|Type|Options|
