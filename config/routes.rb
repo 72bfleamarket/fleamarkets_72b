@@ -16,12 +16,16 @@ Rails.application.routes.draw do
     get "password", to: "users/passwords#new"
   end
 
-  resources :users, path: "/users/mypage", only: [:show, :edit, :update]
+  resources :users, path: "/users/mypage", only: [:show, :edit, :update] do
+    collection do
+      post :search
+    end
+  end
+
 
   root "products#index"
   namespace :products do
-    resources :searches, only: :index do
-    end
+    resources :searches, only: :index
   end
   resources :products do
     resources :buyers, only: [:new, :create]

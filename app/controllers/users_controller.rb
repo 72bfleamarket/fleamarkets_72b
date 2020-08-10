@@ -39,6 +39,19 @@ class UsersController < ApplicationController
     else
       render :edit_address
     end
+
+  def search
+    if params[:likes]
+      like_list = params[:likes]
+      @likes = []
+      likes = Like.where(user_id: like_list).order("created_at DESC")
+      likes.each do |like|
+        @likes += Product.includes(:images).where(id: like.product_id)
+      end
+      partial = render_to_string(partial: "like-products", locals: { likes: @likes })
+    end
+    puts partial
+    render json: { html: partial }
   end
 
   private

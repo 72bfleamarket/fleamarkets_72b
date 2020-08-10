@@ -1,0 +1,21 @@
+%h2.container__inner__content__chapterHead
+  = "#{current_user.name}さんのお気に入り一覧"
+- @likes.each do |like|
+  .main__allProducts__productBox__productLists__productList
+    - if like.buyer_id.present?
+      .main__allProducts__productBox__productLists__productList__soldOut
+        .main__allProducts__productBox__productLists__productList__soldOut__content SOLD
+    = link_to product_path(like) do
+      %figure.main__allProducts__productBox__productLists__productList--img
+        = image_tag like.images[0].item.url
+      .main__allProducts__productBox__productLists__productList--body
+        .main__allProducts__productBox__productLists__productList__name
+          = like.name
+        .main__allProducts__productBox__productLists__productList__details
+          %ul.productListDetails
+            %li
+              = "#{like.price.to_s(:delimited, delimiter: ',')}円"
+            %li
+              %i.fas.fa-star
+              = "#{like.likes_count}"
+          %p.productTax (税込)

@@ -10,10 +10,12 @@
 
     .container__inner__content
       %section.container__inner__content
-        %h2.container__inner__content__chapterHead
-          = "#{@user.name}さんの出品商品一覧"
-        .mypageProductLists
-          = render 'products/shared/product_list'
+        - if params[:likes].present?
+          .mypageProductLists#likesval
+            = render partial: 'like-products', locals: { likes: @likes }
+        - else
+          .mypageProductLists#likesval
+            = render 'mypage_products-lists'
 
 = render 'products/shared/app_banner'
 
