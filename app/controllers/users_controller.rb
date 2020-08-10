@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def edit_address
     if user_signed_in?
       @address = Address.find(current_user.id)
-      @user = User.find(current_user.id)
+      # @user = User.find(current_user.id)
       return
     else
       redirect_to user_path
@@ -32,11 +32,10 @@ class UsersController < ApplicationController
   end
 
   def update_address
+    @user = current_user
+    @address = Address.find(current_user.id)
     if @address.valid?
-      @address = Address.update(address_params.merge(user_id: @user.id))
-      @address.save
-      @user = user.update(user_edit_params)
-      @user.save
+      @address.update(address_params.merge(user_id: @user.id))
     else
       render :edit_address
     end
@@ -60,7 +59,7 @@ class UsersController < ApplicationController
     params.require(:address).permit(:code, :area, :city, :village, :building)
   end
 
-  def user_edit_params
-    params.require(:user).permit(:first_name, :last_name, :first_kana, :last_kana)
-  end
+  # def user_edit_params
+  #   params.require(:user).permit(:first_name, :last_name, :first_kana, :last_kana)
+  # end
 end
