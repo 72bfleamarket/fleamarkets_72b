@@ -34,7 +34,7 @@
     設定
   %ul.user-mypage__side-bar__content-box
     %li.user-mypage__side-bar__content-box__list
-      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+      = link_to show_my_profile_path, class: 'user-mypage__side-bar__content-box__list__item' do
         プロフィール
         %i.fas.fa-chevron-right
     %li.user-mypage__side-bar__content-box__list
@@ -50,10 +50,10 @@
         メール/パスワード
         %i.fas.fa-chevron-right
     %li.user-mypage__side-bar__content-box__list
-      = link_to '#', class: 'user-mypage__side-bar__content-box__list__item' do
+      = link_to show_my_info_path, class: 'user-mypage__side-bar__content-box__list__item' do
         本人情報
         %i.fas.fa-chevron-right
-    %li.user-mypage__side-bar__content-box__list 
+    %li.user-mypage__side-bar__content-box__list
       = link_to destroy_user_session_path, method: :delete, class: 'user-mypage__side-bar__content-box__list__item' do
         ログアウト
         %i.fas.fa-chevron-right

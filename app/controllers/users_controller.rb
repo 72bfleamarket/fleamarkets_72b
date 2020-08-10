@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :edit_address, :update]
-  before_action :set_parents, only: [:edit, :show, :edit_address, :update]
+  before_action :set_user, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile]
+  before_action :set_parents, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile]
 
   def edit
   end
@@ -19,6 +19,14 @@ class UsersController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def show_my_info
+      current_user
+  end
+
+  def show_my_profile
+      current_user
   end
 
   def edit_address

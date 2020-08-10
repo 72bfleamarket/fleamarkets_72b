@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get "edit_address/:id", to: "users#edit_address", as: "edit_address"
     patch "edit_address/:id", to: "users#update_address"
     put "edit_address/:id", to: "users#update_address"
+    get "show_my_info/:id", to: "users#show_my_info", as: "show_my_info"
+    get "show_my_profile/:id", to: "users#show_my_profile", as: "show_my_profile"
     get "password", to: "users/passwords#new"
   end
 
