@@ -10,7 +10,7 @@
 
     .container__inner__content
       %section.container__inner__content
-        - if params[:likes] || params[:saling] || params[:sold]
+        - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
           .mypageProductLists#productsval
             = render partial: 'any-products', locals: { product: @products }
         - else
