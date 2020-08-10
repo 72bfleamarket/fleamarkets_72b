@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile]
-  before_action :set_parents, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile]
+  before_action :set_user, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile, :edit_my_profile]
+  before_action :set_parents, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile, :edit_my_profile]
 
   def edit
   end
@@ -28,6 +28,16 @@ class UsersController < ApplicationController
 
   def show_my_profile
       current_user
+  end
+
+  def edit_my_profile
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @user.update(profile_params)
+      return
+    else
+      redirect_to user_path
+    end
   end
 
   def edit_address
@@ -66,6 +76,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def profile_params
+    params.permit(:profile, :icons)
   end
 
   def set_user
