@@ -103,6 +103,13 @@
       border-bottom: 1px solid #f5f5f5;
       text-align: center;
     }
+    &__profile {
+      width: 100%;
+      text-align: center;
+    }
+    &__content {
+      padding: 5px;
+    }
 
     .body_head {
       padding: 32px;

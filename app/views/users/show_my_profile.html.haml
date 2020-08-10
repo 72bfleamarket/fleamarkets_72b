@@ -6,14 +6,23 @@
 
 
 .new_user
-  .new_user__body
-    .new_user__body__box
-      .new_user__body__box__group
-        .new_user__body__box__group__head
-          profile
+  = form_with model: current_user do |f|
+    .new_user__body
+      .new_user__body__profile
+      - if current_user.icons == nil
+        = image_tag current_user.icons
+      - else
+        - current_user.icons
+      .new_user__body__content
+        profile
+      - if current_user.profile == nil
+        = f.text_area :profile
+      - else
+        - current_user.profile
 
-    .new_user__body__box
-      = link_to 'マイページへ戻る', user_path, class: 'btn-default btn'
+
+      .new_user__body__box
+        = link_to 'マイページへ戻る', user_path, class: 'btn-default btn'
 
 
 = render 'products/shared/footer'
