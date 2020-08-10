@@ -1,0 +1,19 @@
+= render 'products/shared/header'
+
+%nav.breadCrumbs
+  - breadcrumb :mypage
+  = render "layouts/breadcrumbs"
+
+%main.container
+  .container__inner
+    = render 'side-bar'
+
+    %section.container__inner__content
+
+      = render 'address_form'
+
+= render 'products/shared/app_banner'
+
+= render 'products/shared/footer'
+
+= render 'products/shared/purchase_btn'

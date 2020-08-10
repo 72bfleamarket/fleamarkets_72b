@@ -1,52 +1,33 @@
-.form
-  .product_header
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  = render "users/shared/error_messages", resource: resource
+  .new_user__head
     %h1
       = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
 
-  .form_body
-    #product_form
-      .purchase-box
-        #product-about
-          #product-about__title
-            購入内容の確認
-        #product-about
-          #product-about__contents
-            .pic
-              = image_tag "product_01.png", size: "100x100"
-            .discription
-              %a 完売 GORETEX エアフォース1ゴアテックス
-              %br
-              %a 送料込み（税込み）¥22,500
-        #product-about
-          #product-about__contents
-            .purchase-amount 
-              %a 支払い金額:
-              %a ¥22,500
-        #product-about
-          #product-about__contents
-            .discription
-              %a 支払い方法
-        #product-about
-          #product-about__contents
-            .discription
-              %a 配送方法
-        #product-about
-          #product-about__contents
-            .discription
-            %button.btn-default
-              購入する
+  .new_user__body
+    %h2.body_head
+    .new_user__body__box      
+      .new_user__body__box__group
+        .new_user__body__box__group__head
+          %label
+            email
+          %span.mandatory
+            必須
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "new_user__body__box__group__form", placeholder: "登録アドレスにリセット用のリンクを送信します"
+
+        .new_user__body__box__group__head
+        = f.submit "送信", class: 'btn-default btn'
+      = render "users/shared/links"
 
 
-  
-
-  .product_footer
+  .new_user__footer
     %ul.clearfix.regulation
       %li
-        %a{href: "#"} プライバシーポリシー
+        = link_to 'プライバシーポリシー', root_path
       %li
-        %a{href: "#"} フリマ利用規約
+        = link_to 'フリマ利用規約', root_path
       %li
-        %a{href: "#"} 特定商取引に関する表記
+        = link_to '特定商取引に関する表記', root_path
     %h1
       = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
     %p

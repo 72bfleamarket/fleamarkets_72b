@@ -15,16 +15,4 @@
     .new_user__body__box
       = link_to 'トップページへ戻る', root_path, class: 'btn-default btn'
 
-
-  .new_user__footer
-    %ul.clearfix.regulation
-      %li
-        = link_to 'プライバシーポリシー', root_path
-      %li
-        = link_to 'フリマ利用規約', root_path
-      %li
-        = link_to '特定商取引に関する表記', root_path
-    %h1
-      = link_to (image_tag ("material/logo/logo-white.png"), size: "200x58"), root_path
-    %p
-      %small © FURIMA, Inc.
+  = render 'users/registrations/user_footer'

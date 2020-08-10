@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show]
-  before_action :set_parents, only: [:edit, :show]
+  before_action :set_user, only: [:edit, :show, :edit_address, :update]
+  before_action :set_parents, only: [:edit, :show, :edit_address, :update]
 
   def edit
   end
@@ -18,6 +18,24 @@ class UsersController < ApplicationController
       @products = @user.products.order("created_at DESC")
     else
       redirect_to root_path
+    end
+  end
+
+  def edit_address
+    if user_signed_in?
+      @address = Address.find(current_user.id)
+      return
+    else
+      redirect_to user_path
+    end
+  end
+
+  def update_address
+    @address = Address.find(current_user.id)
+    if @address.valid?
+      @address.update(address_params.merge(user_id: current_user.id))
+    else
+      render :edit_address
     end
   end
 
@@ -47,5 +65,9 @@ class UsersController < ApplicationController
 
   def set_parents
     @parents = Category.where(ancestry: nil)
+  end
+
+  def address_params
+    params.require(:address).permit(:code, :area, :city, :village, :building)
   end
 end
