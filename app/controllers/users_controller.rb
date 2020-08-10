@@ -29,8 +29,8 @@ class UsersController < ApplicationController
       likes.each do |like|
         @likes += Product.includes(:images).where(id: like.product_id)
       end
+      partial = render_to_string(partial: "like-products", locals: { likes: @likes })
     end
-    partial = render_to_string(partial: "like-products", locals: { likes: @likes })
     puts partial
     render json: { html: partial }
   end
