@@ -12,7 +12,6 @@ $(function () {
     return like_breCrru;
   }
   $('#likes-list').on('click', function () {
-    //テキストボックスの入力値をサーバーへ送る
     let likeid = $(this).val();
     $.ajax({
       url: '/users/mypage/search',
@@ -22,7 +21,6 @@ $(function () {
         likes: likeid
       },
     }).done(function (result) {
-      //今呼び出しているパーシャルを消して、受け取ったパーシャルを表示
       $('#likesval').children().remove();
       $('.breadCrumbs').children().remove();
       $('#likesval').html(result.html);
