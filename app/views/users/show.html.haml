@@ -10,11 +10,11 @@
 
     .container__inner__content
       %section.container__inner__content
-        - if params[:likes].present?
-          .mypageProductLists#likesval
-            = render partial: 'like-products', locals: { likes: @likes }
+        - if params[:likes] || params[:saling] || params[:sold]
+          .mypageProductLists#productsval
+            = render partial: 'any-products', locals: { product: @products }
         - else
-          .mypageProductLists#likesval
+          .mypageProductLists#productsval
             = render 'mypage_products-lists'
 
 = render 'products/shared/app_banner'

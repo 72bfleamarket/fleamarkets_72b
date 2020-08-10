@@ -1,5 +1,5 @@
 %h2.container__inner__content__chapterHead
-  = "#{@user.name}さんの出品商品一覧"
+  = "#{@user.name}さんの全出品商品一覧"
 - @products.each do |product|
   .main__allProducts__productBox__productLists__productList
     - if product.buyer_id.present?

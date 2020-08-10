@@ -22,15 +22,28 @@ class UsersController < ApplicationController
   end
 
   def search
+    @products = []
     if params[:likes]
-      like_list = params[:likes]
-      @likes = []
-      likes = Like.where(user_id: like_list).order("created_at DESC")
-      likes.each do |like|
-        @likes += Product.includes(:images).where(id: like.product_id)
+      p_list = params[:likes]
+      @product = "お気に入り"
+      ps = Like.where(user_id: p_list).order("created_at DESC")
+      ps.each do |pr|
+        @products += Product.includes(:images).where(id: pr.product_id)
       end
+    elsif params[:saling]
+      p_list = params[:saling]
+      @product = "出品中の"
+      @products += User.find(p_list).saling_products.order("created_at DESC")
+    elsif params[:sold]
+      p_list = params[:sold]
+      @product = "売却済み"
+      @products += User.find(p_list).sold_products.order("created_at DESC")
+    elsif params[:buyed]
+      p_list = params[:buyed]
+      @product = "購入済み"
+      @products += User.find(p_list).buyed_products.order("created_at DESC")
     end
-    partial = render_to_string(partial: "like-products", locals: { likes: @likes })
+    partial = render_to_string(partial: "any-products", locals: { product: @products })
     puts partial
     render json: { html: partial }
   end
