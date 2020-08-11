@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     get "show_my_info/:id", to: "users#show_my_info", as: "show_my_info"
     get "show_my_profile/:id", to: "users#show_my_profile", as: "show_my_profile"
     get "edit_my_profile/:id", to: "users#edit_my_profile", as: "edit_my_profile"
-    patch "edit_my_profile/:id", to: "users#edit_my_profile"
-    put "edit_my_profile/:id", to: "users#edit_my_profile"
+    patch "edit_my_profile/:id", to: "users#update_my_profile"
+    put "edit_my_profile/:id", to: "users#update_my_profile"
     get "password", to: "users/passwords#new"
   end
 

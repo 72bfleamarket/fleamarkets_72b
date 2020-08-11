@@ -33,8 +33,17 @@ class UsersController < ApplicationController
   def edit_my_profile
     if user_signed_in?
       @user = User.find(current_user.id)
-      @user.update(profile_params)
       return
+    else
+      redirect_to user_path
+    end
+  end
+
+  def update_my_profile
+    @user = User.find(current_user.id)
+    if user_signed_in?
+      @user.update(profile_params)
+      render :edit_my_profile
     else
       redirect_to user_path
     end
