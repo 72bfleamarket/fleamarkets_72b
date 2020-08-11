@@ -209,7 +209,7 @@ $(document).ready(function () {
             gc_data.forEach(function (gc) {
               let gc_html = gcBuild(gc)
               $(".categoryTree-grandchild").append(gc_html);
-              let parcol = $('.child_btn').parent().parent().parent().prev().find(`input[name="${gc.root}"]`);
+              let parcol = $('.categoryTree').find(`input[name="${gc.root}"]`);
               $(parcol).css('color', 'white');
               $(parcol).css('background-color', '#b1e9eb');
             });
@@ -239,7 +239,7 @@ $(document).ready(function () {
             dataType: 'json'
           })
           .done(function (gc_result) {
-            let childcol = $('.gc_btn').parent().parent().parent().prev().find(`input[name="${gc_result[0].parent}"]`);
+            let childcol = $('.categoryTree-child').find(`input[name="${gc_result[0].parent}"]`);
             $(childcol).css('color', 'white');
             $(childcol).css('background-color', '#b1e9eb');
             $('#tree_menu').css('max-height', '490px');
