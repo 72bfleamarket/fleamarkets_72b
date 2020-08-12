@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile, :edit_my_profile]
-  before_action :set_parents, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile, :edit_my_profile]
+  before_action :set_user, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile, :edit_my_profile, :update_my_profile]
+  before_action :set_parents, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile, :edit_my_profile, :update_my_profile]
 
   def edit
   end
@@ -43,6 +43,9 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     if user_signed_in?
       @user.update(profile_params)
+      @user.save!
+      binding.pry
+      
       render :edit_my_profile
     else
       redirect_to user_path
