@@ -37,6 +37,7 @@ TOPページ
 - gem 'jquery-rails'
 ### 商品削除機能
 ### 商品一覧機能
+- カテゴリー別、関連商品の表示
 ### 商品購入機能（クレジットカード登録。情報表示）
 - gem 'payjp'
 - gem 'rspec-rails'
@@ -46,17 +47,22 @@ TOPページ
 - gem 'jquery-rails'
 - カテゴリー一覧のページ内リンク
 - マウスホバーによるカテゴリー選択機能
-- seeds.rb使用
 ### キーワード検索機能
 - gem 'jquery-rails'
+- 複数モデルからのインクリメンタルサーチ
 ### 詳細検索、並べ替え機能
 - gem 'ransack'
 - gem 'active_hash'
 - gem 'jquery-rails'
+- ransackと独自メゾットの併用での検索
 ### パンクズ機能
 - gem 'gretel'
 ### いいね機能
 - Font Awesomeのアニメーション仕様
+### マイページ機能
+- Ajax通信を使った部分テンプレート
+- メール/パスワード変更機能
+- 住所変更機能
 ### バリデーションの日本語化
 - gem 'rails-i18n'
 

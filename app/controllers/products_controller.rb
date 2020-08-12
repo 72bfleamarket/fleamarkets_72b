@@ -73,6 +73,8 @@ class ProductsController < ApplicationController
           @childrens = Category.find(params[:parent_id]).children
         elsif params[:children_id]
           @grandChilds = Category.find(params[:children_id]).children
+        elsif params[:gcchildren_id]
+          @parents = Category.where(id: params[:gcchildren_id])
         elsif params[:keyword]
           @keywords = params[:keyword]
           return nil if @keywords == ""
@@ -87,6 +89,8 @@ class ProductsController < ApplicationController
             @allCategorys += Category.where("name LIKE(?)", "%#{keyword}%")
           end
           @allCategorys.uniq!
+        elsif params[:userid]
+          @user = User.where(id: params[:userid])
         end
       end
     end
