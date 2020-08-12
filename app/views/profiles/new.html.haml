@@ -1,0 +1,41 @@
+= render 'products/shared/header'
+
+%nav.breadCrumbs
+  - breadcrumb :mypage
+  = render "layouts/breadcrumbs"
+
+%main.container
+  .container__inner
+    = render 'users/side-bar'
+
+    %section.container__inner__content
+
+      .new_user
+        = form_with url: profiles_path do |f|
+          .new_user
+            - if @profile.persisted?
+              .new_user__profile
+                = image_tag @profile.icon.url
+
+          .new_user__content
+            - if @profile.persisted?
+              .new_user__content__form
+                = @profile.profile
+            .new_user__content__form__title
+              プロフィールアイコン登録/編集
+            %label.new_user__content__icon_form
+              = f.file_field :icon, type: 'file', class:"box__select"
+              %i.fas.fa-camera
+            .new_user__content__form__title
+              紹介文登録登録/編集
+            = f.text_area :profile, class: 'profile_text'
+            = f.submit "登録する", class: 'btn-default btn mypagebtn'
+
+
+          .new_user__body__box
+            = link_to 'マイページへ戻る', user_path(@user), class: 'btn-default btn'
+
+
+= render 'products/shared/footer'
+
+= render 'products/shared/purchase_btn'

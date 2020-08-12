@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get "password", to: "users/passwords#new"
   end
 
-  resources :users, path: "/users/mypage", only: [:show, :edit, :update] do
+  resources :users, path: "/users/mypage", only: [:show, :edit] do
     collection do
       post :search
     end
@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:index, :show]
   resources :cards, only: [:index, :new, :create, :edit, :show, :destroy]
+  resources :profiles
 end
