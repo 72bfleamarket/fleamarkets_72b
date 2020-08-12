@@ -9,7 +9,12 @@
     = render 'side-bar'
 
     %section.container__inner__content
-      = render 'email-pass'
+      - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
+        .mypageProductLists#productsval
+          = render partial: 'any-products', locals: { product: @products }
+      - else
+        .mypageProductLists#productsval
+          = render 'email-pass'
 
 = render 'products/shared/app_banner'
 

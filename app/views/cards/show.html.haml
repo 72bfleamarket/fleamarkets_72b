@@ -10,26 +10,31 @@
 
     .container__inner__content
       %section.container__inner__content
-        %h2.container__inner__content__chapterHead 支払い方法
-        .container__inner__content__singleInner
-          %section
-            .container__inner__content__singleInner__singleContent
-              %h3.container__inner__content__singleInner__singleContent__chapterSubHead クレジットカード一覧
-            %ul
-              %li
-                = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form', class: 'container__inner__content__singleInner__singleContent', name: "inputForm") do
-                  = image_tag "#{@card_src}", alt: @card_brand,  id: 'card_image'
-                  .container__inner__content__singleInner__singleContent__settingsPaymentNum
-                    = "**** **** **** " + @default_card_information.last4
-                  .container__inner__content__singleInner__singleContent__settingsPaymentNum
-                    = @exp_month + " / " + @exp_year
-                    %input{ type: "hidden", name: "card_id", value: "" }
-                    %button.container__inner__content__singleInner__singleContent__settingsPaymentRemove 削除する
+        - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
+          .mypageProductLists#productsval
+            = render partial: 'any-products', locals: { product: @products }
+        - else
+          .mypageProductLists#productsval
+            %h2.container__inner__content__chapterHead 支払い方法
+            .container__inner__content__singleInner
+              %section
+                .container__inner__content__singleInner__singleContent
+                  %h3.container__inner__content__singleInner__singleContent__chapterSubHead クレジットカード一覧
+                %ul
+                  %li
+                    = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form', class: 'container__inner__content__singleInner__singleContent', name: "inputForm") do
+                      = image_tag "#{@card_src}", alt: @card_brand,  id: 'card_image'
+                      .container__inner__content__singleInner__singleContent__settingsPaymentNum
+                        = "**** **** **** " + @default_card_information.last4
+                      .container__inner__content__singleInner__singleContent__settingsPaymentNum
+                        = @exp_month + " / " + @exp_year
+                        %input{ type: "hidden", name: "card_id", value: "" }
+                        %button.container__inner__content__singleInner__singleContent__settingsPaymentRemove 削除する
 
-          .container__inner__content__singleInner__settingsNotRegist
-            = link_to user_path(current_user.id) do
-              %span マイページへ戻る
-              %i.fas.fa-chevron-right
+              .container__inner__content__singleInner__settingsNotRegist
+                = link_to user_path(current_user.id) do
+                  %span マイページへ戻る
+                  %i.fas.fa-chevron-right
 
 = render 'products/shared/app_banner'
 

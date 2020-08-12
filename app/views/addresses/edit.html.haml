@@ -9,8 +9,12 @@
     = render 'users/side-bar'
 
     %section.container__inner__content
-
-      = render 'address_form'
+      - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
+        .mypageProductLists#productsval
+          = render partial: 'users/any-products', locals: { product: @products }
+      - else
+        .mypageProductLists#productsval
+          = render 'address_form'
 
 = render 'products/shared/app_banner'
 
