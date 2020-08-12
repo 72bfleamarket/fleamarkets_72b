@@ -6,11 +6,13 @@ class BuyersController < ApplicationController
     @address = Address.find_by(user_id: current_user.id)
     @buyer_first_name = current_user.first_name
     @buyer_last_name = current_user.last_name
+    @buyer_destination_first = @address.destination_first
+    @buyer_destination_last = @address.destination_last
 
     if @card.present?
       Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
       #保管した顧客IDでpayjpから情報取得
-      customer = Payjp::Customer.retrieve(@card.customer_id) 
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       #カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(@card.card_id)
       @exp_month = @default_card_information.exp_month.to_s

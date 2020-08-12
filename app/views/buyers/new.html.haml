@@ -47,13 +47,34 @@
               .discription__top__left
                 配送先
               .discription__top__right
-                = link_to '変更する', edit_address_path(current_user.id)
+                = link_to '変更する', user_edit_address_path(current_user.id)
                 %i.fas.fa-chevron-right
             .discription__bottom
               = "〒#{@address.code}"
               %br
+              = @address.area_kana + @address.city_kana + @address.village_kana + @address.building_kana
+              %br
               = @address.area + @address.city + @address.village + @address.building
               %br
+              %br
+              %br
+            - if @address.phone_number.present?
+              .discription__top__left 連絡先
+              %br
+              = @address.phone_number
+              %br
+              %br
+              %br
+            .discription__top__left 送付先氏名
+            %br
+
+            - if @buyer_destination_first.present? && @buyer_destination_last.present?
+              = @buyer_destination_first + @buyer_destination_last
+            - elsif @buyer_destination_first.present?
+              = @buyer_destination_first + @buyer_last_name
+            - elsif @buyer_destination_last.present?
+              = @buyer_first_name + @buyer_destination_last
+            - else
               = @buyer_first_name + @buyer_last_name
         #product-about
           .discription
