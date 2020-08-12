@@ -1,10 +1,21 @@
 .form
   = render 'shared/header'
 
-  .form_body
-    %h1
-      = "#{@user.name}さんのプロフィール"
 
+  .space
+    .main__allProducts__head
+      = "#{@user.name}さんのプロフィール"
+    .new_user
+      = form_with url: profiles_path do |f|
+        .new_user
+          - if @user.profile.persisted?
+            .new_user__profile
+              = image_tag @user.profile.icon.url
+
+        .new_user__content
+          - if @user.profile.persisted?
+            .new_user__content__form
+              = @user.profile.profile
     .products_lists
       %section.main__allProducts
         .main__allProducts__head

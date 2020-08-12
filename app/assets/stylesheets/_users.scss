@@ -102,7 +102,7 @@
     flex-direction: column;
     &__form {
       padding-bottom: 60px;
-      border-bottom: black solid 1px;
+      
       width: 100%;
       &__title {
         margin-top: 10px;
@@ -319,4 +319,8 @@
 
 .mypageProductLists {
   margin: 10px;
+}
+
+.space {
+  padding-top: 150px;
 }
