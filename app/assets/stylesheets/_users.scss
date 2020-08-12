@@ -96,7 +96,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    
+
     &__address {
       font-size: 24px;
       padding: 8px 24px;
@@ -193,6 +193,13 @@
 
       .mandatory {
         background-color: #ea352d;
+        color: #fff;
+        border-radius: 2px;
+        padding: 3px;
+      }
+
+      .gray {
+        background-color: #cccccc;
         color: #fff;
         border-radius: 2px;
         padding: 3px;

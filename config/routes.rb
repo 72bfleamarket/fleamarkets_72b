@@ -10,18 +10,17 @@ Rails.application.routes.draw do
     get "addresses", to: "users/registrations#new_address"
     post "addresses", to: "users/registrations#create_address"
     get "users/profile/:id", to: "users/sessions#show", as: "profile"
-    get "edit_address/:id", to: "users#edit_address", as: "edit_address"
-    patch "edit_address/:id", to: "users#update_address"
-    put "edit_address/:id", to: "users#update_address"
     get "password", to: "users/passwords#new"
   end
 
   resources :users, path: "/users/mypage", only: [:show, :edit, :update] do
+    get "edit_address", to: "addresses#edit", as: "edit_address"
+    patch "edit_address", to: "addresses#update"
+    put "edit_address", to: "addresses#update"
     collection do
       post :search
     end
   end
-
 
   root "products#index"
   namespace :products do
