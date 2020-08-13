@@ -156,8 +156,6 @@ TOPページ
 |first_kana|string|null: false|
 |last_kana|string|null: false|
 |birthday|date|null: false|
-|profile|text||
-|icons|string||
 |||add_index :users, :name|
 |||add_index :users, :email, unique: true|
 |||add_index :users, :reset_password_token, unique: true|
@@ -183,6 +181,10 @@ TOPページ
 ## Addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_kana|string|null: false|
+|last_kana|string|null: false|
 |code|integer|null: false|
 |area|string|null: false|
 |city|string|null: false|
