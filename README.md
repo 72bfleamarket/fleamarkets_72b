@@ -1,6 +1,6 @@
 # このアプリについて
 <img width="1453" alt="Fleamarket_sample_72b" src="https://user-images.githubusercontent.com/62044473/89704084-0e7ddd80-d98c-11ea-8af2-26fad000c4af.png">
-このアプリはMercariを参考にして作成したフリーマーケットサイトです。商品ユーザー登録、商品登録、商品購入、カテゴリー、検索、コメント機能がメイン機能として実装されています。
+このアプリはMercariを参考にして作成したフリーマーケットサイトです。ユーザー登録・編集、商品登録・編集・購入、カテゴリー、検索、コメント、いいね機能がメイン機能として実装されています。
 
 - 開発メンバー：TECH CAMP 72期夜間メンバー4名
 - 制作期間:Jun 6th,2020 ~ Aug 15th,2020
@@ -63,6 +63,7 @@ TOPページ
 - Ajax通信を使った部分テンプレート
 - メール/パスワード変更機能
 - 住所変更機能
+- プロフィール画像・紹介文登録・編集機能
 ### バリデーションの日本語化
 - gem 'rails-i18n'
 
@@ -90,7 +91,7 @@ TOPページ
 
 # DB設計
 ## ER図
-![ER Diagram](https://user-images.githubusercontent.com/62044473/89771450-4aa37080-db3b-11ea-9174-3ae235c3274b.png)
+![ER Diagram](https://user-images.githubusercontent.com/62044473/90142726-b134c280-ddb7-11ea-84b7-986e34b38b9f.png)
 
 
 ## productsテーブル
@@ -154,8 +155,6 @@ TOPページ
 |first_kana|string|null: false|
 |last_kana|string|null: false|
 |birthday|date|null: false|
-|profile|text||
-|icons|string||
 |||add_index :users, :name|
 |||add_index :users, :email, unique: true|
 |||add_index :users, :reset_password_token, unique: true|
@@ -172,6 +171,7 @@ TOPページ
 - has_many :likes, dependent: :destroy
 - has_many :like_products, through: :likes, source: :product
 - has_many :comments
+- has_one :profile
 - devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
@@ -180,6 +180,10 @@ TOPページ
 ## Addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_kana|string|null: false|
+|last_kana|string|null: false|
 |code|integer|null: false|
 |area|string|null: false|
 |city|string|null: false|
@@ -235,3 +239,14 @@ TOPページ
 
 ### Association
 - belongs_to :user, optional: true
+
+## Profilesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|profile|text||
+|icon|string||
+|user_id|integer|foreign_key: true|
+
+### Association
+- belongs_to :user
+- mount_uploader :icon, IconUploader
