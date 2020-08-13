@@ -172,6 +172,7 @@ TOPページ
 - has_many :likes, dependent: :destroy
 - has_many :like_products, through: :likes, source: :product
 - has_many :comments
+- has_one :profile
 - devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
@@ -235,3 +236,14 @@ TOPページ
 
 ### Association
 - belongs_to :user, optional: true
+
+## Profilesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|profile|text||
+|icon|string||
+|user_id|integer|foreign_key: true|
+
+### Association
+- belongs_to :user
+- mount_uploader :icon, IconUploader
