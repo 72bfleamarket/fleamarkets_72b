@@ -88,22 +88,25 @@
     }
 
   }
-  
+
   &__profile {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   &__content {
     width: 100%;
     padding: 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
+
     &__form {
       padding-bottom: 60px;
-      
+
       width: 100%;
+
       &__title {
         margin-top: 10px;
       }
@@ -115,8 +118,9 @@
       height: 50px;
       margin-bottom: 30px;
       margin-top: 10px;
-      
+
     }
+
     .fa-camera {
       font-size: 1.5em;
       cursor: pointer;
@@ -131,6 +135,7 @@
       margin-bottom: 50px;
       padding: 10px 10px;
     }
+
     .mypagebtn {
       width: 300px;
       margin-bottom: 15px;
@@ -139,6 +144,7 @@
       background-color: white;
     }
   }
+
   &__body {
     background-color: #fff;
     width: 700px;
@@ -248,6 +254,13 @@
         padding: 3px;
       }
 
+      .gray {
+        background-color: #cccccc;
+        color: #fff;
+        border-radius: 2px;
+        padding: 3px;
+      }
+
       .namebox {
         width: 343px;
         height: 70px;
@@ -323,4 +336,5 @@
 
 .space {
   padding-top: 150px;
+  min-height: calc(100vh - 200px);
 }

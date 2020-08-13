@@ -5,12 +5,14 @@
   .space
     .main__allProducts__head
       = "#{@user.name}さんのプロフィール"
-    .new_user
-      = form_with url: profiles_path do |f|
-        .new_user
-          - if @user.profile.persisted?
-            .new_user__profile
-              = image_tag @user.profile.icon.url
+
+    .profiles__form
+      .profiles__form__preview
+        .profiles__form__preview__myicons
+          %span
+            - if @user.profile != nil
+              - if @user.profile.icon.present?
+                = image_tag @user.profile.icon.url
 
         .new_user__content
           - if @user.profile.persisted?

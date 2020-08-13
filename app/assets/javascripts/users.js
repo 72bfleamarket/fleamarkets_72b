@@ -188,4 +188,31 @@ $(function () {
         console.log('err');
       });
   });
+
+
+  // アップロードするファイルを選択
+  $(document).on('change', '.profiles__form__preview__icons__btn', function () {
+    let iconfile = $(this).prop('files')[0];
+    $('.profiles__form__preview__myicons img').after('<span></span>');
+    if (!iconfile.type.match('image.*')) {
+      $(this).val('');
+      $('.profiles__form__preview__myicons span').html('');
+      return;
+    }
+
+    // 画像表示
+    let iconReader = new FileReader();
+    iconReader.onload = function () {
+      let icon_src = $('<img>').attr('src', iconReader.result);
+      $('.profiles__form__preview__myicons img').remove();
+      $('.profiles__form__preview__myicons span').html(icon_src);
+    }
+    iconReader.readAsDataURL(iconfile);
+  });
+
+  $(document).on('click', '#icon-del', function () {
+    $('.profiles__form__preview__myicons img[src]').remove();
+    $("input[name='profile[remove_icon]']").prop('checked', true);
+    $('.profiles__form__preview__icons__btn').remove('file');
+  });
 });

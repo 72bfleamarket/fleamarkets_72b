@@ -1,21 +1,11 @@
 .new_user
-  .new_user__head
-    %h1
-      = link_to (image_tag ("material/logo/logo.png"), size: "200x58"), root_path
-    %li.new_user__head__progress.progress-active.progress-active__bar
-      会員情報
-    %li.new_user__head__progress.progress-active
-      電話番号
-    %li.new_user__head__progress__done
-      完了
-
-
   .new_user__body
-    %h2.body_head 会員情報入力
+    %h2.new_user__body__address
+      お届け先住所変更
     - if @address.errors.any?
       %span.err_message
         = I18n.t("errors.messages.not_saved")
-    = form_for(@address, url: addresses_path, html: {method: 'POST'}) do |f|
+    = form_with model: @address, url: user_edit_address_path do |a|
       .new_user__body__box
         .new_user__body__box__group
           .new_user__body__box__group__head
@@ -23,19 +13,21 @@
               郵便番号
             %span.mandatory
               必須
+            %br
             - if @address.errors.any?
-              .err_message
+              %span.err_message
                 =  @address.errors.full_messages_for(:code).shift
-            = f.text_field :code, class: "new_user__body__box__group__form", placeholder: "例)123-4567", maxlength:'8'
+            = a.text_field :code, class: "new_user__body__box__group__form", placeholder: "例)123-4567", maxlength:'8'
           .new_user__body__box__group__head
             %label
               都道府県
             %span.mandatory
               必須
+            %br
             - if @address.errors.any?
-              .err_message
+              %span.err_message
                 =  @address.errors.full_messages_for(:area).shift
-            = f.text_field :area, class: "new_user__body__box__group__form", placeholder: "例)東京都"
+            = a.text_field :area, class: "new_user__body__box__group__form", placeholder: "例)東京都"
           .new_user__body__box__group__head
             %label
               都道府県カナ（全角）
@@ -44,17 +36,18 @@
             - if @address.errors.any?
               .err_message
                 =  @address.errors.full_messages_for(:area_kana).shift
-            = f.text_field :area_kana, class: "new_user__body__box__group__form", placeholder: "例)トウキョウト"
+            = a.text_field :area_kana, class: "new_user__body__box__group__form", placeholder: "例)トウキョウト"
         .new_user__body__box__group
           .new_user__body__box__group__head
             %label
               市区町村
             %span.mandatory
               必須
+            %br
             - if @address.errors.any?
-              .err_message
+              %span.err_message
                 =  @address.errors.full_messages_for(:city).shift
-            = f.text_field :city, class: "new_user__body__box__group__form", placeholder: "例)渋谷区"
+            = a.text_field :city, class: "new_user__body__box__group__form", placeholder: "例)渋谷区"
           .new_user__body__box__group__head
             %label
               市区町村カナ（全角）
@@ -63,17 +56,18 @@
             - if @address.errors.any?
               .err_message
                 =  @address.errors.full_messages_for(:city_kana).shift
-            = f.text_field :city_kana, class: "new_user__body__box__group__form", placeholder: "例)シブヤク"
+            = a.text_field :city_kana, class: "new_user__body__box__group__form", placeholder: "例)シブヤク"
         .new_user__body__box__group
           .new_user__body__box__group__head
             %label
               番地
             %span.mandatory
               必須
+            %br
             - if @address.errors.any?
-              .err_message
+              %span.err_message
                 =  @address.errors.full_messages_for(:village).shift
-            = f.text_field :village, class: "new_user__body__box__group__form", placeholder: "例)道玄坂2丁目23-12"
+            = a.text_field :village, class: "new_user__body__box__group__form", placeholder: "例)道玄坂2丁目23-12"
           .new_user__body__box__group__head
             %label
               番地カナ（全角）
@@ -82,14 +76,15 @@
             - if @address.errors.any?
               .err_message
                 =  @address.errors.full_messages_for(:village_kana).shift
-            = f.text_field :village_kana, class: "new_user__body__box__group__form", placeholder: "例)ドウゲンザカニチョウメ"
+            = a.text_field :village_kana, class: "new_user__body__box__group__form", placeholder: "例)ドウゲンザカニチョウメ"
         .new_user__body__box__group
           .new_user__body__box__group__head
             %label
               建物名
             %span.gray
               任意
-          = f.text_field :building, class: "new_user__body__box__group__form", placeholder: "例)フォンティスビル7F"
+            %br
+          = a.text_field :building, class: "new_user__body__box__group__form", placeholder: "例)フォンティスビル7F"
           .new_user__body__box__group__head
             %label
               建物名カナ（全角）
@@ -98,7 +93,7 @@
             - if @address.errors.any?
               .err_message
                 =  @address.errors.full_messages_for(:building_kana).shift
-          = f.text_field :building_kana, class: "new_user__body__box__group__form", placeholder: "例)フォンティスビル"
+          = a.text_field :building_kana, class: "new_user__body__box__group__form", placeholder: "例)フォンティスビル"
         .new_user__body__box__group
           .new_user__body__box__group__head
             %label
@@ -112,8 +107,8 @@
               .err_message
                 =  @address.errors.full_messages_for(:destination_last).shift
           .namebox
-            = f.text_field :destination_first, class: "new_user__body__box__group__form nmform", placeholder: "例）山田"
-            = f.text_field :destination_last, class: "new_user__body__box__group__form nmform", placeholder: "例）彩"
+            = a.text_field :destination_first, class: "new_user__body__box__group__form nmform", placeholder: "例）山田"
+            = a.text_field :destination_last, class: "new_user__body__box__group__form nmform", placeholder: "例）彩"
           .new_user__body__box__group__head
             %label
               電話番号（半角）
@@ -122,11 +117,10 @@
             - if @address.errors.any?
               .err_message
                 =  @address.errors.full_messages_for(:phone_number).shift
-            = f.text_field :phone_number, class: "new_user__body__box__group__form", placeholder: "例）09012345678", maxlength:'11'
+            = a.text_field :phone_number, class: "new_user__body__box__group__form", placeholder: "例）09012345678", maxlength:'11'
         .new_user__body__box__group
           .new_user__body__box__group__head
             %a
               ※本人情報は正しく入力してください。
               会員登録後、修正するにはお時間を頂く場合があります。
-        = f.submit "次へ進む", class: 'btn-default btn'
-  = render 'users/registrations/user_footer'
+        = a.submit "次へ進む", class: 'btn-default btn'

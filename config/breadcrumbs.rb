@@ -69,8 +69,8 @@ crumb :payment do
   parent :mypage
 end
 
-crumb :mylike do
-  link "#{current_user.name}のお気に入り一覧"
+crumb :address do
+  link "お届け先住所変更"
   parent :mypage
 end
 

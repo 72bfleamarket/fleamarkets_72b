@@ -1,72 +1,157 @@
-.main-content{
+.main-content {
   width: 700px;
-  &__content-title{
+
+  &__content-title {
     text-align: center;
     font-size: 22px;
     padding: 16px;
     font-weight: bold;
   }
-  &__content-box{
+
+  &__content-box {
     background-color: #ffffff;
-    &__profile{
+
+    &__profile {
       padding: 20px;
       display: flex;
       justify-content: center;
-      &__icons{
+
+      &__icons {
         height: 60px;
         width: 60px;
         line-height: 60px;
-        .icons{
+
+        .icons {
           height: 50px;
           line-height: 50px;
           text-align: center;
           color: black;
         }
-        .hidden{
+
+        .hidden {
           display: none;
         }
       }
-      &__name{
-        font-weight: bold;;
+
+      &__name {
+        font-weight: bold;
+        ;
         line-height: 60px;
-        &__box{
+
+        &__box {
           border: none;
         }
       }
     }
-    &__comment{
+
+    &__comment {
       height: 100px;
       width: 100%;
       padding: 0px 10px;
-      &__field{
+
+      &__field {
         height: 100px;
         width: 100%;
       }
     }
-    &__btn{
+
+    &__btn {
       text-align: center;
       padding: 40px;
-      &__send-btn{
+
+      &__send-btn {
         height: 50px;
         width: 100%;
         color: #ffffff;
         background-color: red;
         border: none;
-        &:hover{
+
+        &:hover {
           opacity: 0.6;
         }
       }
     }
   }
 }
-.clearfix:after{
+
+.clearfix:after {
   content: "";
   clear: both;
   display: block;
 }
 
-.fa-chevron-right{
+.fa-chevron-right {
   position: absolute;
   right: 16px;
   line-height: 50px;
+}
+
+.profiles {
+  background-color: #ffffff;
+
+  &__form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    &__preview {
+      position: relative;
+      width: 225px;
+      height: 225px;
+
+      .remove_icon {
+        display: none;
+      }
+
+      img {
+        object-fit: cover;
+        border-radius: 50%;
+        height: 225px;
+        width: 225px;
+
+      }
+
+      &__myicons {
+        background-color: gray;
+        border-radius: 50%;
+        width: 225px;
+        height: 225px;
+      }
+
+      &__icons {
+
+        &__icon {
+          text-align: center;
+          line-height: 1em;
+          position: absolute;
+          font-size: 2.8em;
+          right: 0;
+          bottom: 0px;
+          cursor: pointer;
+        }
+
+        &__btn {
+          display: none;
+        }
+      }
+
+      #icon-del {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+        font-size: 0.7em;
+        border-radius: 50%;
+        color: #3ccace;
+        background: #ffffff;
+        outline: none;
+        transition: .4s;
+        border: #3ccace 1px solid;
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile]
-  before_action :set_parents, only: [:edit, :show, :edit_address, :update, :show_my_info, :show_my_profile]
+  before_action :set_user, only: [:edit, :show, :update, :show_my_info, :show_my_profile]
+  before_action :set_parents, only: [:edit, :show, :update, :show_my_info, :show_my_profile]
 
   def edit
   end
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     if user_signed_in? && current_user.id == @user.id
       @products = @user.products.order("created_at DESC")
+      @profile = Profile.find_by(user_id: current_user.id)
     else
       redirect_to root_path
     end
@@ -28,24 +29,6 @@ class UsersController < ApplicationController
 
   def show_my_profile
       current_user
-  end
-
-  def edit_address
-    if user_signed_in?
-      @address = Address.find(current_user.id)
-      return
-    else
-      redirect_to user_path
-    end
-  end
-
-  def update_address
-    @address = Address.find(current_user.id)
-    if @address.valid?
-      @address.update(address_params.merge(user_id: current_user.id))
-    else
-      render :edit_address
-    end
   end
 
   def search
@@ -87,9 +70,5 @@ class UsersController < ApplicationController
 
   def set_parents
     @parents = Category.where(ancestry: nil)
-  end
-
-  def address_params
-    params.require(:address).permit(:code, :area, :city, :village, :building)
   end
 end
