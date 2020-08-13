@@ -63,6 +63,7 @@ TOPページ
 - Ajax通信を使った部分テンプレート
 - メール/パスワード変更機能
 - 住所変更機能
+- プロフィール画像・紹介文登録・編集機能
 ### バリデーションの日本語化
 - gem 'rails-i18n'
 
@@ -90,7 +91,8 @@ TOPページ
 
 # DB設計
 ## ER図
-![ER Diagram](https://user-images.githubusercontent.com/62044473/89771450-4aa37080-db3b-11ea-9174-3ae235c3274b.png)
+![ER Diagram](https://user-images.githubusercontent.com/62044473/90133653-d2db7d00-ddaa-11ea-96a2-b7ae535a6b8b.png)
+
 
 
 ## productsテーブル
