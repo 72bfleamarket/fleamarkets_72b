@@ -108,7 +108,7 @@
         - if @comments.exists?
           - @comments.each do |c|
             .comments__box
-              = link_to c.user.name, profile_path(c.user.id), class: "comments__box__name"
+              = link_to c.user.name, user_profiles_path(c.user.id), class: "comments__box__name"
               - if c.user.id === @product.user.id
                 .comments__box__name__mark 出品者
               .comments__box__text
