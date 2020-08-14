@@ -13,6 +13,8 @@ class Address < ApplicationRecord
   validates :village, presence: true
   validates :destination_first, allow_blank: true, format: { with: VALID_NAME_REGEX, message: "は全角文字で入力して下さい。" }
   validates :destination_last, allow_blank: true, format: { with: VALID_NAME_REGEX, message: "は全角文字で入力して下さい。" }
+  validates :destination_first_kana, allow_blank: true, format: { with: VALID_KANA_REGEX, message: "は全角文字で入力して下さい。" }
+  validates :destination_last_kana, allow_blank: true, format: { with: VALID_KANA_REGEX, message: "は全角文字で入力して下さい。" }
   validates :area_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角片仮名で入力して下さい。" }
   validates :city_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角片仮名で入力して下さい。" }
   validates :village_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角片仮名で入力して下さい。" }
