@@ -91,7 +91,7 @@ TOPページ
 
 # DB設計
 ## ER図
-![ER Diagram](https://user-images.githubusercontent.com/62044473/90200205-eb32b280-de11-11ea-89d7-d680c6f36d87.png)
+![ER Diagram](https://user-images.githubusercontent.com/62044473/90268254-b108f580-de91-11ea-9eaf-ca712f58a16d.png)
 
 
 ## productsテーブル
@@ -180,10 +180,6 @@ TOPページ
 ## Addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|first_kana|string|null: false|
-|last_kana|string|null: false|
 |code|integer|null: false|
 |area|string|null: false|
 |city|string|null: false|
@@ -193,12 +189,13 @@ TOPページ
 |user_id|references|null: false, foreign_key: true|
 |destination_first|string||
 |destination_last|string||
+|destination_first_kana|string||
+|destination_last_kana|string||
 |area_kana|string|null: false|
 |city_kana|string|null: false|
 |village_kana|string|null: false|
 |building|string||
-|destination_first_kana|string||
-|destination_last_kana|string||
+|building_kana|string||
 
 |||add_index :addresses, :area|
 |||add_index :addresses, :city|
