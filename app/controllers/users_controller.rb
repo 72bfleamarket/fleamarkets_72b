@@ -4,23 +4,14 @@ class UsersController < ApplicationController
 
   def edit
     @profile = current_user.profile
-    @user = current_user
   end
 
   def update
-    @user = current_user
-    @user.update(user_params)
-    @user.save!
-    # if @user.update(user_params)
-    #   binding.pry
-      
-    #   redirect_to root_path
-    # else
-      
-    #   binding.pry
-      
-    #   render :edit
-    # end
+    if current_user.update(user_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def show
