@@ -64,8 +64,8 @@ crumb :mypage do
   parent :root
 end
 
-crumb :payment do
-  link "支払い方法", new_card_path
+crumb :profile do
+  link "プロフィール"
   parent :mypage
 end
 
@@ -74,8 +74,18 @@ crumb :address do
   parent :mypage
 end
 
-crumb :profile do
-  link "プロフィール登録・変更"
+crumb :payment do
+  link "カード情報"
+  parent :mypage
+end
+
+crumb :mailPass do
+  link "メール/パスワード"
+  parent :mypage
+end
+
+crumb :myinfo do
+  link "本人情報"
   parent :mypage
 end
 # If you want to split your breadcrumbs configuration over multiple files, you
