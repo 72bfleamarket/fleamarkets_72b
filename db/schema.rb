@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_213619) do
-
+ActiveRecord::Schema.define(version: 2020_08_13_060544) do
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code", null: false
     t.string "area", null: false
@@ -97,6 +96,15 @@ ActiveRecord::Schema.define(version: 2020_08_12_213619) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "profile"
+    t.string "icon"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
@@ -114,8 +122,6 @@ ActiveRecord::Schema.define(version: 2020_08_12_213619) do
     t.string "first_kana", null: false
     t.string "last_kana", null: false
     t.date "birthday", null: false
-    t.text "profile"
-    t.string "icons"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -129,4 +135,5 @@ ActiveRecord::Schema.define(version: 2020_08_12_213619) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
+  add_foreign_key "profiles", "users"
 end

@@ -1,0 +1,20 @@
+%h2.container__inner__content__chapterHead
+  プロフィールアイコン登録/編集
+.profiles
+  = form_with model: @profile, class: "profiles__form" do |f|
+    .profiles__form__preview
+      .profiles__form__preview__myicons
+        %span
+          - if @profile != nil
+            - if @profile.icon.present?
+              = image_tag @profile.icon.url
+      = f.label :icon, class: 'profiles__form__preview__icons', title: 'プロフィール画像を変更する' do
+        = icon('fas', 'camera', class: 'profiles__form__preview__icons__icon')
+        = f.file_field :icon, class: 'profiles__form__preview__icons__btn', accept:"image/*"
+        = f.check_box :remove_icon, class: 'remove_icon'
+      = button_tag type: 'button', id: "icon-del" do
+        削除
+    .profiles__form__content
+      紹介文登録登録/編集
+    = f.text_area :profile, class: 'profile_text', placeholder: '自己紹介文＆メッセージなど'
+    = f.submit "登録する", class: 'profile-submit'

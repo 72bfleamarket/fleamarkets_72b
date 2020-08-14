@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :update]
-  before_action :set_parents, only: [:edit, :show, :update]
+  before_action :set_user, only: [:edit, :show, :update, :show_my_info, :show_my_profile]
+  before_action :set_parents, only: [:edit, :show, :update, :show_my_info, :show_my_profile]
 
   def edit
   end
@@ -16,9 +16,19 @@ class UsersController < ApplicationController
   def show
     if user_signed_in? && current_user.id == @user.id
       @products = @user.products.order("created_at DESC")
+      @profile = current_user.profile
     else
       redirect_to root_path
     end
+  end
+
+  def show_my_info
+      @profile = current_user.profile
+      @address = Address.find(current_user.id)
+  end
+
+  def show_my_profile
+      current_user
   end
 
   def search
@@ -61,6 +71,4 @@ class UsersController < ApplicationController
   def set_parents
     @parents = Category.where(ancestry: nil)
   end
-
-
 end

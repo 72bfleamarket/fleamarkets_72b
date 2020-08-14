@@ -1,10 +1,23 @@
 .form
   = render 'shared/header'
 
-  .form_body
-    %h1
+
+  .space
+    .main__allProducts__head
       = "#{@user.name}さんのプロフィール"
 
+    .profiles__form
+      .profiles__form__preview
+        .profiles__form__preview__myicons
+          %span
+            - if @user.profile != nil
+              - if @user.profile.icon.present?
+                = image_tag @user.profile.icon.url
+
+        .new_user__content
+          - if @user.profile.persisted?
+            .new_user__content__form
+              = @user.profile.profile
     .products_lists
       %section.main__allProducts
         .main__allProducts__head

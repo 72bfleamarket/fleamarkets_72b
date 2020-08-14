@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     post "new_user", to: "users/registrations#create_user"
     get "addresses", to: "users/registrations#new_address"
     post "addresses", to: "users/registrations#create_address"
-    get "users/profile/:id", to: "users/sessions#show", as: "profile"
+    get "users/profile/:id", to: "users/sessions#show", as: "user_profiles"
+    get "show_my_info/:id", to: "users#show_my_info", as: "show_my_info"
+    get "show_my_profile/:id", to: "users#show_my_profile", as: "show_my_profile"
     get "password", to: "users/passwords#new"
   end
 
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
     collection do
       post :search
     end
+    resources :user, only: [:new, :create]
   end
 
   root "products#index"
@@ -37,4 +40,5 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:index, :show]
   resources :cards, only: [:index, :new, :create, :edit, :show, :destroy]
+  resources :profiles
 end

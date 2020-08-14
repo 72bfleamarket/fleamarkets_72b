@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]　/デフォルト記載
   # before_action :configure_account_update_params, only: [:update]　/デフォルト記載
 
+
   def new
     @user = User.new
   end
@@ -53,6 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+
   def birthday_join
     @date = params[:birthday]
     if @date.values[0].empty?
@@ -76,5 +78,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address_params
     params.require(:address).permit(:code, :area, :city, :village, :building, :destination_first, :destination_last, :area_kana, :city_kana, :village_kana, :building_kana, :phone_number)
+  end
+
+
+
+
+  def profile_params
+    params.require(:user).permit(:profile, :icons, :password)
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:icons, :profile])
   end
 end
