@@ -5,6 +5,23 @@
 - 開発メンバー：TECH CAMP 72期夜間メンバー4名
 - 制作期間:Jun 6th,2020 ~ Aug 15th,2020
 
+# テスト用アカウント
+- 購入者用
+メールアドレス: test_buyer@gmail.com  
+パスワード: test_buyer  
+- 購入用カード情報
+番号：4242424242424242  
+期限：3/24  
+セキュリティコード：123  
+- 出品者用
+メールアドレス名: test_seller@gmail.com  
+パスワード: test_seller  
+
+# サイトURL（BASIC認証キー）
+- パブリックIP: http://54.238.15.114/
+- ユーザーID: admin
+- パスワード: flemakt72b
+
 # 実装内容
 ## マークアップ
 TOPページ
@@ -68,12 +85,6 @@ TOPページ
 - gem 'rails-i18n'
 
 
-
-# サイトURL（BASIC認証キー）
-- パブリックIP: http://54.238.15.114/
-- ユーザーID: admin
-- パスワード: flemakt72b
-
 # その他、Gem/Ver
 
 - ruby 2.5.1
@@ -91,7 +102,7 @@ TOPページ
 
 # DB設計
 ## ER図
-![ER Diagram](https://user-images.githubusercontent.com/62044473/90200205-eb32b280-de11-11ea-89d7-d680c6f36d87.png)
+![ER Diagram](https://user-images.githubusercontent.com/62044473/90268254-b108f580-de91-11ea-9eaf-ca712f58a16d.png)
 
 
 ## productsテーブル
@@ -180,10 +191,6 @@ TOPページ
 ## Addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|first_kana|string|null: false|
-|last_kana|string|null: false|
 |code|integer|null: false|
 |area|string|null: false|
 |city|string|null: false|
@@ -193,12 +200,13 @@ TOPページ
 |user_id|references|null: false, foreign_key: true|
 |destination_first|string||
 |destination_last|string||
+|destination_first_kana|string||
+|destination_last_kana|string||
 |area_kana|string|null: false|
 |city_kana|string|null: false|
 |village_kana|string|null: false|
 |building|string||
-|destination_first_kana|string||
-|destination_last_kana|string||
+|building_kana|string||
 
 |||add_index :addresses, :area|
 |||add_index :addresses, :city|
