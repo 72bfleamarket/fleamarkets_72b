@@ -117,10 +117,10 @@
               任意
             - if @address.errors.any?
               .err_message
-                =  @address.errors.full_messages_for(:destination_first).shift
+                =  @address.errors.full_messages_for(:destination_first_kana).shift
             - if @address.errors.any?
               .err_message
-                =  @address.errors.full_messages_for(:destination_last).shift
+                =  @address.errors.full_messages_for(:destination_last_kana).shift
           .namebox
             = a.text_field :destination_first_kana, class: "new_user__body__box__group__form nmform", placeholder: "例）ヤマダ"
             = a.text_field :destination_last_kana, class: "new_user__body__box__group__form nmform", placeholder: "例）アヤ"
