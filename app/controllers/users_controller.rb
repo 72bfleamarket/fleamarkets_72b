@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_parents, only: [:edit, :show, :update, :show_my_info, :show_my_profile]
 
   def edit
+    @profile = current_user.profile
   end
 
   def update
