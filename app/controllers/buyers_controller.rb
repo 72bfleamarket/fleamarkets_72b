@@ -6,8 +6,12 @@ class BuyersController < ApplicationController
     @address = Address.find_by(user_id: current_user.id)
     @buyer_first_name = current_user.first_name
     @buyer_last_name = current_user.last_name
+    @buyer_first_kana = current_user.first_kana
+    @buyer_last_kana = current_user.last_kana
     @buyer_destination_first = @address.destination_first
     @buyer_destination_last = @address.destination_last
+    @buyer_destination_fkana = @address.destination_first_kana
+    @buyer_destination_lkana = @address.destination_last_kana
 
     if @card.present?
       Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]

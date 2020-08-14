@@ -67,15 +67,24 @@
               %br
             .discription__top__left 送付先氏名
             %br
-
-            - if @buyer_destination_first.present? && @buyer_destination_last.present?
-              = @buyer_destination_first + @buyer_destination_last
-            - elsif @buyer_destination_first.present?
-              = @buyer_destination_first + @buyer_last_name
-            - elsif @buyer_destination_last.present?
-              = @buyer_first_name + @buyer_destination_last
-            - else
-              = @buyer_first_name + @buyer_last_name
+            .discription__top__left
+              - if @buyer_destination_fkana.present? && @buyer_destination_lkana.present?
+                = @buyer_destination_fkana + @buyer_destination_lkana
+              - elsif @buyer_destination_fkana.present?
+                = @buyer_destination_fkana + @buyer_last_kana
+              - elsif @buyer_destination_lkana.present?
+                = @buyer_first_kana + @buyer_destination_lkana
+              - else
+                = @buyer_first_kana + @buyer_last_kana
+            .discription__top__left
+              - if @buyer_destination_first.present? && @buyer_destination_last.present?
+                = @buyer_destination_first + @buyer_destination_last
+              - elsif @buyer_destination_first.present?
+                = @buyer_destination_first + @buyer_last_name
+              - elsif @buyer_destination_last.present?
+                = @buyer_first_name + @buyer_destination_last
+              - else
+                = @buyer_first_name + @buyer_last_name
         #product-about
           .discription
             = form_tag(action: :create, method: :post) do
