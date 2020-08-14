@@ -77,7 +77,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def address_params
-    params.require(:address).permit(:code, :area, :city, :village, :building, :destination_first, :destination_last, :area_kana, :city_kana, :village_kana, :building_kana, :phone_number)
+    params.require(:address).permit(:code, :area, :city, :village, :building, :destination_first, :destination_last, :destination_first_kana, :destination_last_kana, :area_kana, :city_kana, :village_kana, :building_kana, :phone_number)
   end
 
 

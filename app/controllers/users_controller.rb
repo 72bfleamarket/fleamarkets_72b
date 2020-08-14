@@ -1,16 +1,26 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :update, :show_my_info, :show_my_profile]
-  before_action :set_parents, only: [:edit, :show, :update, :show_my_info, :show_my_profile]
+  before_action :set_user, only: [:edit, :show, :update, :show_my_info]
+  before_action :set_parents, only: [:edit, :show, :update, :show_my_info]
 
   def edit
+    @profile = current_user.profile
+    @user = current_user
   end
 
   def update
-    if current_user.update(user_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
+    @user = current_user
+    @user.update(user_params)
+    @user.save!
+    # if @user.update(user_params)
+    #   binding.pry
+      
+    #   redirect_to root_path
+    # else
+      
+    #   binding.pry
+      
+    #   render :edit
+    # end
   end
 
   def show
