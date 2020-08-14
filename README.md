@@ -189,13 +189,21 @@ TOPページ
 |city|string|null: false|
 |village|string|null: false|
 |building|string||
-|phone_number|integer||
+|phone_number|string||
 |user_id|references|null: false, foreign_key: true|
+|destination_first|string||
+|destination_last|string||
+|area_kana|string|null: false|
+|city_kana|string|null: false|
+|village_kana|string|null: false|
+|building|string||
+|building|destination_first_kana||
+|building|destination_last_kana||
+
 |||add_index :addresses, :area|
 |||add_index :addresses, :city|
 
 ### Association
-- belongs_to :user
 - belongs_to :user, optional: true
 
 
