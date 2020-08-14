@@ -76,6 +76,7 @@ ja:
     sessions:
       user:
         signed_in: "カード情報を登録してください"
+        signed_out: "カード情報を登録してください"
       new:
         sign_in: "ログイン"
     shared:
