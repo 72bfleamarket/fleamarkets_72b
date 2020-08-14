@@ -16,14 +16,14 @@ class UsersController < ApplicationController
   def show
     if user_signed_in? && current_user.id == @user.id
       @products = @user.products.order("created_at DESC")
-      @profile = Profile.find_by(user_id: current_user.id)
+      @profile = current_user.profile
     else
       redirect_to root_path
     end
   end
 
   def show_my_info
-      current_user
+      @profile = current_user.profile
       @address = Address.find(current_user.id)
   end
 

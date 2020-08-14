@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
 
   def edit
     if user_signed_in?
-      @profile = Profile.find_by(user_id: current_user.id)
+      @profile = current_user.profile
       @address = Address.where(user_id: current_user.id)[0]
       return
     else
@@ -12,6 +12,7 @@ class AddressesController < ApplicationController
   end
 
   def update
+    @profile = current_user.profile
     @address = Address.where(user_id: current_user.id)[0]
     if @address.update(address_params)
       return

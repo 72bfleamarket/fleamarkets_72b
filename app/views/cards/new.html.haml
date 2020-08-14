@@ -13,53 +13,54 @@
   .container__inner
     = render 'users/side-bar'
 
-    %section.container__inner__content
-      - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
-        .mypageProductLists#productsval
-          = render partial: 'any-products', locals: { product: @products }
-      - else
-        .mypageProductLists#productsval
-          %h2.container__inner__content__chapterHead クレジットカード情報入力
-          = form_with( url: cards_path, local: true, id: 'addCardForm', class: 'container__inner__content__form', html: { name: 'inputForm' } ) do |f|
-            .container__inner__content__singleContent
-              .container__inner__content__singleContent__formGroup
-                =f.label 'カード番号'
-                %span.container__inner__content__singleContent__formGroup__formRequire 必須
-                %br
-                = f.text_field :number, id: 'card_number', class: 'container__inner__content__singleContent__formGroup__inputDefault', placeholder: '半角数字のみ' , maxlength: '16', type: 'text'
-                %ul.container__inner__content__singleContent__formGroup__signupCardList
-                  %li
-                    = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__visa'
-                  %li
-                    = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__masterCard'
-                  %li
-                    = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__jcb'
-                  %li
-                    = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__americanExpress'
-                  %li
-                    = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__dinersclub'
-                  %li
-                    = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__discover'
+    .container__inner__content
+      %section.container__inner__content
+        - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
+          .mypageProductLists#productsval
+            = render partial: 'any-products', locals: { product: @products }
+        - else
+          .mypageProductLists#productsval
+            %h2.container__inner__content__chapterHead クレジットカード情報入力
+            = form_with( url: cards_path, local: true, id: 'addCardForm', class: 'container__inner__content__form', html: { name: 'inputForm' } ) do |f|
+              .container__inner__content__singleContent
+                .container__inner__content__singleContent__formGroup
+                  =f.label 'カード番号'
+                  %span.container__inner__content__singleContent__formGroup__formRequire 必須
+                  %br
+                  = f.text_field :number, id: 'card_number', class: 'container__inner__content__singleContent__formGroup__inputDefault', placeholder: '半角数字のみ' , maxlength: '16', type: 'text'
+                  %ul.container__inner__content__singleContent__formGroup__signupCardList
+                    %li
+                      = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__visa'
+                    %li
+                      = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__masterCard'
+                    %li
+                      = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__jcb'
+                    %li
+                      = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__americanExpress'
+                    %li
+                      = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__dinersclub'
+                    %li
+                      = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__discover'
 
-              .container__inner__content__singleContent__formGroup.singleFormExpire
-                = f.label '有効期限'
-                %span.container__inner__content__singleContent__formGroup__formRequire 必須
-                %br
-                .container__inner__content__singleContent__formGroup__selectWrap
-                  = f.select :exp_month, [ ['01','1'], ['02','2'], ['03','3'], ['04','4'], ['05','5'], ['06','6'], ['07','7'], ['08','8'], ['09','9'], ['10','10'], ['11','11'], ['12','12'] ], { prompt: '--' }, { id: 'exp_month', class: 'container__inner__content__singleContent__formGroup__selectWrap__selectDefault', type: 'text' }
-                  %span 月
-                .container__inner__content__singleContent__formGroup__selectWrap
-                  = f.select :exp_year, [ ['19','2019'], ['20','2020'], ['21','2021'], ['22','2022'], ['23','2023'], ['24','2024'], ['25','2025'], ['26','2026'], ['27','2027'], ['28','2028'], ['29','2029'] ], { prompt: '--' }, { id: 'exp_year', class: 'container__inner__content__singleContent__formGroup__selectWrap__selectDefault', type: 'text' }
-                  %span 年
+                .container__inner__content__singleContent__formGroup.singleFormExpire
+                  = f.label '有効期限'
+                  %span.container__inner__content__singleContent__formGroup__formRequire 必須
+                  %br
+                  .container__inner__content__singleContent__formGroup__selectWrap
+                    = f.select :exp_month, [ ['01','1'], ['02','2'], ['03','3'], ['04','4'], ['05','5'], ['06','6'], ['07','7'], ['08','8'], ['09','9'], ['10','10'], ['11','11'], ['12','12'] ], { prompt: '--' }, { id: 'exp_month', class: 'container__inner__content__singleContent__formGroup__selectWrap__selectDefault', type: 'text' }
+                    %span 月
+                  .container__inner__content__singleContent__formGroup__selectWrap
+                    = f.select :exp_year, [ ['19','2019'], ['20','2020'], ['21','2021'], ['22','2022'], ['23','2023'], ['24','2024'], ['25','2025'], ['26','2026'], ['27','2027'], ['28','2028'], ['29','2029'] ], { prompt: '--' }, { id: 'exp_year', class: 'container__inner__content__singleContent__formGroup__selectWrap__selectDefault', type: 'text' }
+                    %span 年
 
-              .container__inner__content__singleContent__formGroup
-                = f.label 'セキュリティコード'
-                %span.container__inner__content__singleContent__formGroup__formRequire 必須
-                = f.text_field :cvc, id: 'cvc', class: 'container__inner__content__singleContent__formGroup__inputDefault', placeholder: 'カード背面3~4桁の番号', maxlength: '4'
-              %br
-              #card_token
-              %br
-              = f.submit '追加する', id: 'token_submit', class: 'container__inner__content__singleContent__formGroup__submitBtn'
+                .container__inner__content__singleContent__formGroup
+                  = f.label 'セキュリティコード'
+                  %span.container__inner__content__singleContent__formGroup__formRequire 必須
+                  = f.text_field :cvc, id: 'cvc', class: 'container__inner__content__singleContent__formGroup__inputDefault', placeholder: 'カード背面3~4桁の番号', maxlength: '4'
+                %br
+                #card_token
+                %br
+                = f.submit '追加する', id: 'token_submit', class: 'container__inner__content__singleContent__formGroup__submitBtn'
 
 = render 'products/shared/app_banner'
 

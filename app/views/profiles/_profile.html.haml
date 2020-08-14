@@ -14,11 +14,7 @@
         = f.check_box :remove_icon, class: 'remove_icon'
       = button_tag type: 'button', id: "icon-del" do
         削除
-    .new_user__content
+    .profiles__form__content
       紹介文登録登録/編集
-      = f.text_area :profile, class: 'profile_text'
-      = f.submit "登録する", class: 'profile-submit'
-
-
-    .new_user__body__box
-      = link_to 'マイページへ戻る', user_path(@user), class: 'btn-default btn'
+    = f.text_area :profile, class: 'profile_text', placeholder: '自己紹介文＆メッセージなど'
+    = f.submit "登録する", class: 'profile-submit'

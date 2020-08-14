@@ -88,6 +88,7 @@
 
 .profiles {
   background-color: #ffffff;
+  padding: 40px 50px 40px;
 
   &__form {
     display: flex;
@@ -188,6 +189,25 @@
         background-image: linear-gradient(#b1e9eb 0%, #30a1a4 100%);
       }
     }
+
+    &__content {
+      padding: 50px 5px 5px 5px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .profile_text {
+      resize: vertical;
+      min-width: 400px;
+      padding: 15px 15px;
+      height: 120px;
+      overflow: scroll;
+      border: solid 1px #c0c0c0;
+      margin-bottom: 50px;
+      border-radius: 2px;
+    }
+
+
   }
 }
 

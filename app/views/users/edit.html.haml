@@ -8,13 +8,14 @@
   .container__inner
     = render 'side-bar'
 
-    %section.container__inner__content
-      - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
-        .mypageProductLists#productsval
-          = render partial: 'any-products', locals: { product: @products }
-      - else
-        .mypageProductLists#productsval
-          = render 'email-pass'
+    .container__inner__content
+      %section.container__inner__content
+        - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
+          .mypageProductLists#productsval
+            = render partial: 'any-products', locals: { product: @products }
+        - else
+          .mypageProductLists#productsval
+            = render 'email-pass'
 
 = render 'products/shared/app_banner'
 

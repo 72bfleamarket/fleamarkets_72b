@@ -8,13 +8,14 @@
   .container__inner
     = render 'users/side-bar'
 
-    %section.container__inner__content
-      - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
-        .mypageProductLists#productsval
-          = render partial: 'users/any-products', locals: { product: @products }
-      - else
-        .mypageProductLists#productsval
-          = render 'profile'
+    .container__inner__content
+      %section.container__inner__content
+        - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
+          .mypageProductLists#productsval
+            = render partial: 'users/any-products', locals: { product: @products }
+        - else
+          .mypageProductLists#productsval
+            = render 'profile'
 
 = render 'products/shared/app_banner'
 

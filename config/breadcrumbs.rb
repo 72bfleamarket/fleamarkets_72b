@@ -74,6 +74,10 @@ crumb :address do
   parent :mypage
 end
 
+crumb :profile do
+  link "プロフィール登録・変更"
+  parent :mypage
+end
 # If you want to split your breadcrumbs configuration over multiple files, you
 # can create a folder named `config/breadcrumbs` and put your configuration
 # files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that

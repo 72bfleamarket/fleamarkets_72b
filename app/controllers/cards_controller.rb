@@ -1,9 +1,10 @@
 class CardsController < ApplicationController
   before_action :set_cards, only: [:index, :edit]
   before_action :set_parents, only: [:new, :show]
+  before_action :set_profile, only: [:new, :show]
 
-  require 'payjp'
-  
+  require "payjp"
+
   def index
     @users = User.all
   end
@@ -16,13 +17,13 @@ class CardsController < ApplicationController
   def create #payjpとCardのデータベース作成
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
     #保管した顧客IDでpayjpから情報取得
-    if params['payjp-token'].blank?
+    if params["payjp-token"].blank?
       redirect_to action: :new
     else
       customer = Payjp::Customer.create(
-        card: params['payjp-token'],
-        metadata: {user_id: current_user.id}
-      ) 
+        card: params["payjp-token"],
+        metadata: { user_id: current_user.id },
+      )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to card_path(current_user.id)
@@ -31,7 +32,7 @@ class CardsController < ApplicationController
       end
     end
   end
-  
+
   def edit
   end
 
@@ -42,21 +43,21 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
       @exp_month = @default_card_information.exp_month.to_s
-      @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+      @exp_year = @default_card_information.exp_year.to_s.slice(2, 3)
       @card_brand = @default_card_information.brand
       case @card_brand
       when "Visa"
-        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266'
+        @card_src = "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266"
       when "MasterCard"
-        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266'
+        @card_src = "https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266"
       when "JCB"
-        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266'
+        @card_src = "https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266"
       when "American Express"
-        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266'
+        @card_src = "https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266"
       when "Diners Club"
-        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266'
+        @card_src = "https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266"
       when "Discover"
-        @card_src = 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266'
+        @card_src = "https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266"
       end
     else
       redirect_to action: :new
@@ -71,7 +72,7 @@ class CardsController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to action: :new
+    redirect_to action: :new
   end
 
   private
@@ -82,5 +83,9 @@ class CardsController < ApplicationController
 
   def set_parents
     @parents = Category.where(ancestry: nil)
+  end
+
+  def set_profile
+    @profile = current_user.profile
   end
 end

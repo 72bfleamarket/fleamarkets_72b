@@ -19,14 +19,12 @@ class ProfilesController < ApplicationController
 
   def edit
     if user_signed_in?
-      @user = User.find(current_user.id)
-      @profile = Profile.find_by(user_id: current_user.id)
+      @profile = current_user.profile
     end
   end
 
   def update
-    @user = User.find(current_user.id)
-    @profile = Profile.find_by(user_id: current_user.id)
+    @profile = current_user.profile
     if @profile.update(profile_params)
       return
     else
