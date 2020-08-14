@@ -197,8 +197,8 @@ TOPページ
 |city_kana|string|null: false|
 |village_kana|string|null: false|
 |building|string||
-|building|destination_first_kana||
-|building|destination_last_kana||
+|destination_first_kana|string||
+|destination_last_kana|string||
 
 |||add_index :addresses, :area|
 |||add_index :addresses, :city|
