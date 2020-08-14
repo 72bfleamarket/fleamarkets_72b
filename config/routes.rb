@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-                       registrations: "users/registrations", sessions: "users/sessions",
+                       registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords",
                        omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations",
                      }
 
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post "addresses", to: "users/registrations#create_address"
     get "users/profile/:id", to: "users/sessions#show", as: "user_profiles"
     get "show_my_info/:id", to: "users#show_my_info", as: "show_my_info"
-    get "password", to: "users/passwords#new"
+    # get "password", to: "users/passwords#new"
   end
 
   resources :users, path: "/users/mypage", only: [:show, :edit] do

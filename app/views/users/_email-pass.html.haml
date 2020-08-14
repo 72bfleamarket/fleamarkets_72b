@@ -1,6 +1,6 @@
 %h2.new_user__body__edit
   メールアドレス/パスワード
-= form_with model: @user do |form|
+= form_for(@user, url: user_registration_path, html: {method: 'PUT', class: "user_form-field"}) do |form|
   .new_user__body__box
     .new_user__body__box__group
       .new_user__body__box__group__head
@@ -36,4 +36,4 @@
       = form.password_field :password_confirmation, class: "new_user__body__box__group__form", placeholder: '新しいパスワード（再入力）'
     .user-mypage__main-content__content-form__content-box
       .user-mypage__main-content__content-form__content-box__btn
-    = form.submit '登録する', class: 'btn-default btn'
+    = form.submit '更新する', class: 'btn-default btn'

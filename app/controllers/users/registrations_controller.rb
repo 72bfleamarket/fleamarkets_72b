@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]　/デフォルト記載
   # before_action :configure_account_update_params, only: [:update]　/デフォルト記載
-
+  before_action :set_parents, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -52,6 +52,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  # PUT /resource/password
+  def update
+    @user = User.find(current_user.id)
+    if current_user.update(user_params)
+      # binding.pry
+      return
+    else
+      render :edit
+    end
+end
+
   protected
 
 
@@ -80,9 +95,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:address).permit(:code, :area, :city, :village, :building, :destination_first, :destination_last, :destination_first_kana, :destination_last_kana, :area_kana, :city_kana, :village_kana, :building_kana, :phone_number)
   end
 
-
-
-
   def profile_params
     params.require(:user).permit(:profile, :icons, :password)
   end
@@ -91,7 +103,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @parents = Category.where(ancestry: nil)
   end
 
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:icons, :profile])
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

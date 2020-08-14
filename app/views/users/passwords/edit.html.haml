@@ -1,39 +1,24 @@
-%h2.new_user__body__edit
-  メールアドレス/パスワード
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  .new_user__body__box
-    .new_user__body__box__group
-      .new_user__body__box__group__head
-        %label
-          メールアドレス
-        %span
-          任意
-        %br
-      = form.email_field :email, class: "new_user__body__box__group__form", placeholder: "PC・携帯どちらでも可"
-    .new_user__body__box__group
-      .new_user__body__box__group__head
-        %label
-          現在のパスワード
-        %span
-          任意
-        %br
-      = form.password_field :password, class: "new_user__body__box__group__form", placeholder: '現在のパスワード'
-    .new_user__body__box__group
-      .new_user__body__box__group__head
-        %label
-          新しいパスワード
-        %span
-          任意
-        %br
-      = form.password_field :password, class: "new_user__body__box__group__form", placeholder: '新しいパスワード'
-    .new_user__body__box__group
-      .new_user__body__box__group__head
-        %label
-          新しいパスワード（再入力）
-        %span
-          任意
-        %br
-      = form.password_field :password_confirmation, class: "new_user__body__box__group__form", placeholder: '新しいパスワード（再入力）'
-    .user-mypage__main-content__content-form__content-box
-      .user-mypage__main-content__content-form__content-box__btn
-    = form.submit '登録する', class: 'btn-default btn'
+= render 'products/shared/header'
+
+%nav.breadCrumbs
+  - breadcrumb :mypage
+  = render "layouts/breadcrumbs"
+
+%main.container
+  .container__inner
+    = render 'users/side-bar'
+
+    .container__inner__content
+      %section.container__inner__content
+        - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
+          .mypageProductLists#productsval
+            = render partial: 'users/any-products', locals: { product: @products }
+        - else
+          .mypageProductLists#productsval
+            = render 'users/email-pass'
+
+= render 'products/shared/app_banner'
+
+= render 'products/shared/footer'
+
+= render 'products/shared/purchase_btn'

@@ -4,21 +4,20 @@
   - breadcrumb :mypage
   = render "layouts/breadcrumbs"
 
+%main.container
+  .container__inner
+    = render 'users/side-bar'
 
-.new_user
-  = form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put }) do |f|
-    .new_user__body
-      .new_user__body__profile
+    .container__inner__content
+      %section.container__inner__content
+        - if params[:likes] || params[:saling] || params[:sold] || params[:buyed]
+          .mypageProductLists#productsval
+            = render partial: 'users/any-products', locals: { product: @products }
+        - else
+          .mypageProductLists#productsval
+            = render 'users/email-pass'
 
-      .new_user__body__content
-        profile
-        = f.file_field :icons
-        = f.text_area :profile
-        = f.submit "登録する", class: 'btn-default btn'
-
-      .new_user__body__box
-        = link_to 'マイページへ戻る', user_path(@user), class: 'btn-default btn'
-
+= render 'products/shared/app_banner'
 
 = render 'products/shared/footer'
 

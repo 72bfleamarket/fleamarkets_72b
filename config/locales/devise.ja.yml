@@ -74,6 +74,8 @@ ja:
       new:
         sign_up: "アカウント登録"
     sessions:
+      user:
+        signed_in: "カード情報を登録してください"
       new:
         sign_in: "ログイン"
     shared:
