@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
     if current_user.update(user_params)
       redirect_to root_path
     else
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :pssword)
   end
 
   def set_user

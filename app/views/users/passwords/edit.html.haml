@@ -1,19 +1,39 @@
-%h2 Change your password
+%h2.new_user__body__edit
+  メールアドレス/パスワード
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = render "users/shared/error_messages", resource: resource
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-    %br/
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-      %br/
-    = f.password_field :password, autofocus: true, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Change my password"
-= render "users/shared/links"
+  .new_user__body__box
+    .new_user__body__box__group
+      .new_user__body__box__group__head
+        %label
+          メールアドレス
+        %span
+          任意
+        %br
+      = form.email_field :email, class: "new_user__body__box__group__form", placeholder: "PC・携帯どちらでも可"
+    .new_user__body__box__group
+      .new_user__body__box__group__head
+        %label
+          現在のパスワード
+        %span
+          任意
+        %br
+      = form.password_field :password, class: "new_user__body__box__group__form", placeholder: '現在のパスワード'
+    .new_user__body__box__group
+      .new_user__body__box__group__head
+        %label
+          新しいパスワード
+        %span
+          任意
+        %br
+      = form.password_field :password, class: "new_user__body__box__group__form", placeholder: '新しいパスワード'
+    .new_user__body__box__group
+      .new_user__body__box__group__head
+        %label
+          新しいパスワード（再入力）
+        %span
+          任意
+        %br
+      = form.password_field :password_confirmation, class: "new_user__body__box__group__form", placeholder: '新しいパスワード（再入力）'
+    .user-mypage__main-content__content-form__content-box
+      .user-mypage__main-content__content-form__content-box__btn
+    = form.submit '登録する', class: 'btn-default btn'
