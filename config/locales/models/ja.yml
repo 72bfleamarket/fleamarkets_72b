@@ -19,8 +19,10 @@ ja:
         area: 都道府県
         city: 市区町村
         village: 番地
-        destination_first: 送付先(姓カナ)
-        destination_last: 送付先(名カナ)
+        destination_first: 送付先 姓(全角)
+        destination_last: 送付先 名(全角)
+        destination_first_kana: 送付先 姓(カナ)
+        destination_last_kana: 送付先 名(カナ)
         area_kana: 都道府県(フリガナ)
         city_kana: 市区町村(フリガナ)
         village_kana: 番地(フリガナ)
