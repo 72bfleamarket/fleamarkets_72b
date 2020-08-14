@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get "password", to: "users/passwords#new"
   end
 
-  resources :users, path: "/users/mypage", only: [:show, :edit, :update] do
+  resources :users, path: "/users/mypage", only: [:show, :edit] do
     get "edit_address", to: "addresses#edit", as: "edit_address"
     patch "edit_address", to: "addresses#update"
     put "edit_address", to: "addresses#update"
