@@ -5,6 +5,23 @@
 - 開発メンバー：TECH CAMP 72期夜間メンバー4名
 - 制作期間:Jun 6th,2020 ~ Aug 15th,2020
 
+# テスト用アカウント
+- 購入者用
+メールアドレス: test_buyer@gmail.com  
+パスワード: test_buyer  
+- 購入用カード情報
+番号：4242424242424242  
+期限：3/24  
+セキュリティコード：123  
+- 出品者用
+メールアドレス名: test_seller@gmail.com  
+パスワード: test_seller  
+
+# サイトURL（BASIC認証キー）
+- パブリックIP: http://54.238.15.114/
+- ユーザーID: admin
+- パスワード: flemakt72b
+
 # 実装内容
 ## マークアップ
 TOPページ
@@ -67,12 +84,6 @@ TOPページ
 ### バリデーションの日本語化
 - gem 'rails-i18n'
 
-
-
-# サイトURL（BASIC認証キー）
-- パブリックIP: http://54.238.15.114/
-- ユーザーID: admin
-- パスワード: flemakt72b
 
 # その他、Gem/Ver
 
