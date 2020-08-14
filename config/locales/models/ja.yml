@@ -21,8 +21,8 @@ ja:
         village: 番地
         destination_first: 送付先 姓(全角漢字)
         destination_last: 送付先 名(全角漢字)
-        destination_first_kana: 送付先 姓(全角カナ)
-        destination_last_kana: 送付先 名(全角カナ)
+        destination_first_kana: 送付先 セイ(全角カナ)
+        destination_last_kana: 送付先 メイ(全角カナ)
         area_kana: 都道府県(フリガナ)
         city_kana: 市区町村(フリガナ)
         village_kana: 番地(フリガナ)
