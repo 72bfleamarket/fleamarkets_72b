@@ -1,5 +1,5 @@
 %h2.container__inner__content__chapterHead
-  プロフィールアイコン登録/編集
+  プロフィールアイコン編集
 .profiles
   = form_with model: @profile, class: "profiles__form" do |f|
     .profiles__form__preview
@@ -15,6 +15,6 @@
       = button_tag type: 'button', id: "icon-del" do
         削除
     .profiles__form__content
-      紹介文登録登録/編集
+      自己紹介文＆メッセージ編集
     = f.text_area :profile, class: 'profile_text', placeholder: '自己紹介文＆メッセージなど'
     = f.submit "登録する", class: 'profile-submit'
