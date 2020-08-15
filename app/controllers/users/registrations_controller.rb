@@ -53,6 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
+    @profile = current_user.profile
     @user = User.find(current_user.id)
   end
 
@@ -65,10 +66,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       render :edit
     end
-end
+  end
 
   protected
-
 
   def birthday_join
     @date = params[:birthday]
