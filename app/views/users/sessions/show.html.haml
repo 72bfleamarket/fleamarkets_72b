@@ -14,10 +14,10 @@
               - if @user.profile.icon.present?
                 = image_tag @user.profile.icon.url
 
-        .new_user__content
-          - if @user.profile.persisted?
-            .new_user__content__form
-              = @user.profile.profile
+      .new_user__content
+        - if @user.profile.persisted?
+          .new_user__content__form
+            = @user.profile.profile
     .products_lists
       %section.main__allProducts
         .main__allProducts__head

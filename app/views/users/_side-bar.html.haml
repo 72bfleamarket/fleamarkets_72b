@@ -27,30 +27,30 @@
   %ul.user-mypage__side-bar__content-box
     %li.user-mypage__side-bar__content-box__list
       - if @profile != nil && @profile.persisted?
-        = link_to edit_profile_path(@profile), class: 'user-mypage__side-bar__content-box__list__item' do
+        = link_to edit_profile_path(@profile), class: 'user-mypage__side-bar__content-box__mypage__item' do
           プロフィール
           %i.fas.fa-chevron-right
       - else
-        = link_to new_profile_path(@profile), class: 'user-mypage__side-bar__content-box__list__item' do
+        = link_to new_profile_path(@profile), class: 'user-mypage__side-bar__content-box__mypage__item' do
           プロフィール
           %i.fas.fa-chevron-right
     %li.user-mypage__side-bar__content-box__list
-      = link_to user_edit_address_path(current_user.id), class: 'user-mypage__side-bar__content-box__list__item' do
+      = link_to user_edit_address_path(current_user.id), class: 'user-mypage__side-bar__content-box__mypage__item' do
         お届け先住所変更
         %i.fas.fa-chevron-right
     %li.user-mypage__side-bar__content-box__list
-      = link_to new_card_path, class: 'user-mypage__side-bar__content-box__list__item' do
+      = link_to new_card_path, class: 'user-mypage__side-bar__content-box__mypage__item' do
         カード情報
         %i.fas.fa-chevron-right
     %li.user-mypage__side-bar__content-box__list
-      = link_to edit_user_registration_path, class: 'user-mypage__side-bar__content-box__list__item' do
+      = link_to edit_user_registration_path, class: 'user-mypage__side-bar__content-box__mypage__item' do
         メール/パスワード
         %i.fas.fa-chevron-right
     %li.user-mypage__side-bar__content-box__list
-      = link_to show_my_info_path(current_user.id), class: 'user-mypage__side-bar__content-box__list__item' do
+      = link_to show_my_info_path(current_user.id), class: 'user-mypage__side-bar__content-box__mypage__item' do
         本人情報
         %i.fas.fa-chevron-right
     %li.user-mypage__side-bar__content-box__list
-      = link_to destroy_user_session_path, method: :delete, class: 'user-mypage__side-bar__content-box__list__item' do
+      = link_to destroy_user_session_path, method: :delete, class: 'user-mypage__side-bar__content-box__mypage__item' do
         ログアウト
         %i.fas.fa-chevron-right
