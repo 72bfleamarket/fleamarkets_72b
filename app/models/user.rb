@@ -32,6 +32,7 @@ class User < ApplicationRecord
   validates :first_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角片仮名で入力して下さい。" }
   validates :last_kana, presence: true, format: { with: VALID_KANA_REGEX, message: "は全角片仮名で入力して下さい。" }
   validates :birthday, presence: true
+  
 
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create

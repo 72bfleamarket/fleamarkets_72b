@@ -103,8 +103,8 @@
           .new_user__body__box__group__head
             %label
               送付先氏名（全角）
-            %span.gray
-              任意
+            %span.mandatory
+              必須
             - if @address.errors.any?
               .err_message
                 =  @address.errors.full_messages_for(:destination_first).shift
@@ -118,8 +118,8 @@
           .new_user__body__box__group__head
             %label
               送付先氏名（カナ）
-            %span.gray
-              任意
+            %span.mandatory
+              必須
             - if @address.errors.any?
               .err_message
                 =  @address.errors.full_messages_for(:destination_first_kana).shift
