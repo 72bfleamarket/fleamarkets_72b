@@ -266,3 +266,10 @@ TOPページ
 ### Association
 - belongs_to :user
 - mount_uploader :icon, IconUploader
+
+
+|Customer_id|name|gender|number_of_comments|
+|-----------|----|------|------------------|
+|1|kai|M|0|
+|2|mina|F|1|
+|3|anna|F|2|
