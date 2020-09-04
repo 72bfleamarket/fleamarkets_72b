@@ -270,6 +270,6 @@ TOPページ
 
 |Customer_id|name|gender|number_of_comments|
 |-----------|----|------|------------------|
-|1|kai|M|0|
+|1|kai|M||
 |2|mina|F|1|
 |3|anna|F|2|
